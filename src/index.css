@@ -1,13 +1,52 @@
-body {
+*{
+  box-sizing: border-box;
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  padding: 0;
 }
+a{
+  text-decoration: none;
+  color: inherit;
+}
+image{
+  max-width: 100%;
+  vertical-align: middle;
+}
+ol,ul{
+  list-style: none;
+}
+table{
+  text-align: center;
+  border-spacing: 0;
+  border-collapse: collapse;
+}
+html,body,#root{
+  height: 100%;
+  font-size: 16px;
+  color: #333333;
+  font-family: -apple-system, "Noto Sans", "Helvetica Neue", Helvetica, "Nimbus Sans L", Arial, "Liberation Sans", "PingFang SC", "Hiragino Sans GB", "Noto Sans CJK SC", "Source Han Sans SC", "Source Han Sans CN", "Microsoft YaHei", "Wenquanyi Micro Hei", "WenQuanYi Zen Hei", "ST Heiti", SimHei, "WenQuanYi Zen Hei Sharp", sans-serif;
+}
+
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
+}
+
+body{
+  background-color: #f7f7f7;
+}
+
+#root{
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+#main{
+  flex: 1;
+  padding: 30px 100px;
+}
+
+#nprogress .bar{
+  background-color: #df4402;
 }
