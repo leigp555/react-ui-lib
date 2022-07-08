@@ -25,5 +25,7 @@ module.exports = {
     'react/jsx-filename-extension': 'off',
     'react/function-component-definition': 'off',
     'react/jsx-no-useless-fragment': 'off',
+    'no-unused-vars': 'off',
+    'react/jsx-no-constructed-context-values': 'off',
   },
 };

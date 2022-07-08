@@ -29,7 +29,10 @@
   "eslintIgnore": [
     "public",
     "*.test.tsx",
-    "node_modules"
+    "node_modules",
+    "reportWebVitals.ts",
+    "react-app-env.d.ts",
+    "setupTests.ts"
   ],
   "browserslist": {
     "production": [
