@@ -27,5 +27,13 @@ module.exports = {
     'react/jsx-no-useless-fragment': 'off',
     'no-unused-vars': 'off',
     'react/jsx-no-constructed-context-values': 'off',
+    'arrow-body-style': 'off',
+    'comma-dangle': 'off',
+    'no-console': 'off',
+    'lines-between-class-members': 'off',
+    'react/jsx-one-expression-per-line': 'off',
+    'react/button-has-type': 'off',
+    ' spaced-comment': 'off',
+    'comma-spacing': 'off'
   },
 };

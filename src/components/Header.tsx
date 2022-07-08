@@ -28,7 +28,7 @@ interface Props {
 }
 
 const Header: React.FC<Props> = () => {
-  const { logout } = useContext(AuthContext);
+  const { username, logout } = useContext(AuthContext);
   return (
     <StyledHeader>
       <nav>
@@ -37,7 +37,11 @@ const Header: React.FC<Props> = () => {
         <StyledLink to="/about">关于我</StyledLink>
         <StyledLink to="/test">测试</StyledLink>
       </nav>
-      <StyledButton onClick={logout}>logout</StyledButton>
+      <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
+        {username ? <div style={{ color: 'red' }}>{username}</div> : <div style={{ color: 'red' }}>未登录</div>}
+        <StyledButton onClick={logout}>logout</StyledButton>
+      </div>
+
     </StyledHeader>
   );
 };

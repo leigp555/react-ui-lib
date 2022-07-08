@@ -21,6 +21,7 @@ specifiers:
   eslint-plugin-react: ^7.28.0
   eslint-plugin-react-hooks: ^4.3.0
   mobx: ^6.6.1
+  mobx-react-lite: ^3.4.0
   nprogress: ^0.2.0
   react: ^18.2.0
   react-dom: ^18.2.0
@@ -39,6 +40,7 @@ dependencies:
   '@types/react': registry.npmmirror.com/@types/react/18.0.15
   '@types/react-dom': registry.npmmirror.com/@types/react-dom/18.0.6
   mobx: registry.npmmirror.com/mobx/6.6.1
+  mobx-react-lite: registry.npmmirror.com/mobx-react-lite/3.4.0_m26jawr67gnusmh4egzqtnhxru
   nprogress: registry.npmmirror.com/nprogress/0.2.0
   react: registry.npmmirror.com/react/18.2.0
   react-dom: registry.npmmirror.com/react-dom/18.2.0_react@18.2.0
@@ -8437,6 +8439,27 @@ packages:
     hasBin: true
     dependencies:
       minimist: registry.npmmirror.com/minimist/1.2.6
+    dev: false
+
+  registry.npmmirror.com/mobx-react-lite/3.4.0_m26jawr67gnusmh4egzqtnhxru:
+    resolution: {integrity: sha512-bRuZp3C0itgLKHu/VNxi66DN/XVkQG7xtoBVWxpvC5FhAqbOCP21+nPhULjnzEqd7xBMybp6KwytdUpZKEgpIQ==, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/mobx-react-lite/-/mobx-react-lite-3.4.0.tgz}
+    id: registry.npmmirror.com/mobx-react-lite/3.4.0
+    name: mobx-react-lite
+    version: 3.4.0
+    peerDependencies:
+      mobx: ^6.1.0
+      react: ^16.8.0 || ^17 || ^18
+      react-dom: '*'
+      react-native: '*'
+    peerDependenciesMeta:
+      react-dom:
+        optional: true
+      react-native:
+        optional: true
+    dependencies:
+      mobx: registry.npmmirror.com/mobx/6.6.1
+      react: registry.npmmirror.com/react/18.2.0
+      react-dom: registry.npmmirror.com/react-dom/18.2.0_react@18.2.0
     dev: false
 
   registry.npmmirror.com/mobx/6.6.1:

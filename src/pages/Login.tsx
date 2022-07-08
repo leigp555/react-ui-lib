@@ -11,8 +11,10 @@ const Login: React.FC<{}> = () => {
   const { login } = useContext(AuthContext);
   const formSubmit = (e:FormEvent) => {
     e.preventDefault();
-    login(user);
-    navigate('/');
+    if (user) {
+      login(user);
+      navigate('/');
+    }
   };
   const newUser = () => {
     setUser(() => inputEl.current!.value);
