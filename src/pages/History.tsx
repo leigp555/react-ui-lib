@@ -1,13 +1,9 @@
-import React from "react";
+import React from 'react';
 
 interface Props{}
 
-const History:React.FC<Props> =()=>{
-    return(
-        <React.Fragment>
-            <h1>history</h1>
-        </React.Fragment>
-    )
-}
+const History:React.FC<Props> = () => (
+  <h1>history</h1>
+);
 
-export default History
+export default History;

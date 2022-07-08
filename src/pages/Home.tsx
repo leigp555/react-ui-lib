@@ -1,13 +1,9 @@
-import React from "react";
+import React from 'react';
 
 interface Props{}
 
-const Home:React.FC<Props> =()=>{
-    return(
-        <React.Fragment>
-        <h1>home</h1>
-        </React.Fragment>
-    )
-}
+const Home:React.FC<Props> = () => (
+  <h1>home</h1>
+);
 
-export default Home
+export default Home;

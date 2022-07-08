@@ -1,5 +1,5 @@
-import React from "react";
-import styled from "styled-components";
+import React from 'react';
+import styled from 'styled-components';
 
 interface Props {
 }
@@ -12,15 +12,12 @@ const StyledFooter = styled.footer`
   color: #aaa;
   font-size: 12px;
   padding: 10px 100px;
-`
+`;
 
+const Footer: React.FC<Props> = () => (
+  <StyledFooter>
+    <p>footer</p>
+  </StyledFooter>
+);
 
-const Footer: React.FC<Props> = () => {
-    return (
-        <StyledFooter>
-            <p>footer</p>
-        </StyledFooter>
-    )
-}
-
-export default Footer
+export default Footer;
