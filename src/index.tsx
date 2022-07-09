@@ -7,13 +7,17 @@ import {
 } from 'react-router-dom';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
+import { userStore } from './store';
+import { Provider } from 'react-redux';
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement,
 );
 root.render(
   <Router>
-    <App/>
+    <Provider store={userStore()}>
+      <App/>
+    </Provider>
   </Router>
 );
 

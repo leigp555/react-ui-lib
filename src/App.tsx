@@ -5,8 +5,6 @@ import {
   Routes,
   Route, useLocation, Navigate,
 } from 'react-router-dom';
-import { Provider } from 'react-redux';
-import { userStore } from './store';
 import Header from './components/Header';
 import Footer from './components/Footer';
 import Loading from './components/Loading';
@@ -70,7 +68,6 @@ function RequireAuth({ children }: { children: JSX.Element }) {
 
 const App: React.FC<{}> = () => (
   <AuthProvider>
-    <Provider store={userStore()}>
       <Header/>
       <Suspense fallback={<Loading/>}>
         <main id="main">
@@ -86,7 +83,6 @@ const App: React.FC<{}> = () => (
         </main>
       </Suspense>
       <Footer/>
-    </Provider>
   </AuthProvider>
 );
 export default App;
