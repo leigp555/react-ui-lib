@@ -1,4 +1,4 @@
-type InitStore = {
+export type InitUserStore = {
   user: string
   isLogin: boolean
   text: string
@@ -10,7 +10,7 @@ type UserAction = {
 }
 
 // store初始值
-const initStore: InitStore = {
+const initStore: InitUserStore = {
   user: 'admin',
   isLogin: false,
   text: '未登录'

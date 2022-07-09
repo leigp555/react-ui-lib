@@ -1,10 +1,14 @@
-const increment = {
-  type: 'Add',
-  num: 1
+const increment=(value:number) => {
+  return{
+    type: 'Add',
+    num: value
+  }
 };
-const decrement = {
-  type: 'Decrement',
-  num: 1
+const decrement=(value:number) => {
+  return{
+    type: 'Add',
+    num: value
+  }
 };
 const multi = {
   type: 'Multi',

@@ -1,4 +1,4 @@
-type InitStore = {
+export type InitCountStore = {
   num: number
 }
 export type CountAction = {
@@ -7,7 +7,7 @@ export type CountAction = {
 }
 
 // store初始值
-const initStore: InitStore = { num: 100 };
+const initStore: InitCountStore = { num: 100 };
 
 // 创建各个操作
 export const countReducer = (state = initStore, action: CountAction) => {

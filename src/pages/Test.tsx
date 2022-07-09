@@ -1,21 +1,36 @@
 import React, { useEffect } from 'react';
-import { userStore } from '../store';
-import {
-  multi, login, logout, decrement
-} from '../store/actions';
+import { connect, MapStateToProps } from 'react-redux';
+import { RootStore, userStore } from '../store';
+import { login, decrement, increment, logout } from '../store/actions';
+import { Dispatch } from 'redux';
+import { InitUserStore } from '../store/user';
+import { InitCountStore } from '../store/count';
 
-const Test: React.FC<{}> = () => {
-  const store = userStore();
-  useEffect(() => {
-    store.dispatch(login);
-    store.dispatch(decrement);
-  },[]);
-  console.log(store.getState());
+type Props = {
+  store: RootStore
+  addN: (value: number) => { type: string, num: number }
+}
+
+const Test: React.FC<Props> = (props) => {
+  const { store, addN} = props;
   return (
     <>
       <div>test</div>
+      <div>{store.count.num}</div>
+      <button onClick={()=>addN(50)}>+1</button>
     </>
   );
 };
 
-export default Test;
+const mapStateToProps:MapStateToProps<any, any, any> = (state: RootStore) => {
+  return {
+    store:state
+  };
+};
+const mapDispatchToProps = (dispatch: Dispatch) => {
+  return {
+    addN: (value: number) => dispatch(increment(value)),
+  };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(Test);
