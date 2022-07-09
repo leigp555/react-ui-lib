@@ -34,6 +34,16 @@ module.exports = {
     'react/jsx-one-expression-per-line': 'off',
     'react/button-has-type': 'off',
     ' spaced-comment': 'off',
-    'comma-spacing': 'off'
+    'comma-spacing': 'off',
+    'no-param-reassign': 'off',
+    'default-param-last': 'off',
+    'import/prefer-default-export': 'off',
+    'no-return-assign': 'off',
+    'no-multiple-empty-lines': 'off',
+    'no-multi-spaces': 'off',
+    'keyword-spacing': 'off',
+    'space-infix-ops': 'off',
+    'padded-blocks': 'off',
+    semi: 'off'
   },
 };

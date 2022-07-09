@@ -1,33 +1,39 @@
-import {
-  makeAutoObservable, reaction, runInAction
-} from 'mobx';
-
-class Count {
-  count = 0;
-  constructor() {
-    makeAutoObservable(this, { }, { autoBind: true });
-  }
-  increment() {
-    this.count += 1;
-  }
-  reset() {
-    this.count = 0;
-  }
-  decrement() {
-    setTimeout(() => {
-      runInAction(() => { // setTimeout函数里面直接修改属性值会报错，一次要用到runInAction
-        this.count -= 1;
-      });
-    },2000);
-  }
-  get double() {
-    return this.count * 2;
-  }
+type InitStore = {
+  num: number
+}
+export type CountAction = {
+  type: string,
+  num: number
 }
 
-const count = new Count();
+// store初始值
+const initStore: InitStore = { num: 100 };
 
-reaction(() => count.count, (value, oldValue) => {
-  console.log(value, oldValue);
-});
-export default count;
+// 创建各个操作
+export const countReducer = (state = initStore, action: CountAction) => {
+  switch (action.type) {
+    case 'Add':
+      return {
+        ...state,
+        num: state.num += action.num
+      };
+    case 'Decrement':
+      return {
+        ...state,
+        num: state.num -= action.num
+      };
+    case 'Multi':
+      return {
+        ...state,
+        num: state.num *= action.num
+      };
+    case 'Division':
+      return {
+        ...state,
+        num: state.num /= action.num
+      };
+    default:
+      return state;
+  }
+};
+

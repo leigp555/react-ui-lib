@@ -64,7 +64,7 @@ const App: React.FC<{}> = () => (
           <Route path="/" element={<RequireAuth><Home /></RequireAuth>} />
           <Route path="/history" element={<RequireAuth><History /></RequireAuth>} />
           <Route path="/about" element={<RequireAuth><About /></RequireAuth>} />
-          <Route path="/test" element={<RequireAuth><Test /></RequireAuth>} />
+          <Route path="/test" element={<Test />} />
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
           <Route path="*" element={<NotFound />} />

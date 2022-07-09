@@ -1,20 +1,21 @@
-import React, {} from 'react';
-import { observer } from 'mobx-react-lite';
-import useStore from '../store';
+import React, { useEffect } from 'react';
+import { userStore } from '../store';
+import {
+  multi, login, logout, decrement
+} from '../store/actions';
 
-const Test:React.FC<{}> = () => {
-  const { count ,auth } = useStore();
+const Test: React.FC<{}> = () => {
+  const store = userStore();
+  useEffect(() => {
+    store.dispatch(login);
+    store.dispatch(decrement);
+  },[]);
+  console.log(store.getState());
   return (
     <>
       <div>test</div>
-      <div>作者：{auth.username}</div>
-      <div>次数：{count.count}</div>
-      <div>计算：{count.double}</div>
-      <button onClick={() => count.increment()}>加一</button>
-      <button onClick={() => count.decrement()}>异步减一</button>
-      <button onClick={() => count.reset()}>重置</button>
     </>
   );
 };
 
-export default observer(Test);
+export default Test;

@@ -1,17 +1,12 @@
-import { createContext, useContext } from 'react';
-import count from './count';
-import auth from './auth';
+import { createStore, combineReducers } from 'redux';
+import { countReducer } from './count';
+import { userReducer } from './user';
 
-class RootStore {
-  count = count;
-  auth = auth;
-}
+const reducer = combineReducers({
+  user: userReducer,
+  count: countReducer
+});
 
-const store = new RootStore();
-// 创建一个上下文
-const Context = createContext(store);
-
-// 自定义一个hook使用这个上下文
-export default function useStore() {
-  return useContext(Context);
+export function userStore() {
+  return createStore(reducer);
 }
