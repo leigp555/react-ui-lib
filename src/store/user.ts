@@ -7,7 +7,7 @@ export type UserStore={
   text: string
 }
 
-//创建一个store切片
+//创建一个createSlice
 const userStore = createSlice({
   name: 'user',
   initialState(){

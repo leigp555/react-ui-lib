@@ -1,5 +1,4 @@
 import {
-    createAction,
     createAsyncThunk,
     createSlice,
     Draft,
@@ -17,9 +16,7 @@ const ajax=(url:string)=>{
     })
 }
 
-//定义action
-const httpTest = createAction('');
-// First, create the thunk
+
 export const asyncIncrement = createAsyncThunk('counter', async (url:string) => {
     return await ajax(url) as {data:number};
 });
