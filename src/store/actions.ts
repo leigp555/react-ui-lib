@@ -32,7 +32,7 @@ const logout = {
   text: '未登录'
 };
 
-const fuck = () => {
+const asyncAdd = () => {
   return new Promise((resolve, reject) => {
     // axios.get<number>('/xxx')
     //   .then(res => {
@@ -50,5 +50,5 @@ const fuck = () => {
   });
 };
 export {
-  increment, decrement, multi, division, login, logout, fuck
+  increment, decrement, multi, division, login, logout, asyncAdd
 };

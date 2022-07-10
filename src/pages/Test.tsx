@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import { connect, MapStateToProps } from 'react-redux';
 import { RootStore, userStore } from '../store';
-import { login, decrement, increment, logout,fuck } from '../store/actions';
+import { login, decrement, increment, logout,asyncAdd } from '../store/actions';
 import { AnyAction, Dispatch } from 'redux';
 
 type Props = {
@@ -10,11 +10,11 @@ type Props = {
   subN: (value: number) => void
   signin: () => void
   signout: () => void
-  resetN: () => void
+  asyncAddN: () => void
 }
 
 const Test: React.FC<Props> = (props) => {
-  const { store, addN,signin,signout,resetN} = props;
+  const { store, addN,signin,signout,asyncAddN} = props;
   return (
     <>
       <div>test</div>
@@ -23,7 +23,7 @@ const Test: React.FC<Props> = (props) => {
       <button onClick={()=>addN(50)}>+1</button>
       <button onClick={()=>signin()}>+login</button>
       <button onClick={()=>signout()}>+login</button>
-      <button onClick={()=>resetN()}>重置</button>
+      <button onClick={()=>asyncAddN()}>重置</button>
     </>
   );
 };
@@ -39,7 +39,7 @@ const mapDispatchToProps =  (dispatch: Dispatch) => {
     subN: (value: number) => dispatch(decrement(value)),
     signin:()=>dispatch(login),
     signout:()=>dispatch(logout),
-    resetN:async ()=>dispatch((await fuck()) as AnyAction)
+    asyncAddN:async ()=>dispatch((await asyncAdd()) as AnyAction)
   };
 };
 
