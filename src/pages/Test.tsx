@@ -1,47 +1,29 @@
-import React from 'react';
-import {connect, MapStateToProps} from 'react-redux';
-
-import {RootStore} from "../store";
-import {Dispatch} from "redux";
+import React, {useEffect} from 'react';
+import { useSelector, useDispatch } from 'react-redux';
 import {decremented, incremented} from "../store/count";
 import {login, logout} from "../store/user";
+import {selectStore} from "../store";
 
-type Props = {
-    store: RootStore
-    addN: (value: number) => void
-    subN: (value: number) => void
-    signin:()=>void
-    signout:()=>void
-}
+type Props = {}
 
 const Test: React.FC<Props> = (props) => {
-    const {store, addN, subN,signin,signout} = props;
-    console.log(store)
+    const store = useSelector(selectStore);
+    useEffect(()=>{
+        console.log(store)
+    })
+    const dispatch = useDispatch();
     return (
         <>
             <div>test</div>
             <div>{store.count.num}</div>
             <div>{JSON.stringify(store.user)}</div>
-            <button onClick={() => addN(50)}>+50</button>
-            <button onClick={() => subN(100)}>-100</button>
-            <button onClick={() => signin()}>login</button>
-            <button onClick={() => signout()}>logout</button>
+            <button onClick={() =>dispatch(incremented(50))}>+50</button>
+            <button onClick={() => dispatch(decremented(100))}>-100</button>
+            <button onClick={() =>dispatch(login())}>login</button>
+            <button onClick={() =>dispatch(logout())}>logout</button>
         </>
     );
 };
 
-const mapStateToProps: MapStateToProps<any, any, RootStore> = (state) => {
-    return {
-        store: state
-    };
-};
-const mapDispatchToProps = (dispatch: Dispatch) => {
-    return {
-        addN: (value: number) => dispatch(incremented(value)),
-        subN: (value: number) => dispatch(decremented(value)),
-        signin: () => dispatch(login()),
-        signout: () => dispatch(logout()),
-    };
-};
 
-export default connect(mapStateToProps, mapDispatchToProps)(Test);
+export default Test

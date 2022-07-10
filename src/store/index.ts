@@ -16,4 +16,4 @@ export const useStore=()=>{
     }
   })
 }
-
+export const selectStore = (state:RootStore) => state
