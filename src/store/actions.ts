@@ -43,7 +43,7 @@ const fuck = () => {
     //   });
     setTimeout(() => {
       resolve({
-        type: 'Reset',
+        type: 'Add',
         num: 900
       });
     },3000);
