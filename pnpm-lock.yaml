@@ -29,7 +29,6 @@ specifiers:
   react-redux: ^8.0.2
   react-router-dom: ^6.3.0
   react-scripts: 5.0.1
-  redux: ^4.2.0
   redux-devtools: ^3.7.0
   redux-logger: ^3.0.6
   styled-components: ^5.3.5
@@ -49,10 +48,9 @@ dependencies:
   nprogress: registry.npmmirror.com/nprogress/0.2.0
   react: registry.npmmirror.com/react/18.2.0
   react-dom: registry.npmmirror.com/react-dom/18.2.0_react@18.2.0
-  react-redux: registry.npmmirror.com/react-redux/8.0.2_rxpulxqxsibgdk5rs4llgxl6gy
+  react-redux: registry.npmmirror.com/react-redux/8.0.2_v7vsrdtui4d36prbwvdnlb7tpq
   react-router-dom: registry.npmmirror.com/react-router-dom/6.3.0_biqbaboplfbrettd7655fr4n2y
   react-scripts: registry.npmmirror.com/react-scripts/5.0.1_qtbnez4q7bzoc4eqybg3efzzxe
-  redux: registry.npmmirror.com/redux/4.2.0
   styled-components: registry.npmmirror.com/styled-components/5.3.5_biqbaboplfbrettd7655fr4n2y
   typescript: registry.npmmirror.com/typescript/4.7.4
   web-vitals: registry.npmmirror.com/web-vitals/2.1.4
@@ -71,7 +69,7 @@ devDependencies:
   eslint-plugin-jsx-a11y: registry.npmmirror.com/eslint-plugin-jsx-a11y/6.6.0_eslint@8.19.0
   eslint-plugin-react: registry.npmmirror.com/eslint-plugin-react/7.30.1_eslint@8.19.0
   eslint-plugin-react-hooks: registry.npmmirror.com/eslint-plugin-react-hooks/4.6.0_eslint@8.19.0
-  redux-devtools: registry.npmmirror.com/redux-devtools/3.7.0_3ehcaq2n4jukulvcxg5dqcyv5y
+  redux-devtools: registry.npmmirror.com/redux-devtools/3.7.0_kkwg4cbsojnjnupd3btipussee
   redux-logger: registry.npmmirror.com/redux-logger/3.0.6
 
 packages:
@@ -2464,7 +2462,7 @@ packages:
     dependencies:
       immer: registry.npmmirror.com/immer/9.0.15
       react: registry.npmmirror.com/react/18.2.0
-      react-redux: registry.npmmirror.com/react-redux/8.0.2_rxpulxqxsibgdk5rs4llgxl6gy
+      react-redux: registry.npmmirror.com/react-redux/8.0.2_v7vsrdtui4d36prbwvdnlb7tpq
       redux: registry.npmmirror.com/redux/4.2.0
       redux-thunk: registry.npmmirror.com/redux-thunk/2.4.1_redux@4.2.0
       reselect: registry.npmmirror.com/reselect/4.1.6
@@ -10284,7 +10282,7 @@ packages:
     version: 18.2.0
     dev: false
 
-  registry.npmmirror.com/react-redux/8.0.2_rxpulxqxsibgdk5rs4llgxl6gy:
+  registry.npmmirror.com/react-redux/8.0.2_v7vsrdtui4d36prbwvdnlb7tpq:
     resolution: {integrity: sha512-nBwiscMw3NoP59NFCXFf02f8xdo+vSHT/uZ1ldDwF7XaTpzm+Phk97VT4urYBl5TYAPNVaFm12UHAEyzkpNzRA==, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/react-redux/-/react-redux-8.0.2.tgz}
     id: registry.npmmirror.com/react-redux/8.0.2
     name: react-redux
@@ -10317,7 +10315,6 @@ packages:
       react: registry.npmmirror.com/react/18.2.0
       react-dom: registry.npmmirror.com/react-dom/18.2.0_react@18.2.0
       react-is: registry.npmmirror.com/react-is/18.2.0
-      redux: registry.npmmirror.com/redux/4.2.0
       use-sync-external-store: registry.npmmirror.com/use-sync-external-store/1.2.0_react@18.2.0
     dev: false
 
@@ -10524,9 +10521,8 @@ packages:
       strip-indent: registry.npmmirror.com/strip-indent/3.0.0
     dev: false
 
-  registry.npmmirror.com/redux-devtools-instrument/1.10.0_redux@4.2.0:
+  registry.npmmirror.com/redux-devtools-instrument/1.10.0:
     resolution: {integrity: sha512-X8JRBCzX2ADSMp+iiV7YQ8uoTNyEm0VPFPd4T854coz6lvRiBrFSqAr9YAS2n8Kzxx8CJQotR0QF9wsMM+3DvA==, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/redux-devtools-instrument/-/redux-devtools-instrument-1.10.0.tgz}
-    id: registry.npmmirror.com/redux-devtools-instrument/1.10.0
     name: redux-devtools-instrument
     version: 1.10.0
     deprecated: Package moved to @redux-devtools/instrument.
@@ -10534,11 +10530,10 @@ packages:
       redux: ^3.4.0 || ^4.0.0
     dependencies:
       lodash: registry.npmmirror.com/lodash/4.17.21
-      redux: registry.npmmirror.com/redux/4.2.0
       symbol-observable: registry.npmmirror.com/symbol-observable/1.2.0
     dev: true
 
-  registry.npmmirror.com/redux-devtools/3.7.0_3ehcaq2n4jukulvcxg5dqcyv5y:
+  registry.npmmirror.com/redux-devtools/3.7.0_kkwg4cbsojnjnupd3btipussee:
     resolution: {integrity: sha512-Lnx3UX7mnJij2Xs+RicPK1GyKkbuodrCKtfYmJsN603wC0mc99W//xCAskGVNmRhIXg4e57m2k1CyX0kVzCsBg==, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/redux-devtools/-/redux-devtools-3.7.0.tgz}
     id: registry.npmmirror.com/redux-devtools/3.7.0
     name: redux-devtools
@@ -10553,9 +10548,8 @@ packages:
       lodash: registry.npmmirror.com/lodash/4.17.21
       prop-types: registry.npmmirror.com/prop-types/15.8.1
       react: registry.npmmirror.com/react/18.2.0
-      react-redux: registry.npmmirror.com/react-redux/8.0.2_rxpulxqxsibgdk5rs4llgxl6gy
-      redux: registry.npmmirror.com/redux/4.2.0
-      redux-devtools-instrument: registry.npmmirror.com/redux-devtools-instrument/1.10.0_redux@4.2.0
+      react-redux: registry.npmmirror.com/react-redux/8.0.2_v7vsrdtui4d36prbwvdnlb7tpq
+      redux-devtools-instrument: registry.npmmirror.com/redux-devtools-instrument/1.10.0
     dev: true
 
   registry.npmmirror.com/redux-logger/3.0.6:
