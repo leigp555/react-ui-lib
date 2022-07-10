@@ -32,6 +32,11 @@ export const countReducer = (state = initStore, action: CountAction) => {
         ...state,
         num: state.num /= action.num
       };
+    case 'Reset':
+      return {
+        ...state,
+        num: action.num
+      }
     default:
       return state;
   }

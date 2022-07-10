@@ -1,6 +1,7 @@
-import { createStore, combineReducers } from 'redux';
+import { createStore, combineReducers,applyMiddleware } from 'redux';
 import { countReducer, InitCountStore } from './count';
 import { InitUserStore, userReducer } from './user';
+import thunk from 'redux-thunk'
 
 export type RootStore= {
   user:InitUserStore
@@ -13,5 +14,5 @@ const reducer = combineReducers({
 });
 
 export function userStore() {
-  return createStore(reducer);
+  return createStore(reducer,applyMiddleware(thunk));    //使用异步中间件
 }
