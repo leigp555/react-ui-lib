@@ -1,9 +1,10 @@
-import {createSlice, createAsyncThunk,PayloadAction, Draft} from '@reduxjs/toolkit'
-
-//store的类型
-export type CountStore = {
-    num: number
-}
+import {
+    createAction,
+    createAsyncThunk,
+    createSlice,
+    Draft,
+    PayloadAction
+} from '@reduxjs/toolkit';
 
 //mock一个请求
 const ajax=(url:string)=>{
@@ -16,15 +17,17 @@ const ajax=(url:string)=>{
     })
 }
 
+//定义action
+const httpTest = createAction('');
+// First, create the thunk
+export const asyncIncrement = createAsyncThunk('counter', async (url:string) => {
+    return await ajax(url) as {data:number};
+});
 
-export const resetAsync = createAsyncThunk(
-    'counter/fetchCount',
-    async (amount) => {
-        const response = await ajax("/test") as {data:number};
-        return response.data;
-    }
-);
-
+//store的类型
+export type CountStore = {
+    num: number
+}
 
 
 //创建一个store切片
@@ -44,14 +47,11 @@ const countStore = createSlice({
         }
     },
     extraReducers: (builder) => {
-        // Add reducers for additional action types here, and handle loading state as needed
-        builder.addCase(resetAsync.fulfilled, (state, action) => {
-            // Add user to the state array
-            state.num=action.payload
+        builder.addCase(asyncIncrement.fulfilled, (state, action) => {
+            state.num=action.payload.data
         })
     },
 })
-
 
 //actions
 export const {incremented, decremented} = countStore.actions

@@ -7,7 +7,7 @@ import {
 } from 'react-router-dom';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
-import { useStore } from './store';
+import { store } from './store';
 import { Provider } from 'react-redux';
 
 const root = ReactDOM.createRoot(
@@ -15,7 +15,7 @@ const root = ReactDOM.createRoot(
 );
 root.render(
   <Router>
-    <Provider store={useStore()}>
+    <Provider store={store}>
       <App/>
     </Provider>
   </Router>

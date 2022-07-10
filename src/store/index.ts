@@ -1,22 +1,21 @@
 import {configureStore} from '@reduxjs/toolkit'
-import countReducer, {CountStore} from "./count";
-import userReducer, {UserStore} from './user'
-import thunkMiddleware from 'redux-thunk'
+import logger from 'redux-logger';
+import { TypedUseSelectorHook, useDispatch, useSelector } from 'react-redux'
+import countReducer from "./count";
+import userReducer from './user'
 
-export type RootStore={
-  count:CountStore
-  user:UserStore
-}
 
-const store=configureStore({
+export const store=configureStore({
   reducer: {
     count:countReducer,
     user:userReducer
   },
-  middleware:[thunkMiddleware ]
+  middleware: (getDefaultMiddleware) => getDefaultMiddleware().concat(logger)
 })
-export const useStore=()=>{
-  return store
-}
-export const selectStore = (state:RootStore) => state
+
+export type RootState  = ReturnType<typeof store.getState>;
 export type AppDispatch = typeof store.dispatch;
+export const useAppSelector: TypedUseSelectorHook<RootState> = useSelector
+export const useAppDispatch = () => useDispatch<AppDispatch>()
+
+
