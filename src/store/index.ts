@@ -1,18 +1,33 @@
-import { createStore, combineReducers,applyMiddleware } from 'redux';
-import { countReducer, InitCountStore } from './count';
-import { InitUserStore, userReducer } from './user';
-import thunk from 'redux-thunk'
+import {createSlice, configureStore, PayloadAction, Draft} from '@reduxjs/toolkit'
 
-export type RootStore= {
-  user:InitUserStore
-  count:InitCountStore
+export type RootStore={
+  num:number
 }
 
-const reducer = combineReducers({
-  user: userReducer,
-  count: countReducer
-});
+const counterSlice = createSlice({
+  name: 'counter',
+  initialState:()=>{
+    return {
+      num: 0
+    } as RootStore
+  },
+  reducers: {
+    incremented: (state:Draft<RootStore>,action:PayloadAction<number>) => {
+      state.num += action.payload
+    },
+    decremented: (state:Draft<RootStore>,action:PayloadAction<number>) => {
+      state.num -= action.payload
+    },
+  }
+})
 
-export function userStore() {
-  return createStore(reducer,applyMiddleware(thunk));    //使用异步中间件
+//actions
+export const { incremented, decremented } = counterSlice.actions
+
+//store
+export const useStore=()=>{
+  return configureStore({
+    reducer: counterSlice.reducer
+  })
 }
+

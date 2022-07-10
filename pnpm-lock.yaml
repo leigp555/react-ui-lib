@@ -1,6 +1,7 @@
 lockfileVersion: 5.4
 
 specifiers:
+  '@reduxjs/toolkit': ^1.8.3
   '@testing-library/jest-dom': ^5.16.4
   '@testing-library/react': ^13.3.0
   '@testing-library/user-event': ^13.5.0
@@ -34,6 +35,7 @@ specifiers:
   web-vitals: ^2.1.4
 
 dependencies:
+  '@reduxjs/toolkit': registry.npmmirror.com/@reduxjs/toolkit/1.8.3_kkwg4cbsojnjnupd3btipussee
   '@testing-library/jest-dom': registry.npmmirror.com/@testing-library/jest-dom/5.16.4
   '@testing-library/react': registry.npmmirror.com/@testing-library/react/13.3.0_biqbaboplfbrettd7655fr4n2y
   '@testing-library/user-event': registry.npmmirror.com/@testing-library/user-event/13.5.0
@@ -2440,6 +2442,28 @@ packages:
       source-map: registry.npmmirror.com/source-map/0.7.4
       webpack: registry.npmmirror.com/webpack/5.73.0
       webpack-dev-server: registry.npmmirror.com/webpack-dev-server/4.9.3_webpack@5.73.0
+    dev: false
+
+  registry.npmmirror.com/@reduxjs/toolkit/1.8.3_kkwg4cbsojnjnupd3btipussee:
+    resolution: {integrity: sha512-lU/LDIfORmjBbyDLaqFN2JB9YmAT1BElET9y0ZszwhSBa5Ef3t6o5CrHupw5J1iOXwd+o92QfQZ8OJpwXvsssg==, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/@reduxjs/toolkit/-/toolkit-1.8.3.tgz}
+    id: registry.npmmirror.com/@reduxjs/toolkit/1.8.3
+    name: '@reduxjs/toolkit'
+    version: 1.8.3
+    peerDependencies:
+      react: ^16.9.0 || ^17.0.0 || ^18
+      react-redux: ^7.2.1 || ^8.0.2
+    peerDependenciesMeta:
+      react:
+        optional: true
+      react-redux:
+        optional: true
+    dependencies:
+      immer: registry.npmmirror.com/immer/9.0.15
+      react: registry.npmmirror.com/react/18.2.0
+      react-redux: registry.npmmirror.com/react-redux/8.0.2_rxpulxqxsibgdk5rs4llgxl6gy
+      redux: registry.npmmirror.com/redux/4.2.0
+      redux-thunk: registry.npmmirror.com/redux-thunk/2.4.1_redux@4.2.0
+      reselect: registry.npmmirror.com/reselect/4.1.6
     dev: false
 
   registry.npmmirror.com/@rollup/plugin-babel/5.3.1_fb3qe53zzddvqjqqltveoanfhe:
@@ -10618,6 +10642,12 @@ packages:
     resolution: {integrity: sha512-KigOCHcocU3XODJxsu8i/j8T9tzT4adHiecwORRQ0ZZFcp7ahwXuRU1m+yuO90C5ZUyGeGfocHDI14M3L3yDAQ==, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/requires-port/-/requires-port-1.0.0.tgz}
     name: requires-port
     version: 1.0.0
+    dev: false
+
+  registry.npmmirror.com/reselect/4.1.6:
+    resolution: {integrity: sha512-ZovIuXqto7elwnxyXbBtCPo9YFEr3uJqj2rRbcOOog1bmu2Ag85M4hixSwFWyaBMKXNgvPaJ9OSu9SkBPIeJHQ==, registry: https://registry.npm.taobao.org/, tarball: https://registry.npmmirror.com/reselect/-/reselect-4.1.6.tgz}
+    name: reselect
+    version: 4.1.6
     dev: false
 
   registry.npmmirror.com/resolve-cwd/3.0.0:
