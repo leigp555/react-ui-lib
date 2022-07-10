@@ -1,8 +1,8 @@
 import React, {useEffect} from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import {decremented, incremented} from "../store/count";
+import {decremented, incremented, resetAsync} from "../store/count";
 import {login, logout} from "../store/user";
-import {selectStore} from "../store";
+import {AppDispatch, selectStore} from "../store";
 
 type Props = {}
 
@@ -11,7 +11,7 @@ const Test: React.FC<Props> = (props) => {
     useEffect(()=>{
         console.log(store)
     })
-    const dispatch = useDispatch();
+    const dispatch = useDispatch<AsyncThunkAction >();
     return (
         <>
             <div>test</div>
@@ -19,6 +19,7 @@ const Test: React.FC<Props> = (props) => {
             <div>{JSON.stringify(store.user)}</div>
             <button onClick={() =>dispatch(incremented(50))}>+50</button>
             <button onClick={() => dispatch(decremented(100))}>-100</button>
+            <button onClick={() =>{dispatch(resetAsync())}}>重置</button>
             <button onClick={() =>dispatch(login())}>login</button>
             <button onClick={() =>dispatch(logout())}>logout</button>
         </>
