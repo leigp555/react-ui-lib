@@ -9,7 +9,7 @@ export type UserStore={
 
 //创建一个store切片
 const userStore = createSlice({
-  name: 'counter',
+  name: 'user',
   initialState(){
     return {
       user: 'admin',
