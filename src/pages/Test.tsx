@@ -1,5 +1,5 @@
 import React from 'react';
-import { asyncIncrement, decremented, incremented, } from '../store/count';
+import { asyncIncrement, decremented, incremented, asyncTest} from '../store/count';
 import { login, logout } from '../store/user';
 import { RootState, useAppDispatch, useAppSelector } from '../store';
 
@@ -20,6 +20,7 @@ const Test: React.FC<Props> = (props) => {
         dispatch(asyncIncrement("/test"));
       }}>重置
       </button>
+      <button onClick={()=>dispatch(asyncTest("/yyy"))}>999</button>
       <button onClick={() => dispatch(login())}>login</button>
       <button onClick={() => dispatch(logout())}>logout</button>
     </>
