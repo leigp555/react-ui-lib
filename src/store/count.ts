@@ -1,44 +1,28 @@
-export type InitCountStore = {
-  num: number
-}
-export type CountAction = {
-  type: string,
-  num: number
+import {createSlice,PayloadAction, Draft} from '@reduxjs/toolkit'
+
+//store的类型
+export type CountStore={
+  num:number
 }
 
-// store初始值
-const initStore: InitCountStore = { num: 100 };
-
-// 创建各个操作
-export const countReducer = (state = initStore, action: CountAction) => {
-  switch (action.type) {
-    case 'Add':
-      return {
-        ...state,
-        num: state.num += action.num
-      };
-    case 'Decrement':
-      return {
-        ...state,
-        num: state.num -= action.num
-      };
-    case 'Multi':
-      return {
-        ...state,
-        num: state.num *= action.num
-      };
-    case 'Division':
-      return {
-        ...state,
-        num: state.num /= action.num
-      };
-    case 'Reset':
-      return {
-        ...state,
-        num: action.num
-      }
-    default:
-      return state;
+//创建一个store切片
+export const countStore = createSlice({
+  name: 'counter',
+  initialState:()=>{
+    return {
+      num: 0
+    } as CountStore
+  },
+  reducers: {
+    incremented: (state:Draft<CountStore>,action:PayloadAction<number>) => {
+      state.num += action.payload
+    },
+    decremented: (state:Draft<CountStore>,action:PayloadAction<number>) => {
+      state.num -= action.payload
+    },
   }
-};
+})
+
+//actions
+export const { incremented, decremented } = countStore.actions
 

@@ -1,8 +1,9 @@
 import React from 'react';
 import { connect, MapStateToProps } from 'react-redux';
 
-import {decremented, incremented, RootStore} from "../store";
+import { RootStore} from "../store";
 import {Dispatch} from "redux";
+import {decremented, incremented} from "../store/count";
 
 type Props = {
   store: RootStore
@@ -12,6 +13,7 @@ type Props = {
 
 const Test: React.FC<Props> = (props) => {
   const { store, addN,subN} = props;
+  console.log(store)
   return (
     <>
       <div>test</div>
