@@ -1,14 +1,19 @@
 import {configureStore} from '@reduxjs/toolkit'
-import {countStore} from "./count";
+import countReducer, {CountStore} from "./count";
+import userReducer, {UserStore} from './user'
 
 export type RootStore={
-  num:number
+  count:CountStore
+  user:UserStore
 }
 
 //store
 export const useStore=()=>{
   return configureStore({
-    reducer: countStore.reducer
+    reducer: {
+      count:countReducer,
+      user:userReducer
+    }
   })
 }
 

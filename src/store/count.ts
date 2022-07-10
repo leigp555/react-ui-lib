@@ -6,7 +6,7 @@ export type CountStore={
 }
 
 //创建一个store切片
-export const countStore = createSlice({
+const countStore = createSlice({
   name: 'counter',
   initialState:()=>{
     return {
@@ -25,4 +25,5 @@ export const countStore = createSlice({
 
 //actions
 export const { incremented, decremented } = countStore.actions
+export default countStore.reducer
 
