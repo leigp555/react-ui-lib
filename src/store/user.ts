@@ -10,7 +10,7 @@ export type UserStore={
 //创建一个store切片
 const userStore = createSlice({
   name: 'counter',
-  initialState:()=>{
+  initialState(){
     return {
       user: 'admin',
       isLogin: false,
@@ -18,18 +18,18 @@ const userStore = createSlice({
     } as UserStore
   },
   reducers: {
-    login: (state:Draft<UserStore>) => {
+    login(state:Draft<UserStore>)  {
       state.isLogin=true
       state.text='已登录'
     },
-    logout: (state:Draft<UserStore>) => {
+    logout (state:Draft<UserStore>) {
       state.isLogin=false
       state.text='未登录'
     },
   }
 })
 
-//actions
+//返回actions和reducer
 export const { login, logout } = userStore.actions
 export default userStore.reducer
 
