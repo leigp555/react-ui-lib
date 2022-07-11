@@ -36,6 +36,7 @@ const Header: React.FC<Props> = () => {
         <StyledLink to="/history">上传历史</StyledLink>
         <StyledLink to="/about">关于我</StyledLink>
         <StyledLink to="/test">测试</StyledLink>
+        <StyledLink to="/ant">Ant</StyledLink>
       </nav>
       <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
         {username ? <div style={{ color: 'red' }}>{username}</div> : <div style={{ color: 'red' }}>未登录</div>}

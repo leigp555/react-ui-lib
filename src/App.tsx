@@ -16,6 +16,7 @@ const NotFound = lazy((): Promise<{ default: ComponentType<any> }> => import('./
 const Login = lazy((): Promise<{ default: ComponentType<any> }> => import('./pages/Login'));
 const Register = lazy((): Promise<{ default: ComponentType<any> }> => import('./pages/Register'));
 const Test = lazy((): Promise<{ default: ComponentType<any> }> => import('./pages/Test'));
+const Ant = lazy((): Promise<{ default: ComponentType<any> }> => import('./pages/Ant'));
 
 interface AuthContextType {
   username: string;
@@ -76,6 +77,7 @@ const App: React.FC<{}> = () => (
           <Route path="/history" element={<RequireAuth><History /></RequireAuth>} />
           <Route path="/about" element={<RequireAuth><About /></RequireAuth>} />
           <Route path="/test" element={<Test />} />
+          <Route path="/ant" element={<Ant />} />
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
           <Route path="*" element={<NotFound />} />
