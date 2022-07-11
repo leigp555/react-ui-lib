@@ -80,7 +80,8 @@
     "node_modules",
     "reportWebVitals.ts",
     "react-app-env.d.ts",
-    "setupTests.ts"
+    "setupTests.ts",
+    "*.js"
   ],
   "browserslist": {
     "production": [

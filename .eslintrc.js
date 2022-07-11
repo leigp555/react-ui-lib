@@ -46,6 +46,8 @@ module.exports = {
     'padded-blocks': 'off',
     semi: 'off',
     'import/no-extraneous-dependencies': 'off',
-    'eol-last': 'off'
+    'eol-last': 'off',
+    'global-require': 'off',
+    strict: 'off'
   },
 };
