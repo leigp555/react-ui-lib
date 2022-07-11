@@ -1,4 +1,5 @@
 import React from 'react';
+import { Button } from 'antd'
 import {
   asyncIncrement, decremented, incremented, asyncTest
 } from '../store/count';
@@ -26,6 +27,7 @@ const Test: React.FC<Props> = (props) => {
       <button onClick={() => dispatch(asyncTest('/yyy'))}>999</button>
       <button onClick={() => dispatch(login())}>login</button>
       <button onClick={() => dispatch(logout())}>logout</button>
+      <Button type="primary">按钮</Button>
     </>
   );
 };

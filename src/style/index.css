@@ -1,3 +1,5 @@
+
+
 *{
   box-sizing: border-box;
   margin: 0;
@@ -50,3 +52,4 @@ body{
 #nprogress .bar{
   background-color: #df4402;
 }
+@import '~antd/dist/antd.css';

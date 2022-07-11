@@ -48,6 +48,7 @@ module.exports = {
     'import/no-extraneous-dependencies': 'off',
     'eol-last': 'off',
     'global-require': 'off',
-    strict: 'off'
+    strict: 'off',
+    'jsx-quotes':'off'
   },
 };
