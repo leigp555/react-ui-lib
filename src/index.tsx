@@ -5,10 +5,10 @@ import './style/index.css';
 import {
   BrowserRouter as Router,
 } from 'react-router-dom';
+import { Provider } from 'react-redux';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import { store } from './store';
-import { Provider } from 'react-redux';
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement,
@@ -16,7 +16,7 @@ const root = ReactDOM.createRoot(
 root.render(
   <Router>
     <Provider store={store}>
-      <App/>
+      <App />
     </Provider>
   </Router>
 );

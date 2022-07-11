@@ -32,18 +32,18 @@ export const AuthContext = React.createContext<AuthContextType>(null!);
 function AuthProvider({ children }: { children: React.ReactNode }) {
   const [userInfo, setUser] = React.useState<UserState>({
     isLogin: false,
-    username: ''
+    username: '',
   });
   const login = (newUser: string): void => {
     setUser(() => ({
       isLogin: true,
-      username: newUser
+      username: newUser,
     }));
   };
   const logout = (): void => {
     setUser(() => ({
       isLogin: false,
-      username: ''
+      username: '',
     }));
   };
   const value: AuthContextType = {
@@ -61,28 +61,28 @@ function RequireAuth({ children }: { children: JSX.Element }) {
   const { isLogin } = React.useContext(AuthContext);
   const location = useLocation();
   if (!isLogin) {
-    return <Navigate to="/login" state={{ from: location }} replace/>;
+    return <Navigate to="/login" state={{ from: location }} replace />;
   }
   return children;
 }
 
 const App: React.FC<{}> = () => (
   <AuthProvider>
-      <Header/>
-      <Suspense fallback={<Loading/>}>
-        <main id="main">
-          <Routes>
-            <Route path="/" element={<RequireAuth><Home/></RequireAuth>}/>
-            <Route path="/history" element={<RequireAuth><History/></RequireAuth>}/>
-            <Route path="/about" element={<RequireAuth><About/></RequireAuth>}/>
-            <Route path="/test" element={<Test/>}/>
-            <Route path="/login" element={<Login/>}/>
-            <Route path="/register" element={<Register/>}/>
-            <Route path="*" element={<NotFound/>}/>
-          </Routes>
-        </main>
-      </Suspense>
-      <Footer/>
+    <Header />
+    <Suspense fallback={<Loading />}>
+      <main id="main">
+        <Routes>
+          <Route path="/" element={<RequireAuth><Home /></RequireAuth>} />
+          <Route path="/history" element={<RequireAuth><History /></RequireAuth>} />
+          <Route path="/about" element={<RequireAuth><About /></RequireAuth>} />
+          <Route path="/test" element={<Test />} />
+          <Route path="/login" element={<Login />} />
+          <Route path="/register" element={<Register />} />
+          <Route path="*" element={<NotFound />} />
+        </Routes>
+      </main>
+    </Suspense>
+    <Footer />
   </AuthProvider>
 );
 export default App;

@@ -5,7 +5,7 @@ import {
   PayloadAction
 } from '@reduxjs/toolkit';
 
-//mock一个请求
+// mock一个请求
 const ajax = (url: string) => {
   return new Promise((resolve, reject) => {
     if (url === '/test') {
@@ -27,12 +27,12 @@ export const asyncTest = createAsyncThunk('asyncTest', async (url: string) => {
   return await ajax(url) as { data: number };
 });
 
-//store的类型
+// store的类型
 export type CountStore = {
   num: number
 }
 
-//创建一个store切片
+// 创建一个store切片
 const countStore = createSlice({
   name: 'counter',
   initialState() {
@@ -58,7 +58,7 @@ const countStore = createSlice({
   },
 });
 
-//actions
+// actions
 export const {
   incremented,
   decremented
