@@ -8,27 +8,6 @@
     "test": "node scripts/test.js",
     "lint": "eslint --fix ./src --ext .tsx,.js,.ts"
   },
-  "eslintIgnore": [
-    "public",
-    "*.test.tsx",
-    "node_modules",
-    "reportWebVitals.ts",
-    "react-app-env.d.ts",
-    "setupTests.ts",
-    "*.js"
-  ],
-  "browserslist": {
-    "production": [
-      ">0.2%",
-      "not dead",
-      "not op_mini all"
-    ],
-    "development": [
-      "last 1 chrome version",
-      "last 1 firefox version",
-      "last 1 safari version"
-    ]
-  },
   "dependencies": {
     "antd": "^4.21.6",
     "axios": "^0.27.2",
@@ -169,5 +148,26 @@
     "presets": [
       "react-app"
     ]
-  }
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  },
+  "eslintIgnore": [
+    "public",
+    "*.test.tsx",
+    "node_modules",
+    "reportWebVitals.ts",
+    "react-app-env.d.ts",
+    "setupTests.ts",
+    "*.js"
+  ]
 }
