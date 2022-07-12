@@ -19,6 +19,7 @@ const Login = lazy((): Promise<{ default: ComponentType<any> }> => import('./pag
 const Register = lazy((): Promise<{ default: ComponentType<any> }> => import('./pages/Register'));
 const Test = lazy((): Promise<{ default: ComponentType<any> }> => import('./pages/Test'));
 const Ant = lazy((): Promise<{ default: ComponentType<any> }> => import('./pages/Ant'));
+const Svg = lazy((): Promise<{ default: ComponentType<any> }> => import('./pages/Svg'));
 
 
 const App: React.FC<{}> = () => (
@@ -34,6 +35,7 @@ const App: React.FC<{}> = () => (
           <Route path="/ant" element={<Ant />} />
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
+          <Route path="/svg" element={<Svg />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
       </main>
