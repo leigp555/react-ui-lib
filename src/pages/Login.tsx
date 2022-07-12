@@ -2,7 +2,7 @@ import React, {
   createRef, FormEvent, useContext, useState,
 } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { AuthContext } from '../App';
+import { AuthContext } from '../components/AuthProvider';
 
 const Login: React.FC<{}> = () => {
   const [user, setUser] = useState<string>('');

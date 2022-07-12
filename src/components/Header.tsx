@@ -1,7 +1,8 @@
 import React, { useContext } from 'react';
 import { NavLink } from 'react-router-dom';
 import styled from 'styled-components';
-import { AuthContext } from '../App';
+import { AuthContext } from './AuthProvider';
+
 
 const StyledHeader = styled.header`
   padding: 10px 100px;
