@@ -20,9 +20,6 @@
     "noEmit": true,
     "jsx": "react-jsx"
   },
-  "files": [
-    "declarations.d.ts"
-  ],
   "include": [
     "src"
   ]
