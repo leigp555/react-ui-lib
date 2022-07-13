@@ -22,8 +22,6 @@ const Svg:React.FC<{}>=() => {
       <Xiayu style={logoStyle} />
       <Sunny style={logoStyle} />
     </>
-
-
   )
 }
 

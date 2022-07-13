@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 
 import {
   asyncIncrement, decremented, incremented, asyncTest
@@ -11,10 +11,19 @@ type Props = {}
 const Test: React.FC<Props> = (props) => {
   const count = useAppSelector((state: RootState) => state.count.num);
   const user = useAppSelector((state: RootState) => state.user);
+  const divRef=React.createRef<HTMLDivElement>()
   const dispatch = useAppDispatch();
+  const [n,setN]=useState(0)
+  const changeN=() => {
+    setN(999)
+    console.log(n)
+  }
+  useEffect(() => {
+    console.log(divRef.current)
+  })
   return (
     <>
-      <div>test</div>
+      <div ref={divRef}>test</div>
       <div>{count}</div>
       <div>{JSON.stringify(user)}</div>
       <button onClick={() => dispatch(incremented(50))}>+50</button>
@@ -27,6 +36,7 @@ const Test: React.FC<Props> = (props) => {
       <button onClick={() => dispatch(asyncTest('/yyy'))}>999</button>
       <button onClick={() => dispatch(login())}>login</button>
       <button onClick={() => dispatch(logout())}>logout</button>
+      <button onClick={changeN}>测试state</button>
     </>
   );
 };
