@@ -8,7 +8,8 @@
     "test": "node scripts/test.js",
     "lint": "eslint --fix ./src --ext .tsx,.jsx,.js,.ts",
     "format": "npx prettier --write",
-    "prepare": "husky install"
+    "prepare": "husky install",
+    "jest": "jest"
   },
   "lint-staged": {
     "*.{tsx,jsx,js,ts}": "eslint --fix"
