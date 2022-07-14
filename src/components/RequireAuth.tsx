@@ -3,7 +3,6 @@ import { Navigate, useLocation } from 'react-router-dom';
 import { RootState, useAppSelector } from '../store';
 
 // 验证用户信息
-// eslint-disable-next-line no-undef
 function RequireAuth({ children }: { children: JSX.Element }) {
   const user = useAppSelector((state: RootState) => state.user);
   const location = useLocation();

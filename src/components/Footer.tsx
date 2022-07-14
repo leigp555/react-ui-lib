@@ -1,9 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
 
-interface Props {
-}
-
 const StyledFooter = styled.footer`
   background-color: #f7f7f7;
   display: flex;
@@ -14,7 +11,7 @@ const StyledFooter = styled.footer`
   padding: 10px 100px;
 `;
 
-const Footer: React.FC<Props> = () => (
+const Footer: React.FC = () => (
   <StyledFooter>
     <p>footer</p>
   </StyledFooter>

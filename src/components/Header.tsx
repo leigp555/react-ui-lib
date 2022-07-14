@@ -4,7 +4,6 @@ import styled from 'styled-components';
 import { RootState, useAppDispatch, useAppSelector } from '../store';
 import { logout } from '../store/user';
 
-
 const StyledHeader = styled.header`
   padding: 10px 100px;
   background-color: #02101f;
@@ -21,18 +20,18 @@ const StyledLink = styled(NavLink)`
   }
 `;
 const StyledButton = styled.button`
-   color: white;
+  color: white;
   background-color: blue;
   padding: 5px;
 `;
 
 const Header: React.FC = () => {
   const user = useAppSelector((state: RootState) => state.user);
-  const dispatch=useAppDispatch();
+  const dispatch = useAppDispatch();
   const navigate = useNavigate();
-  const signout=()=>{
+  const signout = () => {
     dispatch(logout());
-    navigate("/login");
+    navigate('/login');
   };
   return (
     <StyledHeader>
@@ -43,10 +42,13 @@ const Header: React.FC = () => {
         <StyledLink to="/test">测试</StyledLink>
       </nav>
       <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
-        {user.username ? <div style={{ color: 'red' }}>{user.username}</div> : <div style={{ color: 'red' }}>未登录</div>}
+        {user.username ? (
+          <div style={{ color: 'red' }}>{user.username}</div>
+        ) : (
+          <div style={{ color: 'red' }}>未登录</div>
+        )}
         <StyledButton onClick={signout}>logout</StyledButton>
       </div>
-
     </StyledHeader>
   );
 };
