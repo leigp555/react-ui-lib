@@ -6,8 +6,12 @@
     "dev": "node scripts/start.js",
     "build": "node scripts/build.js",
     "test": "node scripts/test.js",
-    "lint": "eslint --fix ./src --ext .tsx,.js,.ts",
-    "format": "npx prettier --write"
+    "lint": "eslint --fix ./src --ext .tsx,.jsx,.js,.ts",
+    "format": "npx prettier --write",
+    "prepare": "husky install"
+  },
+  "lint-staged": {
+    "*.{tsx,jsx,js,ts}": "eslint --fix"
   },
   "dependencies": {
     "@reduxjs/toolkit": "^1.8.3",
@@ -62,10 +66,12 @@
     "file-loader": "^6.2.0",
     "fs-extra": "^10.0.0",
     "html-webpack-plugin": "^5.5.0",
+    "husky": "^8.0.0",
     "identity-obj-proxy": "^3.0.0",
     "jest": "^27.4.3",
     "jest-resolve": "^27.4.2",
     "jest-watch-typeahead": "^1.0.0",
+    "lint-staged": "^13.0.3",
     "mini-css-extract-plugin": "^2.4.5",
     "node-sass": "npm:dart-sass@^1.25.0",
     "postcss": "^8.4.4",
