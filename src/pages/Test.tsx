@@ -1,14 +1,16 @@
 import React, { useEffect, useState } from 'react';
-
 import {
   asyncIncrement, decremented, incremented, asyncTest
 } from '../store/count';
 import { login, logout } from '../store/user';
 import { RootState, useAppDispatch, useAppSelector } from '../store';
 
-type Props = {}
+type Props = {
+  name:string
+}
 
 const Test: React.FC<Props> = (props) => {
+  const { name }=props
   const count = useAppSelector((state: RootState) => state.count.num);
   const user = useAppSelector((state: RootState) => state.user);
   const divRef=React.createRef<HTMLDivElement>()
@@ -23,6 +25,7 @@ const Test: React.FC<Props> = (props) => {
   })
   return (
     <>
+      <div>{name}</div>
       <div ref={divRef}>test</div>
       <div>{count}</div>
       <div>{JSON.stringify(user)}</div>
@@ -41,4 +44,8 @@ const Test: React.FC<Props> = (props) => {
   );
 };
 
+
+Test.defaultProps={
+  name: 'lgp'
+}
 export default Test;

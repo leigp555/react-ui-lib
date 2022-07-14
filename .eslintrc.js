@@ -49,6 +49,8 @@ module.exports = {
     'eol-last': 'off',
     'global-require': 'off',
     strict: 'off',
-    'jsx-quotes':'off'
+    'jsx-quotes':'off',
+    'react/default-props-match-prop-types':'off',
+    'react/require-default-props':'off'
   },
 };
