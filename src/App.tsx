@@ -10,13 +10,13 @@ import Footer from './components/Footer';
 import Loading from './components/Loading';
 import RequireAuth from './components/RequireAuth';
 
-const Home = lazy((): Promise<{ default: React.FC<any> }> => import('./pages/Home'));
-const About = lazy((): Promise<{ default: React.FC<any> }> => import('./pages/About'));
-const History = lazy((): Promise<{ default: React.FC<any> }> => import('./pages/History'));
-const NotFound = lazy((): Promise<{ default: React.FC<any> }> => import('./pages/NotFound'));
-const Login = lazy((): Promise<{ default: React.FC<any> }> => import('./pages/Login'));
-const Register = lazy((): Promise<{ default: React.FC<any> }> => import('./pages/Register'));
-const Test = lazy((): Promise<{ default: React.FC<any> }> => import('./pages/Test'));
+const Home = lazy(()=> import('./pages/Home'));
+const About = lazy(()=> import('./pages/About'));
+const History = lazy(()=> import('./pages/History'));
+const NotFound = lazy(()=> import('./pages/NotFound'));
+const Login = lazy(()=> import('./pages/Login'));
+const Register = lazy(()=> import('./pages/Register'));
+const Test = lazy(()=> import('./pages/Test'));
 
 
 
@@ -29,7 +29,7 @@ const App: React.FC = () => (
           <Route path="/" element={<RequireAuth><Home /></RequireAuth>} />
           <Route path="/history" element={<RequireAuth><History /></RequireAuth>} />
           <Route path="/about" element={<RequireAuth><About /></RequireAuth>} />
-          <Route path="/test" element={<Test />} />
+          <Route path="/test" element={<Test name={"lgp"}/>} />
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
           <Route path="*" element={<NotFound />} />
