@@ -1,5 +1,5 @@
 import React, {
-  Suspense, lazy, ComponentType,
+  Suspense, lazy,
 } from 'react';
 import {
   Routes,
@@ -11,18 +11,18 @@ import Loading from './components/Loading';
 import AuthProvider from './components/AuthProvider';
 import RequireAuth from './components/RequireAuth';
 
-const Home = lazy((): Promise<{ default: ComponentType<any> }> => import('./pages/Home'));
-const About = lazy((): Promise<{ default: ComponentType<any> }> => import('./pages/About'));
-const History = lazy((): Promise<{ default: ComponentType<any> }> => import('./pages/History'));
-const NotFound = lazy((): Promise<{ default: ComponentType<any> }> => import('./pages/NotFound'));
-const Login = lazy((): Promise<{ default: ComponentType<any> }> => import('./pages/Login'));
-const Register = lazy((): Promise<{ default: ComponentType<any> }> => import('./pages/Register'));
-const Test = lazy((): Promise<{ default: ComponentType<any> }> => import('./pages/Test'));
-const Ant = lazy((): Promise<{ default: ComponentType<any> }> => import('./pages/Ant'));
-const Svg = lazy((): Promise<{ default: ComponentType<any> }> => import('./pages/Svg'));
+const Home = lazy((): Promise<{ default: React.FC<any> }> => import('./pages/Home'));
+const About = lazy((): Promise<{ default: React.FC<any> }> => import('./pages/About'));
+const History = lazy((): Promise<{ default: React.FC<any> }> => import('./pages/History'));
+const NotFound = lazy((): Promise<{ default: React.FC<any> }> => import('./pages/NotFound'));
+const Login = lazy((): Promise<{ default: React.FC<any> }> => import('./pages/Login'));
+const Register = lazy((): Promise<{ default: React.FC<any> }> => import('./pages/Register'));
+const Test = lazy((): Promise<{ default: React.FC<any> }> => import('./pages/Test'));
+const Ant = lazy((): Promise<{ default: React.FC<any> }> => import('./pages/Ant'));
+const Svg = lazy((): Promise<{ default: React.FC<any> }> => import('./pages/Svg'));
 
 
-const App: React.FC<{}> = () => (
+const App: React.FC = () => (
   <AuthProvider>
     <Header />
     <Suspense fallback={<Loading />}>
