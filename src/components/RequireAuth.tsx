@@ -1,16 +1,16 @@
 import React from 'react';
 import { Navigate, useLocation } from 'react-router-dom';
-import { AuthContext } from './AuthProvider';
+import { RootState, useAppSelector } from '../store';
 
 // 验证用户信息
 // eslint-disable-next-line no-undef
 function RequireAuth({ children }: { children: JSX.Element }) {
-  const { isLogin } = React.useContext(AuthContext);
+  const user = useAppSelector((state: RootState) => state.user);
   const location = useLocation();
-  if (!isLogin) {
+  if (!user.isLogin) {
     return <Navigate to="/login" state={{ from: location }} replace />;
   }
   return children;
 }
 
-export default RequireAuth
+export default RequireAuth;

@@ -1,35 +1,32 @@
-import { createSlice, Draft } from '@reduxjs/toolkit'
+import { createSlice, Draft, PayloadAction } from '@reduxjs/toolkit';
 
 // store的类型
 export type UserStore={
-  user: string
+  username: string
   isLogin: boolean
-  text: string
 }
-
 // 创建一个createSlice
 const userStore = createSlice({
   name: 'user',
   initialState() {
     return {
-      user: 'admin',
+      username: '',
       isLogin: false,
-      text: '未登录'
-    } as UserStore
+    } as UserStore;
   },
   reducers: {
-    login(state:Draft<UserStore>)  {
-      state.isLogin=true
-      state.text='已登录'
+    login(state:Draft<UserStore>,action:PayloadAction<string>)  {
+      state.isLogin=true;
+      state.username=action.payload;
     },
     logout(state:Draft<UserStore>) {
-      state.isLogin=false
-      state.text='未登录'
+      state.isLogin=false;
+      state.username='';
     },
   }
-})
+});
 
 // 返回actions和reducer
-export const { login, logout } = userStore.actions
-export default userStore.reducer
+export const { login, logout } = userStore.actions;
+export default userStore.reducer;
 

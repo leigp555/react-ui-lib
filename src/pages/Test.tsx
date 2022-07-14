@@ -37,7 +37,7 @@ const Test: React.FC<Props> = (props) => {
       >重置
       </button>
       <button onClick={() => dispatch(asyncTest('/yyy'))}>999</button>
-      <button onClick={() => dispatch(login())}>login</button>
+      <button onClick={() => dispatch(login("lgp"))}>login</button>
       <button onClick={() => dispatch(logout())}>logout</button>
       <button onClick={changeN}>测试state</button>
     </>

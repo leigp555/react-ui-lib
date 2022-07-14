@@ -1,7 +1,8 @@
-import React, { useContext } from 'react';
-import { NavLink } from 'react-router-dom';
+import React from 'react';
+import { NavLink, useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
-import { AuthContext } from './AuthProvider';
+import { RootState, useAppDispatch, useAppSelector } from '../store';
+import { logout } from '../store/user';
 
 
 const StyledHeader = styled.header`
@@ -25,11 +26,14 @@ const StyledButton = styled.button`
   padding: 5px;
 `;
 
-interface Props {
-}
-
-const Header: React.FC<Props> = () => {
-  const { username, logout } = useContext(AuthContext);
+const Header: React.FC = () => {
+  const user = useAppSelector((state: RootState) => state.user);
+  const dispatch=useAppDispatch();
+  const navigate = useNavigate();
+  const signout=()=>{
+    dispatch(logout());
+    navigate("/login");
+  };
   return (
     <StyledHeader>
       <nav>
@@ -37,12 +41,10 @@ const Header: React.FC<Props> = () => {
         <StyledLink to="/history">上传历史</StyledLink>
         <StyledLink to="/about">关于我</StyledLink>
         <StyledLink to="/test">测试</StyledLink>
-        <StyledLink to="/ant">Ant</StyledLink>
-        <StyledLink to="/svg">Svg</StyledLink>
       </nav>
       <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
-        {username ? <div style={{ color: 'red' }}>{username}</div> : <div style={{ color: 'red' }}>未登录</div>}
-        <StyledButton onClick={logout}>logout</StyledButton>
+        {user.username ? <div style={{ color: 'red' }}>{user.username}</div> : <div style={{ color: 'red' }}>未登录</div>}
+        <StyledButton onClick={signout}>logout</StyledButton>
       </div>
 
     </StyledHeader>
