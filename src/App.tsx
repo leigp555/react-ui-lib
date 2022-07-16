@@ -19,14 +19,7 @@ const App: React.FC = () => (
     <Suspense fallback={<Loading />}>
       <main id="main">
         <Routes>
-          <Route
-            path="/"
-            element={
-              <RequireAuth>
-                <Home />
-              </RequireAuth>
-            }
-          />
+          <Route path="/" element={<Home />} />
           <Route
             path="/history"
             element={
