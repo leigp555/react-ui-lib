@@ -1,8 +1,11 @@
 import React from 'react';
 import styled from 'styled-components';
 
+// 这个组件内的元素纵向排列
+
 const RowStyled = styled.div`
   display: flex;
+  width: 100%;
 `;
 
 type Props = {

@@ -1,9 +1,11 @@
 import React from 'react';
 import styled from 'styled-components';
-import Button from '../lib/Button/Button';
-import QQ from '../static/icons/qq.svg';
-import Sun from '../static/icons/sunny.svg';
-import Cloud from '../static/icons/cloud.svg';
+import Layout from '../lib/Layout/Layout';
+import Header from '../lib/Layout/Header';
+import Content from '../lib/Layout/Content';
+import Footer from '../lib/Layout/Footer';
+import Row from '../lib/Grid/Row';
+import Col from '../lib/Grid/Col';
 
 const Wrap = styled.div`
   > div {
@@ -11,78 +13,33 @@ const Wrap = styled.div`
     margin-bottom: 10px;
   }
 `;
-const Inner = styled.div`
-  display: flex;
-  gap: 10px;
-`;
 
 const Home: React.FC = () => {
   return (
     <Wrap>
-      <div>primary</div>
-      <Inner>
-        <Button type="primary">xxx</Button>
-        <Button type="primary" radius>
-          xxx
-        </Button>
-        <Button type="primary" disabled>
-          xxx
-        </Button>
-      </Inner>
-
-      <div>default</div>
-      <Inner>
-        <Button type="default">xxx</Button>
-        <Button type="default" radius>
-          xxx
-        </Button>
-        <Button type="default" disabled>
-          xxx
-        </Button>
-      </Inner>
-
-      <div>text</div>
-      <Inner>
-        <Button type="text">xxx</Button>
-        <Button type="text" radius>
-          xxx
-        </Button>
-        <Button type="text" disabled>
-          xxx
-        </Button>
-      </Inner>
-      <div>dashed</div>
-      <Inner>
-        <Button type="dashed">xxx</Button>
-        <Button type="dashed" radius>
-          xxx
-        </Button>
-        <Button type="dashed" disabled>
-          xxx
-        </Button>
-      </Inner>
-      <div>link</div>
-      <Inner>
-        <Button type="link">xxx</Button>
-        <Button type="link" radius>
-          xxx
-        </Button>
-        <Button type="link" disabled>
-          xxx
-        </Button>
-      </Inner>
-      <div>icon</div>
-      <Inner>
-        <Button type="primary">
-          <QQ fill="yellow" width="1.2em" height="1.2em" />
-        </Button>
-        <Button type="primary">
-          <Sun fill="yellow" width="1.2em" height="1.2em" />
-        </Button>
-        <Button type="primary">
-          <Cloud fill="yellow" width="1.2em" height="1.2em" />
-        </Button>
-      </Inner>
+      <Layout>
+        <Header style={{ height: '40px', backgroundColor: '#f3f3f3' }}>
+          <Row>
+            <Col span={10} offset={2} color="yellow" style={{ backgroundColor: 'orange' }}>
+              icon
+            </Col>
+            <Col
+              span={50}
+              offset={3}
+              gap={10}
+              justify="space-around"
+              style={{ backgroundColor: 'orange' }}
+            >
+              <nav>xxx</nav>
+              <nav>xxx</nav>
+              <nav>xxx</nav>
+              <nav>xxx</nav>
+            </Col>
+          </Row>
+        </Header>
+        <Content style={{ height: '50px', backgroundColor: '#f3f3f3' }}>Main</Content>
+        <Footer style={{ height: '50px', backgroundColor: '#f3f3f3' }}>Footer</Footer>
+      </Layout>
     </Wrap>
   );
 };
