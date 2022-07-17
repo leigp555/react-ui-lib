@@ -9,8 +9,10 @@ const DropdownItemStyled = styled.div`
   white-space: nowrap;
   bottom: 0;
   left: 0;
-  border: 1px solid red;
-  transform: translateY(100%);
+  margin-top: 5px;
+  padding: 15px 10px;
+  background-color: orange;
+  transform: translateY(calc(100% + 5px));
 `;
 
 const DropdownItem: React.FC<Props> = (props) => {
