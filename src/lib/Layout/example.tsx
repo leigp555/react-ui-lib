@@ -4,7 +4,7 @@ import React from 'react';
 // import Layout from '../lib/Layout/Layout';
 // import Header from '../lib/Layout/Header';
 // import Content from '../lib/Layout/Content';
-// import Sider from '../lib/Grid/Sider';
+// import Sider from '../lib/Layout/Sider';
 // import Footer from '../lib/Layout/Footer';
 // import Row from '../lib/Grid/Row';
 // import Col from '../lib/Grid/Col';
