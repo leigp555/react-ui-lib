@@ -16,9 +16,11 @@ const Home: React.FC = () => {
     <Wrap>
       <Dropdown>
         <Button>点击我</Button>
-        <DropdownItem>xxx</DropdownItem>
-        <DropdownItem>yyy</DropdownItem>
-        <DropdownItem>zzz</DropdownItem>
+        <DropdownItem>
+          <div>xxxxxxxxxxxxx</div>
+          <div>xxxxxxxxxxxxx</div>
+          <div>xxxxxxxxxxxxx</div>
+        </DropdownItem>
       </Dropdown>
     </Wrap>
   );
