@@ -13,5 +13,5 @@ export const CommonStyle = styled.div`
   height: ${(props: PropsStyled) =>
     typeof props.height === 'number' ? `${props.height}px` : props.height};
   width: ${(props: PropsStyled) =>
-    typeof props.height === 'number' ? `${props.width}px` : props.width};
+    typeof props.width === 'number' ? `${props.width}px` : props.width};
 `;

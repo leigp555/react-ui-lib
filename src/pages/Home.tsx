@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import Layout from '../lib/Layout/Layout';
 import Header from '../lib/Layout/Header';
 import Content from '../lib/Layout/Content';
+import Sider from '../lib/Grid/Sider';
 import Footer from '../lib/Layout/Footer';
 import Row from '../lib/Grid/Row';
 import Col from '../lib/Grid/Col';
@@ -39,12 +40,42 @@ const Home: React.FC = () => {
             </Col>
           </Row>
         </Header>
-        <Content bgc="orange" height={200}>
+        <Content bgc="orange">
           <Row justify="center" height="200px">
             body
           </Row>
         </Content>
-        <Footer bgc="yellow" height={200}>
+        <Footer bgc="yellow">
+          <Row justify="center" height={200}>
+            footer
+          </Row>
+        </Footer>
+      </Layout>
+      <Layout>
+        <Header bgc="red">
+          <Row gap={0} justify="start" height={40}>
+            <Col span={10} offset={2} justify="start">
+              <Logo fill="orange" width="1.5em" height="1.5em" />
+            </Col>
+            <Col span={30} justify="space-between" color="white">
+              <a href="/">导航一</a>
+              <a href="/">导航二</a>
+              <a href="/">导航三</a>
+              <a href="/">导航四</a>
+            </Col>
+            <Col span={10} offset="auto" justify="end">
+              <Button type="link">
+                <GitHub fill="yellow" width="1.5em" height="1.5em" />
+              </Button>
+            </Col>
+          </Row>
+        </Header>
+        <Content bgc="orange" height={200}>
+          <Sider bgc="blue" width={500}>
+            sider
+          </Sider>
+        </Content>
+        <Footer bgc="yellow">
           <Row justify="center" height={200}>
             footer
           </Row>
