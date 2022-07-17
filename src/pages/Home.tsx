@@ -1,49 +1,73 @@
 import React from 'react';
 import styled from 'styled-components';
-import Row from '../lib/Grid/Row';
-import Col from '../lib/Grid/Col';
+import Button from '../lib/Button/Button';
 
 const Wrap = styled.div`
+  > div {
+    margin-top: 20px;
+    margin-bottom: 10px;
+  }
+`;
+const Inner = styled.div`
   display: flex;
-  flex-direction: column;
   gap: 10px;
 `;
 
 const Home: React.FC = () => {
   return (
     <Wrap>
-      <Row>
-        <Col style={{ backgroundColor: 'red' }} />
-      </Row>
-      <Row>
-        <Col span={60} style={{ backgroundColor: 'red' }} />
-      </Row>
-      <Row gap={5}>
-        <Col span={50} style={{ backgroundColor: 'red' }} />
-        <Col span={15} style={{ backgroundColor: 'red' }} />
-        <Col span={15} style={{ backgroundColor: 'red' }} />
-        <Col span={15} style={{ backgroundColor: 'red' }} />
-      </Row>
-      <Row justify="end">
-        <Col span={5} style={{ backgroundColor: 'red' }} />
-        <Col span={5} offset={1} style={{ backgroundColor: 'blue' }} />
-        <Col span={5} style={{ backgroundColor: 'blue' }} />
-        <Col span={50} style={{ backgroundColor: 'blue' }} />
-      </Row>
-      <Row aline="center">
-        <Col span={25} offset={1} style={{ backgroundColor: 'red' }} />
-        <Col span={15} offset={1} style={{ backgroundColor: 'red', height: '100px' }} />
-      </Row>
-      <Row gap={20} justify="space-between" wrap>
-        <Col span={20} style={{ backgroundColor: 'red' }} />
-        <Col span={20} style={{ backgroundColor: 'red' }} />
-        <Col span={20} style={{ backgroundColor: 'red' }} />
-        <Col span={20} style={{ backgroundColor: 'red' }} />
-        <Col span={20} style={{ backgroundColor: 'red' }} />
-        <Col span={20} style={{ backgroundColor: 'red' }} />
-        <Col span={20} style={{ backgroundColor: 'red' }} />
-        <Col span={20} style={{ backgroundColor: 'red' }} />
-      </Row>
+      <div>primary</div>
+      <Inner>
+        <Button type="primary">xxx</Button>
+        <Button type="primary" radius>
+          xxx
+        </Button>
+        <Button type="primary" disabled>
+          xxx
+        </Button>
+      </Inner>
+
+      <div>default</div>
+      <Inner>
+        <Button type="default">xxx</Button>
+        <Button type="default" radius>
+          xxx
+        </Button>
+        <Button type="default" disabled>
+          xxx
+        </Button>
+      </Inner>
+
+      <div>text</div>
+      <Inner>
+        <Button type="text">xxx</Button>
+        <Button type="text" radius>
+          xxx
+        </Button>
+        <Button type="text" disabled>
+          xxx
+        </Button>
+      </Inner>
+      <div>dashed</div>
+      <Inner>
+        <Button type="dashed">xxx</Button>
+        <Button type="dashed" radius>
+          xxx
+        </Button>
+        <Button type="dashed" disabled>
+          xxx
+        </Button>
+      </Inner>
+      <div>link</div>
+      <Inner>
+        <Button type="link">xxx</Button>
+        <Button type="link" radius>
+          xxx
+        </Button>
+        <Button type="link" disabled>
+          xxx
+        </Button>
+      </Inner>
     </Wrap>
   );
 };
