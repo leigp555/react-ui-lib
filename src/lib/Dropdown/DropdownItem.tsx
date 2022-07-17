@@ -5,14 +5,16 @@ interface Props extends HTMLAttributes<HTMLDivElement> {
   children: React.ReactNode;
 }
 const DropdownItemStyled = styled.div`
-  position: absolute;
+  position: relative;
   white-space: nowrap;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
   bottom: 0;
   left: 0;
   margin-top: 5px;
   padding: 15px 10px;
   background-color: orange;
-  transform: translateY(calc(100% + 5px));
 `;
 
 const DropdownItem: React.FC<Props> = (props) => {

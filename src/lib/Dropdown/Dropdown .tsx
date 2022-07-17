@@ -1,8 +1,10 @@
 import React, { HTMLAttributes, ReactElement, useState } from 'react';
 import styled from 'styled-components';
 import { CSSTransition } from 'react-transition-group';
+import Down from '../../static/icons/down.svg';
 
 interface Props extends HTMLAttributes<HTMLDivElement> {
+  callback?: (key: number) => void;
   children: React.ReactNode;
 }
 // 不知道react的虚拟节点什么类型所以扩充vNode类型来消除ts警告
@@ -28,10 +30,20 @@ const DropdownStyled = styled.div`
     transition: opacity 250ms;
   }
 `;
-const DivEl = styled.div``;
+
+const Inner = styled.div``;
+const DivEl = styled.div`
+  display: flex;
+  gap: 5px;
+  color: #636567;
+  :hover {
+    color: #1890ff;
+  }
+`;
 
 const Dropdown: React.FC<Props> = (props) => {
-  const { children } = props;
+  const { children, callback } = props;
+  if (callback) callback(2);
   const [enter, setEnter] = useState<boolean>(false);
   const render = () => {
     const otherVNode: VNode[] = [];
@@ -51,17 +63,22 @@ const Dropdown: React.FC<Props> = (props) => {
       setEnter(false);
     };
     return (
-      <DropdownStyled>
-        <DivEl onMouseOver={action} onClick={action} onMouseOut={leave}>
+      <DropdownStyled onMouseOver={action} onClick={action} onMouseOut={leave}>
+        <DivEl>
           {otherVNode}
+          <Down width="1em" height="1em" fill={enter ? '#1890ff' : '#636567'} />
         </DivEl>
         <CSSTransition in={enter} timeout={300} unmountOnExit classNames="my-node">
-          <div className="dropdown">{dropdownVNode}</div>
+          <Inner className="dropdown">{dropdownVNode}</Inner>
         </CSSTransition>
       </DropdownStyled>
     );
   };
   return <>{render()}</>;
+};
+
+Dropdown.defaultProps = {
+  callback: () => {}
 };
 
 export default Dropdown;

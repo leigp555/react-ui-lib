@@ -12,14 +12,23 @@ const Wrap = styled.div`
 `;
 
 const Home: React.FC = () => {
+  const fn = (key: number) => {
+    console.log(key);
+  };
   return (
     <Wrap>
-      <Dropdown>
-        <Button>点击我</Button>
+      <Dropdown callback={fn}>
+        <span>点击我</span>
         <DropdownItem>
-          <div>当页面上的操作命令过多时</div>
-          <div>用此组件可以收纳操作元素</div>
-          <div>点击或移入触点</div>
+          <Button type="link" key={1}>
+            当页面上的操作命令过多时
+          </Button>
+          <Button type="link" key={2}>
+            用此组件可以收纳操作元素
+          </Button>
+          <Button type="link" key={3}>
+            点击或移入触点
+          </Button>
         </DropdownItem>
       </Dropdown>
     </Wrap>
