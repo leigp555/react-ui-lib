@@ -11,6 +11,7 @@ type PropsStyled = Omit<Props, 'children'>;
 // 元素纵向排列
 const LayoutStyled = styled.div`
   display: flex;
+  flex-grow: 10;
   flex-direction: column;
   gap: ${(props: PropsStyled) => `${props.gap}px`};
   background-color: ${(props: PropsStyled) => props.bgc};

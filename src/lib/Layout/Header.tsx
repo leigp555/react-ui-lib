@@ -1,5 +1,6 @@
 import React, { HTMLAttributes } from 'react';
 import styled from 'styled-components';
+import { Omit } from '@reduxjs/toolkit/dist/tsHelpers';
 import { CommonStyle } from '../common/common';
 
 interface Props extends HTMLAttributes<HTMLHeadElement> {
@@ -7,10 +8,12 @@ interface Props extends HTMLAttributes<HTMLHeadElement> {
   width?: number | string;
   bgc?: string;
   children?: React.ReactNode;
+  direction?: 'column' | 'row';
 }
+type PropsStyled = Omit<Props, 'children'>;
 const HeaderStyled = styled(CommonStyle)`
   display: flex;
-  gap: 10px;
+  flex-direction: ${(props: PropsStyled) => props.direction};
 `;
 
 const Header: React.FC<Props> = (props) => {
@@ -21,7 +24,8 @@ Header.defaultProps = {
   height: '100%',
   width: '100%',
   children: '',
-  bgc: 'inherit'
+  bgc: 'inherit',
+  direction: 'row'
 };
 
 export default Header;

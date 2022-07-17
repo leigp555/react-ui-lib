@@ -27,7 +27,6 @@ const RowStyled = styled(CommonStyle)`
   align-items: ${(props: PropsStyled) => props.aline};
   align-self: ${(props: PropsStyled) => props.alignSelf};
   justify-self: ${(props: PropsStyled) => props.justifySelf};
-  padding: 10px;
 `;
 
 const Row: React.FC<Props> = (props) => {
@@ -36,7 +35,7 @@ const Row: React.FC<Props> = (props) => {
 };
 Row.defaultProps = {
   gap: 0,
-  height: 40,
+  height: '100%',
   color: 'inherit',
   bgc: 'inherit',
   justify: 'start',

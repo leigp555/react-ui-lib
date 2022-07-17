@@ -42,7 +42,7 @@ Col.defaultProps = {
   span: 100,
   offset: 0,
   children: '',
-  gap: 10,
+  gap: 0,
   justify: 'start',
   aline: 'center',
   color: 'inherit',

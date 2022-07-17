@@ -10,6 +10,7 @@ import Col from '../lib/Grid/Col';
 import Logo from '../static/icons/qq.svg';
 import GitHub from '../static/icons/github.svg';
 import Button from '../lib/Button/Button';
+import LayoutWrap from '../lib/Layout/LayoutWrap';
 
 const Wrap = styled.div`
   > div {
@@ -46,7 +47,7 @@ const Home: React.FC = () => {
           </Row>
         </Content>
         <Footer bgc="yellow">
-          <Row justify="center" height={200}>
+          <Row justify="center" height={50}>
             footer
           </Row>
         </Footer>
@@ -71,16 +72,151 @@ const Home: React.FC = () => {
           </Row>
         </Header>
         <Content bgc="orange" height={200}>
-          <Sider bgc="blue" width={500}>
+          <Sider bgc="#209140" width={200}>
+            sider
+          </Sider>
+          <Row justify="center" bgc="pink">
+            main
+          </Row>
+        </Content>
+        <Footer bgc="yellow">
+          <Row justify="center">footer</Row>
+        </Footer>
+      </Layout>
+      <Layout>
+        <Header bgc="red">
+          <Row gap={0} justify="start" height={40}>
+            <Col span={10} offset={2} justify="start">
+              <Logo fill="orange" width="1.5em" height="1.5em" />
+            </Col>
+            <Col span={30} justify="space-between" color="white">
+              <a href="/">导航一</a>
+              <a href="/">导航二</a>
+              <a href="/">导航三</a>
+              <a href="/">导航四</a>
+            </Col>
+            <Col span={10} offset="auto" justify="end">
+              <Button type="link">
+                <GitHub fill="yellow" width="1.5em" height="1.5em" />
+              </Button>
+            </Col>
+          </Row>
+        </Header>
+        <Content bgc="orange" height={200}>
+          <Row justify="center" bgc="pink">
+            xxx
+          </Row>
+          <Sider bgc="#209140" width={200}>
             sider
           </Sider>
         </Content>
         <Footer bgc="yellow">
-          <Row justify="center" height={200}>
-            footer
-          </Row>
+          <Row justify="center">footer</Row>
         </Footer>
       </Layout>
+      <Layout>
+        <Header bgc="red">
+          <Row gap={0} justify="start" height={40}>
+            <Col span={10} offset={2} justify="start">
+              <Logo fill="orange" width="1.5em" height="1.5em" />
+            </Col>
+            <Col span={30} justify="space-between" color="white">
+              <a href="/">导航一</a>
+              <a href="/">导航二</a>
+              <a href="/">导航三</a>
+              <a href="/">导航四</a>
+            </Col>
+            <Col span={10} offset="auto" justify="end">
+              <Button type="link">
+                <GitHub fill="yellow" width="1.5em" height="1.5em" />
+              </Button>
+            </Col>
+          </Row>
+        </Header>
+        <Content bgc="orange" height={200}>
+          <Sider bgc="#209140" width={150}>
+            sider
+          </Sider>
+          <Row justify="center" bgc="pink">
+            xxx
+          </Row>
+          <Sider bgc="#209140" width={200}>
+            sider
+          </Sider>
+        </Content>
+        <Footer bgc="yellow">
+          <Row justify="center">footer</Row>
+        </Footer>
+      </Layout>
+      <LayoutWrap height={300}>
+        <Sider bgc="#209140" width={150}>
+          side
+        </Sider>
+        <Layout>
+          <Header bgc="red">
+            <Row justify="start" height={50}>
+              <Col span={10} offset={2} justify="start">
+                <Logo fill="orange" width="1.5em" height="1.5em" />
+              </Col>
+              <Col span={30} justify="space-between" color="white">
+                <a href="/">导航一</a>
+                <a href="/">导航二</a>
+                <a href="/">导航三</a>
+                <a href="/">导航四</a>
+              </Col>
+              <Col span={10} offset="auto" justify="end">
+                <Button type="link">
+                  <GitHub fill="yellow" width="1.5em" height="1.5em" />
+                </Button>
+              </Col>
+            </Row>
+          </Header>
+          <Content bgc="orange" height={200}>
+            <Row justify="center" bgc="pink">
+              <div>main</div>
+            </Row>
+            <Sider bgc="#209140" width={200}>
+              sider
+            </Sider>
+          </Content>
+          <Footer bgc="yellow" height={50}>
+            <Row justify="center">footer</Row>
+          </Footer>
+        </Layout>
+      </LayoutWrap>
+      <LayoutWrap height={300}>
+        <Sider bgc="#209140" width={150}>
+          side
+        </Sider>
+        <Layout>
+          <Header bgc="red">
+            <Row justify="start" height={50}>
+              <Col span={10} offset={2} justify="start">
+                <Logo fill="orange" width="1.5em" height="1.5em" />
+              </Col>
+              <Col span={30} justify="space-between" color="white">
+                <a href="/">导航一</a>
+                <a href="/">导航二</a>
+                <a href="/">导航三</a>
+                <a href="/">导航四</a>
+              </Col>
+              <Col span={10} offset="auto" justify="end">
+                <Button type="link">
+                  <GitHub fill="yellow" width="1.5em" height="1.5em" />
+                </Button>
+              </Col>
+            </Row>
+          </Header>
+          <Content bgc="orange" height={200}>
+            <Row justify="center" bgc="pink">
+              <div>main</div>
+            </Row>
+          </Content>
+          <Footer bgc="yellow" height={50}>
+            <Row justify="center">footer</Row>
+          </Footer>
+        </Layout>
+      </LayoutWrap>
     </Wrap>
   );
 };
