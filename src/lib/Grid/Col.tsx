@@ -22,15 +22,10 @@ type PropsStyled = Omit<Props, 'children'>;
 const ColStyled = styled(CommonStyle)`
   height: 100%;
   white-space: nowrap;
-  align-self: ${(props: PropsStyled) => props.alignSelf};
-  justify-self: ${(props: PropsStyled) => props.justifySelf};
   display: flex;
   flex-wrap: nowrap;
   width: ${(props: PropsStyled) => `${props.span}%`};
   margin-left: ${(props: PropsStyled) => (props.offset === 'auto' ? 'auto' : `${props.offset}%`)};
-  gap: ${(props: PropsStyled) => `${props.gap}px`};
-  justify-content: ${(props: PropsStyled) => props.justify};
-  align-items: ${(props: PropsStyled) => props.aline};
 `;
 
 const Col: React.FC<Props> = (props) => {

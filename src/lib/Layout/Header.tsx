@@ -7,8 +7,10 @@ interface Props extends HTMLAttributes<HTMLHeadElement> {
   height?: number | string;
   width?: number | string;
   bgc?: string;
-  children?: React.ReactNode;
+  justify?: 'center' | 'start' | 'end' | 'space-between' | 'space-around';
+  aline?: 'center' | 'start' | 'end';
   direction?: 'column' | 'row';
+  children?: React.ReactNode;
 }
 type PropsStyled = Omit<Props, 'children'>;
 const HeaderStyled = styled(CommonStyle)`
@@ -25,7 +27,9 @@ Header.defaultProps = {
   width: '100%',
   children: '',
   bgc: 'inherit',
-  direction: 'row'
+  direction: 'row',
+  justify: 'start',
+  aline: 'center'
 };
 
 export default Header;

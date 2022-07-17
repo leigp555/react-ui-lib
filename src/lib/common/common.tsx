@@ -10,6 +10,7 @@ type PropsStyled = {
   justifySelf?: 'center' | 'start' | 'end' | 'space-between' | 'space-around';
   justify?: 'center' | 'start' | 'end' | 'space-between' | 'space-around';
   aline?: 'center' | 'start' | 'end';
+  direction?: 'column' | 'row';
 };
 
 export const CommonStyle = styled.div`
@@ -24,4 +25,5 @@ export const CommonStyle = styled.div`
   gap: ${(props: PropsStyled) => `${props.gap}px`};
   justify-content: ${(props: PropsStyled) => props.justify};
   align-items: ${(props: PropsStyled) => props.aline};
+  flex-direction: ${(props: PropsStyled) => props.direction};
 `;

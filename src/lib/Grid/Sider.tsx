@@ -1,20 +1,19 @@
 import React, { HTMLAttributes } from 'react';
 import styled from 'styled-components';
-import { Omit } from '@reduxjs/toolkit/dist/tsHelpers';
 import { CommonStyle } from '../common/common';
 
 interface Props extends HTMLAttributes<HTMLHeadElement> {
   height?: number | string;
   width?: number | string;
   bgc?: string;
-  children?: React.ReactNode;
   direction?: 'column' | 'row';
+  justify?: 'center' | 'start' | 'end' | 'space-between' | 'space-around';
+  aline?: 'center' | 'start' | 'end';
+  children?: React.ReactNode;
 }
-type PropsStyled = Omit<Props, 'children'>;
-
 const SiderStyled = styled(CommonStyle)`
   display: flex;
-  flex-direction: ${(props: PropsStyled) => props.direction};
+
   align-self: stretch;
 `;
 
@@ -27,7 +26,9 @@ Sider.defaultProps = {
   width: '200px',
   children: '',
   bgc: 'inherit',
-  direction: 'row'
+  direction: 'row',
+  justify: 'start',
+  aline: 'center'
 };
 
 export default Sider;

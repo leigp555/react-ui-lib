@@ -13,20 +13,11 @@ interface Props extends HTMLAttributes<HTMLDivElement> {
   justifySelf?: 'center' | 'start' | 'end' | 'space-between' | 'space-around';
   children: React.ReactNode;
 }
-
-type PropsStyled = Omit<Props, 'children'>;
 const RowStyled = styled(CommonStyle)`
   white-space: nowrap;
   display: flex;
   flex-wrap: nowrap;
   width: 100%;
-  height: ${(props: PropsStyled) =>
-    typeof props.height === 'number' ? `${props.height}px` : props.height};
-  gap: ${(props: PropsStyled) => `${props.gap}px`};
-  justify-content: ${(props: PropsStyled) => props.justify};
-  align-items: ${(props: PropsStyled) => props.aline};
-  align-self: ${(props: PropsStyled) => props.alignSelf};
-  justify-self: ${(props: PropsStyled) => props.justifySelf};
 `;
 
 const Row: React.FC<Props> = (props) => {
