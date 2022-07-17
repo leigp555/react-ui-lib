@@ -6,8 +6,9 @@ import { Omit } from '@reduxjs/toolkit/dist/tsHelpers';
 
 interface Props extends HTMLAttributes<HTMLDivElement> {
   span?: number;
-  offset?: number;
+  offset?: number | 'auto';
   gap?: number;
+  color?: string;
   justify?: 'center' | 'start' | 'end' | 'space-between' | 'space-around';
   aline?: 'center' | 'start' | 'end';
   children?: React.ReactNode;
@@ -17,11 +18,14 @@ type PropsStyled = Omit<Props, 'children'>;
 const ColStyled = styled.div`
   height: 40px;
   display: flex;
+  flex-wrap: nowrap;
+  background-color: inherit;
   width: ${(props: PropsStyled) => `${props.span}%`};
-  margin-left: ${(props: PropsStyled) => `${props.offset}%`};
+  margin-left: ${(props: PropsStyled) => (props.offset === 'auto' ? 'auto' : `${props.offset}%`)};
   gap: ${(props: PropsStyled) => `${props.gap}px`};
   justify-content: ${(props: PropsStyled) => props.justify};
   align-items: ${(props: PropsStyled) => props.aline};
+  color: ${(props: PropsStyled) => props.color};
 `;
 
 const Col: React.FC<Props> = (props) => {
@@ -34,7 +38,8 @@ Col.defaultProps = {
   offset: 0,
   children: '',
   gap: 10,
-  justify: 'center',
-  aline: 'center'
+  justify: 'start',
+  aline: 'center',
+  color: '#ffffff'
 };
 export default Col;

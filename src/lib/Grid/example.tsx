@@ -34,7 +34,7 @@ const Home: React.FC = () => {
         <Col span={25} offset={1} style={{ backgroundColor: 'red' }} />
         <Col span={15} offset={1} style={{ backgroundColor: 'red', height: '100px' }} />
       </Row>
-      <Row gap={20} justify="space-between" wrap>
+      <Row gap={20} justify="space-between">
         <Col span={20} style={{ backgroundColor: 'red' }} />
         <Col span={20} style={{ backgroundColor: 'red' }} />
         <Col span={20} style={{ backgroundColor: 'red' }} />
