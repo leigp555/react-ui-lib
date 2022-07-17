@@ -21,29 +21,8 @@ const Home: React.FC = () => {
   return (
     <Wrap>
       <Layout>
-        <Header style={{ height: '50px', backgroundColor: '#02101f' }}>
-          <Row gap={20} justify="start" height={40}>
-            <Col span={5} offset={2} justify="start">
-              <Logo fill="orange" width="1.5em" height="1.5em" />
-            </Col>
-            <Col span={20} justify="space-between" color="white">
-              <a href="/">导航一</a>
-              <a href="/">导航二</a>
-              <a href="/">导航三</a>
-              <a href="/">导航四</a>
-            </Col>
-            <Col span={10} offset="auto" justify="end">
-              <Button type="link">
-                <GitHub fill="yellow" width="1.5em" height="1.5em" />
-              </Button>
-            </Col>
-          </Row>
-        </Header>
-      </Layout>
-
-      <Layout gap={10}>
         <Header bgc="red">
-          <Row gap={0} justify="space-between" style={{ height: '40px' }}>
+          <Row gap={0} justify="space-between" height={40}>
             <Col span={10} offset={2} justify="start">
               <Logo fill="orange" width="1.5em" height="1.5em" />
             </Col>
@@ -60,13 +39,15 @@ const Home: React.FC = () => {
             </Col>
           </Row>
         </Header>
-        <Content style={{ backgroundColor: 'orange' }}>
-          <Row justify="center" style={{ height: '100px' }}>
+        <Content bgc="orange" height={200}>
+          <Row justify="center" height="200px">
             body
           </Row>
         </Content>
-        <Footer style={{ backgroundColor: 'orange' }}>
-          <Row justify="center">footer</Row>
+        <Footer bgc="yellow" height={200}>
+          <Row justify="center" height={200}>
+            footer
+          </Row>
         </Footer>
       </Layout>
     </Wrap>

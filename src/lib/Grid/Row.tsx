@@ -1,6 +1,6 @@
 import React, { HTMLAttributes } from 'react';
 import styled from 'styled-components';
-
+import { CommonStyle } from '../common/common';
 // 这个组件内的元素纵向排列
 interface Props extends HTMLAttributes<HTMLDivElement> {
   gap?: number;
@@ -15,15 +15,13 @@ interface Props extends HTMLAttributes<HTMLDivElement> {
 }
 
 type PropsStyled = Omit<Props, 'children'>;
-const RowStyled = styled.div`
+const RowStyled = styled(CommonStyle)`
   white-space: nowrap;
   display: flex;
   flex-wrap: nowrap;
   width: 100%;
   height: ${(props: PropsStyled) =>
     typeof props.height === 'number' ? `${props.height}px` : props.height};
-  background-color: ${(props: PropsStyled) => props.bgc};
-  color: ${(props: PropsStyled) => props.color};
   gap: ${(props: PropsStyled) => `${props.gap}px`};
   justify-content: ${(props: PropsStyled) => props.justify};
   align-items: ${(props: PropsStyled) => props.aline};

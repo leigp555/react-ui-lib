@@ -1,6 +1,7 @@
 import React, { HTMLAttributes } from 'react';
 import styled from 'styled-components';
 import { Omit } from '@reduxjs/toolkit/dist/tsHelpers';
+import { CommonStyle } from '../common/common';
 // 24/100
 // 这个组件内的元素横向排列
 
@@ -18,20 +19,18 @@ interface Props extends HTMLAttributes<HTMLDivElement> {
 }
 type PropsStyled = Omit<Props, 'children'>;
 
-const ColStyled = styled.div`
+const ColStyled = styled(CommonStyle)`
   height: 100%;
   white-space: nowrap;
   align-self: ${(props: PropsStyled) => props.alignSelf};
   justify-self: ${(props: PropsStyled) => props.justifySelf};
   display: flex;
   flex-wrap: nowrap;
-  background-color: ${(props: PropsStyled) => props.bgc};
   width: ${(props: PropsStyled) => `${props.span}%`};
   margin-left: ${(props: PropsStyled) => (props.offset === 'auto' ? 'auto' : `${props.offset}%`)};
   gap: ${(props: PropsStyled) => `${props.gap}px`};
   justify-content: ${(props: PropsStyled) => props.justify};
   align-items: ${(props: PropsStyled) => props.aline};
-  color: ${(props: PropsStyled) => props.color};
 `;
 
 const Col: React.FC<Props> = (props) => {

@@ -18,7 +18,7 @@ const Header: React.FC<Props> = (props) => {
   return <HeaderStyled {...rest}>{children}</HeaderStyled>;
 };
 Header.defaultProps = {
-  height: 50,
+  height: '100%',
   width: '100%',
   children: '',
   bgc: 'inherit'
