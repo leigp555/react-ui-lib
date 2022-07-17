@@ -1,11 +1,19 @@
 import React, { HTMLAttributes } from 'react';
 import styled from 'styled-components';
+import { Omit } from '@reduxjs/toolkit/dist/tsHelpers';
 
+interface Props extends HTMLAttributes<HTMLDivElement> {
+  gap?: number;
+  bgc?: string;
+  children?: React.ReactNode;
+}
+type PropsStyled = Omit<Props, 'children'>;
 // 元素纵向排列
 const LayoutStyled = styled.div`
   display: flex;
   flex-direction: column;
-  gap: 10px;
+  gap: ${(props: PropsStyled) => `${props.gap}px`};
+  background-color: ${(props: PropsStyled) => props.bgc};
 `;
 
 interface Props extends HTMLAttributes<HTMLDivElement> {
@@ -16,7 +24,9 @@ const Layout: React.FC<Props> = (props) => {
   return <LayoutStyled {...rest}>{children}</LayoutStyled>;
 };
 Layout.defaultProps = {
-  children: ''
+  children: '',
+  gap: 0,
+  bgc: 'inherit'
 };
 
 export default Layout;

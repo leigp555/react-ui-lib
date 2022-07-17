@@ -9,6 +9,7 @@ interface Props extends HTMLAttributes<HTMLDivElement> {
   offset?: number | 'auto';
   gap?: number;
   color?: string;
+  bgc?: string;
   alignSelf?: 'center' | 'start' | 'end';
   justifySelf?: 'center' | 'start' | 'end' | 'space-between' | 'space-around';
   justify?: 'center' | 'start' | 'end' | 'space-between' | 'space-around';
@@ -24,7 +25,7 @@ const ColStyled = styled.div`
   justify-self: ${(props: PropsStyled) => props.justifySelf};
   display: flex;
   flex-wrap: nowrap;
-  background-color: inherit;
+  background-color: ${(props: PropsStyled) => props.bgc};
   width: ${(props: PropsStyled) => `${props.span}%`};
   margin-left: ${(props: PropsStyled) => (props.offset === 'auto' ? 'auto' : `${props.offset}%`)};
   gap: ${(props: PropsStyled) => `${props.gap}px`};
@@ -45,7 +46,8 @@ Col.defaultProps = {
   gap: 10,
   justify: 'start',
   aline: 'center',
-  color: '#ffffff',
+  color: 'inherit',
+  bgc: 'inherit',
   alignSelf: 'center',
   justifySelf: 'start'
 };

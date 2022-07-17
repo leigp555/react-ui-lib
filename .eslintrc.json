@@ -36,6 +36,7 @@
         "react/function-component-definition": "off",
         "react/button-has-type": "off",
         "react/jsx-props-no-spreading": "off",
+        "import/prefer-default-export": "off",
         "no-param-reassign": ["error", {
             "props": true,
             "ignorePropertyModificationsFor": [

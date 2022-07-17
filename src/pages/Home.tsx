@@ -22,7 +22,7 @@ const Home: React.FC = () => {
     <Wrap>
       <Layout>
         <Header style={{ height: '50px', backgroundColor: '#02101f' }}>
-          <Row gap={20} justify="start" style={{ height: '40px' }}>
+          <Row gap={20} justify="start" height={40}>
             <Col span={5} offset={2} justify="start">
               <Logo fill="orange" width="1.5em" height="1.5em" />
             </Col>
@@ -40,8 +40,9 @@ const Home: React.FC = () => {
           </Row>
         </Header>
       </Layout>
-      <Layout>
-        <Header style={{ backgroundColor: '#02101f' }}>
+
+      <Layout gap={10}>
+        <Header bgc="red">
           <Row gap={0} justify="space-between" style={{ height: '40px' }}>
             <Col span={10} offset={2} justify="start">
               <Logo fill="orange" width="1.5em" height="1.5em" />
@@ -59,10 +60,14 @@ const Home: React.FC = () => {
             </Col>
           </Row>
         </Header>
-        <Content>
-          <Row justify="center">body</Row>
+        <Content style={{ backgroundColor: 'orange' }}>
+          <Row justify="center" style={{ height: '100px' }}>
+            body
+          </Row>
         </Content>
-        <Footer>xxx</Footer>
+        <Footer style={{ backgroundColor: 'orange' }}>
+          <Row justify="center">footer</Row>
+        </Footer>
       </Layout>
     </Wrap>
   );

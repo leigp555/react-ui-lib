@@ -1,11 +1,14 @@
 import React, { HTMLAttributes } from 'react';
 import styled from 'styled-components';
+import { CommonStyle } from '../common/common';
 
 interface Props extends HTMLAttributes<HTMLHeadElement> {
+  height?: number | string;
+  width?: number | string;
+  bgc?: string;
   children?: React.ReactNode;
 }
-// 元素横向排列
-const HeaderStyled = styled.div`
+const HeaderStyled = styled(CommonStyle)`
   display: flex;
   gap: 10px;
 `;
@@ -15,7 +18,10 @@ const Header: React.FC<Props> = (props) => {
   return <HeaderStyled {...rest}>{children}</HeaderStyled>;
 };
 Header.defaultProps = {
-  children: ''
+  height: 50,
+  width: '100%',
+  children: '',
+  bgc: 'inherit'
 };
 
 export default Header;
