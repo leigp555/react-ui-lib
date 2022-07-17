@@ -1,63 +1,59 @@
 import React, { HTMLAttributes, ReactElement } from 'react';
-import styled from 'styled-components';
-
-// 不知道react的虚拟节点什么类型所以扩充vNode类型来消除ts警告
-type VNode = ReactElement & { type: { name: string } };
+import styled, { keyframes } from 'styled-components';
 
 interface Props extends HTMLAttributes<HTMLDivElement> {
   children: React.ReactNode;
 }
-const DropdownStyled = styled.div`
-  border: 2px solid orange;
-  display: inline-block;
+// 不知道react的虚拟节点什么类型所以扩充vNode类型来消除ts警告
+type VNode = ReactElement & { type: { name: string } };
+
+const show = keyframes`
+  from{
+    opacity: 0;
+  }
+  to{
+    opacity: 1;
+  }
 `;
 
-const Wrap = styled.div`
+const DropdownStyled = styled.div`
+  display: inline-block;
   position: relative;
-`;
-const Inner = styled.div`
-  position: absolute;
   top: 0;
-  left: 50%;
-  transform: translateX(-50%);
-  display: flex;
+  left: 0;
+  &:hover {
+    > .dropdown {
+      animation: ${show} 3s alternate;
+      opacity: 1;
+    }
+  }
 `;
-const Fuck = styled.div`
-  border: 5px solid red;
-  width: 200px;
-  > div {
-    visibility: hidden;
-    height: 100px;
-  }
-  > div:hover {
-    visibility: visible;
-  }
+
+const Inner = styled.div`
+  opacity: 0;
 `;
 
 const Dropdown: React.FC<Props> = (props) => {
-  const { children, ...rest } = props;
+  const { children } = props;
   const render = () => {
-    const button: VNode[] = [];
-    const arr: VNode[] = [];
+    const otherVNode: VNode[] = [];
+    const dropdownVNode: VNode[] = [];
     React.Children.map(children, (child) => {
       const vNode = child as VNode;
       if (React.isValidElement(vNode) && vNode.type.name === 'DropdownItem') {
-        arr.push(vNode);
+        dropdownVNode.push(vNode);
       } else {
-        button.push(vNode);
+        otherVNode.push(vNode);
       }
     });
     return (
-      <Fuck>
-        {button}
-        <Wrap>
-          <Inner>{arr}</Inner>
-        </Wrap>
-      </Fuck>
+      <DropdownStyled>
+        {otherVNode}
+        <Inner className="dropdown">{dropdownVNode}</Inner>
+      </DropdownStyled>
     );
   };
-  render();
-  return <DropdownStyled {...rest}>{render()}</DropdownStyled>;
+  return <>{render()}</>;
 };
 
 export default Dropdown;

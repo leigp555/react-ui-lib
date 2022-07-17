@@ -17,9 +17,9 @@ const Home: React.FC = () => {
       <Dropdown>
         <Button>点击我</Button>
         <DropdownItem>
-          <div>xxxxxxxxxxxxx</div>
-          <div>xxxxxxxxxxxxx</div>
-          <div>xxxxxxxxxxxxx</div>
+          <div>当页面上的操作命令过多时</div>
+          <div>用此组件可以收纳操作元素</div>
+          <div>点击或移入触点</div>
         </DropdownItem>
       </Dropdown>
     </Wrap>
