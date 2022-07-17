@@ -4,7 +4,7 @@ import styled from 'styled-components';
 interface Props extends HTMLAttributes<HTMLHeadElement> {
   children?: React.ReactNode;
 }
-
+// 元素横向排列
 const HeaderStyled = styled.div`
   display: flex;
   gap: 10px;

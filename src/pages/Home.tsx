@@ -21,32 +21,29 @@ const Home: React.FC = () => {
   return (
     <Wrap>
       <Layout>
-        <Header style={{ height: '60px', backgroundColor: '#02101f' }}>
-          <Row gap={10} justify="space-between">
-            <Col span={4} justify="center">
+        <Header style={{ height: '50px', backgroundColor: '#02101f' }}>
+          <Row gap={20} justify="start" style={{ height: '40px' }}>
+            <Col span={5} offset={2} justify="start">
               <Logo fill="orange" width="1.5em" height="1.5em" />
             </Col>
-            <Col span={50} justify="space-around" color="white">
+            <Col span={20} justify="space-between" color="white">
               <a href="/">导航一</a>
               <a href="/">导航二</a>
               <a href="/">导航三</a>
               <a href="/">导航四</a>
             </Col>
-            <Col span={4} justify="end">
+            <Col span={10} offset="auto" justify="end">
               <Button type="link">
                 <GitHub fill="yellow" width="1.5em" height="1.5em" />
               </Button>
             </Col>
           </Row>
         </Header>
-        <Content style={{ height: '50px', backgroundColor: '#f3f3f3' }}>Main</Content>
-        <Footer style={{ height: '50px', backgroundColor: '#f3f3f3' }}>Footer</Footer>
       </Layout>
-
       <Layout>
-        <Header style={{ height: '60px', backgroundColor: '#02101f' }}>
-          <Row gap={10} justify="start">
-            <Col span={5} offset={2} justify="start">
+        <Header style={{ backgroundColor: '#02101f' }}>
+          <Row gap={0} justify="space-between" style={{ height: '40px' }}>
+            <Col span={10} offset={2} justify="start">
               <Logo fill="orange" width="1.5em" height="1.5em" />
             </Col>
             <Col span={30} justify="space-between" color="white">
@@ -55,15 +52,17 @@ const Home: React.FC = () => {
               <a href="/">导航三</a>
               <a href="/">导航四</a>
             </Col>
-            <Col span={4} offset="auto" justify="end">
+            <Col span={10} justify="end">
               <Button type="link">
                 <GitHub fill="yellow" width="1.5em" height="1.5em" />
               </Button>
             </Col>
           </Row>
         </Header>
-        <Content style={{ height: '50px', backgroundColor: '#f3f3f3' }}>Main</Content>
-        <Footer style={{ height: '50px', backgroundColor: '#f3f3f3' }}>Footer</Footer>
+        <Content>
+          <Row justify="center">body</Row>
+        </Content>
+        <Footer>xxx</Footer>
       </Layout>
     </Wrap>
   );

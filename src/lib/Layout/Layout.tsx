@@ -1,6 +1,7 @@
 import React, { HTMLAttributes } from 'react';
 import styled from 'styled-components';
 
+// 元素纵向排列
 const LayoutStyled = styled.div`
   display: flex;
   flex-direction: column;

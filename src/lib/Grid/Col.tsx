@@ -9,6 +9,8 @@ interface Props extends HTMLAttributes<HTMLDivElement> {
   offset?: number | 'auto';
   gap?: number;
   color?: string;
+  alignSelf?: 'center' | 'start' | 'end';
+  justifySelf?: 'center' | 'start' | 'end' | 'space-between' | 'space-around';
   justify?: 'center' | 'start' | 'end' | 'space-between' | 'space-around';
   aline?: 'center' | 'start' | 'end';
   children?: React.ReactNode;
@@ -16,7 +18,10 @@ interface Props extends HTMLAttributes<HTMLDivElement> {
 type PropsStyled = Omit<Props, 'children'>;
 
 const ColStyled = styled.div`
-  height: 40px;
+  height: 100%;
+  white-space: nowrap;
+  align-self: ${(props: PropsStyled) => props.alignSelf};
+  justify-self: ${(props: PropsStyled) => props.justifySelf};
   display: flex;
   flex-wrap: nowrap;
   background-color: inherit;
@@ -40,6 +45,8 @@ Col.defaultProps = {
   gap: 10,
   justify: 'start',
   aline: 'center',
-  color: '#ffffff'
+  color: '#ffffff',
+  alignSelf: 'center',
+  justifySelf: 'start'
 };
 export default Col;
