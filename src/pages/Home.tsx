@@ -1,6 +1,9 @@
 import React from 'react';
 import styled from 'styled-components';
 import Button from '../lib/Button/Button';
+import QQ from '../static/icons/qq.svg';
+import Sun from '../static/icons/sunny.svg';
+import Cloud from '../static/icons/cloud.svg';
 
 const Wrap = styled.div`
   > div {
@@ -66,6 +69,18 @@ const Home: React.FC = () => {
         </Button>
         <Button type="link" disabled>
           xxx
+        </Button>
+      </Inner>
+      <div>icon</div>
+      <Inner>
+        <Button type="primary">
+          <QQ fill="yellow" width="1.2em" height="1.2em" />
+        </Button>
+        <Button type="primary">
+          <Sun fill="yellow" width="1.2em" height="1.2em" />
+        </Button>
+        <Button type="primary">
+          <Cloud fill="yellow" width="1.2em" height="1.2em" />
         </Button>
       </Inner>
     </Wrap>
