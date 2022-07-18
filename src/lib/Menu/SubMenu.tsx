@@ -8,6 +8,13 @@ interface Props extends HTMLAttributes<HTMLDivElement> {
 const SubMenuStyled = styled.div`
   position: relative;
   > .wrap {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translateY(-10px);
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
     &:hover {
       > .content {
         display: block;
@@ -16,13 +23,10 @@ const SubMenuStyled = styled.div`
     > .content {
       display: none;
       border: 1px solid black;
-      position: absolute;
-      bottom: 0;
-      left: 0;
-      transform: translateY(calc(100% + 10px));
     }
     > .label {
       cursor: pointer;
+      white-space: nowrap;
     }
   }
 `;

@@ -7,11 +7,11 @@ interface Props extends HTMLAttributes<HTMLDivElement> {
 const MenuStyled = styled.div`
   background-color: orange;
   display: flex;
-  gap: 60px;
+  gap: 120px;
   align-items: center;
   min-height: 40px;
   position: relative;
-  padding: 10px 50px;
+  padding: 0 50px;
 `;
 const Menu: React.FC<Props> = (props) => {
   const { children, ...rest } = props;
