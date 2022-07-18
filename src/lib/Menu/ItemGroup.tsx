@@ -15,17 +15,10 @@ const ItemGroupStyled = styled.div`
   padding-left: 5px;
   > .label {
     color: #a1a1a1;
-    padding: 8px 10px;
+    padding: 8px 5px;
   }
   > .content {
-    margin-left: 8px;
-    flex-grow: 10;
-  }
-`;
-const XXX = styled.div`
-  padding: 0 8px;
-  &:hover {
-    color: #1890ff;
+    margin-left: 5px;
   }
 `;
 
@@ -38,7 +31,7 @@ const ItemGroup: React.FC<Props> = (props) => {
         {React.Children.map(children, (child) => {
           const vNode = child as VNode;
           if (React.isValidElement(vNode) && vNode.type.name !== 'ItemGroup') {
-            return <XXX>{vNode}</XXX>;
+            return vNode;
           }
           return <ItemGroupStyled>{vNode}</ItemGroupStyled>;
         })}

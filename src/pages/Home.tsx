@@ -30,13 +30,14 @@ const Home: React.FC = () => {
             <MenuItem order={7}>xxx</MenuItem>
             <MenuItem order={8}>xxx</MenuItem>
             <ItemGroup label="itemGroup">
+              <MenuItem order={9}>xxx</MenuItem>
               <MenuItem order={10}>xxx</MenuItem>
               <MenuItem order={11}>xxx</MenuItem>
               <MenuItem order={12}>xxx</MenuItem>
               <ItemGroup label="itemGroup">
-                <MenuItem order={10}>xxx</MenuItem>
-                <MenuItem order={11}>xxx</MenuItem>
-                <MenuItem order={12}>xxx</MenuItem>
+                <MenuItem order={13}>xxx</MenuItem>
+                <MenuItem order={14}>xxx</MenuItem>
+                <MenuItem order={15}>xxx</MenuItem>
               </ItemGroup>
             </ItemGroup>
           </ItemGroup>
