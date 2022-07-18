@@ -8,21 +8,32 @@ interface Props extends HTMLAttributes<HTMLDivElement> {
 const ItemGroupStyled = styled.div`
   display: flex;
   flex-direction: column;
-  gap: 10px;
-  padding: 8px 10px;
+  width: 100%;
   > .label {
     color: #a1a1a1;
+    padding: 8px 10px;
   }
   > .content {
-    padding-left: 10px;
+    flex-grow: 10;
   }
 `;
+const XXX = styled.div`
+  padding: 0 8px;
+  &:hover {
+    background-color: #1890ff;
+  }
+`;
+
 const ItemGroup: React.FC<Props> = (props) => {
   const { children, label, ...rest } = props;
   return (
     <ItemGroupStyled {...rest}>
       <div className="label">{label}</div>
-      <div className="content">{children}</div>
+      <div className="content">
+        {React.Children.map(children, (child) => {
+          return <XXX>{child}</XXX>;
+        })}
+      </div>
     </ItemGroupStyled>
   );
 };

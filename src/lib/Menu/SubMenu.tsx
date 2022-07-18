@@ -23,6 +23,7 @@ const SubMenuStyled = styled.div`
     }
     > .content {
       display: block;
+      background-color: #fff;
       border: 1px solid black;
     }
     > .label {
@@ -35,7 +36,7 @@ const SubMenuStyled = styled.div`
 const SubMenu: React.FC<Props> = (props) => {
   const { children, label, ...rest } = props;
   const { callback } = useContext(menuCtx);
-  const xxx = (e: React.MouseEvent<HTMLDivElement>) => {
+  const getOrder = (e: React.MouseEvent<HTMLDivElement>) => {
     const el = e.target as HTMLButtonElement;
     const orderStr = el.getAttribute('data-order');
     if (orderStr) {
@@ -50,7 +51,7 @@ const SubMenu: React.FC<Props> = (props) => {
         <div
           className="content"
           role="presentation"
-          onClick={(e: React.MouseEvent<HTMLDivElement>) => xxx(e)}
+          onClick={(e: React.MouseEvent<HTMLDivElement>) => getOrder(e)}
         >
           {children}
         </div>

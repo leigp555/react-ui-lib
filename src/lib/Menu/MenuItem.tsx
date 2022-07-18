@@ -10,6 +10,12 @@ const MenuItemStyled = styled.button`
   min-width: 100px;
   padding: 8px 10px;
   cursor: pointer;
+  border: none;
+  width: 100%;
+  background-color: #fff;
+  :hover {
+    background-color: #1890ff;
+  }
 `;
 const MenuItem: React.FC<Props> = (props) => {
   const { children, order } = props;
