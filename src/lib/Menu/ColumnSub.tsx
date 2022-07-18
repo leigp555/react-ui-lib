@@ -1,4 +1,4 @@
-import React, { HTMLAttributes, ReactElement, useContext } from 'react';
+import React, { HTMLAttributes, ReactElement, useContext, useRef } from 'react';
 import styled from 'styled-components';
 import { columnMenuCtx } from './ColunmMenu';
 
@@ -30,8 +30,14 @@ const SubMenuStyled = styled.div`
 const ColumnSub: React.FC<Props> = (props) => {
   const { children, label, ...rest } = props;
   const { callback } = useContext(columnMenuCtx);
+  const activeRef = useRef<HTMLDivElement | null>(null);
   const getOrder = (e: React.MouseEvent<HTMLDivElement>) => {
+    if (activeRef.current) {
+      activeRef.current.style.color = 'inherit';
+    }
     const el = e.target as HTMLDivElement;
+    activeRef.current = el;
+    el.style.color = '#1890ff';
     const orderStr = el.getAttribute('data-order');
     if (orderStr) {
       const order = parseInt(orderStr, 10);

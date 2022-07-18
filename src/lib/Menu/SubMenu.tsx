@@ -1,4 +1,4 @@
-import React, { HTMLAttributes, ReactElement, useContext, useState } from 'react';
+import React, { HTMLAttributes, ReactElement, useContext, useRef, useState } from 'react';
 import styled from 'styled-components';
 import { CSSTransition } from 'react-transition-group';
 import { menuCtx } from './Menu ';
@@ -53,9 +53,15 @@ const SubMenu: React.FC<Props> = (props) => {
   const { children, label, ...rest } = props;
   const { callback } = useContext(menuCtx);
   const needBorder = children instanceof Array;
+  const activeRef = useRef<HTMLDivElement | null>(null);
   const [enter, setEnter] = useState<boolean>(false);
   const getOrder = (e: React.MouseEvent<HTMLDivElement>) => {
+    if (activeRef.current) {
+      activeRef.current.style.color = 'inherit';
+    }
     const el = e.target as HTMLDivElement;
+    activeRef.current = el;
+    el.style.color = '#1890ff';
     const orderStr = el.getAttribute('data-order');
     if (orderStr) {
       const order = parseInt(orderStr, 10);
