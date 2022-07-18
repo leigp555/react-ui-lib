@@ -12,13 +12,12 @@ const ItemGroupStyled = styled.div`
   display: flex;
   flex-direction: column;
   width: 100%;
-  padding-left: 5px;
+  padding-left: 8px;
   > .label {
     color: #a1a1a1;
     padding: 8px 5px;
   }
   > .content {
-    margin-left: 5px;
   }
 `;
 
