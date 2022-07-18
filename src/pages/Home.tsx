@@ -18,17 +18,16 @@ const Home: React.FC = () => {
   return (
     <Wrap>
       <Dropdown callback={fn}>
-        <span>点击我</span>
-        <DropdownItem>
-          <Button type="link" key={1}>
-            当页面上的操作命令过多时
-          </Button>
-          <Button type="link" key={2}>
-            用此组件可以收纳操作元素
-          </Button>
-          <Button type="link" key={3}>
-            点击或移入触点
-          </Button>
+        <Button>ddddddd</Button>
+        <DropdownItem order={1}>
+          <p>xxxxx</p>
+          <p>yyy</p>
+        </DropdownItem>
+        <DropdownItem order={2}>
+          <p>xxxxx</p>
+        </DropdownItem>
+        <DropdownItem order={3}>
+          <p>xxxxx</p>
         </DropdownItem>
       </Dropdown>
     </Wrap>

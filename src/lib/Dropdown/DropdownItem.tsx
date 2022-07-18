@@ -1,25 +1,30 @@
-import React, { HTMLAttributes } from 'react';
+import React, { HTMLAttributes, useContext } from 'react';
 import styled from 'styled-components';
+import { callbackProvider } from './Dropdown ';
 
 interface Props extends HTMLAttributes<HTMLDivElement> {
+  order: number;
   children: React.ReactNode;
 }
 const DropdownItemStyled = styled.div`
   position: relative;
   white-space: nowrap;
   display: flex;
-  flex-direction: column;
-  gap: 10px;
-  bottom: 0;
   left: 0;
-  margin-top: 5px;
-  padding: 15px 10px;
-  background-color: orange;
+  background-color: #ffffff;
 `;
 
 const DropdownItem: React.FC<Props> = (props) => {
-  const { children, ...rest } = props;
-  return <DropdownItemStyled {...rest}>{children}</DropdownItemStyled>;
+  const { children, order, ...rest } = props;
+  const { callback } = useContext(callbackProvider);
+  const divClick = () => {
+    callback(order);
+  };
+  return (
+    <DropdownItemStyled {...rest} onClick={divClick}>
+      {children}
+    </DropdownItemStyled>
+  );
 };
 
 export default DropdownItem;
