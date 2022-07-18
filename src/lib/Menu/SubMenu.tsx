@@ -2,6 +2,7 @@ import React, { HTMLAttributes, ReactElement, useContext, useRef, useState } fro
 import styled from 'styled-components';
 import { CSSTransition } from 'react-transition-group';
 import { menuCtx } from './Menu ';
+import { common } from './common';
 
 interface Props extends HTMLAttributes<HTMLDivElement> {
   label?: string;
@@ -55,19 +56,7 @@ const SubMenu: React.FC<Props> = (props) => {
   const needBorder = children instanceof Array;
   const activeRef = useRef<HTMLDivElement | null>(null);
   const [enter, setEnter] = useState<boolean>(false);
-  const getOrder = (e: React.MouseEvent<HTMLDivElement>) => {
-    if (activeRef.current) {
-      activeRef.current.style.color = 'inherit';
-    }
-    const el = e.target as HTMLDivElement;
-    activeRef.current = el;
-    el.style.color = '#1890ff';
-    const orderStr = el.getAttribute('data-order');
-    if (orderStr) {
-      const order = parseInt(orderStr, 10);
-      callback(order);
-    }
-  };
+  const getOrder = (e: React.MouseEvent<HTMLDivElement>) => common(activeRef, callback)(e);
   const render = () => {
     const labelNode: VNode[] = [];
     const otherNode: VNode[] = [];
