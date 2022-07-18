@@ -1,26 +1,31 @@
-import React, { HTMLAttributes } from 'react';
+import React, { HTMLAttributes, ReactElement } from 'react';
 import styled from 'styled-components';
 
 interface Props extends HTMLAttributes<HTMLDivElement> {
   label?: string;
   children?: React.ReactNode;
 }
+// 不知道react的虚拟节点什么类型所以扩充vNode类型来消除ts警告
+type VNode = ReactElement & { type: { name: string } };
+
 const ItemGroupStyled = styled.div`
   display: flex;
   flex-direction: column;
   width: 100%;
+  padding-left: 5px;
   > .label {
     color: #a1a1a1;
     padding: 8px 10px;
   }
   > .content {
+    margin-left: 8px;
     flex-grow: 10;
   }
 `;
 const XXX = styled.div`
   padding: 0 8px;
   &:hover {
-    background-color: #1890ff;
+    color: #1890ff;
   }
 `;
 
@@ -31,7 +36,11 @@ const ItemGroup: React.FC<Props> = (props) => {
       <div className="label">{label}</div>
       <div className="content">
         {React.Children.map(children, (child) => {
-          return <XXX>{child}</XXX>;
+          const vNode = child as VNode;
+          if (React.isValidElement(vNode) && vNode.type.name !== 'ItemGroup') {
+            return <XXX>{vNode}</XXX>;
+          }
+          return <ItemGroupStyled>{vNode}</ItemGroupStyled>;
         })}
       </div>
     </ItemGroupStyled>

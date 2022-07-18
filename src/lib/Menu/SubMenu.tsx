@@ -6,13 +6,17 @@ interface Props extends HTMLAttributes<HTMLDivElement> {
   label?: string;
   children?: React.ReactNode;
 }
+type PropsStyled = {
+  needBorder: boolean;
+};
+
 const SubMenuStyled = styled.div`
   position: relative;
   > .wrap {
     position: absolute;
     top: 50%;
     left: 50%;
-    transform: translateY(-10px);
+    transform: translateY(-8px);
     display: flex;
     flex-direction: column;
     gap: 10px;
@@ -22,9 +26,10 @@ const SubMenuStyled = styled.div`
       }
     }
     > .content {
-      display: block;
+      display: none;
       background-color: #fff;
-      border: 1px solid black;
+      box-shadow: ${(props: PropsStyled) =>
+        props.needBorder ? '0 0 2px 1px rgba(0, 0,0,.2)' : 'none'};
     }
     > .label {
       cursor: pointer;
@@ -36,8 +41,9 @@ const SubMenuStyled = styled.div`
 const SubMenu: React.FC<Props> = (props) => {
   const { children, label, ...rest } = props;
   const { callback } = useContext(menuCtx);
+  const needBorder = !!children;
   const getOrder = (e: React.MouseEvent<HTMLDivElement>) => {
-    const el = e.target as HTMLButtonElement;
+    const el = e.target as HTMLDivElement;
     const orderStr = el.getAttribute('data-order');
     if (orderStr) {
       const order = parseInt(orderStr, 10);
@@ -45,7 +51,7 @@ const SubMenu: React.FC<Props> = (props) => {
     }
   };
   return (
-    <SubMenuStyled {...rest}>
+    <SubMenuStyled needBorder={needBorder} {...rest}>
       <div className="wrap">
         <span className="label">{label}</span>
         <div
