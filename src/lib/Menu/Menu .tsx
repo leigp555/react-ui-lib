@@ -1,7 +1,13 @@
-import React, { HTMLAttributes } from 'react';
+import React, { HTMLAttributes, useCallback } from 'react';
 import styled from 'styled-components';
 
+interface Ctx {
+  callback: (order: number) => void;
+}
+export const menuCtx = React.createContext<Ctx>(null!);
+
 interface Props extends HTMLAttributes<HTMLDivElement> {
+  callback?: (key: number) => void;
   children?: React.ReactNode;
 }
 const MenuStyled = styled.div`
@@ -14,10 +20,18 @@ const MenuStyled = styled.div`
   padding: 0 50px;
 `;
 const Menu: React.FC<Props> = (props) => {
-  const { children, ...rest } = props;
-  return <MenuStyled {...rest}>{children}</MenuStyled>;
+  const { children, callback, ...rest } = props;
+  const fn = useCallback(callback!, []);
+  // eslint-disable-next-line react/jsx-no-constructed-context-values
+  const value = { callback: fn };
+  return (
+    <MenuStyled {...rest}>
+      <menuCtx.Provider value={value}>{children}</menuCtx.Provider>
+    </MenuStyled>
+  );
 };
 Menu.defaultProps = {
+  callback: () => {},
   children: ''
 };
 

@@ -5,15 +5,15 @@ interface Props extends HTMLAttributes<HTMLDivElement> {
   order: number;
   children?: React.ReactNode;
 }
-const MenuItemStyled = styled.div`
+const MenuItemStyled = styled.button`
   display: flex;
   min-width: 100px;
   padding: 8px 10px;
   cursor: pointer;
 `;
 const MenuItem: React.FC<Props> = (props) => {
-  const { children, ...rest } = props;
-  return <MenuItemStyled {...rest}>{children}</MenuItemStyled>;
+  const { children, order } = props;
+  return <MenuItemStyled data-order={order}>{children}</MenuItemStyled>;
 };
 MenuItem.defaultProps = {
   children: ''

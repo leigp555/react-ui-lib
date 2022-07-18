@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useCallback } from 'react';
 import styled from 'styled-components';
 import Menu from '../lib/Menu/Menu ';
 import MenuItem from '../lib/Menu/MenuItem';
@@ -10,9 +10,12 @@ const Wrap = styled.div`
 `;
 
 const Home: React.FC = () => {
+  const callback = useCallback((key: number) => {
+    console.log(key);
+  }, []);
   return (
     <Wrap>
-      <Menu>
+      <Menu callback={callback}>
         <SubMenu label="导航一" />
         <SubMenu label="导航二">
           <MenuItem order={1}>xxx</MenuItem>
@@ -20,13 +23,13 @@ const Home: React.FC = () => {
           <MenuItem order={3}>xxx</MenuItem>
         </SubMenu>
         <SubMenu label="导航三">
-          <MenuItem order={1}>xxx</MenuItem>
-          <MenuItem order={2}>xxx</MenuItem>
-          <MenuItem order={3}>xxx</MenuItem>
+          <MenuItem order={4}>xxx</MenuItem>
+          <MenuItem order={5}>xxx</MenuItem>
+          <MenuItem order={6}>xxx</MenuItem>
           <ItemGroup label="itemGroup">
-            <MenuItem order={4}>xxx</MenuItem>
-            <MenuItem order={5}>xxx</MenuItem>
-            <MenuItem order={6}>xxx</MenuItem>
+            <MenuItem order={7}>xxx</MenuItem>
+            <MenuItem order={8}>xxx</MenuItem>
+            <MenuItem order={9}>xxx</MenuItem>
           </ItemGroup>
         </SubMenu>
       </Menu>

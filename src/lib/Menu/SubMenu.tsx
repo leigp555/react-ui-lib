@@ -1,5 +1,6 @@
-import React, { HTMLAttributes } from 'react';
+import React, { HTMLAttributes, useContext } from 'react';
 import styled from 'styled-components';
+import { menuCtx } from './Menu ';
 
 interface Props extends HTMLAttributes<HTMLDivElement> {
   label?: string;
@@ -21,7 +22,7 @@ const SubMenuStyled = styled.div`
       }
     }
     > .content {
-      display: none;
+      display: block;
       border: 1px solid black;
     }
     > .label {
@@ -33,11 +34,26 @@ const SubMenuStyled = styled.div`
 
 const SubMenu: React.FC<Props> = (props) => {
   const { children, label, ...rest } = props;
+  const { callback } = useContext(menuCtx);
+  const xxx = (e: React.MouseEvent<HTMLDivElement>) => {
+    const el = e.target as HTMLButtonElement;
+    const orderStr = el.getAttribute('data-order');
+    if (orderStr) {
+      const order = parseInt(orderStr, 10);
+      callback(order);
+    }
+  };
   return (
     <SubMenuStyled {...rest}>
       <div className="wrap">
         <span className="label">{label}</span>
-        <div className="content">{children}</div>
+        <div
+          className="content"
+          role="presentation"
+          onClick={(e: React.MouseEvent<HTMLDivElement>) => xxx(e)}
+        >
+          {children}
+        </div>
       </div>
     </SubMenuStyled>
   );
