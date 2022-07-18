@@ -65,8 +65,8 @@ const ButtonStyled = styled.button`
   justify-content: center;
   align-items: center;
   padding: 4px 15px;
-  cursor: ${(props: PropsStyle) => (props.$disabled ? 'not-allowed' : 'auto')};
-  border-radius: ${(props: PropsStyle) => (props.$radius ? '4px' : 0)};
+  cursor: ${(props: PropsStyle) => (props.$disabled ? 'not-allowed' : 'pointer')};
+  border-radius: ${(props: PropsStyle) => (props.$radius ? '2px' : 0)};
   white-space: nowrap;
 `;
 
