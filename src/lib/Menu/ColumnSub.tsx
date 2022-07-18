@@ -10,13 +10,15 @@ interface Props extends HTMLAttributes<HTMLDivElement> {
 type VNode = ReactElement & { type: { name: string } };
 
 const SubMenuStyled = styled.div`
-  display: flex;
+  display: inline-flex;
+  border: 2px solid red;
   > .wrap {
     display: inline-flex;
     min-width: 150px;
     flex-direction: column;
     > .content {
       background-color: #fff;
+      padding: 10px 5px;
       box-shadow: 0 0 2px 1px rgba(0, 0, 0, 0.2);
     }
     > .label {

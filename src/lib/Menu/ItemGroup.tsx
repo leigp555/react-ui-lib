@@ -26,22 +26,22 @@ const ItemGroup: React.FC<Props> = (props) => {
   const { children, label, ...rest } = props;
   return (
     <ItemGroupStyled {...rest}>
-      <div className="label">{label}</div>
-      <div className="content">
-        {React.Children.map(children, (child) => {
-          const vNode = child as VNode;
-          if (React.isValidElement(vNode) && vNode.type.name !== 'ItemGroup') {
-            return vNode;
-          }
+      {React.Children.map(children, (child) => {
+        const vNode = child as VNode;
+        if (React.isValidElement(vNode) && vNode.type.name === 'ItemGroup') {
           return <ItemGroupStyled>{vNode}</ItemGroupStyled>;
-        })}
-      </div>
+        }
+        if (React.isValidElement(vNode) && vNode.type.name === 'Label') {
+          return <div className="label">{vNode}</div>;
+        }
+        return <div className="content">{vNode}</div>;
+      })}
     </ItemGroupStyled>
   );
 };
 
 ItemGroup.defaultProps = {
-  label: 'itemGroup',
+  label: '',
   children: ''
 };
 export default ItemGroup;
