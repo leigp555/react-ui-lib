@@ -22,35 +22,7 @@ const Home: React.FC = () => {
   }, []);
   return (
     <Wrap>
-      <ColumnMenu callback={callback}>
-        <ColumnSub>
-          <MenuItem order={1}>通过兄弟</MenuItem>
-          <MenuItem order={2}>要其中任意一</MenuItem>
-          <ItemGroup>
-            <Label>
-              标签1 <QQ fill="red" width="1.1em" height="1.1em" />
-            </Label>
-            <MenuItem order={3}>
-              鼠标离开
-              <QQ fill="red" width="1.1em" height="1.1em" />
-            </MenuItem>
-            <MenuItem order={4}>反若是通</MenuItem>
-            <ItemGroup>
-              <Label>标签2</Label>
-              <MenuItem order={5}>元素套一</MenuItem>
-              <MenuItem order={6}>父级，那么</MenuItem>
-              <MenuItem order={7}>学习总结，</MenuItem>
-            </ItemGroup>
-          </ItemGroup>
-          <ItemGroup>
-            <Label>标签3</Label>
-            <MenuItem order={11}>反若是通</MenuItem>
-            <MenuItem order={12}>和选中了。</MenuItem>
-            <MenuItem order={13}>这两个兄弟</MenuItem>
-          </ItemGroup>
-        </ColumnSub>
-      </ColumnMenu>
-      <Menu callback={callback}>
+      <Menu callback={callback} justify="center">
         <SubMenu>
           <Label>
             <QQ fill="red" width="1.1em" height="1.1em" />
@@ -106,6 +78,34 @@ const Home: React.FC = () => {
           </ItemGroup>
         </SubMenu>
       </Menu>
+      <ColumnMenu callback={callback}>
+        <ColumnSub>
+          <MenuItem order={1}>通过兄弟</MenuItem>
+          <MenuItem order={2}>要其中任意一</MenuItem>
+          <ItemGroup>
+            <Label>
+              标签1 <QQ fill="red" width="1.1em" height="1.1em" />
+            </Label>
+            <MenuItem order={3}>
+              鼠标离开
+              <QQ fill="red" width="1.1em" height="1.1em" />
+            </MenuItem>
+            <MenuItem order={4}>反若是通</MenuItem>
+            <ItemGroup>
+              <Label>标签2</Label>
+              <MenuItem order={5}>元素套一</MenuItem>
+              <MenuItem order={6}>父级，那么</MenuItem>
+              <MenuItem order={7}>学习总结，</MenuItem>
+            </ItemGroup>
+          </ItemGroup>
+          <ItemGroup>
+            <Label>标签3</Label>
+            <MenuItem order={11}>反若是通</MenuItem>
+            <MenuItem order={12}>和选中了。</MenuItem>
+            <MenuItem order={13}>这两个兄弟</MenuItem>
+          </ItemGroup>
+        </ColumnSub>
+      </ColumnMenu>
     </Wrap>
   );
 };

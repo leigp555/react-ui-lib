@@ -9,7 +9,6 @@ interface Props extends HTMLAttributes<HTMLDivElement> {
 }
 const SubMenuStyled = styled.div`
   display: inline-flex;
-  border: 2px solid red;
   > .wrap {
     display: inline-flex;
     min-width: 150px;

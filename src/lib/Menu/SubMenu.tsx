@@ -37,6 +37,7 @@ const SubMenuStyled = styled.div`
     flex-direction: column;
     gap: 10px;
     > .content {
+      min-width: 150px;
       background-color: #fff;
       transform: translateX(-25%);
       box-shadow: ${(props: PropsStyled) =>
