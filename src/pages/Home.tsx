@@ -1,35 +1,35 @@
 import React from 'react';
 import styled from 'styled-components';
-import Dropdown from '../lib/Dropdown/Dropdown ';
-import DropdownItem from '../lib/Dropdown/DropdownItem';
-import Button from '../lib/Button/Button';
+import Menu from '../lib/Menu/Menu ';
+import MenuItem from '../lib/Menu/MenuItem';
+import SubMenu from '../lib/Menu/SubMenu';
+import ItemGroup from '../lib/Menu/ItemGroup';
 
 const Wrap = styled.div`
-  > div {
-    margin-top: 20px;
-    margin-bottom: 10px;
-  }
+  position: relative;
 `;
 
 const Home: React.FC = () => {
-  const fn = (key: number) => {
-    console.log(key);
-  };
   return (
     <Wrap>
-      <Dropdown callback={fn}>
-        <Button>ddddddd</Button>
-        <DropdownItem order={1}>
-          <p>xxxxx</p>
-          <p>yyy</p>
-        </DropdownItem>
-        <DropdownItem order={2}>
-          <p>xxxxx</p>
-        </DropdownItem>
-        <DropdownItem order={3}>
-          <p>xxxxx</p>
-        </DropdownItem>
-      </Dropdown>
+      <Menu>
+        <SubMenu label="导航一" />
+        <SubMenu label="导航二">
+          <MenuItem order={1}>xxx</MenuItem>
+          <MenuItem order={2}>xxx</MenuItem>
+          <MenuItem order={3}>xxx</MenuItem>
+        </SubMenu>
+        <SubMenu label="导航三">
+          <MenuItem order={1}>xxx</MenuItem>
+          <MenuItem order={2}>xxx</MenuItem>
+          <MenuItem order={3}>xxx</MenuItem>
+          <ItemGroup label="itemGroup">
+            <MenuItem order={4}>xxx</MenuItem>
+            <MenuItem order={5}>xxx</MenuItem>
+            <MenuItem order={6}>xxx</MenuItem>
+          </ItemGroup>
+        </SubMenu>
+      </Menu>
     </Wrap>
   );
 };
