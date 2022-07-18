@@ -1,4 +1,4 @@
-import React, { HTMLAttributes, useContext, useState } from 'react';
+import React, { HTMLAttributes, ReactElement, useContext, useState } from 'react';
 import styled from 'styled-components';
 import { CSSTransition } from 'react-transition-group';
 import { menuCtx } from './Menu ';
@@ -7,6 +7,8 @@ interface Props extends HTMLAttributes<HTMLDivElement> {
   label?: string;
   children?: React.ReactNode;
 }
+// 不知道react的虚拟节点什么类型所以扩充vNode类型来消除ts警告
+type VNode = ReactElement & { type: { name: string } };
 type PropsStyled = {
   needBorder: boolean;
 };
@@ -47,11 +49,10 @@ const SubMenuStyled = styled.div`
     }
   }
 `;
-
 const SubMenu: React.FC<Props> = (props) => {
   const { children, label, ...rest } = props;
   const { callback } = useContext(menuCtx);
-  const needBorder = !!children;
+  const needBorder = children instanceof Array;
   const [enter, setEnter] = useState<boolean>(false);
   const getOrder = (e: React.MouseEvent<HTMLDivElement>) => {
     const el = e.target as HTMLDivElement;
@@ -60,6 +61,32 @@ const SubMenu: React.FC<Props> = (props) => {
       const order = parseInt(orderStr, 10);
       callback(order);
     }
+  };
+  const render = () => {
+    const labelNode: VNode[] = [];
+    const otherNode: VNode[] = [];
+    React.Children.map(children, (child) => {
+      const vNode = child as VNode;
+      if (React.isValidElement(vNode) && vNode.type.name === 'Label') {
+        labelNode.push(vNode);
+      } else {
+        otherNode.push(vNode);
+      }
+    });
+    return (
+      <>
+        <span className="label">{labelNode}</span>
+        <CSSTransition in={enter} timeout={400} unmountOnExit classNames="my-node">
+          <div
+            className="content"
+            role="presentation"
+            onClick={(e: React.MouseEvent<HTMLDivElement>) => getOrder(e)}
+          >
+            {otherNode}
+          </div>
+        </CSSTransition>
+      </>
+    );
   };
   return (
     <SubMenuStyled needBorder={needBorder} {...rest}>
@@ -71,16 +98,7 @@ const SubMenu: React.FC<Props> = (props) => {
           setEnter(false);
         }}
       >
-        <span className="label">{label}</span>
-        <CSSTransition in={enter} timeout={400} unmountOnExit classNames="my-node">
-          <div
-            className="content"
-            role="presentation"
-            onClick={(e: React.MouseEvent<HTMLDivElement>) => getOrder(e)}
-          >
-            {children}
-          </div>
-        </CSSTransition>
+        {render()}
       </div>
     </SubMenuStyled>
   );

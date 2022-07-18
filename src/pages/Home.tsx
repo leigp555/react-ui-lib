@@ -4,9 +4,14 @@ import Menu from '../lib/Menu/Menu ';
 import MenuItem from '../lib/Menu/MenuItem';
 import SubMenu from '../lib/Menu/SubMenu';
 import ItemGroup from '../lib/Menu/ItemGroup';
+import QQ from '../static/icons/qq.svg';
+import Label from '../lib/Menu/Label';
 
 const Wrap = styled.div`
   position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 200px;
 `;
 
 const Home: React.FC = () => {
@@ -16,13 +21,20 @@ const Home: React.FC = () => {
   return (
     <Wrap>
       <Menu callback={callback}>
-        <SubMenu label="导航一" />
-        <SubMenu label="导航二">
+        <SubMenu>
+          <Label>
+            <span>导航一</span>
+            <QQ fill="red" width="1em" height="1em" />
+          </Label>
+        </SubMenu>
+        <SubMenu>
+          <Label>导航二</Label>
           <MenuItem order={1}>xxx</MenuItem>
           <MenuItem order={2}>xxx</MenuItem>
           <MenuItem order={3}>xxx</MenuItem>
         </SubMenu>
-        <SubMenu label="导航三">
+        <SubMenu>
+          <Label>导航三</Label>
           <MenuItem order={4}>xxx</MenuItem>
           <MenuItem order={5}>xxx</MenuItem>
           <MenuItem order={6}>xxx</MenuItem>
