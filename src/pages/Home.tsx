@@ -10,15 +10,15 @@ const Wrap = styled.div`
 `;
 
 const Home: React.FC = () => {
-  const fn = (page: number) => {
-    console.log(page);
+  const fn = (currentPage: number, start: number, end: number) => {
+    console.log(start, end);
   };
   return (
     <Wrap>
-      <Pagination callback={fn} currentPage={1} totalSrc={1} />{' '}
-      <Pagination callback={fn} currentPage={2} totalSrc={50} />{' '}
-      <Pagination callback={fn} currentPage={46} totalSrc={50} />{' '}
-      <Pagination callback={fn} currentPage={1} totalSrc={3} />
+      <Pagination callback={fn} defaultPage={1} totalSrc={10} perPage={5} />{' '}
+      <Pagination callback={fn} defaultPage={2} totalSrc={50} perPage={5} />{' '}
+      <Pagination callback={fn} defaultPage={1} totalSrc={50} perPage={5} />{' '}
+      <Pagination callback={fn} defaultPage={1} totalSrc={500} perPage={5} />
     </Wrap>
   );
 };

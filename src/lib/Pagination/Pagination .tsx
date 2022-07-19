@@ -6,9 +6,10 @@ import Right from '../icons/right.svg';
 import DoubleLeft from '../icons/doubleLeft.svg';
 
 interface Props extends HTMLAttributes<HTMLDivElement> {
-  currentPage?: number;
+  defaultPage?: number;
   totalSrc: number;
-  callback?: (page: number) => void;
+  perPage?: number;
+  callback?: (currentPage: number, start: number, end: number) => void;
 }
 const PaginationStyled = styled.div`
   display: flex;
@@ -49,33 +50,32 @@ const InputStyled = styled.input`
   }
 `;
 const Pagination: React.FC<Props> = (props) => {
-  const { children, callback, currentPage, totalSrc, ...rest } = props;
-  const [n, setN] = useState(Math.abs(currentPage!)); // 当前处于那一页
+  const { children, perPage, callback, defaultPage, totalSrc, ...rest } = props;
+  const totalPage = Math.ceil(Math.abs(totalSrc!) / perPage!);
+  const [n, setN] = useState(Math.abs(defaultPage! > totalPage ? 1 : defaultPage!)); // 当前处于那一页
   const pageWrap = useRef<HTMLDivElement | null>(null);
   const dom: ReactNode[] = [];
-
   // eslint-disable-next-line consistent-return
   const createPageNumber = (i: number): number => {
     let endPage = 0;
-    if (totalSrc <= 5) {
+    if (totalPage <= 5) {
       endPage = i + 1;
     }
-    if (totalSrc > 5 && n <= 5) {
+    if (totalPage > 5 && n <= 5) {
       endPage = i + 1;
     }
-    if (totalSrc > 5 && n > 5) {
+    if (totalPage > 5 && n > 5) {
       endPage = n - 2 + i;
-      if (n + 5 > totalSrc) {
+      if (n + 5 > totalPage) {
         endPage = n - 4 + i;
       }
     }
     return endPage;
   };
   // 初始化
-  for (let i = 0; i < (totalSrc > 5 ? 5 : totalSrc); i++) {
+  for (let i = 0; i < (totalPage > 5 ? 5 : totalPage); i++) {
     dom.push(<PageButton key={`button${Math.random()}${i}`}>{createPageNumber(i)}</PageButton>);
   }
-  // const totalPage = Math.abs(totalSrc!) / 5;
 
   // 左侧被点击
   const leftClick = () => {
@@ -85,24 +85,41 @@ const Pagination: React.FC<Props> = (props) => {
   };
   // 右侧被点击
   const rightClick = () => {
-    if (n < totalSrc) {
+    if (n < totalPage) {
       setN(() => n + 1);
+    }
+  };
+  const call = (numberPage: number) => {
+    if (perPage) {
+      let start = 1;
+      let end = 1;
+      if (numberPage === 1) {
+        start = 1;
+      } else {
+        start = perPage * numberPage - perPage;
+      }
+      if (perPage * numberPage > totalSrc) {
+        end = totalSrc;
+      } else {
+        end = perPage * numberPage;
+      }
+      callback?.(numberPage, start, end);
     }
   };
   const WrapClick = (e: React.MouseEvent<HTMLDivElement>) => {
     const el = e.target as HTMLButtonElement;
     if (el.tagName.toLowerCase() === 'button') {
       const numberPage = parseInt(el.innerText, 10);
-      callback?.(numberPage);
       setN(numberPage);
+      call(numberPage);
     }
   };
   //  更多被点击
   const moreClick = () => {
-    if (n + 5 < totalSrc) {
+    if (n + 5 < totalPage) {
       setN(() => n + 5);
     } else {
-      setN(totalSrc);
+      setN(totalPage);
     }
   };
   useEffect(() => {
@@ -133,7 +150,7 @@ const Pagination: React.FC<Props> = (props) => {
       <PageButton
         onClick={moreClick}
         style={{
-          cursor: n >= totalSrc! ? 'not-allowed' : 'pointer',
+          cursor: n >= totalPage! ? 'not-allowed' : 'pointer',
           border: 'none',
           backgroundColor: 'inherit'
         }}
@@ -142,19 +159,20 @@ const Pagination: React.FC<Props> = (props) => {
       </PageButton>
       <PageButton
         onClick={rightClick}
-        style={{ cursor: n >= totalSrc! ? 'not-allowed' : 'pointer' }}
+        style={{ cursor: n >= totalPage! ? 'not-allowed' : 'pointer' }}
       >
         <Right fill="#636567" width="1.1em" height="1.1em" />
       </PageButton>
       <span>跳至</span>
-      <InputStyled />
+      <InputStyled value={n} onChange={(e) => setN(parseInt(e.target.value, 10))} />
       <span>页</span>
     </PaginationStyled>
   );
 };
 Pagination.defaultProps = {
-  currentPage: 1,
-  callback: () => {}
+  defaultPage: 1,
+  callback: () => {},
+  perPage: 5
 };
 
 export default Pagination;
