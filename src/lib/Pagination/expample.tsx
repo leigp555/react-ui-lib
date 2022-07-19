@@ -11,15 +11,26 @@ import React from 'react';
 // `;
 //
 // const Home: React.FC = () => {
-//   const fn = (page: number) => {
-//     console.log(page);
+//   const fn = (currentPage: number, start: number, end: number) => {
+//     console.log(start, end);
 //   };
 //   return (
 //     <Wrap>
-//       <Pagination callback={fn} currentPage={1} totalSrc={1} />{' '}
-//       <Pagination callback={fn} currentPage={2} totalSrc={50} />{' '}
-//       <Pagination callback={fn} currentPage={46} totalSrc={50} />{' '}
-//       <Pagination callback={fn} currentPage={1} totalSrc={3} />
+//       <Pagination callback={fn} defaultPage={1} totalSrc={10} perPage={5} />{' '}
+//       <Pagination callback={fn} defaultPage={50} totalSrc={500} perPage={5} />{' '}
+//       <Pagination callback={fn} defaultPage={1} totalSrc={500} perPage={5} />{' '}
+//       <Pagination callback={fn} defaultPage={1} totalSrc={100} perPage={5} moreTool statistic />
+//       <Pagination callback={fn} defaultPage={1} totalSrc={500} perPage={5} goTool />
+//       <Pagination callback={fn} defaultPage={1} totalSrc={500} perPage={5} goTool moreTool />
+//       <Pagination
+//         callback={fn}
+//         defaultPage={1}
+//         totalSrc={500}
+//         perPage={5}
+//         goTool
+//         moreTool
+//         statistic
+//       />
 //     </Wrap>
 //   );
 // };
