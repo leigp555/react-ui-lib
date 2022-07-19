@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import Button from '../Button/Button';
 import Left from '../icons/left.svg';
 import Right from '../icons/right.svg';
+import DoubleLeft from '../icons/doubleLeft.svg';
 
 interface Props extends HTMLAttributes<HTMLDivElement> {
   currentPage?: number;
@@ -30,6 +31,7 @@ const PageWrap = styled.div`
   display: flex;
   gap: 8px;
 `;
+
 const Pagination: React.FC<Props> = (props) => {
   const { children, callback, currentPage, totalSrc, ...rest } = props;
   const [n, setN] = useState(Math.abs(currentPage!)); // 当前处于那一页
@@ -46,7 +48,10 @@ const Pagination: React.FC<Props> = (props) => {
       endPage = i + 1;
     }
     if (totalSrc > 5 && n > 5) {
-      endPage = n - 4 + i;
+      endPage = n - 2 + i;
+      if (n + 5 > totalSrc) {
+        endPage = n - 4 + i;
+      }
     }
     return endPage;
   };
@@ -76,7 +81,14 @@ const Pagination: React.FC<Props> = (props) => {
       setN(numberPage);
     }
   };
-
+  //  更多被点击
+  const moreClick = () => {
+    if (n + 5 < totalSrc) {
+      setN(() => n + 5);
+    } else {
+      setN(totalSrc);
+    }
+  };
   useEffect(() => {
     if (pageWrap.current) {
       const childList = Array.from(pageWrap.current.children as unknown as HTMLButtonElement[]);
@@ -102,6 +114,13 @@ const Pagination: React.FC<Props> = (props) => {
       >
         {dom}
       </PageWrap>
+      <PageButton
+        onClick={moreClick}
+        style={{ cursor: n >= totalSrc! ? 'not-allowed' : 'pointer', border: 'none' }}
+      >
+        <DoubleLeft fill="#636567" width="1.1em" height="1.1em" />
+      </PageButton>
+
       <PageButton
         onClick={rightClick}
         style={{ cursor: n >= totalSrc! ? 'not-allowed' : 'pointer' }}

@@ -17,7 +17,7 @@ const Home: React.FC = () => {
     <Wrap>
       <Pagination callback={fn} currentPage={1} totalSrc={1} />{' '}
       <Pagination callback={fn} currentPage={2} totalSrc={50} />{' '}
-      <Pagination callback={fn} currentPage={50} totalSrc={50} />{' '}
+      <Pagination callback={fn} currentPage={46} totalSrc={50} />{' '}
       <Pagination callback={fn} currentPage={1} totalSrc={3} />
     </Wrap>
   );
