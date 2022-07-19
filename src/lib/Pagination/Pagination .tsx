@@ -92,8 +92,8 @@ const Pagination: React.FC<Props> = (props) => {
   };
   const call = useCallback((numberPage: number) => {
     if (perPage) {
-      let start = 1;
-      let end = 1;
+      let start: number;
+      let end: number;
       if (numberPage === 1) {
         start = 1;
       } else {
@@ -124,9 +124,9 @@ const Pagination: React.FC<Props> = (props) => {
   };
   // 输入新的页码
   const inputNewPageNumber = () => {
-    if (inputRef.current) {
-      const pageNumber = parseInt(inputRef.current?.value, 10);
-      if (pageNumber >= totalPage) {
+    if (inputRef.current?.value) {
+      const pageNumber = parseInt(inputRef.current?.value, 10) || 1;
+      if (pageNumber >= totalPage && pageNumber) {
         setN(totalPage);
       } else {
         setN(pageNumber);
@@ -162,7 +162,7 @@ const Pagination: React.FC<Props> = (props) => {
       <PageButton
         onClick={moreClick}
         style={{
-          cursor: n >= totalPage! ? 'not-allowed' : 'pointer',
+          cursor: n >= totalPage ? 'not-allowed' : 'pointer',
           border: 'none',
           backgroundColor: 'inherit'
         }}
@@ -171,12 +171,12 @@ const Pagination: React.FC<Props> = (props) => {
       </PageButton>
       <PageButton
         onClick={rightClick}
-        style={{ cursor: n >= totalPage! ? 'not-allowed' : 'pointer' }}
+        style={{ cursor: n >= totalPage ? 'not-allowed' : 'pointer' }}
       >
         <Right fill="#636567" width="1.1em" height="1.1em" />
       </PageButton>
       <span>跳至</span>
-      <InputStyled defaultValue={n} ref={inputRef} onBlur={inputNewPageNumber} />
+      <InputStyled defaultValue="" ref={inputRef} onBlur={inputNewPageNumber} />
       <span>页</span>
     </PaginationStyled>
   );
