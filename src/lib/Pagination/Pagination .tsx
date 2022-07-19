@@ -1,4 +1,4 @@
-import React, { HTMLAttributes, ReactNode, useEffect, useRef, useState } from 'react';
+import React, { HTMLAttributes, ReactNode, useCallback, useEffect, useRef, useState } from 'react';
 import styled from 'styled-components';
 import Button from '../Button/Button';
 import Left from '../icons/left.svg';
@@ -40,13 +40,13 @@ const PageWrap = styled.div`
 const InputStyled = styled.input`
   max-width: 3em;
   height: 2em;
-  border: none;
   outline: none;
   border: 1px solid #d9d9d9;
   border-radius: 2px;
   padding: 10px;
   &:focus {
     border: 1px solid #1890ff;
+    box-shadow: 0 0 4px 1px rgba(24, 144, 255, 0.2);
   }
 `;
 const Pagination: React.FC<Props> = (props) => {
@@ -54,6 +54,7 @@ const Pagination: React.FC<Props> = (props) => {
   const totalPage = Math.ceil(Math.abs(totalSrc!) / perPage!);
   const [n, setN] = useState(Math.abs(defaultPage! > totalPage ? 1 : defaultPage!)); // 当前处于那一页
   const pageWrap = useRef<HTMLDivElement | null>(null);
+  const inputRef = useRef<HTMLInputElement | null>(null);
   const dom: ReactNode[] = [];
   // eslint-disable-next-line consistent-return
   const createPageNumber = (i: number): number => {
@@ -89,7 +90,7 @@ const Pagination: React.FC<Props> = (props) => {
       setN(() => n + 1);
     }
   };
-  const call = (numberPage: number) => {
+  const call = useCallback((numberPage: number) => {
     if (perPage) {
       let start = 1;
       let end = 1;
@@ -105,13 +106,12 @@ const Pagination: React.FC<Props> = (props) => {
       }
       callback?.(numberPage, start, end);
     }
-  };
+  }, []);
   const WrapClick = (e: React.MouseEvent<HTMLDivElement>) => {
     const el = e.target as HTMLButtonElement;
     if (el.tagName.toLowerCase() === 'button') {
       const numberPage = parseInt(el.innerText, 10);
       setN(numberPage);
-      call(numberPage);
     }
   };
   //  更多被点击
@@ -122,7 +122,19 @@ const Pagination: React.FC<Props> = (props) => {
       setN(totalPage);
     }
   };
+  // 输入新的页码
+  const inputNewPageNumber = () => {
+    if (inputRef.current) {
+      const pageNumber = parseInt(inputRef.current?.value, 10);
+      if (pageNumber >= totalPage) {
+        setN(totalPage);
+      } else {
+        setN(pageNumber);
+      }
+    }
+  };
   useEffect(() => {
+    call(n);
     if (pageWrap.current) {
       const childList = Array.from(pageWrap.current.children as unknown as HTMLButtonElement[]);
       childList.forEach((item) => {
@@ -164,7 +176,7 @@ const Pagination: React.FC<Props> = (props) => {
         <Right fill="#636567" width="1.1em" height="1.1em" />
       </PageButton>
       <span>跳至</span>
-      <InputStyled value={n} onChange={(e) => setN(parseInt(e.target.value, 10))} />
+      <InputStyled defaultValue={n} ref={inputRef} onBlur={inputNewPageNumber} />
       <span>页</span>
     </PaginationStyled>
   );
