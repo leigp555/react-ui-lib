@@ -9,6 +9,8 @@ interface Props extends HTMLAttributes<HTMLDivElement> {
   defaultPage?: number;
   totalSrc: number;
   perPage?: number;
+  moreTool?: boolean;
+  goTool?: boolean;
   callback?: (currentPage: number, start: number, end: number) => void;
 }
 const PaginationStyled = styled.div`
@@ -38,7 +40,7 @@ const PageWrap = styled.div`
   gap: 8px;
 `;
 const InputStyled = styled.input`
-  max-width: 3em;
+  max-width: 4em;
   height: 2em;
   outline: none;
   border: 1px solid #d9d9d9;
@@ -49,8 +51,18 @@ const InputStyled = styled.input`
     box-shadow: 0 0 4px 1px rgba(24, 144, 255, 0.2);
   }
 `;
+type MoreProps = Pick<Props, 'moreTool' | 'goTool'>;
+const MoreStyled = styled(PageButton)`
+  display: ${(props: MoreProps) => (props.moreTool ? 'inline-flex' : 'none')};
+`;
+const GoStyled = styled.div`
+  display: ${(props: MoreProps) => (props.goTool ? 'inline-flex' : 'none')};
+  gap: 8px;
+  align-items: center;
+`;
+
 const Pagination: React.FC<Props> = (props) => {
-  const { children, perPage, callback, defaultPage, totalSrc, ...rest } = props;
+  const { children, goTool, moreTool, perPage, callback, defaultPage, totalSrc, ...rest } = props;
   const totalPage = Math.ceil(Math.abs(totalSrc!) / perPage!);
   const [n, setN] = useState(Math.abs(defaultPage! > totalPage ? 1 : defaultPage!)); // 当前处于那一页
   const pageWrap = useRef<HTMLDivElement | null>(null);
@@ -159,8 +171,9 @@ const Pagination: React.FC<Props> = (props) => {
       >
         {dom}
       </PageWrap>
-      <PageButton
+      <MoreStyled
         onClick={moreClick}
+        moreTool={moreTool}
         style={{
           cursor: n >= totalPage ? 'not-allowed' : 'pointer',
           border: 'none',
@@ -168,23 +181,27 @@ const Pagination: React.FC<Props> = (props) => {
         }}
       >
         <DoubleLeft fill="#636567" width="1.1em" height="1.1em" />
-      </PageButton>
+      </MoreStyled>
       <PageButton
         onClick={rightClick}
         style={{ cursor: n >= totalPage ? 'not-allowed' : 'pointer' }}
       >
         <Right fill="#636567" width="1.1em" height="1.1em" />
       </PageButton>
-      <span>跳至</span>
-      <InputStyled defaultValue="" ref={inputRef} onBlur={inputNewPageNumber} />
-      <span>页</span>
+      <GoStyled goTool={goTool}>
+        <span>跳至</span>
+        <InputStyled defaultValue="" ref={inputRef} onBlur={inputNewPageNumber} />
+        <span>页</span>
+      </GoStyled>
     </PaginationStyled>
   );
 };
 Pagination.defaultProps = {
   defaultPage: 1,
   callback: () => {},
-  perPage: 5
+  perPage: 5,
+  moreTool: false,
+  goTool: false
 };
 
 export default Pagination;
