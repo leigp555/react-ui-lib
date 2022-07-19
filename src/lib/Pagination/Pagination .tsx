@@ -81,7 +81,10 @@ const Pagination: React.FC<Props> = (props) => {
     if (pageWrap.current) {
       const childList = Array.from(pageWrap.current.children as unknown as HTMLButtonElement[]);
       childList.forEach((item) => {
-        if (item.innerText === n.toString()) item.style.color = 'red';
+        if (item.innerText === n.toString()) {
+          item.style.color = '#1890ff';
+          item.style.border = '1px solid #1890ff';
+        }
       });
     }
   }, [n]);

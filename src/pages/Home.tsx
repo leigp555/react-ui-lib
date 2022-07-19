@@ -15,9 +15,10 @@ const Home: React.FC = () => {
   };
   return (
     <Wrap>
-      <Pagination callback={fn} currentPage={1} totalSrc={30} />{' '}
+      <Pagination callback={fn} currentPage={1} totalSrc={1} />{' '}
+      <Pagination callback={fn} currentPage={2} totalSrc={50} />{' '}
       <Pagination callback={fn} currentPage={50} totalSrc={50} />{' '}
-      <Pagination callback={fn} currentPage={1} totalSrc={20} />
+      <Pagination callback={fn} currentPage={1} totalSrc={3} />
     </Wrap>
   );
 };
