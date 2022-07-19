@@ -1,6 +1,12 @@
 import React from 'react';
 import styled from 'styled-components';
-import Pagination from '../lib/Pagination/Pagination ';
+import Input, { Validate } from '../lib/Input/Input';
+import InputIcon from '../lib/Input/InputIcon';
+import Row from '../lib/Grid/Row';
+import Col from '../lib/Grid/Col';
+import Password from '../lib/icons/password.svg';
+import User from '../lib/icons/user.svg';
+import Eyes from '../lib/icons/eye_show.svg';
 
 const Wrap = styled.div`
   position: relative;
@@ -10,26 +16,41 @@ const Wrap = styled.div`
 `;
 
 const Home: React.FC = () => {
-  const fn = (currentPage: number, start: number, end: number) => {
-    console.log(start, end);
-  };
+  const validate: Validate[] = [
+    {
+      required: true,
+      message: '必填',
+      mode: 'onChange'
+    },
+    {
+      pattern: /\d/g,
+      message: '必须是数字',
+      mode: 'onblur'
+    }
+  ];
   return (
     <Wrap>
-      <Pagination callback={fn} defaultPage={1} totalSrc={10} perPage={5} />{' '}
-      <Pagination callback={fn} defaultPage={50} totalSrc={500} perPage={5} />{' '}
-      <Pagination callback={fn} defaultPage={1} totalSrc={500} perPage={5} />{' '}
-      <Pagination callback={fn} defaultPage={1} totalSrc={100} perPage={5} moreTool statistic />
-      <Pagination callback={fn} defaultPage={1} totalSrc={500} perPage={5} goTool />
-      <Pagination callback={fn} defaultPage={1} totalSrc={500} perPage={5} goTool moreTool />
-      <Pagination
-        callback={fn}
-        defaultPage={1}
-        totalSrc={500}
-        perPage={5}
-        goTool
-        moreTool
-        statistic
-      />
+      <Row height={30}>
+        <Col span={40} offset={20}>
+          <Input placeholder="用户名" validate={validate}>
+            <InputIcon position="left">
+              <User width="1em" height="1em" />
+            </InputIcon>
+          </Input>
+        </Col>
+      </Row>
+      <Row height={30}>
+        <Col span={40} offset={20}>
+          <Input type="password" placeholder="密码">
+            <InputIcon position="left">
+              <Password width="1em" height="1em" />
+            </InputIcon>
+            <InputIcon position="right">
+              <Eyes width="1em" height="1em" />
+            </InputIcon>
+          </Input>
+        </Col>
+      </Row>
     </Wrap>
   );
 };
