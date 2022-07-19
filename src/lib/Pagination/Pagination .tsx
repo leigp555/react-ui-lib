@@ -12,16 +12,20 @@ interface Props extends HTMLAttributes<HTMLDivElement> {
 }
 const PaginationStyled = styled.div`
   display: flex;
+  align-items: center;
   gap: 8px;
 `;
 const PageButton = styled(Button).attrs({
-  type: 'default',
-  radius: true
+  type: 'text',
+  radius: true,
+  border: 'none'
 })`
   height: 2em;
   min-width: 2em;
   padding: 0 2px;
   border: 1px solid #d9d9d9;
+  outline: none;
+  box-shadow: none;
   &:hover {
     -webkit-filter: brightness(100%);
     border: 1px solid #1890ff;
@@ -29,9 +33,21 @@ const PageButton = styled(Button).attrs({
 `;
 const PageWrap = styled.div`
   display: flex;
+  align-items: center;
   gap: 8px;
 `;
-
+const InputStyled = styled.input`
+  max-width: 3em;
+  height: 2em;
+  border: none;
+  outline: none;
+  border: 1px solid #d9d9d9;
+  border-radius: 2px;
+  padding: 10px;
+  &:focus {
+    border: 1px solid #1890ff;
+  }
+`;
 const Pagination: React.FC<Props> = (props) => {
   const { children, callback, currentPage, totalSrc, ...rest } = props;
   const [n, setN] = useState(Math.abs(currentPage!)); // 当前处于那一页
@@ -116,17 +132,23 @@ const Pagination: React.FC<Props> = (props) => {
       </PageWrap>
       <PageButton
         onClick={moreClick}
-        style={{ cursor: n >= totalSrc! ? 'not-allowed' : 'pointer', border: 'none' }}
+        style={{
+          cursor: n >= totalSrc! ? 'not-allowed' : 'pointer',
+          border: 'none',
+          backgroundColor: 'inherit'
+        }}
       >
         <DoubleLeft fill="#636567" width="1.1em" height="1.1em" />
       </PageButton>
-
       <PageButton
         onClick={rightClick}
         style={{ cursor: n >= totalSrc! ? 'not-allowed' : 'pointer' }}
       >
         <Right fill="#636567" width="1.1em" height="1.1em" />
       </PageButton>
+      <span>跳至</span>
+      <InputStyled />
+      <span>页</span>
     </PaginationStyled>
   );
 };
