@@ -11,6 +11,7 @@ interface Props extends HTMLAttributes<HTMLDivElement> {
   perPage?: number;
   moreTool?: boolean;
   goTool?: boolean;
+  statistic?: boolean;
   callback?: (currentPage: number, start: number, end: number) => void;
 }
 const PaginationStyled = styled.div`
@@ -62,7 +63,17 @@ const GoStyled = styled.div`
 `;
 
 const Pagination: React.FC<Props> = (props) => {
-  const { children, goTool, moreTool, perPage, callback, defaultPage, totalSrc, ...rest } = props;
+  const {
+    children,
+    statistic,
+    goTool,
+    moreTool,
+    perPage,
+    callback,
+    defaultPage,
+    totalSrc,
+    ...rest
+  } = props;
   const totalPage = Math.ceil(Math.abs(totalSrc!) / perPage!);
   const [n, setN] = useState(Math.abs(defaultPage! > totalPage ? 1 : defaultPage!)); // 当前处于那一页
   const pageWrap = useRef<HTMLDivElement | null>(null);
@@ -193,6 +204,13 @@ const Pagination: React.FC<Props> = (props) => {
         <InputStyled defaultValue="" ref={inputRef} onBlur={inputNewPageNumber} />
         <span>页</span>
       </GoStyled>
+      <GoStyled goTool={goTool} style={{ gap: '4px', display: statistic ? 'inline-flex' : 'none' }}>
+        <span>共</span>
+        <span>
+          {n}/{totalPage}
+        </span>
+        <span>页</span>
+      </GoStyled>
     </PaginationStyled>
   );
 };
@@ -201,6 +219,7 @@ Pagination.defaultProps = {
   callback: () => {},
   perPage: 5,
   moreTool: false,
+  statistic: false,
   goTool: false
 };
 

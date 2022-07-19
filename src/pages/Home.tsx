@@ -16,10 +16,20 @@ const Home: React.FC = () => {
   return (
     <Wrap>
       <Pagination callback={fn} defaultPage={1} totalSrc={10} perPage={5} />{' '}
-      <Pagination callback={fn} defaultPage={2} totalSrc={50} perPage={5} />{' '}
-      <Pagination callback={fn} defaultPage={1} totalSrc={50} perPage={5} />{' '}
+      <Pagination callback={fn} defaultPage={50} totalSrc={500} perPage={5} />{' '}
+      <Pagination callback={fn} defaultPage={1} totalSrc={500} perPage={5} />{' '}
+      <Pagination callback={fn} defaultPage={1} totalSrc={100} perPage={5} moreTool statistic />
       <Pagination callback={fn} defaultPage={1} totalSrc={500} perPage={5} goTool />
-      <Pagination callback={fn} defaultPage={1} totalSrc={10} perPage={5} moreTool />
+      <Pagination callback={fn} defaultPage={1} totalSrc={500} perPage={5} goTool moreTool />
+      <Pagination
+        callback={fn}
+        defaultPage={1}
+        totalSrc={500}
+        perPage={5}
+        goTool
+        moreTool
+        statistic
+      />
     </Wrap>
   );
 };
