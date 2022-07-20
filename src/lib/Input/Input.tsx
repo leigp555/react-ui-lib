@@ -45,6 +45,7 @@ const Wrap = styled.div`
 const InputWrap = styled(CommonStyle)`
   width: 100%;
   display: flex;
+  flex-direction: column;
   align-items: center;
   position: relative;
   border-radius: 2px;
@@ -96,11 +97,11 @@ const IconsRight = styled(IconCommon)`
 `;
 
 const CommonDom = styled.div`
+  width: 100%;
   position: absolute;
   bottom: 0;
   left: 0;
   transform: translateY(calc(100% + 5px));
-  width: 100%;
 `;
 const CommonPer = styled.div`
   > p {
@@ -111,7 +112,6 @@ const CommonPer = styled.div`
   display: flex;
   align-items: center;
 `;
-
 const ErrorDom = styled(CommonDom)`
   height: 1em;
   color: #ff4d4f;
@@ -190,16 +190,11 @@ const Input: React.FC<Props> = (props) => {
       const el = e.target as HTMLParagraphElement;
       setValue(el.innerText);
     };
+    const blurTip = () => {
+      setTipShow(false);
+    };
     return (
-      <Wrap
-        errors={errs}
-        onMouseOver={() => {
-          setTipShow(true);
-        }}
-        onMouseOut={() => {
-          setTipShow(false);
-        }}
-      >
+      <Wrap errors={errs}>
         <InputWrap>
           <IconsLeft>{leftNode}</IconsLeft>
           <span style={{ display: 'flex', gap: '4px' }}>
@@ -242,8 +237,11 @@ const Input: React.FC<Props> = (props) => {
             {...rest}
             value={value}
             onChange={(e) => getValue(e)}
+            onFocus={() => {
+              setTipShow(true);
+            }}
+            onBlur={blurTip}
           />
-
           <ErrorDom style={{ display: errs[0] ? 'block' : 'none' }}>
             {errs.map((item) => {
               return (
@@ -260,7 +258,7 @@ const Input: React.FC<Props> = (props) => {
                 <PerTip key={item.message + Math.random().toString()}>
                   <p
                     role="presentation"
-                    onClick={(e: React.MouseEvent<HTMLParagraphElement>) => {
+                    onMouseDown={(e: React.MouseEvent<HTMLParagraphElement>) => {
                       tipHandle(e);
                       setTipShow(false);
                     }}

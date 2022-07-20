@@ -66,7 +66,11 @@ const Home: React.FC = () => {
       </Row>
       <Row height={30}>
         <Col span={40} offset={20}>
-          <Input allowClear tips={tips} />
+          <Input allowClear tips={tips}>
+            <InputIcon position="left">
+              <Password width="1em" height="1em" />
+            </InputIcon>
+          </Input>
         </Col>
       </Row>
     </Wrap>
