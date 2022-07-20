@@ -18,13 +18,8 @@ const Wrap = styled.div`
 const Home: React.FC = () => {
   const validate: Validate[] = [
     {
-      required: true,
-      message: '必填',
-      mode: 'onChange'
-    },
-    {
-      pattern: /\d/g,
-      message: '必须是数字',
+      pattern: /^\w+$/g,
+      message: '4-10位数字',
       mode: 'onblur'
     }
   ];
@@ -32,7 +27,7 @@ const Home: React.FC = () => {
     <Wrap>
       <Row height={30}>
         <Col span={40} offset={20}>
-          <Input placeholder="用户名" validate={validate}>
+          <Input placeholder="用户名" rules={validate}>
             <InputIcon position="left">
               <User width="1em" height="1em" />
             </InputIcon>

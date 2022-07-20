@@ -15,7 +15,7 @@ export type Validate = {
 
 interface Props extends HTMLAttributes<HTMLDivElement> {
   type?: string;
-  validate?: Validate[];
+  rules?: Validate[];
   placeholder?: string;
   children?: React.ReactNode;
 }
@@ -86,7 +86,7 @@ const PerError = styled.div`
 // 5.支持清除
 
 const Input: React.FC<Props> = (props) => {
-  const { validate, children, ...rest } = props;
+  const { children, rules, ...rest } = props;
   const [value, setValue] = useState<string>('');
   const [errs, setError] = useState<string[]>([]);
   const render = () => {
@@ -103,22 +103,20 @@ const Input: React.FC<Props> = (props) => {
   };
 
   const validateFn = (newValue: string) => {
-    if (validate && validate[0]) {
-      validate.forEach((item) => {
-        if (item.pattern && !item.pattern.test(newValue)) {
-          if (errs.indexOf(item.message) < 0 && !item.pattern.test(newValue))
-            setError((state) => [...state, item.message]);
-        } else if (item.pattern && item.pattern.test(newValue)) {
-          if (errs.indexOf(item.message) >= 0) {
-            const index = errs.indexOf(item.message);
-            setError((state) => {
-              state.splice(index, 1);
-              return state;
-            });
-          }
+    rules!.forEach((item) => {
+      if (item.pattern) {
+        const reg = new RegExp(item.pattern!, 'i');
+        if (!reg.test(newValue) && errs.indexOf(item.message) < 0) {
+          setError((state) => [...state, item.message]);
+        } else if (reg.test(newValue) && errs.indexOf(item.message) >= 0) {
+          const index = errs.indexOf(item.message);
+          setError((state) => {
+            state.splice(index, 1);
+            return state;
+          });
         }
-      });
-    }
+      }
+    });
   };
   const getValue = (e: React.ChangeEvent<HTMLInputElement>) => {
     const newValue = e.target.value;
@@ -147,7 +145,7 @@ const Input: React.FC<Props> = (props) => {
 Input.defaultProps = {
   type: 'text',
   placeholder: '请输入。。。',
-  validate: [],
+  rules: [],
   children: ''
 };
 
