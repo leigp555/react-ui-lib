@@ -27,7 +27,7 @@ const Home: React.FC = () => {
     <Wrap>
       <Row height={30}>
         <Col span={40} offset={20}>
-          <Input placeholder="用户名" rules={validate}>
+          <Input placeholder="用户名" rules={validate} allowClear>
             <InputIcon position="left">
               <User width="1em" height="1em" />
             </InputIcon>
@@ -36,7 +36,7 @@ const Home: React.FC = () => {
       </Row>
       <Row height={30}>
         <Col span={40} offset={20}>
-          <Input type="password" placeholder="密码">
+          <Input type="password" placeholder="密码" allowClear>
             <InputIcon position="left">
               <Password width="1em" height="1em" />
             </InputIcon>

@@ -2,6 +2,7 @@ import React, { HTMLAttributes, ReactElement, useState } from 'react';
 import styled from 'styled-components';
 import { CommonStyle } from '../common/common';
 import ErrorIcon from '../icons/error.svg';
+import ClearIcon from '../icons/clear.svg';
 
 // 不知道react的虚拟节点什么类型所以扩充vNode类型来消除ts警告
 type VNode = ReactElement & { type: { name: string } };
@@ -17,6 +18,7 @@ interface Props extends HTMLAttributes<HTMLDivElement> {
   type?: string;
   rules?: Validate[];
   placeholder?: string;
+  allowClear?: boolean;
   children?: React.ReactNode;
 }
 
@@ -40,12 +42,18 @@ const InputWrap = styled(CommonStyle)`
   border-radius: 2px;
   background-color: #fff;
 `;
+
+type IconProp = {
+  rightPadding: number;
+  errors: string[];
+};
 const InputStyled = styled.input`
   border: none;
   outline: none;
   width: 100%;
   min-height: 2em;
-  padding: 8px 1.9em 8px 1.9em;
+  padding: ${(props: IconProp) =>
+    props.rightPadding ? `8px ${1.5 * props.rightPadding}em 8px 1.9em` : '8px 1.9em 8px 1.9em'};
   &:focus {
     outline: 2px solid ${(props: PropsStyled) => (props.errors[0] ? '#ff4d4f' : '#1890ff')};
     box-shadow: 0 0 3px 3px
@@ -67,7 +75,11 @@ const IconsLeft = styled(IconCommon)`
   left: 0;
 `;
 const IconsRight = styled(IconCommon)`
-  right: 0;
+  right: 10px;
+  gap: 5px;
+  width: 100px;
+  display: flex;
+  justify-content: end;
 `;
 const ErrorDom = styled.div`
   position: absolute;
@@ -76,7 +88,7 @@ const ErrorDom = styled.div`
   transform: translateY(calc(100% + 5px));
   width: 100%;
   height: 1.5em;
-  color: red;
+  color: #ff4d4f;
 `;
 const PerError = styled.div`
   display: flex;
@@ -92,21 +104,9 @@ const PerError = styled.div`
 // 5.支持清除
 
 const Input: React.FC<Props> = (props) => {
-  const { children, rules, ...rest } = props;
+  const { children, allowClear, rules, ...rest } = props;
   const [value, setValue] = useState<string>('');
   const [errs, setError] = useState<string[]>([]);
-  const render = () => {
-    return React.Children.map(children, (child) => {
-      const el = child as VNode;
-      if (el.props.position === 'left') {
-        return <IconsLeft>{child}</IconsLeft>;
-      }
-      if (el.props.position === 'right') {
-        return <IconsRight>{child}</IconsRight>;
-      }
-      return child;
-    });
-  };
 
   const validateFn = (newValue: string) => {
     rules!.forEach((item) => {
@@ -129,29 +129,66 @@ const Input: React.FC<Props> = (props) => {
     setValue(newValue);
     validateFn(newValue);
   };
-  return (
-    <Wrap errors={errs}>
-      <InputWrap>
-        <>{render()}</>
-        <InputStyled errors={errs} {...rest} value={value} onChange={(e) => getValue(e)} />
-        <ErrorDom>
-          {errs.map((item) => {
-            return (
-              <PerError key={item + Math.random().toString()}>
-                <ErrorIcon fill="red" width="1em" height="1em" />
-                <p>{item}</p>
-              </PerError>
-            );
-          })}
-        </ErrorDom>
-      </InputWrap>
-    </Wrap>
-  );
+  const render = () => {
+    const leftNode: VNode[] = [];
+    const rightNode: VNode[] = [];
+    const otherNode: VNode[] = [];
+    React.Children.map(children, (child) => {
+      const el = child as VNode;
+      if (el.props.position === 'left') {
+        leftNode.push(el);
+      }
+      if (el.props.position === 'right') {
+        rightNode.push(el);
+      }
+      otherNode.push(el);
+    });
+    return (
+      <Wrap errors={errs}>
+        <InputWrap>
+          <IconsLeft>{leftNode}</IconsLeft>
+          <span style={{ display: 'flex', gap: '4px' }}>
+            <IconsRight>
+              {rightNode}
+              <ClearIcon
+                style={{ display: allowClear ? 'inline' : 'none' }}
+                fill="#bfbfbf"
+                width="1em"
+                height="1em"
+                onClick={() => {
+                  setValue('');
+                }}
+              />
+            </IconsRight>
+          </span>
+          <InputStyled
+            rightPadding={rightNode.length + (allowClear ? 1 : 0)}
+            errors={errs}
+            {...rest}
+            value={value}
+            onChange={(e) => getValue(e)}
+          />
+          <ErrorDom>
+            {errs.map((item) => {
+              return (
+                <PerError key={item + Math.random().toString()}>
+                  <ErrorIcon fill="red" width="1em" height="1em" />
+                  <p>{item}</p>
+                </PerError>
+              );
+            })}
+          </ErrorDom>
+        </InputWrap>
+      </Wrap>
+    );
+  };
+  return <>{render()}</>;
 };
 Input.defaultProps = {
   type: 'text',
   placeholder: '请输入。。。',
   rules: [],
+  allowClear: false,
   children: ''
 };
 
