@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import Input, { Validate } from '../lib/Input/Input';
+import Input, { Tip, Validate } from '../lib/Input/Input';
 import InputIcon from '../lib/Input/InputIcon';
 import Row from '../lib/Grid/Row';
 import Col from '../lib/Grid/Col';
@@ -18,8 +18,18 @@ const Home: React.FC = () => {
   const validate: Validate[] = [
     {
       pattern: /^\w+$/g,
-      message: '4-10位数字xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx',
+      message: '4-10位数字',
       mode: 'onblur'
+    }
+  ];
+  const tips: Tip[] = [
+    {
+      id: 1,
+      message: 'xxx'
+    },
+    {
+      id: 2,
+      message: 'yyy'
     }
   ];
   const callback = (value: string) => {
@@ -47,7 +57,7 @@ const Home: React.FC = () => {
       </Row>
       <Row height={30}>
         <Col span={40} offset={20}>
-          <Input type="password" placeholder="密码" allowClear rules={validate}>
+          <Input type="password" placeholder="密码" allowClear>
             <InputIcon position="left">
               <Password width="1em" height="1em" />
             </InputIcon>
@@ -56,7 +66,7 @@ const Home: React.FC = () => {
       </Row>
       <Row height={30}>
         <Col span={40} offset={20}>
-          <Input allowClear />
+          <Input allowClear tips={tips} />
         </Col>
       </Row>
     </Wrap>

@@ -8,6 +8,10 @@ import EyeHidden from '../icons/eye_hidden.svg';
 
 // 不知道react的虚拟节点什么类型所以扩充vNode类型来消除ts警告
 type VNode = ReactElement & { type: { name: string } };
+export type Tip = {
+  id: number;
+  message: string;
+};
 
 export type Validate = {
   required?: boolean;
@@ -18,6 +22,7 @@ export type Validate = {
 
 interface Props extends HTMLAttributes<HTMLDivElement> {
   type?: string;
+  tips?: Tip[];
   callback?: (value: string) => void;
   rules?: Validate[];
   placeholder?: string;
@@ -89,16 +94,15 @@ const IconsRight = styled(IconCommon)`
   display: flex;
   justify-content: end;
 `;
-const ErrorDom = styled.div`
+
+const CommonDom = styled.div`
   position: absolute;
   bottom: 0;
   left: 0;
   transform: translateY(calc(100% + 5px));
   width: 100%;
-  height: 1em;
-  color: #ff4d4f;
 `;
-const PerError = styled.div`
+const CommonPer = styled.div`
   > p {
     overflow: hidden;
     white-space: nowrap;
@@ -106,8 +110,31 @@ const PerError = styled.div`
   }
   display: flex;
   align-items: center;
+`;
+
+const ErrorDom = styled(CommonDom)`
+  height: 1em;
+  color: #ff4d4f;
+`;
+const PerError = styled(CommonPer)`
   gap: 2px;
   font-size: 12px;
+`;
+const TipDom = styled(CommonDom)`
+  color: #8f8f8f;
+  padding: 8px 0;
+  background-color: #fff;
+  border-radius: 2px;
+`;
+const PerTip = styled(CommonPer)`
+  > p {
+    width: 100%;
+    padding: 10px 10px;
+  }
+
+  &:hover {
+    background-color: #f5f5f5;
+  }
 `;
 // 功能
 // 1.提示输入
@@ -117,7 +144,7 @@ const PerError = styled.div`
 // 5.支持清除
 
 const Input: React.FC<Props> = (props) => {
-  const { children, callback, type, allowClear, rules, ...rest } = props;
+  const { children, tips, callback, type, allowClear, rules, ...rest } = props;
   const [value, setValue] = useState<string>('');
   const [errs, setError] = useState<string[]>([]);
   const [inputType, setInputType] = useState<string>(type || 'text');
@@ -156,6 +183,10 @@ const Input: React.FC<Props> = (props) => {
         rightNode.push(el);
       }
     });
+    const tipHandle = (e: React.MouseEvent<HTMLParagraphElement>) => {
+      const el = e.target as HTMLParagraphElement;
+      setValue(el.innerText);
+    };
     return (
       <Wrap errors={errs}>
         <InputWrap>
@@ -201,7 +232,7 @@ const Input: React.FC<Props> = (props) => {
             value={value}
             onChange={(e) => getValue(e)}
           />
-          <ErrorDom>
+          <ErrorDom style={{ display: errs[0] ? 'block' : 'none' }}>
             {errs.map((item) => {
               return (
                 <PerError key={item + Math.random().toString()}>
@@ -211,6 +242,22 @@ const Input: React.FC<Props> = (props) => {
               );
             })}
           </ErrorDom>
+          <TipDom style={{ display: tips![0] ? 'block' : 'none' }}>
+            {tips!.map((item) => {
+              return (
+                <PerTip key={item.message + Math.random().toString()}>
+                  <p
+                    role="presentation"
+                    onClick={(e: React.MouseEvent<HTMLParagraphElement>) => {
+                      tipHandle(e);
+                    }}
+                  >
+                    {item.message}
+                  </p>
+                </PerTip>
+              );
+            })}
+          </TipDom>
         </InputWrap>
       </Wrap>
     );
@@ -221,6 +268,7 @@ Input.defaultProps = {
   type: 'text',
   placeholder: '请输入。。。',
   rules: [],
+  tips: [],
   allowClear: false,
   callback: () => {},
   children: ''
