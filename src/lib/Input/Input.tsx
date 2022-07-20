@@ -16,6 +16,7 @@ export type Validate = {
 
 interface Props extends HTMLAttributes<HTMLDivElement> {
   type?: string;
+  callback?: (value: string) => void;
   rules?: Validate[];
   placeholder?: string;
   allowClear?: boolean;
@@ -104,7 +105,7 @@ const PerError = styled.div`
 // 5.支持清除
 
 const Input: React.FC<Props> = (props) => {
-  const { children, allowClear, rules, ...rest } = props;
+  const { children, callback, allowClear, rules, ...rest } = props;
   const [value, setValue] = useState<string>('');
   const [errs, setError] = useState<string[]>([]);
 
@@ -128,6 +129,7 @@ const Input: React.FC<Props> = (props) => {
     const newValue = e.target.value;
     setValue(newValue);
     validateFn(newValue);
+    callback!(newValue);
   };
   const render = () => {
     const leftNode: VNode[] = [];
@@ -189,6 +191,7 @@ Input.defaultProps = {
   placeholder: '请输入。。。',
   rules: [],
   allowClear: false,
+  callback: () => {},
   children: ''
 };
 

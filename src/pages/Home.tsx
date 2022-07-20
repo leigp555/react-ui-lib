@@ -23,11 +23,14 @@ const Home: React.FC = () => {
       mode: 'onblur'
     }
   ];
+  const callback = (value: string) => {
+    console.log(value);
+  };
   return (
     <Wrap>
       <Row height={30}>
         <Col span={40} offset={20}>
-          <Input placeholder="用户名" rules={validate}>
+          <Input placeholder="用户名" rules={validate} callback={callback}>
             <InputIcon position="left">
               <User width="1em" height="1em" />
             </InputIcon>
@@ -45,7 +48,7 @@ const Home: React.FC = () => {
       </Row>
       <Row height={30}>
         <Col span={40} offset={20}>
-          <Input type="password" placeholder="密码" allowClear>
+          <Input type="password" placeholder="密码" allowClear rules={validate}>
             <InputIcon position="left">
               <Password width="1em" height="1em" />
             </InputIcon>
