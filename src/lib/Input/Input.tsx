@@ -48,6 +48,7 @@ const InputWrap = styled(CommonStyle)`
 
 type IconProp = {
   rightPadding: number;
+  leftPadding: number;
   errors: string[];
   type?: string;
 };
@@ -56,8 +57,11 @@ const InputStyled = styled.input.attrs((props: IconProp) => ({ type: props.type 
   outline: none;
   width: 100%;
   min-height: 2em;
-  padding: ${(props: IconProp) =>
-    props.rightPadding ? `8px ${1.65 * props.rightPadding}em 8px 1.9em` : '8px 1em 8px 1.9em'};
+  padding: ${(props: IconProp) => {
+    const leftP = props.leftPadding ? `1.9em` : '10px';
+    const rightP = props.rightPadding ? `${1.65 * props.rightPadding}em` : '10px';
+    return `8px ${rightP} 8px ${leftP}`;
+  }};
   &:focus {
     outline: 2px solid ${(props: IconProp) => (props.errors[0] ? '#ff4d4f' : '#1890ff')};
     box-shadow: 0 0 3px 3px
@@ -185,6 +189,7 @@ const Input: React.FC<Props> = (props) => {
           </span>
           <InputStyled
             rightPadding={rightNode.length + (allowClear ? 1 : 0)}
+            leftPadding={leftNode.length}
             type={inputType}
             errors={errs}
             {...rest}

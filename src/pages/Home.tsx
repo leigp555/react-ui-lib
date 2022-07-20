@@ -54,6 +54,11 @@ const Home: React.FC = () => {
           </Input>
         </Col>
       </Row>
+      <Row height={30}>
+        <Col span={40} offset={20}>
+          <Input allowClear />
+        </Col>
+      </Row>
     </Wrap>
   );
 };
