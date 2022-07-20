@@ -53,7 +53,7 @@ const InputStyled = styled.input`
   width: 100%;
   min-height: 2em;
   padding: ${(props: IconProp) =>
-    props.rightPadding ? `8px ${1.5 * props.rightPadding}em 8px 1.9em` : '8px 1.9em 8px 1.9em'};
+    props.rightPadding ? `8px ${1.65 * props.rightPadding}em 8px 1.9em` : '8px 1em 8px 1.9em'};
   &:focus {
     outline: 2px solid ${(props: PropsStyled) => (props.errors[0] ? '#ff4d4f' : '#1890ff')};
     box-shadow: 0 0 3px 3px
@@ -135,10 +135,10 @@ const Input: React.FC<Props> = (props) => {
     const otherNode: VNode[] = [];
     React.Children.map(children, (child) => {
       const el = child as VNode;
-      if (el.props.position === 'left') {
+      if (el && el.props.position && el.props.position === 'left') {
         leftNode.push(el);
       }
-      if (el.props.position === 'right') {
+      if (el && el.props.position && el.props.position === 'right') {
         rightNode.push(el);
       }
       otherNode.push(el);
