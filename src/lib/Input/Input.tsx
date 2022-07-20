@@ -20,18 +20,22 @@ interface Props extends HTMLAttributes<HTMLDivElement> {
   children?: React.ReactNode;
 }
 
+type PropsStyled = {
+  errors: string[];
+};
+
 const Wrap = styled.div`
   border-radius: 2px;
   width: 100%;
+  border: 1px solid ${(props: PropsStyled) => (props.errors[0] ? '#ff4d4f' : '#1890ff')};
   &:hover {
-    outline: 1px solid #1890ff;
+    outline: 1px solid ${(props: PropsStyled) => (props.errors[0] ? '#ff4d4f' : '#1890ff')};
   }
 `;
 const InputWrap = styled(CommonStyle)`
   width: 100%;
   display: flex;
   align-items: center;
-  border: 1px solid #d9d9d9;
   position: relative;
   border-radius: 2px;
   background-color: #fff;
@@ -43,8 +47,10 @@ const InputStyled = styled.input`
   min-height: 2em;
   padding: 8px 1.9em 8px 1.9em;
   &:focus {
-    outline: 2px solid #1890ff;
-    box-shadow: 0 0 3px 3px rgba(24, 144, 255, 0.2);
+    outline: 2px solid ${(props: PropsStyled) => (props.errors[0] ? '#ff4d4f' : '#1890ff')};
+    box-shadow: 0 0 3px 3px
+      ${(props: PropsStyled) =>
+        props.errors[0] ? 'rgba(255, 77, 79, 0.2)' : 'rgba(24, 144, 255, 0.2)'};
   }
 `;
 
@@ -80,8 +86,8 @@ const PerError = styled.div`
 `;
 // 功能
 // 1.提示输入
-// 2.验证内容
-// 3.支持icon
+// 2.验证内容 ok
+// 3.支持icon ok
 // 4.自定义border/阴影
 // 5.支持清除
 
@@ -124,10 +130,10 @@ const Input: React.FC<Props> = (props) => {
     validateFn(newValue);
   };
   return (
-    <Wrap>
+    <Wrap errors={errs}>
       <InputWrap>
         <>{render()}</>
-        <InputStyled {...rest} value={value} onChange={(e) => getValue(e)} />
+        <InputStyled errors={errs} {...rest} value={value} onChange={(e) => getValue(e)} />
         <ErrorDom>
           {errs.map((item) => {
             return (
