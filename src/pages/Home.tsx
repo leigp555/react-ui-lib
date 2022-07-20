@@ -18,7 +18,7 @@ const Home: React.FC = () => {
   const validate: Validate[] = [
     {
       pattern: /^\w+$/g,
-      message: '4-10位数字',
+      message: '4-10位数字xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx',
       mode: 'onblur'
     }
   ];

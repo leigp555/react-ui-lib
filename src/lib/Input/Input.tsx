@@ -95,10 +95,15 @@ const ErrorDom = styled.div`
   left: 0;
   transform: translateY(calc(100% + 5px));
   width: 100%;
-  height: 1.5em;
+  height: 1em;
   color: #ff4d4f;
 `;
 const PerError = styled.div`
+  > p {
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+  }
   display: flex;
   align-items: center;
   gap: 2px;
