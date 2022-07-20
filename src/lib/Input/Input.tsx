@@ -1,5 +1,6 @@
 import React, { HTMLAttributes, ReactElement, useState } from 'react';
 import styled from 'styled-components';
+import { CSSTransition } from 'react-transition-group';
 import { CommonStyle } from '../common/common';
 import ErrorIcon from '../icons/error.svg';
 import ClearIcon from '../icons/clear.svg';
@@ -43,6 +44,20 @@ const Wrap = styled.div`
   }
 `;
 const InputWrap = styled(CommonStyle)`
+  .my-node-enter {
+    opacity: 0;
+  }
+  .my-node-enter-active {
+    opacity: 1;
+    transition: opacity 300ms;
+  }
+  .my-node-exit {
+    opacity: 1;
+  }
+  .my-node-exit-active {
+    opacity: 0;
+    transition: opacity 300ms;
+  }
   width: 100%;
   display: flex;
   flex-direction: column;
@@ -252,23 +267,25 @@ const Input: React.FC<Props> = (props) => {
               );
             })}
           </ErrorDom>
-          <TipDom style={{ display: tips![0] && tipShow ? 'block' : 'none' }}>
-            {tips!.map((item) => {
-              return (
-                <PerTip key={item.message + Math.random().toString()}>
-                  <p
-                    role="presentation"
-                    onMouseDown={(e: React.MouseEvent<HTMLParagraphElement>) => {
-                      tipHandle(e);
-                      setTipShow(false);
-                    }}
-                  >
-                    {item.message}
-                  </p>
-                </PerTip>
-              );
-            })}
-          </TipDom>
+          <CSSTransition in={tipShow} timeout={300} unmountOnExit classNames="my-node">
+            <TipDom style={{ display: tips![0] ? 'block' : 'none' }}>
+              {tips!.map((item) => {
+                return (
+                  <PerTip key={item.message + Math.random().toString()}>
+                    <p
+                      role="presentation"
+                      onMouseDown={(e: React.MouseEvent<HTMLParagraphElement>) => {
+                        tipHandle(e);
+                        setTipShow(false);
+                      }}
+                    >
+                      {item.message}
+                    </p>
+                  </PerTip>
+                );
+              })}
+            </TipDom>
+          </CSSTransition>
         </InputWrap>
       </Wrap>
     );

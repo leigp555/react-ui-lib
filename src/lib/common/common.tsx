@@ -27,3 +27,20 @@ export const CommonStyle = styled.div`
   align-items: ${(props: PropsStyled) => props.aline};
   flex-direction: ${(props: PropsStyled) => props.direction};
 `;
+
+export const Action = styled.div`
+  .my-node-enter {
+    opacity: 0;
+  }
+  .my-node-enter-active {
+    opacity: 1;
+    transition: opacity 300ms;
+  }
+  .my-node-exit {
+    opacity: 1;
+  }
+  .my-node-exit-active {
+    opacity: 0;
+    transition: opacity 300ms;
+  }
+`;
