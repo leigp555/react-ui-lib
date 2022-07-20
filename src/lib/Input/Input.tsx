@@ -125,6 +125,8 @@ const TipDom = styled(CommonDom)`
   padding: 8px 0;
   background-color: #fff;
   border-radius: 2px;
+  box-shadow: 0 3px 2px 1px rgba(0, 0, 0, 0.1), 1px 0 2px 1px rgba(0, 0, 0, 0.1),
+    -1px 0 2px 1px rgba(0, 0, 0, 0.1);
 `;
 const PerTip = styled(CommonPer)`
   > p {
@@ -147,6 +149,7 @@ const Input: React.FC<Props> = (props) => {
   const { children, tips, callback, type, allowClear, rules, ...rest } = props;
   const [value, setValue] = useState<string>('');
   const [errs, setError] = useState<string[]>([]);
+  const [tipShow, setTipShow] = useState<boolean>(false);
   const [inputType, setInputType] = useState<string>(type || 'text');
 
   const validateFn = (newValue: string) => {
@@ -188,7 +191,15 @@ const Input: React.FC<Props> = (props) => {
       setValue(el.innerText);
     };
     return (
-      <Wrap errors={errs}>
+      <Wrap
+        errors={errs}
+        onMouseOver={() => {
+          setTipShow(true);
+        }}
+        onMouseOut={() => {
+          setTipShow(false);
+        }}
+      >
         <InputWrap>
           <IconsLeft>{leftNode}</IconsLeft>
           <span style={{ display: 'flex', gap: '4px' }}>
@@ -232,6 +243,7 @@ const Input: React.FC<Props> = (props) => {
             value={value}
             onChange={(e) => getValue(e)}
           />
+
           <ErrorDom style={{ display: errs[0] ? 'block' : 'none' }}>
             {errs.map((item) => {
               return (
@@ -242,7 +254,7 @@ const Input: React.FC<Props> = (props) => {
               );
             })}
           </ErrorDom>
-          <TipDom style={{ display: tips![0] ? 'block' : 'none' }}>
+          <TipDom style={{ display: tips![0] && tipShow ? 'block' : 'none' }}>
             {tips!.map((item) => {
               return (
                 <PerTip key={item.message + Math.random().toString()}>
@@ -250,6 +262,7 @@ const Input: React.FC<Props> = (props) => {
                     role="presentation"
                     onClick={(e: React.MouseEvent<HTMLParagraphElement>) => {
                       tipHandle(e);
+                      setTipShow(false);
                     }}
                   >
                     {item.message}
