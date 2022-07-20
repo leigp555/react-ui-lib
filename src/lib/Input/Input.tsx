@@ -3,6 +3,8 @@ import styled from 'styled-components';
 import { CommonStyle } from '../common/common';
 import ErrorIcon from '../icons/error.svg';
 import ClearIcon from '../icons/clear.svg';
+import EyeShow from '../icons/eye_show.svg';
+import EyeHidden from '../icons/eye_hidden.svg';
 
 // 不知道react的虚拟节点什么类型所以扩充vNode类型来消除ts警告
 type VNode = ReactElement & { type: { name: string } };
@@ -47,8 +49,9 @@ const InputWrap = styled(CommonStyle)`
 type IconProp = {
   rightPadding: number;
   errors: string[];
+  type?: string;
 };
-const InputStyled = styled.input`
+const InputStyled = styled.input.attrs((props: IconProp) => ({ type: props.type }))`
   border: none;
   outline: none;
   width: 100%;
@@ -56,9 +59,9 @@ const InputStyled = styled.input`
   padding: ${(props: IconProp) =>
     props.rightPadding ? `8px ${1.65 * props.rightPadding}em 8px 1.9em` : '8px 1em 8px 1.9em'};
   &:focus {
-    outline: 2px solid ${(props: PropsStyled) => (props.errors[0] ? '#ff4d4f' : '#1890ff')};
+    outline: 2px solid ${(props: IconProp) => (props.errors[0] ? '#ff4d4f' : '#1890ff')};
     box-shadow: 0 0 3px 3px
-      ${(props: PropsStyled) =>
+      ${(props: IconProp) =>
         props.errors[0] ? 'rgba(255, 77, 79, 0.2)' : 'rgba(24, 144, 255, 0.2)'};
   }
 `;
@@ -105,9 +108,10 @@ const PerError = styled.div`
 // 5.支持清除
 
 const Input: React.FC<Props> = (props) => {
-  const { children, callback, allowClear, rules, ...rest } = props;
+  const { children, callback, type, allowClear, rules, ...rest } = props;
   const [value, setValue] = useState<string>('');
   const [errs, setError] = useState<string[]>([]);
+  const [inputType, setInputType] = useState<string>(type || 'text');
 
   const validateFn = (newValue: string) => {
     rules!.forEach((item) => {
@@ -134,7 +138,6 @@ const Input: React.FC<Props> = (props) => {
   const render = () => {
     const leftNode: VNode[] = [];
     const rightNode: VNode[] = [];
-    const otherNode: VNode[] = [];
     React.Children.map(children, (child) => {
       const el = child as VNode;
       if (el && el.props.position && el.props.position === 'left') {
@@ -143,7 +146,6 @@ const Input: React.FC<Props> = (props) => {
       if (el && el.props.position && el.props.position === 'right') {
         rightNode.push(el);
       }
-      otherNode.push(el);
     });
     return (
       <Wrap errors={errs}>
@@ -152,6 +154,24 @@ const Input: React.FC<Props> = (props) => {
           <span style={{ display: 'flex', gap: '4px' }}>
             <IconsRight>
               {rightNode}
+              <EyeShow
+                style={{ display: inputType === 'text' && type === 'password' ? 'inline' : 'none' }}
+                fill="#bfbfbf"
+                width="1em"
+                height="1em"
+                onClick={() => {
+                  setInputType('password');
+                }}
+              />
+              <EyeHidden
+                style={{ display: inputType === 'password' ? 'inline' : 'none' }}
+                fill="#bfbfbf"
+                width="1em"
+                height="1em"
+                onClick={() => {
+                  setInputType('text');
+                }}
+              />
               <ClearIcon
                 style={{ display: allowClear ? 'inline' : 'none' }}
                 fill="#bfbfbf"
@@ -165,6 +185,7 @@ const Input: React.FC<Props> = (props) => {
           </span>
           <InputStyled
             rightPadding={rightNode.length + (allowClear ? 1 : 0)}
+            type={inputType}
             errors={errs}
             {...rest}
             value={value}

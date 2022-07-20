@@ -6,7 +6,6 @@ import Row from '../lib/Grid/Row';
 import Col from '../lib/Grid/Col';
 import Password from '../lib/icons/password.svg';
 import User from '../lib/icons/user.svg';
-import Eyes from '../lib/icons/eye_show.svg';
 
 const Wrap = styled.div`
   position: relative;
@@ -51,9 +50,6 @@ const Home: React.FC = () => {
           <Input type="password" placeholder="密码" allowClear rules={validate}>
             <InputIcon position="left">
               <Password width="1em" height="1em" />
-            </InputIcon>
-            <InputIcon position="right">
-              <Eyes width="1em" height="1em" />
             </InputIcon>
           </Input>
         </Col>
