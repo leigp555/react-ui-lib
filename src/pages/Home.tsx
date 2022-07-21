@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
-import Switch from '../lib/Switch/Switch';
+import Avatar from '../lib/Avatar/Avatar';
+import User from '../lib/icons/user.svg';
 
 const Wrap = styled.div`
   display: flex;
@@ -11,14 +12,15 @@ const Wrap = styled.div`
 `;
 
 const Home: React.FC = () => {
-  const onChange = (checked: boolean) => {
-    console.log(checked);
-  };
   return (
     <Wrap>
-      <Switch defaultChecked callback={onChange} />
-      <Switch callback={onChange} />
-      <Switch onColor="red" offColor="orange" callback={onChange} defaultChecked />
+      <Avatar size={40}>
+        <User width="5em" height="5em" />
+      </Avatar>
+      <Avatar src="https://joeschmoe.io/api/v1/random" size={64} />
+      <Avatar size={100}>
+        <User width="2em" height="2em" />
+      </Avatar>
     </Wrap>
   );
 };
