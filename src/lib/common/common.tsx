@@ -44,3 +44,7 @@ export const Action = styled.div`
     transition: opacity 300ms;
   }
 `;
+
+export const BoxShadow = styled.div`
+  box-shadow: 0 2px 4px #00230b33;
+`;

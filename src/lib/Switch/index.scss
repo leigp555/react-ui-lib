@@ -1,0 +1,22 @@
+.gulu-switch {
+  width: 44px;
+  height: 22px;
+  border-radius: 11px;
+  border: none;
+  position: relative;
+  > .gulu-switch-inner {
+    display: block;
+    background-color: #ffffff;
+    width: 18px;
+    height: 18px;
+    border-radius: 9px;
+    position: absolute;
+    left: 3px;
+    top: 2px;
+    transition: all 250ms;
+  }
+
+  > .gulu-switch-on {
+    transform: translateX(calc(38px - 100%));
+  }
+}
