@@ -18,7 +18,6 @@ export type Validate = {
   required?: boolean;
   pattern?: RegExp;
   message: string;
-  mode: 'onChange' | 'onblur';
 };
 
 interface Props extends HTMLAttributes<HTMLDivElement> {
@@ -109,6 +108,7 @@ const IconsRight = styled(IconCommon)`
   width: 100px;
   display: flex;
   justify-content: end;
+  cursor: pointer;
 `;
 
 const CommonDom = styled.div`

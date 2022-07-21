@@ -5,7 +5,7 @@ type PropsStyled = {
   bgc?: string;
   height?: number | string;
   width?: number | string;
-  gap?: number;
+  gap?: number | string;
   alignSelf?: 'center' | 'start' | 'end';
   justifySelf?: 'center' | 'start' | 'end' | 'space-between' | 'space-around';
   justify?: 'center' | 'start' | 'end' | 'space-between' | 'space-around';
@@ -22,7 +22,7 @@ export const CommonStyle = styled.div`
     typeof props.width === 'number' ? `${props.width}px` : props.width};
   align-self: ${(props: PropsStyled) => props.alignSelf};
   justify-self: ${(props: PropsStyled) => props.justifySelf};
-  gap: ${(props: PropsStyled) => `${props.gap}px`};
+  gap: ${(props: PropsStyled) => (typeof props.gap === 'number' ? `${props.gap}px` : props.gap)};
   justify-content: ${(props: PropsStyled) => props.justify};
   align-items: ${(props: PropsStyled) => props.aline};
   flex-direction: ${(props: PropsStyled) => props.direction};
