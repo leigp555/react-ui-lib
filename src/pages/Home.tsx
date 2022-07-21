@@ -27,11 +27,11 @@ const Home: React.FC = () => {
     username: '',
     password: ''
   });
-  const username = (value: string) => {
-    setUser((state) => ({ ...state, username: value }));
+  const username = (value: string, err: string) => {
+    if (!err) setUser((state) => ({ ...state, username: value }));
   };
-  const password = (value: string) => {
-    setUser((state) => ({ ...state, password: value }));
+  const password = (value: string, err: string) => {
+    if (!err) setUser((state) => ({ ...state, password: value }));
   };
   return (
     <Wrap>
