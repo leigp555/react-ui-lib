@@ -23,7 +23,7 @@ export type Validate = {
 interface Props extends HTMLAttributes<HTMLDivElement> {
   type?: string;
   tips?: Tip[];
-  callback?: (value: string, error: string) => void;
+  callback?: (value: string, error: string[]) => void;
   rules?: Validate[];
   placeholder?: string;
   allowClear?: boolean;
@@ -173,11 +173,16 @@ const Input: React.FC<Props> = (props) => {
         const reg = new RegExp(item.pattern!, 'i');
         if (!reg.test(newValue)) {
           // 验证不通过
-          callback!('', item.message);
-          if (errs.indexOf(item.message) < 0) setError((state) => [...state, item.message]);
+          if (errs.indexOf(item.message) < 0) {
+            const arr = [...errs, item.message];
+            callback!(newValue, arr);
+            setError((state) => {
+              return [...state, item.message];
+            });
+          }
         } else {
           // 验证通过
-          callback!(newValue, '');
+          callback!(newValue, errs);
           if (errs.indexOf(item.message) >= 0) {
             const index = errs.indexOf(item.message);
             setError((state) => {
@@ -188,7 +193,7 @@ const Input: React.FC<Props> = (props) => {
         }
       });
     } else {
-      callback!(newValue, '');
+      callback!(newValue, []);
     }
   };
   const getValue = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -247,7 +252,7 @@ const Input: React.FC<Props> = (props) => {
                 height="1em"
                 onClick={() => {
                   setValue('');
-                  callback!('', '');
+                  callback!('', []);
                 }}
               />
             </IconsRight>
