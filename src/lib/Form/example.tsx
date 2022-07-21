@@ -1,5 +1,5 @@
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
-import React, { useState } from 'react';
+import React from 'react';
 // import styled from 'styled-components';
 // import Input, { Validate } from '../lib/Input/Input';
 // import InputIcon from '../lib/Input/InputIcon';
@@ -24,37 +24,28 @@ import React, { useState } from 'react';
 //       message: '4-10位数字'
 //     }
 //   ];
-//   const [user, setUser] = useState<{ username: string; password: string }>({
-//     password: '',
-//     username: ''
-//   });
-//   const username = (value: string) => {
-//     setUser((state) => ({ ...state, username: value }));
-//   };
-//   const password = (value: string) => {
-//     setUser((state) => ({ ...state, password: value }));
+//   const onFinish = (values: any) => {
+//     console.log(values);
 //   };
 //   return (
 //     <Wrap>
-//       <Form>
-//         <FormItem>
-//           <Input placeholder="用户名" rules={validate} allowClear callback={username}>
+//       <Form onFinish={onFinish}>
+//         <FormItem label="username" rules={validate}>
+//           <Input placeholder="用户名" allowClear>
 //             <InputIcon position="left">
 //               <User width="1em" height="1em" />
 //             </InputIcon>
 //           </Input>
 //         </FormItem>
-//         <FormItem>
-//           <Input type="password" placeholder="密码" allowClear callback={password}>
+//         <FormItem label="password" rules={validate}>
+//           <Input type="password" placeholder="密码" allowClear>
 //             <InputIcon position="left">
 //               <Password width="1em" height="1em" />
 //             </InputIcon>
 //           </Input>
 //         </FormItem>
 //         <FormItem>
-//           <Button style={{ width: '100%' }} onClick={() => console.log(user)}>
-//             提交
-//           </Button>
+//           <Button style={{ width: '100%' }}>提交</Button>
 //         </FormItem>
 //       </Form>
 //     </Wrap>
