@@ -21,6 +21,12 @@ const Home: React.FC = () => {
       <Avatar size={100}>
         <User width="2em" height="2em" />
       </Avatar>
+      <Avatar size={100} bgc="#1890ff">
+        <User width="2em" height="2em" />
+      </Avatar>
+      <Avatar size={100} bgc="inherit">
+        <User width="2em" height="2em" />
+      </Avatar>
     </Wrap>
   );
 };

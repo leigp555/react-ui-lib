@@ -7,10 +7,12 @@ interface Props extends HTMLAttributes<HTMLDivElement> {
   icon?: ReactNode;
   src?: string;
   children?: React.ReactNode;
+  bgc?: string;
 }
 
 type PropsStyled = {
   size: number;
+  bgc?: string;
 };
 
 const AvatarStyled = styled.div`
@@ -19,7 +21,7 @@ const AvatarStyled = styled.div`
   display: inline-flex;
   justify-content: center;
   align-items: center;
-  background-color: #cccccc;
+  background-color: ${(props: PropsStyled) => props.bgc};
 `;
 
 const Avatar: React.FC<Props> = (props) => {
@@ -55,6 +57,7 @@ Avatar.defaultProps = {
   size: 40,
   icon: '',
   src: '',
+  bgc: '#cccccc',
   children: ''
 };
 
