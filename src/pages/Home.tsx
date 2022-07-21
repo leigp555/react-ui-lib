@@ -24,8 +24,8 @@ const Home: React.FC = () => {
     }
   ];
   const [user, setUser] = useState<{ username: string; password: string }>({
-    password: '',
-    username: ''
+    username: '',
+    password: ''
   });
   const username = (value: string) => {
     setUser((state) => ({ ...state, username: value }));

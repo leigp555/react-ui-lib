@@ -240,6 +240,7 @@ const Input: React.FC<Props> = (props) => {
                 height="1em"
                 onClick={() => {
                   setValue('');
+                  callback!('');
                 }}
               />
             </IconsRight>
