@@ -168,26 +168,29 @@ const Input: React.FC<Props> = (props) => {
   const [inputType, setInputType] = useState<string>(type || 'text');
 
   const validateFn = (newValue: string) => {
-    rules!.forEach((item) => {
-      if (item.pattern) {
-        const reg = new RegExp(item.pattern!, 'i');
-        if (!reg.test(newValue) && errs.indexOf(item.message) < 0) {
-          setError((state) => [...state, item.message]);
-        } else if (reg.test(newValue) && errs.indexOf(item.message) >= 0) {
-          const index = errs.indexOf(item.message);
-          setError((state) => {
-            state.splice(index, 1);
-            return state;
-          });
+    if (rules![0]) {
+      rules!.forEach((item) => {
+        if (item.pattern) {
+          const reg = new RegExp(item.pattern!, 'i');
+          if (!reg.test(newValue) && errs.indexOf(item.message) < 0) {
+            setError((state) => [...state, item.message]);
+          } else if (reg.test(newValue) && errs.indexOf(item.message) >= 0) {
+            const index = errs.indexOf(item.message);
+            setError((state) => {
+              state.splice(index, 1);
+              return state;
+            });
+          }
         }
-      }
-    });
+      });
+    } else {
+      callback!(newValue);
+    }
   };
   const getValue = (e: React.ChangeEvent<HTMLInputElement>) => {
     const newValue = e.target.value;
     setValue(newValue);
     validateFn(newValue);
-    callback!(newValue);
   };
   const render = () => {
     const leftNode: VNode[] = [];
