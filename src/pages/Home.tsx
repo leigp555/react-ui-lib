@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
-import { Radio } from '../lib/Radio/Radio';
+import Radio from '../lib/Radio/Radio';
+import RadioItem from '../lib/Radio/RadioItem';
 
 const Wrap = styled.div`
   position: relative;
@@ -12,18 +13,30 @@ const Wrap = styled.div`
 
 const Home: React.FC = () => {
   const [value, setValue] = useState(2);
+  const [value2, setValue2] = useState(4);
   const callback = (num: number) => {
-    console.log(num);
+    console.log('xx', num);
     setValue(num);
+  };
+  const callback2 = (num: number) => {
+    console.log('yy', num);
+    setValue2(num);
   };
   return (
     <Wrap>
-      <Radio.Group callback={callback} value={value}>
-        <Radio.Item value={1}>A</Radio.Item>
-        <Radio.Item value={2}>B</Radio.Item>
-        <Radio.Item value={3}>C</Radio.Item>
-        <Radio.Item value={4}>D</Radio.Item>
-      </Radio.Group>
+      <Radio callback={callback} value={value} direction="row">
+        <RadioItem value={1}>A</RadioItem>
+        <RadioItem value={2}>B</RadioItem>
+        <RadioItem value={3}>C</RadioItem>
+        <RadioItem value={4}>D</RadioItem>
+      </Radio>
+      <Radio callback={callback2} value={value2} direction="column">
+        <RadioItem value={1}>A</RadioItem>
+        <RadioItem value={2}>B</RadioItem>
+        <RadioItem value={3}>C</RadioItem>
+        <RadioItem value={4}>D</RadioItem>
+        <RadioItem value={5}>E</RadioItem>
+      </Radio>
     </Wrap>
   );
 };
