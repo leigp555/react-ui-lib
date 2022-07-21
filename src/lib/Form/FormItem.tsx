@@ -36,9 +36,14 @@ const FormItem: React.FC<Props> = (props) => {
     [haveErr, user]
   );
   const buttonClick = useCallback(() => {
-    console.log(haveErr);
-
-    if (haveErr[0]) {
+    let err = false;
+    // eslint-disable-next-line guard-for-in,no-restricted-syntax
+    for (const key in haveErr) {
+      if (haveErr[key][0]) {
+        err = true;
+      }
+    }
+    if (err) {
       finishCallback({ fail: haveErr });
     } else {
       finishCallback({ success: user });
