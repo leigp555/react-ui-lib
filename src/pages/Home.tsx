@@ -7,6 +7,7 @@ const Wrap = styled.div`
   flex-direction: column;
   gap: 100px;
   height: 400px;
+  width: 200px;
 `;
 
 const Home: React.FC = () => {
@@ -14,7 +15,9 @@ const Home: React.FC = () => {
     <Wrap>
       <Progress percent={40} />
       <Progress percent={60} finishColor="red" undoneColor="green" />
+      <Progress type="circle" percent={60} finishColor="red" undoneColor="green" />
       <Progress
+        type="circle"
         percent={60}
         finishColor="red"
         undoneColor="green"
