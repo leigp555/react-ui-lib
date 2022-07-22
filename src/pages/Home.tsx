@@ -1,33 +1,69 @@
-import React, { useState } from 'react';
+import React from 'react';
 import styled from 'styled-components';
-import Skeleton from '../lib/Skeleton/Skeleton';
-import SkeletonItem from '../lib/Skeleton/SkeletonItem';
+import Result from '../lib/Result/Result';
 import Button from '../lib/Button/Button';
 
 const Wrap = styled.div`
   display: flex;
   flex-direction: column;
   gap: 100px;
+  height: 400px;
 `;
 
 const Home: React.FC = () => {
-  const [loading, setLoading] = useState<boolean>(true);
   return (
-    <Wrap>
-      <Button onClick={() => setLoading(!loading)}>{loading ? '正在加载' : '已加载'}</Button>
-      <Skeleton loading={loading} active>
-        <SkeletonItem height={60} span={50} offset={20} />
-        <SkeletonItem span={50} offset={10} />
-        <SkeletonItem span={50} offset={10} />
-        <SkeletonItem span={50} offset={10} />
-      </Skeleton>
-      <Skeleton>
-        <SkeletonItem span={20} offset={0} />
-        <SkeletonItem span={80} offset={0} />
-        <SkeletonItem span={60} offset={0} />
-        <SkeletonItem span={100} offset={0} />
-      </Skeleton>
-    </Wrap>
+    <>
+      <Wrap>
+        <Result
+          status="success"
+          title="Successfully Purchased Cloud Server ECS!"
+          subTitle="Order number: 2017182818828182881 Cloud server configuration takes 1-5 minutes, please wait."
+        >
+          <Button type="primary" key="console">
+            Back
+          </Button>
+          <Button key="buy">Next</Button>
+        </Result>
+      </Wrap>
+      <Wrap>
+        <Result
+          status="warning"
+          title="Your operation has been executed"
+          subTitle="Order number: 2017182818828182881 Cloud server configuration takes 1-5 minutes, please wait."
+        >
+          <Button type="primary" key="console">
+            Back
+          </Button>
+          <Button key="buy">Close</Button>
+        </Result>
+      </Wrap>
+      <Wrap>
+        <Result
+          gap={40}
+          status="error"
+          title="There are some problems with your operation"
+          subTitle="Order number: 2017182818828182881 Cloud server configuration takes 1-5 minutes, please wait."
+        >
+          <Button type="primary" key="console">
+            Back
+          </Button>
+          <Button key="buy">Close</Button>
+        </Result>
+      </Wrap>
+      <Wrap>
+        <Result
+          gap={20}
+          status="404"
+          title="Your operation has been executed"
+          subTitle="Order number: 2017182818828182881 Cloud server configuration takes 1-5 minutes, please wait."
+        >
+          <Button type="primary" key="console">
+            Back
+          </Button>
+          <Button key="buy">Close</Button>
+        </Result>
+      </Wrap>
+    </>
   );
 };
 
