@@ -14,6 +14,12 @@ const Home: React.FC = () => {
     <Wrap>
       <Progress percent={40} />
       <Progress percent={60} finishColor="red" undoneColor="green" />
+      <Progress
+        percent={60}
+        finishColor="red"
+        undoneColor="green"
+        format={(percent) => `${percent} Days`}
+      />
     </Wrap>
   );
 };

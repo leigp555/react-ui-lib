@@ -6,6 +6,7 @@ interface Props extends HTMLAttributes<HTMLDivElement> {
   percent: number;
   finishColor?: string;
   undoneColor?: string;
+  format?: (num: number) => string;
   children?: React.ReactNode;
 }
 
@@ -40,7 +41,7 @@ const ProgressStyled = styled.div`
   }
 `;
 const Progress: React.FC<Props> = (props) => {
-  const { children, percent, finishColor, undoneColor, ...rest } = props;
+  const { children, percent, finishColor, undoneColor, format, ...rest } = props;
   return (
     <div>
       <Wrap>
@@ -52,7 +53,9 @@ const Progress: React.FC<Props> = (props) => {
         >
           <div className="shadow" />
         </ProgressStyled>
-        <div className="inner" style={{ fontWeight: 700 }}>{`${percent}%`}</div>
+        <div className="inner" style={{ fontWeight: 700, whiteSpace: 'nowrap' }}>
+          {format!(percent)}
+        </div>
       </Wrap>
     </div>
   );
@@ -60,7 +63,8 @@ const Progress: React.FC<Props> = (props) => {
 Progress.defaultProps = {
   children: '',
   finishColor: '#1890ff',
-  undoneColor: '#666666'
+  undoneColor: '#666666',
+  format: (num: number) => `${num}%`
 };
 
 export default Progress;
