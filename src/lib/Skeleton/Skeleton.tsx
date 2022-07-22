@@ -5,16 +5,24 @@ import { CommonStyle } from '../common/common';
 interface Props extends HTMLAttributes<HTMLDivElement> {
   children?: React.ReactNode;
   gap?: number;
+  loading?: boolean;
+  active?: boolean;
 }
+
 const SkeletonStyled = styled(CommonStyle)`
-  display: flex;
   flex-direction: column;
 `;
 const Skeleton: React.FC<Props> = (props) => {
-  const { children, ...rest } = props;
-  return <SkeletonStyled {...rest}>{children}</SkeletonStyled>;
+  const { children, active, loading, ...rest } = props;
+  return (
+    <SkeletonStyled style={{ display: loading ? 'flex' : 'none' }} {...rest}>
+      {children}
+    </SkeletonStyled>
+  );
 };
 Skeleton.defaultProps = {
+  loading: true,
+  active: true,
   children: '',
   gap: 10
 };
