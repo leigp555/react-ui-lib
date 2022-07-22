@@ -2,6 +2,8 @@ import React, { HTMLAttributes, ReactElement, useEffect, useState } from 'react'
 import styled from 'styled-components';
 import { CSSTransition, TransitionGroup } from 'react-transition-group';
 import './index.scss';
+import LeftIcon from '../icons/left.svg';
+import RightIcon from '../icons/right.svg';
 
 interface Props extends HTMLAttributes<HTMLDivElement> {
   dot?: boolean;
@@ -44,6 +46,29 @@ const SpanRadius = styled.span`
     props.selfOrder === props.currentOrder ? 'orange' : '#fff'};
 `;
 
+const CommonDot = styled.div`
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background-color: transparent;
+  cursor: pointer;
+  &:hover {
+    background-color: #fff;
+  }
+  width: 2em;
+  height: 2em;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+`;
+const LeftDot = styled(CommonDot)`
+  left: 10px;
+`;
+const RightDot = styled(CommonDot)`
+  right: 10px;
+`;
+
 const Carousel: React.FC<Props> = (props) => {
   const { children, dot, ...rest } = props;
   const [index, setIndex] = useState<number>(1);
@@ -59,7 +84,7 @@ const Carousel: React.FC<Props> = (props) => {
         }
         return state;
       });
-    }, 3000);
+    }, 10000);
     return () => {
       window.clearInterval(time);
     };
@@ -90,6 +115,24 @@ const Carousel: React.FC<Props> = (props) => {
       setIndex(newOrder);
     }
   };
+  const clickLeftIcon = () => {
+    if (index > 1) {
+      setIndex((state) => {
+        return state - 1;
+      });
+    } else {
+      setIndex(kids.length);
+    }
+  };
+  const clickRightIcon = () => {
+    if (index <= kids.length - 1) {
+      setIndex((state) => {
+        return state + 1;
+      });
+    } else {
+      setIndex(1);
+    }
+  };
   return (
     <CarouselStyled {...rest}>
       <TransitionGroup mode="out-in">
@@ -100,6 +143,12 @@ const Carousel: React.FC<Props> = (props) => {
       <SpanWrap onClick={(e: React.MouseEvent<HTMLDivElement>) => selectedIndex(e)} dot={dot!}>
         {createSpan()}
       </SpanWrap>
+      <LeftDot onClick={clickLeftIcon}>
+        <LeftIcon width="1.1em" height="1.1em" />
+      </LeftDot>
+      <RightDot onClick={clickRightIcon}>
+        <RightIcon width="1.1em" height="1.1em" />
+      </RightDot>
     </CarouselStyled>
   );
 };
