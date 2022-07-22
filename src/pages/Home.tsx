@@ -1,7 +1,7 @@
-import React from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
-import Carousel from '../lib/Carousel/Carousel ';
-import CarouselItem from '../lib/Carousel/CarouselItem';
+import Loading from '../lib/Loading/Loading';
+import Button from '../lib/Button/Button';
 
 const Wrap = styled.div`
   display: flex;
@@ -10,53 +10,27 @@ const Wrap = styled.div`
 `;
 
 const Home: React.FC = () => {
-  const contentStyle: React.CSSProperties = {
-    height: '160px',
-    color: '#fff',
-    lineHeight: '160px',
-    textAlign: 'center',
-    background: '#364d79'
-  };
-  const fn = (num: number) => {
-    console.log('num1', num);
-  };
-  const fn2 = (num: number) => {
-    console.log('num2', num);
-  };
+  const [loading, setLoading] = useState(true);
   return (
     <Wrap>
-      <div style={{ width: '350px', height: '164px' }}>
-        <Carousel dot callback={fn} autoPlay={false}>
-          <CarouselItem order={1}>
-            <h3 style={contentStyle}>1</h3>
-          </CarouselItem>
-          <CarouselItem order={2}>
-            <h3 style={contentStyle}>2</h3>
-          </CarouselItem>
-          <CarouselItem order={3}>
-            <h3 style={contentStyle}>3</h3>
-          </CarouselItem>
-          <CarouselItem order={4}>
-            <h3 style={contentStyle}>4</h3>
-          </CarouselItem>
-        </Carousel>
-      </div>
-      <div style={{ width: '350px', height: '164px' }}>
-        <Carousel dot callback={fn2}>
-          <CarouselItem order={1}>
-            <h3 style={contentStyle}>1</h3>
-          </CarouselItem>
-          <CarouselItem order={2}>
-            <h3 style={contentStyle}>2</h3>
-          </CarouselItem>
-          <CarouselItem order={3}>
-            <h3 style={contentStyle}>3</h3>
-          </CarouselItem>
-          <CarouselItem order={4}>
-            <h3 style={contentStyle}>4</h3>
-          </CarouselItem>
-        </Carousel>
-      </div>
+      <Loading loading={loading}>
+        <p>
+          Lorem ipsum dolor sit amet, consectetur adipisicing elit. A aliquam beatae cum, delectus
+          dolore doloribus ducimus eveniet explicabo iusto labore numquam quae quaerat quis
+          recusandae reprehenderit sapiente, suscipit totam velit.
+        </p>
+        <p>
+          Lorem ipsum dolor sit amet, consectetur adipisicing elit. A aliquam beatae cum, delectus
+          dolore doloribus ducimus eveniet explicabo iusto labore numquam quae quaerat quis
+          recusandae reprehenderit sapiente, suscipit totam velit.
+        </p>
+        <p>
+          Lorem ipsum dolor sit amet, consectetur adipisicing elit. A aliquam beatae cum, delectus
+          dolore doloribus ducimus eveniet explicabo iusto labore numquam quae quaerat quis
+          recusandae reprehenderit sapiente, suscipit totam velit.
+        </p>
+      </Loading>
+      <Button onClick={() => setLoading(!loading)}>{loading ? '加载中' : ' 未加载'}</Button>
     </Wrap>
   );
 };
