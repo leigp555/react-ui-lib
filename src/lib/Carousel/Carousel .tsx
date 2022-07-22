@@ -14,8 +14,14 @@ interface Props extends HTMLAttributes<HTMLDivElement> {
 type VNode = ReactElement & { type: { name: string } };
 
 const CarouselStyled = styled.div`
-  position: absolute;
+  position: relative;
   overflow: hidden;
+  width: 100%;
+  height: 100%;
+`;
+
+const ActionWrap = styled.div`
+  position: absolute;
   top: 0;
   left: 0;
   width: 100%;
@@ -142,11 +148,13 @@ const Carousel: React.FC<Props> = (props) => {
   };
   return (
     <CarouselStyled {...rest}>
-      <TransitionGroup mode="out-in">
-        <CSSTransition appear key={Math.random().toString()} classNames="btn" timeout={1000}>
-          <div>{render()}</div>
-        </CSSTransition>
-      </TransitionGroup>
+      <ActionWrap>
+        <TransitionGroup mode="out-in">
+          <CSSTransition appear key={Math.random().toString()} classNames="btn" timeout={1000}>
+            <div>{render()}</div>
+          </CSSTransition>
+        </TransitionGroup>
+      </ActionWrap>
       <SpanWrap onClick={(e: React.MouseEvent<HTMLDivElement>) => selectedIndex(e)} dot={dot!}>
         {createSpan()}
       </SpanWrap>

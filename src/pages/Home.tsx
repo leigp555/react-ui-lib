@@ -18,11 +18,14 @@ const Home: React.FC = () => {
     background: '#364d79'
   };
   const fn = (num: number) => {
-    console.log(num);
+    console.log('num1', num);
+  };
+  const fn2 = (num: number) => {
+    console.log('num2', num);
   };
   return (
     <Wrap>
-      <div style={{ position: 'relative', width: '350px', height: '164px' }}>
+      <div style={{ width: '350px', height: '164px' }}>
         <Carousel dot callback={fn}>
           <CarouselItem order={1}>
             <h3 style={contentStyle}>1</h3>
@@ -38,8 +41,8 @@ const Home: React.FC = () => {
           </CarouselItem>
         </Carousel>
       </div>
-      <div style={{ position: 'relative', width: '350px', height: '164px' }}>
-        <Carousel dot>
+      <div style={{ width: '350px', height: '164px' }}>
+        <Carousel dot callback={fn2}>
           <CarouselItem order={1}>
             <h3 style={contentStyle}>1</h3>
           </CarouselItem>
