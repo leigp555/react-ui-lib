@@ -7,6 +7,7 @@ import RightIcon from '../icons/right.svg';
 
 interface Props extends HTMLAttributes<HTMLDivElement> {
   dot?: boolean;
+  autoPlay?: boolean;
   callback?: (index: number) => void;
   children?: React.ReactNode;
 }
@@ -77,22 +78,25 @@ const RightDot = styled(CommonDot)`
 `;
 
 const Carousel: React.FC<Props> = (props) => {
-  const { children, callback, dot, ...rest } = props;
+  const { children, autoPlay, callback, dot, ...rest } = props;
   const [index, setIndex] = useState<number>(1);
   const kids = children as ReactElement[];
   useEffect(() => {
     const len = kids.length;
-    const time = setInterval(() => {
-      setIndex((state) => {
-        if (state >= len) {
-          state = 1;
-        } else {
-          state += 1;
-        }
-        callback!(state);
-        return state;
-      });
-    }, 4000);
+    let time: number;
+    if (autoPlay) {
+      time = window.setInterval(() => {
+        setIndex((state) => {
+          if (state >= len) {
+            state = 1;
+          } else {
+            state += 1;
+          }
+          callback!(state);
+          return state;
+        });
+      }, 4000);
+    }
     return () => {
       window.clearInterval(time);
     };
@@ -169,6 +173,7 @@ const Carousel: React.FC<Props> = (props) => {
 };
 Carousel.defaultProps = {
   dot: true,
+  autoPlay: true,
   callback: () => {},
   children: []
 };

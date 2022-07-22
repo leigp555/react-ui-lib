@@ -26,7 +26,7 @@ const Home: React.FC = () => {
   return (
     <Wrap>
       <div style={{ width: '350px', height: '164px' }}>
-        <Carousel dot callback={fn}>
+        <Carousel dot callback={fn} autoPlay={false}>
           <CarouselItem order={1}>
             <h3 style={contentStyle}>1</h3>
           </CarouselItem>
