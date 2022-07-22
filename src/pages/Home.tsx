@@ -7,8 +7,6 @@ const Wrap = styled.div`
   display: flex;
   flex-direction: column;
   gap: 20px;
-  position: relative;
-  width: 350px;
 `;
 
 const Home: React.FC = () => {
@@ -21,20 +19,38 @@ const Home: React.FC = () => {
   };
   return (
     <Wrap>
-      <Carousel>
-        <CarouselItem order={1}>
-          <h3 style={contentStyle}>1</h3>
-        </CarouselItem>
-        <CarouselItem order={2}>
-          <h3 style={contentStyle}>2</h3>
-        </CarouselItem>
-        <CarouselItem order={3}>
-          <h3 style={contentStyle}>3</h3>
-        </CarouselItem>
-        <CarouselItem order={4}>
-          <h3 style={contentStyle}>4</h3>
-        </CarouselItem>
-      </Carousel>
+      <div style={{ position: 'relative', width: '350px', height: '164px' }}>
+        <Carousel dot>
+          <CarouselItem order={1}>
+            <h3 style={contentStyle}>1</h3>
+          </CarouselItem>
+          <CarouselItem order={2}>
+            <h3 style={contentStyle}>2</h3>
+          </CarouselItem>
+          <CarouselItem order={3}>
+            <h3 style={contentStyle}>3</h3>
+          </CarouselItem>
+          <CarouselItem order={4}>
+            <h3 style={contentStyle}>4</h3>
+          </CarouselItem>
+        </Carousel>
+      </div>
+      <div style={{ position: 'relative', width: '350px', height: '164px' }}>
+        <Carousel dot>
+          <CarouselItem order={1}>
+            <h3 style={contentStyle}>1</h3>
+          </CarouselItem>
+          <CarouselItem order={2}>
+            <h3 style={contentStyle}>2</h3>
+          </CarouselItem>
+          <CarouselItem order={3}>
+            <h3 style={contentStyle}>3</h3>
+          </CarouselItem>
+          <CarouselItem order={4}>
+            <h3 style={contentStyle}>4</h3>
+          </CarouselItem>
+        </Carousel>
+      </div>
     </Wrap>
   );
 };

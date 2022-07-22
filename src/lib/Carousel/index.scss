@@ -8,17 +8,10 @@
   transform: translateX(0);
   transition: all 1s ease
 }
-
-.box-enter, .btn-appear {
-  opacity: 0;
-  transform: scale(0.6)
-}
-
 .btn-exit {
   opacity: 1;
   transform: translateX(0)
 }
-
 .btn-exit-active {
   opacity: 0;
   transform: translateX(-100%);
