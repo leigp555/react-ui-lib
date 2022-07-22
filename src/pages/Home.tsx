@@ -17,10 +17,13 @@ const Home: React.FC = () => {
     textAlign: 'center',
     background: '#364d79'
   };
+  const fn = (num: number) => {
+    console.log(num);
+  };
   return (
     <Wrap>
       <div style={{ position: 'relative', width: '350px', height: '164px' }}>
-        <Carousel dot>
+        <Carousel dot callback={fn}>
           <CarouselItem order={1}>
             <h3 style={contentStyle}>1</h3>
           </CarouselItem>

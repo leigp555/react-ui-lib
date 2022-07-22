@@ -7,6 +7,7 @@ import RightIcon from '../icons/right.svg';
 
 interface Props extends HTMLAttributes<HTMLDivElement> {
   dot?: boolean;
+  callback?: (index: number) => void;
   children?: React.ReactNode;
 }
 // 不知道react的虚拟节点什么类型所以扩充vNode类型来消除ts警告
@@ -70,7 +71,7 @@ const RightDot = styled(CommonDot)`
 `;
 
 const Carousel: React.FC<Props> = (props) => {
-  const { children, dot, ...rest } = props;
+  const { children, callback, dot, ...rest } = props;
   const [index, setIndex] = useState<number>(1);
   const kids = children as ReactElement[];
   useEffect(() => {
@@ -82,9 +83,10 @@ const Carousel: React.FC<Props> = (props) => {
         } else {
           state += 1;
         }
+        callback!(state);
         return state;
       });
-    }, 10000);
+    }, 4000);
     return () => {
       window.clearInterval(time);
     };
@@ -113,23 +115,28 @@ const Carousel: React.FC<Props> = (props) => {
     if (el.tagName.toLowerCase() === 'span') {
       const newOrder = parseInt(el.getAttribute('data-order') || '1', 10);
       setIndex(newOrder);
+      callback!(newOrder);
     }
   };
   const clickLeftIcon = () => {
     if (index > 1) {
       setIndex((state) => {
+        callback!(state - 1);
         return state - 1;
       });
     } else {
+      callback!(kids.length);
       setIndex(kids.length);
     }
   };
   const clickRightIcon = () => {
     if (index <= kids.length - 1) {
       setIndex((state) => {
+        callback!(state + 1);
         return state + 1;
       });
     } else {
+      callback!(1);
       setIndex(1);
     }
   };
@@ -154,6 +161,7 @@ const Carousel: React.FC<Props> = (props) => {
 };
 Carousel.defaultProps = {
   dot: true,
+  callback: () => {},
   children: []
 };
 
