@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
-import Avatar from '../lib/Avatar/Avatar';
-import User from '../lib/icons/user.svg';
+import Carousel from '../lib/Carousel/Carousel ';
+import CarouselItem from '../lib/Carousel/CarouselItem';
 
 const Wrap = styled.div`
   display: flex;
@@ -12,21 +12,29 @@ const Wrap = styled.div`
 `;
 
 const Home: React.FC = () => {
+  const contentStyle: React.CSSProperties = {
+    height: '160px',
+    color: '#fff',
+    lineHeight: '160px',
+    textAlign: 'center',
+    background: '#364d79'
+  };
   return (
     <Wrap>
-      <Avatar size={40}>
-        <User width="5em" height="5em" />
-      </Avatar>
-      <Avatar src="https://joeschmoe.io/api/v1/random" size={64} />
-      <Avatar size={100}>
-        <User width="2em" height="2em" />
-      </Avatar>
-      <Avatar size={100} bgc="#1890ff">
-        <User width="2em" height="2em" />
-      </Avatar>
-      <Avatar size={100} bgc="inherit">
-        <User width="2em" height="2em" />
-      </Avatar>
+      <Carousel>
+        <CarouselItem order={1}>
+          <h3 style={contentStyle}>1</h3>
+        </CarouselItem>
+        <CarouselItem order={2}>
+          <h3 style={contentStyle}>2</h3>
+        </CarouselItem>
+        <CarouselItem order={3}>
+          <h3 style={contentStyle}>3</h3>
+        </CarouselItem>
+        <CarouselItem order={4}>
+          <h3 style={contentStyle}>4</h3>
+        </CarouselItem>
+      </Carousel>
     </Wrap>
   );
 };

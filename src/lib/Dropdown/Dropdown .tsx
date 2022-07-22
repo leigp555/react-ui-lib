@@ -81,7 +81,7 @@ const Dropdown: React.FC<Props> = (props) => {
     const dropdownVNode: VNode[] = [];
     React.Children.map(children, (child) => {
       const vNode = child as VNode;
-      if (React.isValidElement(vNode) && vNode.type.name === 'DropdownItem') {
+      if (React.isValidElement(vNode) && vNode.type.name === 'CarouselItem') {
         dropdownVNode.push(vNode);
       } else {
         otherVNode.push(vNode);

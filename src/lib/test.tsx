@@ -1,24 +1,38 @@
 import React, { useState } from 'react';
+import './test.scss';
+import { CSSTransition, TransitionGroup } from 'react-transition-group';
 
-const AppTest: React.FC<{ reg: RegExp }> = (props) => {
-  const [value, setValue] = useState('');
-  const { reg } = props;
-  // const reg = /^\w+$/g;
-  const validateFn = (newValue: string) => {
-    console.log(reg);
-    if (reg) console.log(reg.test(newValue));
-  };
-  const getValue = (e: React.ChangeEvent<HTMLInputElement>) => {
-    validateFn(e.target.value);
-    setValue(e.target.value);
-  };
+const AppTest: React.FC = () => {
+  const [items, setItems] = useState([
+    { id: 1, text: 'Buy eggs' },
+    { id: 2, text: 'Pay bills' },
+    { id: 3, text: 'Invite friends over' },
+    { id: 4, text: 'Fix the TV' }
+  ]);
   return (
-    <input
-      value={value}
-      onChange={(e) => {
-        getValue(e);
-      }}
-    />
+    <div>
+      <TransitionGroup>
+        {items.map(({ id, text }) => (
+          <CSSTransition key={id} timeout={500} classNames="item">
+            <div>{text}</div>
+          </CSSTransition>
+        ))}
+      </TransitionGroup>
+
+      <button
+        onClick={() => {
+          setItems((state) => [
+            ...state,
+            {
+              id: state.length + 1,
+              text: Math.random().toString()
+            }
+          ]);
+        }}
+      >
+        Add Item
+      </button>
+    </div>
   );
 };
 export default AppTest;

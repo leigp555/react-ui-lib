@@ -57,11 +57,6 @@
                 "allowExpressionValues": true
             }
         ],
-        "no-param-reassign": ["error", {
-            "props": true,
-            "ignorePropertyModificationsFor": [
-                "state","config","item"
-            ]
-        }]
+        "no-param-reassign":"off"
     }
 }
