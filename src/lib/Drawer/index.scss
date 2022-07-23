@@ -1,0 +1,38 @@
+.box-enter {
+  transform: translateX(300px);
+  opacity: 0;
+}
+.box-enter-active {
+  transform: translateX(0);
+  opacity: 1;
+  transition: all 300ms;
+}
+
+.box-exit {
+  transform: translateX(0);
+  opacity: 1;
+}
+
+.box-exit-active {
+  transform: translateX(300px);
+  opacity: 0;
+  transition: all 300ms
+}
+
+//xx
+
+.overflow-enter {
+  opacity: 0;
+}
+.overflow-enter-active {
+  opacity: 1;
+  transition: all 300ms;
+}
+.overflow-exit {
+  opacity: 1;
+}
+.overflow-exit-active {
+  opacity: 0;
+  transition: all 300ms
+}
+

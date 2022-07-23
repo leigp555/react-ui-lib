@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
 import Button from '../lib/Button/Button';
-import Modal from '../lib/Modal/Modal';
+import Drawer from '../lib/Drawer/Drawer';
 
 const Wrap = styled.div`
   display: flex;
@@ -9,61 +9,22 @@ const Wrap = styled.div`
   gap: 50px;
 `;
 const Home: React.FC = () => {
-  const [isModalVisible, setIsModalVisible] = useState(false);
-  const [isModalVisible2, setIsModalVisible2] = useState(false);
-  const showModal = () => {
-    setIsModalVisible(true);
-  };
-
-  const handleOk = () => {
-    setIsModalVisible(false);
-    console.log('确定');
-  };
-
-  const handleCancel = () => {
-    setIsModalVisible(false);
-    console.log('取消');
-  };
-
-  const showModal2 = () => {
-    setIsModalVisible2(true);
-  };
-  const handleOk2 = () => {
-    setIsModalVisible2(false);
-    console.log('确定');
-  };
-
-  const handleCancel2 = () => {
-    setIsModalVisible2(false);
-    console.log('取消');
+  const [visible, setVisible] = useState(false);
+  const showDrawer = () => {
+    setVisible(true);
+    console.log('点击了');
   };
   return (
     <Wrap>
       <div>
-        <Button type="primary" onClick={showModal}>
-          have mask
+        <Button type="primary" onClick={showDrawer}>
+          Open
         </Button>
-        <Modal title="Basic Modal" visible={isModalVisible} onOk={handleOk} onCancel={handleCancel}>
+        <Drawer title="Basic Drawer" position="right" visible={visible}>
           <p>Some contents...</p>
           <p>Some contents...</p>
           <p>Some contents...</p>
-        </Modal>
-      </div>
-      <div>
-        <Button type="primary" onClick={showModal2}>
-          no mask
-        </Button>
-        <Modal
-          title="Basic Modal"
-          visible={isModalVisible2}
-          onOk={handleOk2}
-          onCancel={handleCancel2}
-          mask={false}
-        >
-          <p>Some contents...</p>
-          <p>Some contents...</p>
-          <p>Some contents...</p>
-        </Modal>
+        </Drawer>
       </div>
     </Wrap>
   );

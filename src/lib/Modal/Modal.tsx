@@ -66,7 +66,7 @@ const Modal: React.FC<Props> = (props) => {
   return createPortal(
     <>
       <Wrap>
-        <CSSTransition in={visible} classNames="box" timeout={1000} unmountOnExit>
+        <CSSTransition in={visible} classNames="box" timeout={500} unmountOnExit>
           <ModalStyled {...rest}>
             <span className="cancelIcon" role="presentation" onClick={onCancel}>
               <CancelIcon width="1em" height="1em" />
