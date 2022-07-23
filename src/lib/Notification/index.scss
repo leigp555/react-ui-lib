@@ -5,8 +5,27 @@
   z-index: 100;
   max-width: 400px;
   max-height: 500px;
-  overflow: hidden;
+  overflow: scroll;
   display: flex;
   flex-direction: column;
   gap: 10px;
+
+  &::-webkit-scrollbar{
+    display: none;
+  }
 }
+
+.popMain{
+  animation: show alternate 500ms ;
+}
+@keyframes show {
+  0%{
+    opacity: 0;
+    transform: translateX(calc(100% + 20px));
+  }
+  100%{
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+

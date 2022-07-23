@@ -16,14 +16,17 @@ const getRoot = () => {
   return newEl;
 };
 const root = getRoot();
+let oldDiv: HTMLDivElement | null = null;
 export const openNotification = (vNode: ReactNode) => {
   const div = document.createElement('div');
-  root.appendChild(div);
+  root.insertBefore(div, oldDiv);
+  oldDiv = div;
   const dom = createRoot(div as HTMLElement);
   dom.render(createPortal(vNode, div));
   setTimeout(() => {
     dom.unmount();
     div.remove();
+    oldDiv = null;
   }, 3000);
 };
 
@@ -48,7 +51,7 @@ const NotificationStyled = styled.div`
 const Notification: React.FC<Props> = (props) => {
   const { children, ...rest } = props;
   return (
-    <NotificationStyled {...rest}>
+    <NotificationStyled className="popMain" {...rest}>
       {children}
       <div className="u1-button" role="presentation">
         <Cha width="1em" height="1em" />
