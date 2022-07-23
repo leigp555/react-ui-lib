@@ -20,7 +20,8 @@ const Home: React.FC = () => {
           explicabo fuga, illo ipsa laudantium libero magni minus nobis nostrum, odio quam quibusdam
           recusandae saepe soluta totam voluptates?
         </div>
-      </Notification>
+      </Notification>,
+      3000
     );
   };
   return (

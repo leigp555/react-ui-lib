@@ -1,4 +1,4 @@
-import React, { HTMLAttributes, ReactNode } from 'react';
+import React, { HTMLAttributes, ReactNode, useState } from 'react';
 import styled from 'styled-components';
 import { createPortal } from 'react-dom';
 import { createRoot } from 'react-dom/client';
@@ -17,7 +17,8 @@ const getRoot = () => {
 };
 const root = getRoot();
 let oldDiv: HTMLDivElement | null = null;
-export const openNotification = (vNode: ReactNode) => {
+
+export const openNotification = (vNode: ReactNode, delay = 3000) => {
   const div = document.createElement('div');
   root.insertBefore(div, oldDiv);
   oldDiv = div;
@@ -27,13 +28,14 @@ export const openNotification = (vNode: ReactNode) => {
     dom.unmount();
     div.remove();
     oldDiv = null;
-  }, 3000);
+  }, delay);
 };
 
 interface Props extends HTMLAttributes<HTMLDivElement> {
   children?: React.ReactNode;
 }
 const NotificationStyled = styled.div`
+  position: relative;
   line-height: 1.5em;
   font-size: 14px;
   display: flex;
@@ -50,10 +52,11 @@ const NotificationStyled = styled.div`
 `;
 const Notification: React.FC<Props> = (props) => {
   const { children, ...rest } = props;
+  const [show, setShow] = useState<boolean>(true);
   return (
-    <NotificationStyled className="popMain" {...rest}>
+    <NotificationStyled style={{ display: show ? 'flex' : 'none' }} className="popMain" {...rest}>
       {children}
-      <div className="u1-button" role="presentation">
+      <div className="u1-button" role="presentation" onClick={() => setShow(false)}>
         <Cha width="1em" height="1em" />
       </div>
     </NotificationStyled>
