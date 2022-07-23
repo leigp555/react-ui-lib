@@ -12,6 +12,7 @@ interface Props extends HTMLAttributes<HTMLDivElement> {
   visible?: boolean;
   onOk?: () => void;
   onCancel?: () => void;
+  mask?: boolean;
 }
 
 const Wrap = styled.div`
@@ -60,7 +61,8 @@ const Mask = styled.div`
   height: 100vh;
 `;
 const Modal: React.FC<Props> = (props) => {
-  const { children, title, visible, onOk, onCancel, ...rest } = props;
+  const { children, title, mask, visible, onOk, onCancel, ...rest } = props;
+  console.log(mask);
   return createPortal(
     <>
       <Wrap>
@@ -80,7 +82,7 @@ const Modal: React.FC<Props> = (props) => {
           </ModalStyled>
         </CSSTransition>
       </Wrap>
-      <CSSTransition in={visible} classNames="overflow" timeout={1000} unmountOnExit>
+      <CSSTransition in={visible && mask} classNames="overflow" timeout={1000} unmountOnExit>
         <Mask className="mask" />
       </CSSTransition>
     </>,
@@ -92,7 +94,8 @@ Modal.defaultProps = {
   title: 'Title',
   visible: false,
   onOk: () => {},
-  onCancel: () => {}
+  onCancel: () => {},
+  mask: true
 };
 
 export default Modal;
