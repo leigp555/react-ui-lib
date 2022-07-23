@@ -11,6 +11,8 @@ interface Props extends HTMLAttributes<HTMLDivElement> {
   visible?: boolean;
   children?: React.ReactNode;
   onClose: () => void;
+  width?: number;
+  height?: number;
 }
 
 const Wrap = styled.div`
@@ -24,16 +26,49 @@ const Wrap = styled.div`
     z-index: 1;
   }
 `;
+
+type PropStyled = {
+  width: number;
+  height: number;
+};
+
 const DrawerStyled = styled.div`
-  position: absolute;
-  top: 0;
-  right: 0;
-  height: 100%;
-  width: 300px;
   z-index: 100;
   background-color: white;
+  // width: ${(props: PropStyled) => `${props.width}px`};
+  // height: ${(props: PropStyled) => `${props.height}px`};
+  &.right {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: ${(props: PropStyled) => `${props.width}px`};
+    height: 100%;
+  }
+  &.left {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: ${(props: PropStyled) => `${props.width}px`};
+    height: 100%;
+  }
+  &.top {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: ${(props: PropStyled) => `${props.height}px`};
+  }
+  &.bottom {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: ${(props: PropStyled) => `${props.height}px`};
+  }
+
   .main {
     height: 100%;
+    width: 100%;
     > .title {
       font-size: 1.2em;
       font-weight: 700;
@@ -49,11 +84,11 @@ const DrawerStyled = styled.div`
   }
 `;
 const Drawer: React.FC<Props> = (props) => {
-  const { children, title, position, onClose, visible } = props;
+  const { children, title, width, height, position, onClose, visible } = props;
   return createPortal(
     <Wrap>
-      <CSSTransition in={visible} classNames="box" timeout={500} unmountOnExit>
-        <DrawerStyled className={classNames(position!)}>
+      <CSSTransition in={visible} classNames={position} timeout={500} unmountOnExit>
+        <DrawerStyled className={classNames(position!)} width={width!} height={height!}>
           <div className="main">
             <div className="title">{title}</div>
             <div className="content">{children}</div>
@@ -71,7 +106,9 @@ Drawer.defaultProps = {
   children: '',
   title: '',
   position: 'right',
-  visible: false
+  visible: false,
+  width: 300,
+  height: 300
 };
 
 export default Drawer;
