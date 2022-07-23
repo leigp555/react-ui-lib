@@ -11,8 +11,8 @@ const Wrap = styled.div`
 const Home: React.FC = () => {
   const [visible, setVisible] = useState(false);
   const showDrawer = () => {
-    setVisible(true);
     console.log('点击了');
+    setVisible(true);
   };
   const onClose = () => {
     setVisible(false);

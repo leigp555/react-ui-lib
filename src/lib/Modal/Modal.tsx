@@ -62,7 +62,6 @@ const Mask = styled.div`
 `;
 const Modal: React.FC<Props> = (props) => {
   const { children, title, mask, visible, onOk, onCancel, ...rest } = props;
-  console.log(mask);
   return createPortal(
     <>
       <Wrap>

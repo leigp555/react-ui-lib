@@ -1,24 +1,23 @@
 .box-enter {
-  transform: translateX(300px);
   opacity: 0;
+  transform: translateX(200px);
 }
 .box-enter-active {
-  transform: translateX(0);
   opacity: 1;
-  transition: all 300ms;
+  transform: translateX(0);
+  transition: all 250ms;
 }
 
 .box-exit {
-  transform: translateX(0);
   opacity: 1;
+  transform: translateX(0);
 }
 
 .box-exit-active {
-  transform: translateX(300px);
   opacity: 0;
-  transition: all 300ms
+  transform: translateX(200px);
+  transition: all 250ms
 }
-
 //xx
 
 .overflow-enter {
