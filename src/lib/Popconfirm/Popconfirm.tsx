@@ -17,6 +17,16 @@ interface Props extends HTMLAttributes<HTMLDivElement> {
 const PopConfirmStyled = styled.div`
   display: inline-block;
   position: relative;
+  .text {
+    display: flex;
+    gap: 5px;
+    white-space: nowrap;
+  }
+  .action {
+    align-self: end;
+    display: flex;
+    gap: 10px;
+  }
   > .pop {
     padding: 15px;
     box-shadow: 0 -2px 10px 2px rgba(0, 0, 0, 0.1);
@@ -35,32 +45,21 @@ const PopConfirmStyled = styled.div`
       width: 12px;
       height: 12px;
       background-color: #ffffff;
-      z-index: -10;
       top: 0;
       left: 50%;
       transform: translate(-50%, -50%) rotate(45deg);
       border-top: 1px solid rgba(0, 0, 0, 0.1);
       border-left: 1px solid rgba(0, 0, 0, 0.1);
     }
-    > .text {
-      display: flex;
-      gap: 5px;
-      white-space: nowrap;
-    }
-    > .action {
-      align-self: end;
-      display: flex;
-      gap: 10px;
-    }
   }
 `;
 const PopConfirm: React.FC<Props> = (props) => {
   const { children, onConfirm, title, onCancel, okText, cancelText, ...rest } = props;
-  const [isShow, setShow] = useState<boolean>(false);
+  const [isShow, setShow] = useState<boolean>(true);
   return (
     <div>
       <PopConfirmStyled {...rest}>
-        <div onClick={() => setShow(true)} role="presentation">
+        <div onClick={() => setShow(true)} role="presentation" onBlur={() => setShow(false)}>
           {children}
         </div>
         <CSSTransition in={isShow} classNames="box" timeout={500} unmountOnExit>
@@ -72,10 +71,22 @@ const PopConfirm: React.FC<Props> = (props) => {
               <span>{title}</span>
             </p>
             <div className="action">
-              <Button type="default" onClick={() => setShow(false)}>
+              <Button
+                type="default"
+                onClick={() => {
+                  setShow(false);
+                  onCancel!();
+                }}
+              >
                 {cancelText}
               </Button>
-              <Button type="primary" onClick={() => setShow(false)}>
+              <Button
+                type="primary"
+                onClick={() => {
+                  setShow(false);
+                  onConfirm!();
+                }}
+              >
                 {okText}
               </Button>
             </div>
