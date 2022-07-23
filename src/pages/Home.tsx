@@ -6,8 +6,8 @@ import Button from '../lib/Button/Button';
 const Wrap = styled.div`
   display: flex;
   flex-direction: column;
-  gap: 100px;
-  padding: 50px;
+  gap: 300px;
+  padding: 200px;
 `;
 
 const Home: React.FC = () => {
@@ -27,6 +27,37 @@ const Home: React.FC = () => {
         onCancel={cancel}
         okText="Yes"
         cancelText="No"
+        position="top"
+      >
+        <Button type="link">delete</Button>
+      </PopConfirm>
+      <PopConfirm
+        title="Are you sure to delete this task?"
+        onConfirm={confirm}
+        onCancel={cancel}
+        okText="Yes"
+        cancelText="No"
+        position="bottom"
+      >
+        <Button type="link">delete</Button>
+      </PopConfirm>
+      <PopConfirm
+        title="Are you sure to delete this task?"
+        onConfirm={confirm}
+        onCancel={cancel}
+        okText="Yes"
+        cancelText="No"
+        position="left"
+      >
+        <Button type="link">delete</Button>
+      </PopConfirm>
+      <PopConfirm
+        title="Are you sure to delete this task?"
+        onConfirm={confirm}
+        onCancel={cancel}
+        okText="Yes"
+        cancelText="No"
+        position="right"
       >
         <Button type="link">delete</Button>
       </PopConfirm>

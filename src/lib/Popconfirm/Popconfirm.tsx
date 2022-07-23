@@ -1,6 +1,7 @@
 import React, { HTMLAttributes, useState } from 'react';
 import styled from 'styled-components';
 import { CSSTransition } from 'react-transition-group';
+import classNames from 'classnames';
 import Button from '../Button/Button';
 import Warning from '../icons/warning.svg';
 import './index.scss';
@@ -12,6 +13,7 @@ interface Props extends HTMLAttributes<HTMLDivElement> {
   children?: React.ReactNode;
   okText?: string;
   cancelText?: string;
+  position?: 'top' | 'bottom' | 'left' | 'right';
 }
 
 const PopConfirmStyled = styled.div`
@@ -27,24 +29,13 @@ const PopConfirmStyled = styled.div`
     display: flex;
     gap: 10px;
   }
-  > .pop {
-    padding: 15px;
-    box-shadow: 0 -2px 10px 2px rgba(0, 0, 0, 0.1);
+  > .pop.bottom {
     position: absolute;
     bottom: 0;
     left: 50%;
     transform: translate(-50%, calc(100% + 15px));
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-    z-index: 10;
-    background-color: #ffffff;
+    box-shadow: 0 -2px 10px 2px rgba(0, 0, 0, 0.1);
     &:after {
-      content: '';
-      position: absolute;
-      width: 12px;
-      height: 12px;
-      background-color: #ffffff;
       top: 0;
       left: 50%;
       transform: translate(-50%, -50%) rotate(45deg);
@@ -52,10 +43,68 @@ const PopConfirmStyled = styled.div`
       border-left: 1px solid rgba(0, 0, 0, 0.1);
     }
   }
+  > .pop.top {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translate(-50%, calc(-100% - 15px));
+    box-shadow: 0 2px 10px 2px rgba(0, 0, 0, 0.1);
+    &:after {
+      bottom: 0;
+      left: 50%;
+      transform: translate(-50%, 50%) rotate(45deg);
+      border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+      border-right: 1px solid rgba(0, 0, 0, 0.1);
+    }
+  }
+  > .pop.left {
+    position: absolute;
+    top: 50%;
+    left: 0;
+    transform: translate(calc(-100% - 15px), -50%);
+    box-shadow: 2px 0 10px 2px rgba(0, 0, 0, 0.1);
+    &:after {
+      top: 50%;
+      right: 0;
+      transform: translate(50%, -50%) rotate(45deg);
+      border-top: 1px solid rgba(0, 0, 0, 0.1);
+      border-right: 1px solid rgba(0, 0, 0, 0.1);
+    }
+  }
+  > .pop.right {
+    position: absolute;
+    top: 50%;
+    right: 0;
+    transform: translate(calc(100% + 15px), -50%);
+    box-shadow: -2px 0 10px 2px rgba(0, 0, 0, 0.1);
+    &:after {
+      bottom: 50%;
+      left: 0;
+      transform: translate(-50%, 50%) rotate(45deg);
+      border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+      border-left: 1px solid rgba(0, 0, 0, 0.1);
+    }
+  }
+`;
+
+const PopWrap = styled.div`
+  padding: 15px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  z-index: 10;
+  background-color: #ffffff;
+  &:after {
+    content: '';
+    position: absolute;
+    width: 12px;
+    height: 12px;
+    background-color: #ffffff;
+  }
 `;
 const PopConfirm: React.FC<Props> = (props) => {
-  const { children, onConfirm, title, onCancel, okText, cancelText, ...rest } = props;
-  const [isShow, setShow] = useState<boolean>(true);
+  const { children, onConfirm, position, title, onCancel, okText, cancelText, ...rest } = props;
+  const [isShow, setShow] = useState<boolean>(false);
   return (
     <div>
       <PopConfirmStyled {...rest}>
@@ -63,7 +112,7 @@ const PopConfirm: React.FC<Props> = (props) => {
           {children}
         </div>
         <CSSTransition in={isShow} classNames="box" timeout={500} unmountOnExit>
-          <div className="pop">
+          <PopWrap className={classNames('pop', position)}>
             <p className="text">
               <span>
                 <Warning width="1em" height="1em" />
@@ -90,7 +139,7 @@ const PopConfirm: React.FC<Props> = (props) => {
                 {okText}
               </Button>
             </div>
-          </div>
+          </PopWrap>
         </CSSTransition>
       </PopConfirmStyled>
     </div>
@@ -102,7 +151,8 @@ PopConfirm.defaultProps = {
   cancelText: '取消',
   onConfirm: () => {},
   onCancel: () => {},
-  children: ''
+  children: '',
+  position: 'top'
 };
 
 export default PopConfirm;
