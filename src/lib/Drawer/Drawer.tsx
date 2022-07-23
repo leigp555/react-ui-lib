@@ -87,7 +87,7 @@ const Drawer: React.FC<Props> = (props) => {
   const { children, title, width, height, position, onClose, visible } = props;
   return createPortal(
     <Wrap>
-      <CSSTransition in={visible} classNames={position} timeout={500} unmountOnExit>
+      <CSSTransition in={visible} classNames={position} timeout={250} unmountOnExit>
         <DrawerStyled className={classNames(position!)} width={width!} height={height!}>
           <div className="main">
             <div className="title">{title}</div>
@@ -95,7 +95,7 @@ const Drawer: React.FC<Props> = (props) => {
           </div>
         </DrawerStyled>
       </CSSTransition>
-      <CSSTransition in={visible} classNames="overflow" timeout={500} unmountOnExit>
+      <CSSTransition in={visible} classNames="overflow" timeout={250} unmountOnExit>
         <div className="overflow" role="presentation" onClick={onClose} />
       </CSSTransition>
     </Wrap>,
