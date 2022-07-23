@@ -1,26 +1,34 @@
 import React from 'react';
 import styled from 'styled-components';
+import Notification, { openNotification } from '../lib/Notification/Notification';
+
 import Button from '../lib/Button/Button';
-import { Tip } from '../lib/Tip/Tip';
 
 const Wrap = styled.div`
   display: flex;
   flex-direction: column;
   gap: 50px;
 `;
+
 const Home: React.FC = () => {
-  const info = () => {
-    Tip('success', 'This is a normal message', 3000);
-    Tip('info', 'This is a normal message', 3000);
-    Tip('warning', 'This is a normal message', 3000);
-    Tip('error', 'This is a normal message', 3000);
-    Tip('loading', 'This is a normal message', 3000);
+  const open = () => {
+    openNotification(
+      <Notification>
+        <p>Notification Title</p>
+        <div>
+          Lorem ipsum dolor sit amet, consectetur adipisicing elit. Adipisci assumenda cum ex
+          explicabo fuga, illo ipsa laudantium libero magni minus nobis nostrum, odio quam quibusdam
+          recusandae saepe soluta totam voluptates?
+        </div>
+      </Notification>,
+      3000
+    );
   };
   return (
     <Wrap>
-      <Button type="primary" onClick={info}>
-        Display normal message
-      </Button>
+      <div>
+        <Button onClick={open}>按钮</Button>
+      </div>
     </Wrap>
   );
 };

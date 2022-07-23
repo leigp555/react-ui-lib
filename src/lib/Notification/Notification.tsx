@@ -6,12 +6,12 @@ import Cha from '../icons/cha.svg';
 import './index.scss';
 
 const getRoot = () => {
-  const el = document.getElementById('pop');
+  const el = document.getElementById('ui-pop');
   if (el) {
     return el;
   }
   const newEl = document.createElement('div');
-  newEl.setAttribute('id', 'pop');
+  newEl.setAttribute('id', 'ui-pop');
   document.body.appendChild(newEl);
   return newEl;
 };
