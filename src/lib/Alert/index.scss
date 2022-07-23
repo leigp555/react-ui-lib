@@ -1,0 +1,13 @@
+.loading>.icon{
+  animation: loading infinite 1s linear;
+  color: red;
+}
+
+@keyframes loading {
+  0%{
+    transform: rotate(0deg);
+  }
+  100%{
+    transform: rotate(1turn);
+  }
+}

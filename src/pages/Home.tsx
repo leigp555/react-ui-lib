@@ -33,6 +33,9 @@ const Home: React.FC = () => {
           sequi voluptate! Deleniti fuga pariatur qui ratione voluptatibus!
         </span>
       </Alert>
+      <Alert type="loading">
+        <span>Success Text</span>
+      </Alert>
     </Wrap>
   );
 };

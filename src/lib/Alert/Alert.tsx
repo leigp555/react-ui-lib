@@ -1,13 +1,15 @@
 import React, { HTMLAttributes } from 'react';
 import styled from 'styled-components';
+import './index.scss';
 import SuccessIcon from '../icons/success.svg';
 import InfoIcon from '../icons/info.svg';
 import WarningIcon from '../icons/warning.svg';
 import ErrorIcon from '../icons/error.svg';
+import LoadingIcon from '../icons/loading.svg';
 
 interface Props extends HTMLAttributes<HTMLDivElement> {
   children?: React.ReactNode;
-  type?: 'success' | 'info' | 'warning' | 'error';
+  type?: 'success' | 'info' | 'warning' | 'error' | 'loading';
   defineIcon?: React.ReactNode;
 }
 const AlertStyled = styled.div`
@@ -33,6 +35,10 @@ const AlertStyled = styled.div`
     background-color: #fff2f0;
     border: 1px solid #ffccc7;
   }
+  &.loading {
+    background-color: #e6f7ff;
+    border: 1px solid #91d5ff;
+  }
   > .icon {
     display: flex;
     align-items: center;
@@ -57,6 +63,9 @@ const Alert: React.FC<Props> = (props) => {
     }
     if (type === 'error') {
       return <ErrorIcon width="1em" height="1em" />;
+    }
+    if (type === 'loading') {
+      return <LoadingIcon width="1em" height="1em" />;
     }
     if (defineIcon) {
       return defineIcon;
