@@ -1,6 +1,7 @@
 import React, { HTMLAttributes } from 'react';
 import styled from 'styled-components';
 import { CSSTransition } from 'react-transition-group';
+import { createPortal } from 'react-dom';
 import Button from '../Button/Button';
 import './index.scss';
 import CancelIcon from '../icons/cha.svg';
@@ -12,12 +13,20 @@ interface Props extends HTMLAttributes<HTMLDivElement> {
   onOk?: () => void;
   onCancel?: () => void;
 }
+
+const Wrap = styled.div`
+  position: absolute;
+  top: 35%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+`;
+
 const ModalStyled = styled.div`
   box-shadow: 0 2px 4px 2px rgba(0, 0, 0, 0.1);
   background-color: white;
   display: flex;
   flex-direction: column;
-  min-width: 300px;
+  min-width: 350px;
   max-width: 500px;
   padding: 10px 0;
   position: relative;
@@ -29,7 +38,7 @@ const ModalStyled = styled.div`
   }
   > .title {
     padding: 10px 20px;
-    box-shadow: 0 1px 1px 1px rgba(0, 0, 0, 0.1);
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
   }
   > .body {
     padding: 10px 20px;
@@ -43,8 +52,8 @@ const ModalStyled = styled.div`
 `;
 const Modal: React.FC<Props> = (props) => {
   const { children, title, visible, onOk, onCancel, ...rest } = props;
-  return (
-    <div>
+  return createPortal(
+    <Wrap>
       <CSSTransition in={visible} classNames="box" timeout={1000} unmountOnExit>
         <ModalStyled {...rest}>
           <span className="cancelIcon" role="presentation" onClick={onCancel}>
@@ -60,7 +69,8 @@ const Modal: React.FC<Props> = (props) => {
           </div>
         </ModalStyled>
       </CSSTransition>
-    </div>
+    </Wrap>,
+    document.body
   );
 };
 Modal.defaultProps = {

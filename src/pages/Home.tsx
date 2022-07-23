@@ -16,10 +16,12 @@ const Home: React.FC = () => {
 
   const handleOk = () => {
     setIsModalVisible(false);
+    console.log('确定');
   };
 
   const handleCancel = () => {
     setIsModalVisible(false);
+    console.log('取消');
   };
   return (
     <Wrap>
