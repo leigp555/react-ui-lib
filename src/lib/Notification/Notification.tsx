@@ -48,6 +48,7 @@ const NotificationStyled = styled.div`
     position: absolute;
     top: 15px;
     right: 15px;
+    cursor: pointer;
   }
 `;
 const Notification: React.FC<Props> = (props) => {

@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import { CSSTransition } from 'react-transition-group';
 import Button from '../Button/Button';
 import './index.scss';
+import CancelIcon from '../icons/cha.svg';
 
 interface Props extends HTMLAttributes<HTMLDivElement> {
   children?: React.ReactNode;
@@ -17,7 +18,15 @@ const ModalStyled = styled.div`
   display: flex;
   flex-direction: column;
   min-width: 300px;
+  max-width: 500px;
   padding: 10px 0;
+  position: relative;
+  > .cancelIcon {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    cursor: pointer;
+  }
   > .title {
     padding: 10px 20px;
   }
@@ -37,6 +46,9 @@ const Modal: React.FC<Props> = (props) => {
     <div>
       <CSSTransition in={visible} classNames="box" timeout={1000} unmountOnExit>
         <ModalStyled {...rest}>
+          <span className="cancelIcon" role="presentation" onClick={onCancel}>
+            <CancelIcon width="1em" height="1em" />
+          </span>
           <div className="title">{title}</div>
           <div className="body">{children}</div>
           <div className="action">
