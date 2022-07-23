@@ -23,12 +23,13 @@ const ModalStyled = styled.div`
   position: relative;
   > .cancelIcon {
     position: absolute;
-    top: 20px;
-    right: 20px;
+    top: 18px;
+    right: 18px;
     cursor: pointer;
   }
   > .title {
     padding: 10px 20px;
+    box-shadow: 0 1px 1px 1px rgba(0, 0, 0, 0.1);
   }
   > .body {
     padding: 10px 20px;
