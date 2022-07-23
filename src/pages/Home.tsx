@@ -14,13 +14,16 @@ const Home: React.FC = () => {
     setVisible(true);
     console.log('点击了');
   };
+  const onClose = () => {
+    setVisible(false);
+  };
   return (
     <Wrap>
       <div>
         <Button type="primary" onClick={showDrawer}>
           Open
         </Button>
-        <Drawer title="Basic Drawer" position="right" visible={visible}>
+        <Drawer title="Basic Drawer" position="right" visible={visible} onClose={onClose}>
           <p>Some contents...</p>
           <p>Some contents...</p>
           <p>Some contents...</p>

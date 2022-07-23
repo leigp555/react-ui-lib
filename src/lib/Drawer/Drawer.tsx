@@ -8,13 +8,24 @@ interface Props extends HTMLAttributes<HTMLDivElement> {
   position?: 'left' | 'right' | 'top' | 'bottom';
   visible?: boolean;
   children?: React.ReactNode;
+  onClose: () => void;
 }
-const DrawerStyled = styled.div`
+
+const Wrap = styled.div`
   position: absolute;
   top: 0;
   left: 0;
   width: 100vw;
   height: 100vh;
+  > .overflow {
+    position: absolute;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.1);
+    z-index: 1;
+  }
+`;
+const DrawerStyled = styled.div`
   .main {
     position: absolute;
     top: 0;
@@ -36,24 +47,19 @@ const DrawerStyled = styled.div`
       flex-direction: column;
     }
   }
-  .overflow {
-    position: absolute;
-    width: 100vw;
-    height: 100vh;
-    background-color: rgba(0, 0, 0, 0.1);
-    z-index: 1;
-  }
 `;
 const Drawer: React.FC<Props> = (props) => {
-  const { children, title, position, visible, ...rest } = props;
+  const { children, title, position, onClose, visible, ...rest } = props;
   return createPortal(
-    <DrawerStyled className={classNames('wrap', position!)} {...rest}>
-      <div className="main">
-        <div className="title">{title}</div>
-        <div className="content">{children}</div>
-      </div>
-      <div className="overflow" />
-    </DrawerStyled>,
+    <Wrap className="wrap">
+      <DrawerStyled className={classNames(position!)} {...rest}>
+        <div className="main">
+          <div className="title">{title}</div>
+          <div className="content">{children}</div>
+        </div>
+      </DrawerStyled>
+      <div className="overflow" role="presentation" onClick={onClose} />
+    </Wrap>,
     document.body
   );
 };
