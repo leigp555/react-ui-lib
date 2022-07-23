@@ -18,3 +18,21 @@
   transform: scale(.3);
   transition: all 300ms
 }
+
+//xx
+
+.overflow-enter {
+  opacity: 0;
+}
+.overflow-enter-active {
+  opacity: 1;
+  transition: all 300ms;
+}
+.overflow-exit {
+  opacity: 1;
+}
+.overflow-exit-active {
+  opacity: 0;
+  transition: all 300ms
+}
+

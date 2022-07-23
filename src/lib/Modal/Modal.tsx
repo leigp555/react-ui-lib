@@ -50,26 +50,40 @@ const ModalStyled = styled.div`
     gap: 10px;
   }
 `;
+const Mask = styled.div`
+  background-color: rgba(140, 140, 140, 0.2);
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  z-index: -10;
+  height: 100vh;
+`;
 const Modal: React.FC<Props> = (props) => {
   const { children, title, visible, onOk, onCancel, ...rest } = props;
   return createPortal(
-    <Wrap>
-      <CSSTransition in={visible} classNames="box" timeout={1000} unmountOnExit>
-        <ModalStyled {...rest}>
-          <span className="cancelIcon" role="presentation" onClick={onCancel}>
-            <CancelIcon width="1em" height="1em" />
-          </span>
-          <div className="title">{title}</div>
-          <div className="body">{children}</div>
-          <div className="action">
-            <Button type="default" onClick={onCancel}>
-              取消
-            </Button>
-            <Button onClick={onOk}>确定</Button>
-          </div>
-        </ModalStyled>
+    <>
+      <Wrap>
+        <CSSTransition in={visible} classNames="box" timeout={1000} unmountOnExit>
+          <ModalStyled {...rest}>
+            <span className="cancelIcon" role="presentation" onClick={onCancel}>
+              <CancelIcon width="1em" height="1em" />
+            </span>
+            <div className="title">{title}</div>
+            <div className="body">{children}</div>
+            <div className="action">
+              <Button type="default" onClick={onCancel}>
+                取消
+              </Button>
+              <Button onClick={onOk}>确定</Button>
+            </div>
+          </ModalStyled>
+        </CSSTransition>
+      </Wrap>
+      <CSSTransition in={visible} classNames="overflow" timeout={1000} unmountOnExit>
+        <Mask className="mask" />
       </CSSTransition>
-    </Wrap>,
+    </>,
     document.body
   );
 };

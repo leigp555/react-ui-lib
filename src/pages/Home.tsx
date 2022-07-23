@@ -1,33 +1,39 @@
-import React from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
-import Notification, { openNotification } from '../lib/Notification/Notification';
-
 import Button from '../lib/Button/Button';
+import Modal from '../lib/Modal/Modal';
 
 const Wrap = styled.div`
   display: flex;
   flex-direction: column;
   gap: 50px;
 `;
-
 const Home: React.FC = () => {
-  const open = () => {
-    openNotification(
-      <Notification>
-        <p>Notification Title</p>
-        <div>
-          Lorem ipsum dolor sit amet, consectetur adipisicing elit. Adipisci assumenda cum ex
-          explicabo fuga, illo ipsa laudantium libero magni minus nobis nostrum, odio quam quibusdam
-          recusandae saepe soluta totam voluptates?
-        </div>
-      </Notification>,
-      3000
-    );
+  const [isModalVisible, setIsModalVisible] = useState(false);
+  const showModal = () => {
+    setIsModalVisible(true);
+  };
+
+  const handleOk = () => {
+    setIsModalVisible(false);
+    console.log('确定');
+  };
+
+  const handleCancel = () => {
+    setIsModalVisible(false);
+    console.log('取消');
   };
   return (
     <Wrap>
       <div>
-        <Button onClick={open}>按钮</Button>
+        <Button type="primary" onClick={showModal}>
+          Open Modal
+        </Button>
+        <Modal title="Basic Modal" visible={isModalVisible} onOk={handleOk} onCancel={handleCancel}>
+          <p>Some contents...</p>
+          <p>Some contents...</p>
+          <p>Some contents...</p>
+        </Modal>
       </div>
     </Wrap>
   );
