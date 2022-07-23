@@ -1,5 +1,6 @@
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
 import React from 'react';
+// import Alert from './Alert';
 // import styled from 'styled-components';
 // import Alert from '../lib/Alert/Alert';
 // import SuccessIcon from '../lib/icons/success.svg';
@@ -33,6 +34,9 @@ import React from 'react';
 //           corporis exercitationem ipsam, nihil nobis optio perspiciatis quas quibusdam repellendus,
 //           sequi voluptate! Deleniti fuga pariatur qui ratione voluptatibus!
 //         </span>
+//       </Alert>
+//       <Alert type="loading">
+//         <span>Success Text</span>
 //       </Alert>
 //     </Wrap>
 //   );

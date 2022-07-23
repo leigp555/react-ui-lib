@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
-import Alert from '../lib/Alert/Alert';
-import SuccessIcon from '../lib/icons/success.svg';
+import Button from '../lib/Button/Button';
+import { Tip } from '../lib/Tip/Tip';
 
 const Wrap = styled.div`
   display: flex;
@@ -9,33 +9,18 @@ const Wrap = styled.div`
   gap: 50px;
 `;
 const Home: React.FC = () => {
+  const info = () => {
+    Tip('success', 'This is a normal message', 3000);
+    Tip('info', 'This is a normal message', 3000);
+    Tip('warning', 'This is a normal message', 3000);
+    Tip('error', 'This is a normal message', 3000);
+    Tip('loading', 'This is a normal message', 3000);
+  };
   return (
     <Wrap>
-      <Alert type="success">
-        <span>Success Text</span>
-      </Alert>
-      <Alert type="info">
-        <span>Info Text</span>
-      </Alert>
-      <Alert type="warning">
-        <span>Warning Text</span>
-      </Alert>
-      <Alert type="error">
-        <span>Error Text</span>
-      </Alert>
-      <Alert type="error">
-        <span>Success Text</span>
-      </Alert>
-      <Alert defineIcon={<SuccessIcon width="1.5em" height="1.5em" />}>
-        <span>
-          Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ab autem blanditiis consequuntur
-          corporis exercitationem ipsam, nihil nobis optio perspiciatis quas quibusdam repellendus,
-          sequi voluptate! Deleniti fuga pariatur qui ratione voluptatibus!
-        </span>
-      </Alert>
-      <Alert type="loading">
-        <span>Success Text</span>
-      </Alert>
+      <Button type="primary" onClick={info}>
+        Display normal message
+      </Button>
     </Wrap>
   );
 };
