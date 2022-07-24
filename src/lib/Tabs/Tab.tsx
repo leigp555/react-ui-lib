@@ -1,8 +1,8 @@
-import React, { HTMLAttributes } from 'react';
+import React, { HTMLAttributes, ReactNode } from 'react';
 import styled from 'styled-components';
 
 interface Props extends HTMLAttributes<HTMLDivElement> {
-  tab?: string;
+  tab?: ReactNode;
   index: string;
   children?: React.ReactNode;
 }

@@ -43,7 +43,6 @@ const TabName = styled.div`
     position: absolute;
     bottom: 0;
     height: 3px;
-    left: 0;
     transition: all 250ms;
     background-color: ${(props: TabNameProp) => props.bgc};
   }
@@ -102,7 +101,9 @@ const Tabs: React.FC<Props> = (props) => {
             onClick={(e: React.MouseEvent<HTMLSpanElement>) => tabClick(e, vNode.props.index)}
             data-order={vNode.props.index}
           >
-            {vNode.props.tab}
+            <span style={{ display: 'flex', alignItems: 'center', gap: '2px' }}>
+              {vNode.props.tab}
+            </span>
           </span>
         );
       } else if (
@@ -118,7 +119,9 @@ const Tabs: React.FC<Props> = (props) => {
             onClick={(e: React.MouseEvent<HTMLSpanElement>) => tabClick(e, vNode.props.index)}
             data-order={vNode.props.index}
           >
-            {vNode.props.tab}
+            <span style={{ display: 'flex', alignItems: 'center', gap: '2px' }}>
+              {vNode.props.tab}
+            </span>
           </span>
         );
       }
