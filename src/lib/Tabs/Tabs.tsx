@@ -43,13 +43,17 @@ const Tabs: React.FC<Props> = (props) => {
   const { children, onChange, defaultKey, ...rest } = props;
   const [currentIndex, setIndex] = useState<string>(defaultKey!);
   const spanRef = useRef<ReactNode[]>([]);
+  const lastSpan = useRef<HTMLSpanElement | null>(null);
   const spanWrap = useRef<HTMLDivElement | null>(null);
   const indicator = useRef<HTMLSpanElement | null>(null);
 
   useEffect(() => {
     Array.from(spanWrap.current!.children).forEach((item) => {
       if (item.getAttribute('data-order') === currentIndex) {
+        if (lastSpan.current) lastSpan.current.style.color = 'black';
         const el = item as HTMLSpanElement;
+        lastSpan.current = el;
+        el.style.color = '#1890ff';
         const { width, left: left1 } = el.getBoundingClientRect();
         const { left: left2 } = spanWrap.current!.getBoundingClientRect();
         indicator.current!.style.width = `${width}px`;
