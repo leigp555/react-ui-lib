@@ -17,17 +17,19 @@ const Home: React.FC = () => {
   };
   return (
     <Wrap>
-      <Tabs defaultKey="1" callback={onChange}>
-        <Tab tab="Tab 1" index="1">
-          Content of Tab Pane 1
-        </Tab>
-        <Tab tab="Tab 2" index="2">
-          Content of Tab Pane 2
-        </Tab>
-        <Tab tab="Tab 3" index="3">
-          Content of Tab Pane 3
-        </Tab>
-      </Tabs>
+      <div style={{ border: '1px solid rgba(0,0,0,.1)', width: '100%' }}>
+        <Tabs defaultKey="1" callback={onChange}>
+          <Tab tab="Tab 1xxxx" index="1">
+            Content of Tab Pane 1
+          </Tab>
+          <Tab tab="Tab 2xxxxcccc" index="2">
+            Content of Tab Pane 2
+          </Tab>
+          <Tab tab="Tab 3xxxxccccccccccccc" index="3">
+            Content of Tab Pane 3
+          </Tab>
+        </Tabs>
+      </div>
     </Wrap>
   );
 };
