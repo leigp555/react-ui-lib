@@ -1,3 +1,26 @@
+.box-enter {
+  opacity: 0;
+  transform: scale(0.6)
+}
+.box-enter-active {
+  opacity: 1;
+  transform: scale(1);
+  transition: all 250ms;
+}
+
+.box-exit {
+  opacity: 1;
+  transform: scale(1);
+}
+
+.box-exit-active {
+  opacity: 0;
+  transform: scale(.6);
+  transition: all 250ms
+}
+
+
+
 .wrap{
   position: relative;
   display: inline-block;
@@ -97,9 +120,9 @@
     left: 0;
     transform: translateX(calc(-100% - 15px));
     &:after {
-      bottom: 0;
+      top: 50%;
       right: 0;
-      transform: translate(50%, -25%) rotate(45deg);
+      transform: translate(50%, -50%) rotate(45deg);
       border-right: 1px solid rgba(0, 0, 0, 0.1);
       border-top: 1px solid rgba(0, 0, 0, 0.1);
     }
@@ -121,9 +144,9 @@
     left: 0;
     transform: translateX(calc(-100% - 15px));
     &:after {
-      top: 0;
+      top: 50%;
       right: 0;
-      transform: translate(50%, 25%) rotate(45deg);
+      transform: translate(50%, -50%) rotate(45deg);
       border-right: 1px solid rgba(0, 0, 0, 0.1);
       border-top: 1px solid rgba(0, 0, 0, 0.1);
     }
@@ -135,9 +158,9 @@
     right: 0;
     transform: translateX(calc(100% + 15px));
     &:after {
-      bottom: 0;
+      top: 50%;
       left: 0;
-      transform: translate(-50%, -25%) rotate(45deg);
+      transform: translate(-50%, -50%) rotate(45deg);
       border-left: 1px solid rgba(0, 0, 0, 0.1);
       border-bottom: 1px solid rgba(0, 0, 0, 0.1);
     }
@@ -159,9 +182,9 @@
     right: 0;
     transform: translateX(calc(100% + 15px));
     &:after {
-      top: 0;
+      top: 50%;
       left: 0;
-      transform: translate(-50%, 25%) rotate(45deg);
+      transform: translate(-50%, -50%) rotate(45deg);
       border-left: 1px solid rgba(0, 0, 0, 0.1);
       border-bottom: 1px solid rgba(0, 0, 0, 0.1);
     }

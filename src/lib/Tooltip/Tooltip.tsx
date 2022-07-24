@@ -1,5 +1,6 @@
-import React, { HTMLAttributes } from 'react';
+import React, { HTMLAttributes, useState } from 'react';
 import classNames from 'classnames';
+import { CSSTransition } from 'react-transition-group';
 import './index.scss';
 
 type Position =
@@ -24,10 +25,22 @@ interface Props extends HTMLAttributes<HTMLDivElement> {
 
 const Tooltip: React.FC<Props> = (props) => {
   const { children, position, tip, ...rest } = props;
+  const [isShow, setShow] = useState<boolean>(false);
   return (
     <div>
-      <div {...rest} className="wrap">
-        <span className={classNames('tip', position)}>{tip}</span>
+      <div
+        role="presentation"
+        {...rest}
+        className="wrap"
+        onMouseOver={() => {
+          setShow(true);
+        }}
+        onMouseOut={() => setShow(false)}
+      >
+        <CSSTransition in={isShow} classNames="box" timeout={500} unmountOnExit>
+          <span className={classNames('tip', position)}>{tip}</span>
+        </CSSTransition>
+
         <div>{children}</div>
       </div>
     </div>
