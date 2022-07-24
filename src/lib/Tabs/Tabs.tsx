@@ -23,6 +23,7 @@ const TabName = styled.div`
   //border-bottom: 1px solid rgba(0, 0, 0, 0.1);
   > span.title {
     padding: 10px 0;
+    color: #262626;
   }
 
   > span.indicator {
@@ -40,7 +41,7 @@ const Content = styled.div`
 `;
 
 const Tabs: React.FC<Props> = (props) => {
-  const { children, onChange, defaultKey, ...rest } = props;
+  const { children, callback, defaultKey, ...rest } = props;
   const [currentIndex, setIndex] = useState<string>(defaultKey!);
   const spanRef = useRef<ReactNode[]>([]);
   const lastSpan = useRef<HTMLSpanElement | null>(null);
@@ -50,7 +51,7 @@ const Tabs: React.FC<Props> = (props) => {
   useEffect(() => {
     Array.from(spanWrap.current!.children).forEach((item) => {
       if (item.getAttribute('data-order') === currentIndex) {
-        if (lastSpan.current) lastSpan.current.style.color = 'black';
+        if (lastSpan.current) lastSpan.current.style.color = '#262626';
         const el = item as HTMLSpanElement;
         lastSpan.current = el;
         el.style.color = '#1890ff';
@@ -62,6 +63,7 @@ const Tabs: React.FC<Props> = (props) => {
     });
   });
   const tabClick = (e: React.MouseEvent<HTMLSpanElement>, index: string) => {
+    callback!(index);
     setIndex(index);
     const el = e.target as HTMLSpanElement;
     const { width, left: left1 } = el.getBoundingClientRect();
