@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
-import Button from '../lib/Button/Button';
-import Tooltip from '../lib/Tooltip/Tooltip';
+import Tabs from '../lib/Tabs/Tabs';
+import Tab from '../lib/Tabs/Tab';
 
 const Wrap = styled.div`
   display: flex;
@@ -12,48 +12,22 @@ const Wrap = styled.div`
 `;
 
 const Home: React.FC = () => {
-  const text = 'prompt text';
+  const onChange = (key: string) => {
+    console.log(key);
+  };
   return (
     <Wrap>
-      <Tooltip position="rightTop" tip={text}>
-        <Button>rightTopxxxxxxxxx</Button>
-      </Tooltip>
-      <Tooltip position="rightCenter" tip={text}>
-        <Button>rightCenterxxxxxxxxxx</Button>
-      </Tooltip>
-      <Tooltip position="rightBottom" tip={text}>
-        <Button>rightBottomxxxxxxxxxx</Button>
-      </Tooltip>
-
-      <Tooltip position="leftTop" tip={text}>
-        <Button>leftTopxxxxxxx</Button>
-      </Tooltip>
-      <Tooltip position="leftCenter" tip={text}>
-        <Button>leftCenterxxxxxxxx</Button>
-      </Tooltip>
-      <Tooltip position="leftBottom" tip={text}>
-        <Button>leftBottomxxxxxx</Button>
-      </Tooltip>
-
-      <Tooltip position="topLeft" tip={text}>
-        <Button>topLeftxxxxxxx</Button>
-      </Tooltip>
-      <Tooltip position="topCenter" tip={text}>
-        <Button>topCenterxxxxxx</Button>
-      </Tooltip>
-      <Tooltip position="topRight" tip={text}>
-        <Button>topRightxxxxxx</Button>
-      </Tooltip>
-
-      <Tooltip position="bottomLeft" tip={text}>
-        <Button>bottomLeftxxxxx</Button>
-      </Tooltip>
-      <Tooltip position="bottomCenter" tip={text}>
-        <Button>bottomCenterxxxxxxx</Button>
-      </Tooltip>
-      <Tooltip position="bottomRight" tip={text}>
-        <Button>bottomRightxxxxxx</Button>
-      </Tooltip>
+      <Tabs defaultKey="1" callback={onChange}>
+        <Tab tab="Tab 1" index="1">
+          Content of Tab Pane 1
+        </Tab>
+        <Tab tab="Tab 2" index="2">
+          Content of Tab Pane 2
+        </Tab>
+        <Tab tab="Tab 3" index="3">
+          Content of Tab Pane 3
+        </Tab>
+      </Tabs>
     </Wrap>
   );
 };
