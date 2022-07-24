@@ -4,15 +4,27 @@ import styled from 'styled-components';
 type VNode = ReactElement & { type: { name: string } };
 
 interface Props extends HTMLAttributes<HTMLDivElement> {
+  bgc?: string;
+  position?: 'center' | 'start' | 'end';
   children?: React.ReactNode;
   callback?: (key: string) => void;
   defaultKey?: string;
+  gap?: number;
 }
+
+type TabNameProp = {
+  bgc?: string;
+  position?: 'center' | 'start' | 'end';
+  gap?: number;
+};
 
 const TabsStyled = styled.div`
   width: 100%;
   height: 100%;
   padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: ${(props: TabNameProp) => `${props.gap}px`};
 `;
 
 const TabName = styled.div`
@@ -20,6 +32,7 @@ const TabName = styled.div`
   cursor: pointer;
   display: flex;
   gap: 30px;
+  justify-content: ${(props: TabNameProp) => props.position};
   //border-bottom: 1px solid rgba(0, 0, 0, 0.1);
   > span.title {
     padding: 10px 0;
@@ -29,10 +42,10 @@ const TabName = styled.div`
   > span.indicator {
     position: absolute;
     bottom: 0;
-    height: 2px;
+    height: 3px;
     left: 0;
     transition: all 250ms;
-    background-color: orange;
+    background-color: ${(props: TabNameProp) => props.bgc};
   }
 `;
 
@@ -41,20 +54,19 @@ const Content = styled.div`
 `;
 
 const Tabs: React.FC<Props> = (props) => {
-  const { children, callback, defaultKey, ...rest } = props;
+  const { children, callback, gap, position, bgc, defaultKey, ...rest } = props;
   const [currentIndex, setIndex] = useState<string>(defaultKey!);
   const spanRef = useRef<ReactNode[]>([]);
   const lastSpan = useRef<HTMLSpanElement | null>(null);
   const spanWrap = useRef<HTMLDivElement | null>(null);
   const indicator = useRef<HTMLSpanElement | null>(null);
-
   useEffect(() => {
     Array.from(spanWrap.current!.children).forEach((item) => {
       if (item.getAttribute('data-order') === currentIndex) {
         if (lastSpan.current) lastSpan.current.style.color = '#262626';
         const el = item as HTMLSpanElement;
         lastSpan.current = el;
-        el.style.color = '#1890ff';
+        el.style.color = bgc!;
         const { width, left: left1 } = el.getBoundingClientRect();
         const { left: left2 } = spanWrap.current!.getBoundingClientRect();
         indicator.current!.style.width = `${width}px`;
@@ -113,7 +125,7 @@ const Tabs: React.FC<Props> = (props) => {
     });
     return (
       <>
-        <TabName ref={spanWrap}>
+        <TabName ref={spanWrap} bgc={bgc!} position={position!}>
           {spanRef.current}
           <span className="indicator" ref={indicator} />
         </TabName>
@@ -121,12 +133,19 @@ const Tabs: React.FC<Props> = (props) => {
       </>
     );
   };
-  return <TabsStyled {...rest}>{render()}</TabsStyled>;
+  return (
+    <TabsStyled gap={gap!} {...rest}>
+      {render()}
+    </TabsStyled>
+  );
 };
 Tabs.defaultProps = {
   callback: () => {},
   defaultKey: '1',
-  children: ''
+  children: '',
+  bgc: '#1890ff',
+  position: 'start',
+  gap: 30
 };
 
 export default Tabs;
