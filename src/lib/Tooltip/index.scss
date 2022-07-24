@@ -1,0 +1,169 @@
+.wrap{
+  position: relative;
+  display: inline-block;
+  .tip {
+    position: absolute;
+    background-color: orange;
+    padding: 8px;
+    white-space: nowrap;
+    border-radius: 2px;
+    &:after {
+      content: '';
+      position: absolute;
+      width: 10px;
+      height: 10px;
+      background-color: orange;
+    }
+  }
+  //
+  > .tip.topLeft {
+    top: 0;
+    left: 0;
+    transform: translateY(calc(-100% - 15px));
+    &:after {
+      bottom: 0;
+      left: 25%;
+      transform: translate(-25%, 50%) rotate(45deg);
+      border-right: 1px solid rgba(0, 0, 0, 0.1);
+      border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+    }
+  }
+  > .tip.topCenter {
+    top: 0;
+    left: 50%;
+    transform: translate(-50%, calc(-100% - 15px));
+    &:after {
+      bottom: 0;
+      left: 50%;
+      transform: translate(-50%, 50%) rotate(45deg);
+      border-right: 1px solid rgba(0, 0, 0, 0.1);
+      border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+    }
+  }
+  > .tip.topRight {
+    top: 0;
+    right: 0;
+    transform: translateY(calc(-100% - 15px));
+    &:after {
+      bottom: 0;
+      left: 75%;
+      transform: translate(-75%, 50%) rotate(45deg);
+      border-right: 1px solid rgba(0, 0, 0, 0.1);
+      border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+    }
+  }
+
+  //
+  > .tip.bottomLeft {
+    bottom: 0;
+    left: 0;
+    transform: translateY(calc(100% + 15px));
+    &:after {
+      top: 0;
+      left: 25%;
+      transform: translate(-25%, -50%) rotate(45deg);
+      border-left: 1px solid rgba(0, 0, 0, 0.1);
+      border-top: 1px solid rgba(0, 0, 0, 0.1);
+    }
+  }
+  > .tip.bottomCenter {
+    bottom: 0;
+    left: 50%;
+    transform: translate(-50%,calc(100% + 15px));
+    &:after {
+      top: 0;
+      left: 50%;
+      transform: translate(-50%, -50%) rotate(45deg);
+      border-left: 1px solid rgba(0, 0, 0, 0.1);
+      border-top: 1px solid rgba(0, 0, 0, 0.1);
+    }
+  }
+  > .tip.bottomRight {
+    bottom: 0;
+   right: 0;
+    transform: translateY(calc(100% + 15px));
+    &:after {
+      top: 0;
+      left: 75%;
+      transform: translate(-50%, -50%) rotate(45deg);
+      border-left: 1px solid rgba(0, 0, 0, 0.1);
+      border-top: 1px solid rgba(0, 0, 0, 0.1);
+    }
+  }
+
+  //
+  > .tip.leftTop{
+    bottom: 0;
+    left: 0;
+    transform: translateX(calc(-100% - 15px));
+    &:after {
+      bottom: 0;
+      right: 0;
+      transform: translate(50%, -25%) rotate(45deg);
+      border-right: 1px solid rgba(0, 0, 0, 0.1);
+      border-top: 1px solid rgba(0, 0, 0, 0.1);
+    }
+  }
+  > .tip.leftCenter {
+    top: 50%;
+    left: 0;
+    transform: translate(calc(-100% - 15px),-50%);
+    &:after {
+      top: 50%;
+      right: 0;
+      transform: translate(50%, -50%) rotate(45deg);
+      border-right: 1px solid rgba(0, 0, 0, 0.1);
+      border-top: 1px solid rgba(0, 0, 0, 0.1);
+    }
+  }
+  > .tip.leftBottom {
+    top: 0;
+    left: 0;
+    transform: translateX(calc(-100% - 15px));
+    &:after {
+      top: 0;
+      right: 0;
+      transform: translate(50%, 25%) rotate(45deg);
+      border-right: 1px solid rgba(0, 0, 0, 0.1);
+      border-top: 1px solid rgba(0, 0, 0, 0.1);
+    }
+  }
+
+  //
+  > .tip.rightTop{
+    bottom: 0;
+    right: 0;
+    transform: translateX(calc(100% + 15px));
+    &:after {
+      bottom: 0;
+      left: 0;
+      transform: translate(-50%, -25%) rotate(45deg);
+      border-left: 1px solid rgba(0, 0, 0, 0.1);
+      border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+    }
+  }
+  > .tip.rightCenter {
+    top: 50%;
+    right: 0;
+    transform: translate(calc(100% + 15px),-50%);
+    &:after {
+      top: 50%;
+      left: 0;
+      transform: translate(-50%, -50%) rotate(45deg);
+      border-left: 1px solid rgba(0, 0, 0, 0.1);
+      border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+    }
+  }
+  > .tip.rightBottom {
+    top: 0;
+    right: 0;
+    transform: translateX(calc(100% + 15px));
+    &:after {
+      top: 0;
+      left: 0;
+      transform: translate(-50%, 25%) rotate(45deg);
+      border-left: 1px solid rgba(0, 0, 0, 0.1);
+      border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+    }
+  }
+}
