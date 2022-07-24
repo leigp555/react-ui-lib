@@ -13,18 +13,19 @@ const Wrap = styled.div`
 const Home: React.FC = () => {
   return (
     <Wrap>
-      <Tag color="#CCFFFF">magenta</Tag>
-      <Tag color="#FF6666">red</Tag>
-      <Tag color="#993333">volcano</Tag>
-      <Tag color="#FFFF66">orange</Tag>
-      <Tag color="#000000">gold</Tag>
-      <Tag color="#CCCCCC">lime</Tag>
-      <Tag color="#CCFFCC">green</Tag>
-      <Tag color="#0099CC">cyan</Tag>
-      <Tag color="#333366">blue</Tag>
-      <Tag color="#999999">teal</Tag>
-      <Tag color="#FF99CC">purple</Tag>
+      <Tag color="#FFFFCC">purple</Tag>
+      <Tag color="#FF99FF">purple</Tag>
       <Tag color="#FF0000FF">purple</Tag>
+      <Tag color="magenta">magenta</Tag>
+      <Tag color="red">red</Tag>
+      <Tag color="orange">orange</Tag>
+      <Tag color="gold">gold</Tag>
+      <Tag color="lime">lime</Tag>
+      <Tag color="green">green</Tag>
+      <Tag color="cyan">cyan</Tag>
+      <Tag color="blue">blue</Tag>
+      <Tag color="black">black</Tag>
+      <Tag color="purple">purple</Tag>
     </Wrap>
   );
 };
