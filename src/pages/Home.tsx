@@ -27,13 +27,17 @@ const Home: React.FC = () => {
   const allData = createData();
   // 模拟数据请求
   const ajax = (url: string, offset: number, limit: number) => {
-    if (url === '/data') {
-      return {
-        status: 200,
-        data: allData.slice(offset, offset + limit),
-        total: allData.length
-      };
-    }
+    return new Promise((resolve) => {
+      if (url === '/data') {
+        setTimeout(() => {
+          resolve({
+            status: 200,
+            data: allData.slice(offset, offset + limit),
+            total: allData.length
+          });
+        }, 500);
+      }
+    });
   };
   // 总条数
   const [totalSrc, setTotalData] = useState<number>(0);
@@ -51,17 +55,24 @@ const Home: React.FC = () => {
   // 函数每次翻页都会执行
   const fn = (currentPage: number, offset: number) => {
     setLoading(true);
-    const res = ajax('/data', offset, 10) as any;
-    setData((state) => ({
-      ...state,
-      body: res.data,
-      footer: {
-        ...state.footer,
-        result: `${res.total.toString()} 条数据`
-      }
-    }));
-    setTotalData(res.total);
-    setLoading(false);
+    (
+      ajax('/data', offset, 10) as Promise<{
+        status: number;
+        data: { [key: string]: React.ReactNode }[];
+        total: number;
+      }>
+    ).then((res) => {
+      setData((state) => ({
+        ...state,
+        body: res.data,
+        footer: {
+          ...state.footer,
+          result: `${res.total.toString()} 条数据`
+        }
+      }));
+      setTotalData(res.total);
+      setLoading(false);
+    });
   };
   return (
     <Wrap>
