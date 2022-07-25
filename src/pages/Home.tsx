@@ -51,7 +51,10 @@ const Home: React.FC = () => {
         </Tag>
       </div>
       <div>
-        <TagGroup tags={tags} setTag={setTags} callback={tagsChange} />
+        <TagGroup tags={tags} setTag={setTags} callback={tagsChange} closeable />
+      </div>
+      <div>
+        <TagGroup tags={tags} setTag={setTags} callback={tagsChange} closeable={false} />
       </div>
     </Wrap>
   );

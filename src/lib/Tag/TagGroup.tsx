@@ -6,6 +6,7 @@ export type Tags = { id: string; tagContent: string; color: string }[];
 
 interface Props extends HTMLAttributes<HTMLDivElement> {
   tags: Tags;
+  closeable: boolean;
   callback?: (tag: Tags) => void;
   setTag: Dispatch<SetStateAction<Tags>>;
   children?: React.ReactNode;
@@ -15,7 +16,7 @@ const TagGroupStyled = styled.div`
   gap: 2px;
 `;
 const TagGroup: React.FC<Props> = (props) => {
-  const { children, tags, setTag, callback, ...rest } = props;
+  const { children, closeable, tags, setTag, callback, ...rest } = props;
   const close = (el: HTMLDivElement) => {
     const deleteId = el.getAttribute('data-id');
     setTag((state) => {
@@ -35,7 +36,7 @@ const TagGroup: React.FC<Props> = (props) => {
             key={`${item.id + item.tagContent}`}
             color={item.color}
             callback={close}
-            closeable
+            closeable={closeable}
           >
             {item.tagContent}
           </Tag>

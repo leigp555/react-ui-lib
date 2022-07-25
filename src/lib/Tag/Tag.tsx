@@ -70,9 +70,13 @@ const Tag: React.FC<Props> = (props) => {
       fc={colorTransform(color!, 0.9)}
     >
       <Content>{children}</Content>
-      <Cancel onClick={cancel} style={{ display: closeable ? 'flex' : 'none' }}>
-        <CancelIcon width="0.9em" height="0.9em" />
-      </Cancel>
+      {closeable ? (
+        <Cancel onClick={cancel}>
+          <CancelIcon width="0.9em" height="0.9em" />
+        </Cancel>
+      ) : (
+        ''
+      )}
     </TagStyled>
   );
 };
