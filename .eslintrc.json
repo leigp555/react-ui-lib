@@ -35,6 +35,7 @@
         "semi": ["error", "always"],
         "react/function-component-definition": "off",
         "react/button-has-type": "off",
+        "import/no-named-as-default": "off",
         "react/jsx-props-no-spreading": "off",
         "import/prefer-default-export": "off",
         "jsx-a11y/mouse-events-have-key-events":"off",

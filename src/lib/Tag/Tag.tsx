@@ -7,7 +7,7 @@ import CancelIcon from '../icons/cha.svg';
 interface Props extends HTMLAttributes<HTMLDivElement> {
   color?: string;
   children?: React.ReactNode;
-  callback?: () => void;
+  callback?: (el: HTMLDivElement) => void;
   closeable?: boolean;
 }
 
@@ -56,8 +56,10 @@ const Tag: React.FC<Props> = (props) => {
     colorToRGB('#000000', opt);
   };
   const cancel = () => {
-    if (divRef.current) divRef.current?.remove();
-    console.log(divRef.current);
+    if (divRef.current) {
+      callback!(divRef.current);
+      divRef.current?.remove();
+    }
   };
   return (
     <TagStyled
@@ -68,7 +70,7 @@ const Tag: React.FC<Props> = (props) => {
       fc={colorTransform(color!, 0.9)}
     >
       <Content>{children}</Content>
-      <Cancel onClick={cancel}>
+      <Cancel onClick={cancel} style={{ display: closeable ? 'flex' : 'none' }}>
         <CancelIcon width="0.9em" height="0.9em" />
       </Cancel>
     </TagStyled>
