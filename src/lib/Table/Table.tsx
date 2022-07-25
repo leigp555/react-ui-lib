@@ -1,25 +1,47 @@
-import React, { HTMLAttributes, ReactNode } from 'react';
+import React, { HTMLAttributes, ReactNode, useEffect, useState } from 'react';
 import styled from 'styled-components';
 import './index.scss';
 import Pagination from '../Pagination/Pagination ';
 
-type Data = {
+export type TableData = {
   header: React.ReactNode[];
   body: { [key: string]: React.ReactNode }[];
-  footer: { title: string; result: string };
+  footer?: { title: string; result: string };
 };
 
 interface Props extends HTMLAttributes<HTMLDivElement> {
   children?: React.ReactNode;
-  data: Data;
+  data: TableData;
+  pagination?: boolean;
 }
+const TableWrap = styled.div`
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+  align-items: center;
+`;
 const TableStyled = styled.div`
   width: 100%;
 `;
 
 const Table: React.FC<Props> = (props) => {
-  const { children, data, ...rest } = props;
-
+  const { children, data, pagination, ...rest } = props;
+  const [showData, setShowData] = useState<{ [key: string]: React.ReactNode }[]>([]);
+  const [page, setPage] = useState<number>(1);
+  const fn = (currentPage: number, start: number, end: number) => {
+    setShowData(data.body.slice(start, end));
+    setPage(currentPage);
+  };
+  useEffect(() => {
+    if (pagination) {
+      // 需要分页
+      setShowData(data.body.slice(0, 5));
+    } else {
+      // 不需要分页
+      setShowData(data.body);
+    }
+  }, []);
   const bodyRender = (arr: { [key: string]: React.ReactNode }) => {
     const vNode: ReactNode[] = [];
     // eslint-disable-next-line no-restricted-syntax
@@ -45,28 +67,37 @@ const Table: React.FC<Props> = (props) => {
           </tr>
         </thead>
         <tbody>
-          {data.body.map((item: { [key: string]: React.ReactNode }) => {
+          {showData.map((item: { [key: string]: React.ReactNode }) => {
             return <tr key={item.toString() + Math.random().toString()}>{bodyRender(item)}</tr>;
           })}
         </tbody>
-        <tfoot>
-          <tr>
-            <td>{data.footer.title}</td>
-            <td colSpan={data.header.length - 1}>{data.footer.result}</td>
-          </tr>
-        </tfoot>
+        {data.footer ? (
+          <tfoot>
+            <tr>
+              <td>{data.footer.title}</td>
+              <td colSpan={data.header.length - 1}>{data.footer.result}</td>
+            </tr>
+          </tfoot>
+        ) : (
+          ''
+        )}
       </table>
     );
   };
   return (
-    <TableStyled {...rest}>
-      <div>{render()}</div>
-      <Pagination defaultPage={1} totalSrc={500} perPage={5} goTool moreTool />
-    </TableStyled>
+    <TableWrap {...rest}>
+      <TableStyled>{render()}</TableStyled>
+      {pagination ? (
+        <Pagination callback={fn} defaultPage={page} totalSrc={data.body.length} perPage={5} />
+      ) : (
+        ''
+      )}
+    </TableWrap>
   );
 };
 Table.defaultProps = {
-  children: ''
+  children: '',
+  pagination: false
 };
 
 export default Table;

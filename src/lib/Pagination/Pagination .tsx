@@ -118,7 +118,7 @@ const Pagination: React.FC<Props> = (props) => {
       let start: number;
       let end: number;
       if (numberPage === 1) {
-        start = 1;
+        start = 0;
       } else {
         start = perPage * numberPage - perPage;
       }
@@ -164,6 +164,7 @@ const Pagination: React.FC<Props> = (props) => {
         if (item.innerText === n.toString()) {
           item.style.color = '#1890ff';
           item.style.border = '1px solid #1890ff';
+          console.log(item);
         }
       });
     }
