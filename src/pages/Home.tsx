@@ -23,9 +23,9 @@ const Home: React.FC = () => {
     { id: '5', tagContent: 'gold', color: 'gold' },
     { id: '6', tagContent: 'gold', color: 'gold' },
     { id: '7', tagContent: 'gold', color: 'gold' },
-    { id: '8', tagContent: 'gold', color: 'gold' },
-    { id: '9', tagContent: 'gold', color: 'gold' },
-    { id: '10', tagContent: 'gold', color: 'gold' }
+    { id: '8', tagContent: 'gold', color: 'gold', closeable: true },
+    { id: '9', tagContent: 'gold', color: 'gold', closeable: true },
+    { id: '10', tagContent: 'gold', color: 'gold', closeable: true }
   ]);
   const tagsChange = (tag: Tags) => {
     console.log(tag);

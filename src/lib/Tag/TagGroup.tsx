@@ -2,7 +2,7 @@ import React, { Dispatch, HTMLAttributes, SetStateAction } from 'react';
 import styled from 'styled-components';
 import Tag from './Tag';
 
-export type Tags = { id: string; tagContent: string; color: string }[];
+export type Tags = { id: string; tagContent: string; color: string; closeable?: boolean }[];
 
 interface Props extends HTMLAttributes<HTMLDivElement> {
   tags: Tags;
@@ -36,7 +36,7 @@ const TagGroup: React.FC<Props> = (props) => {
             key={`${item.id + item.tagContent}`}
             color={item.color}
             callback={close}
-            closeable={closeable}
+            closeable={closeable || !!item.closeable}
           >
             {item.tagContent}
           </Tag>
