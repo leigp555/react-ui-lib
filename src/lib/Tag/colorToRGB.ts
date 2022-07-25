@@ -17,6 +17,5 @@ export const colorToRGB = (colorStr: string, opt: number) => {
       finallyCor = `rgba(${color1},${color2},${color3},${opt})`;
     }
   }
-  console.log(finallyCor);
   return finallyCor;
 };

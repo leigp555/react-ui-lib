@@ -11,6 +11,9 @@ const Wrap = styled.div`
 `;
 
 const Home: React.FC = () => {
+  const close = () => {
+    console.log('close');
+  };
   return (
     <Wrap>
       <Tag color="#FFFFCC">purple</Tag>
@@ -26,6 +29,9 @@ const Home: React.FC = () => {
       <Tag color="blue">blue</Tag>
       <Tag color="black">black</Tag>
       <Tag color="purple">purple</Tag>
+      <Tag color="purple" callback={close} closeable>
+        purple
+      </Tag>
     </Wrap>
   );
 };
