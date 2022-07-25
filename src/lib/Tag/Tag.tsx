@@ -26,7 +26,9 @@ const TagStyled = styled.div`
   align-items: center;
   gap: 10px;
   font-size: 12px;
-  padding: 4px 7px;
+  padding: 0 7px;
+  line-height: 20px;
+  height: auto;
   text-align: center;
   white-space: nowrap;
   border-radius: 2px;

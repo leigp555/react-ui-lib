@@ -1,0 +1,38 @@
+//table主色调
+#ui-table {
+  width: 100%;
+  line-height: 2em;
+  border-collapse: collapse;
+  text-align: center;
+  table-layout: auto;
+  background-color: white;
+}
+
+//头尾行颜色
+thead>tr,tfoot>tr {
+  //background-color: orange;
+}
+//文字属性设置
+#ui-table td, #ui-table th {
+  padding: 5px 10px;
+  font-size: 12px;
+  color: #000000d9;
+}
+#ui-table th,#ui-table tfoot td{
+  font-weight: 700;
+}
+
+//奇偶行颜色设置
+#ui-table>tbody>tr:nth-child(even) {
+  background: #fafafa;
+}
+#ui-table>tbody>tr:nth-child(odd) {
+  background:#ffffff ;
+}
+
+#ui-table>tbody>tr:hover {
+  background: #40a9ff;
+}
+#ui-table>tfoot>tr>td:nth-child(2){
+  color:red;
+}
