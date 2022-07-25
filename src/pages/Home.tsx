@@ -2,7 +2,6 @@ import React from 'react';
 import styled from 'styled-components';
 import Table, { TableData } from '../lib/Table/Table';
 import Tag from '../lib/Tag/Tag';
-import Pagination from '../lib/Pagination/Pagination ';
 
 const Wrap = styled.div`
   display: flex;
@@ -30,6 +29,13 @@ const Home: React.FC = () => {
     { 姓名: '张三', 年龄: 14, 班级: 335, 身高: 175, 体重: 99 },
     { 姓名: '张三', 年龄: 15, 班级: 335, 身高: 175, 体重: 99 }
   ];
+  const createData = () => {
+    const data = [];
+    for (let i = 0; i < 10000; i++) {
+      data.push({ 姓名: '张三', 年龄: Math.random(), 班级: 335, 身高: 175, 体重: 99 });
+    }
+    return data;
+  };
   const data: TableData = {
     header: ['姓名', '年龄', '班级', '身高', '体重'],
     body: dataBody,
@@ -39,11 +45,16 @@ const Home: React.FC = () => {
     header: ['姓名', '年龄', '班级', '身高', '体重'],
     body: dataBody
   };
+  const data3: TableData = {
+    header: ['姓名', '年龄', '班级', '身高', '体重'],
+    body: createData(),
+    footer: { title: '总计', result: `${createData().length.toString()} 条数据` }
+  };
   return (
     <Wrap>
-      <Table data={data} pagination />
+      <Table data={data3} pagination goTool moreTool statistic />
+      <Table data={data} pagination goTool moreTool statistic />
       <Table data={data2} />
-      <Pagination defaultPage={1} totalSrc={500} perPage={5} goTool />
     </Wrap>
   );
 };

@@ -100,19 +100,6 @@ const Pagination: React.FC<Props> = (props) => {
   for (let i = 0; i < (totalPage > 5 ? 5 : totalPage); i++) {
     dom.push(<PageButton key={`button${Math.random()}${i}`}>{createPageNumber(i)}</PageButton>);
   }
-
-  // 左侧被点击
-  const leftClick = () => {
-    if (n > 1) {
-      setN((state) => state - 1);
-    }
-  };
-  // 右侧被点击
-  const rightClick = () => {
-    if (n < totalPage) {
-      setN(() => n + 1);
-    }
-  };
   const call = useCallback((numberPage: number) => {
     if (perPage) {
       let start: number;
@@ -130,19 +117,39 @@ const Pagination: React.FC<Props> = (props) => {
       callback?.(numberPage, start, end);
     }
   }, []);
+
+  // 左侧被点击
+  const leftClick = () => {
+    if (n > 1) {
+      setN((state) => state - 1);
+      call(n - 1);
+    }
+  };
+  // 右侧被点击
+  const rightClick = () => {
+    if (n < totalPage) {
+      setN(() => n + 1);
+      call(n + 1);
+    }
+  };
+
+  // page点击
   const WrapClick = (e: React.MouseEvent<HTMLDivElement>) => {
     const el = e.target as HTMLButtonElement;
     if (el.tagName.toLowerCase() === 'button') {
       const numberPage = parseInt(el.innerText, 10);
       setN(numberPage);
+      call(numberPage);
     }
   };
   //  更多被点击
   const moreClick = () => {
     if (n + 5 < totalPage) {
       setN(() => n + 5);
+      call(n + 5);
     } else {
       setN(totalPage);
+      call(totalPage);
     }
   };
   // 输入新的页码
@@ -151,24 +158,24 @@ const Pagination: React.FC<Props> = (props) => {
       const pageNumber = parseInt(inputRef.current?.value, 10) || 1;
       if (pageNumber >= totalPage && pageNumber) {
         setN(totalPage);
+        call(totalPage);
       } else {
         setN(pageNumber);
+        call(pageNumber);
       }
     }
   };
   useEffect(() => {
-    call(n);
     if (pageWrap.current) {
       const childList = Array.from(pageWrap.current.children as unknown as HTMLButtonElement[]);
       childList.forEach((item) => {
         if (item.innerText === n.toString()) {
           item.style.color = '#1890ff';
-          item.style.border = '1px solid #1890ff';
-          console.log(item);
         }
       });
     }
   }, [n]);
+
   return (
     <PaginationStyled {...rest}>
       <PageButton onClick={leftClick} style={{ cursor: n <= 1 ? 'not-allowed' : 'pointer' }}>

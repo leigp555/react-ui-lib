@@ -1,4 +1,4 @@
-import React, { HTMLAttributes, ReactNode, useEffect, useState } from 'react';
+import React, { HTMLAttributes, ReactNode, useState } from 'react';
 import styled from 'styled-components';
 import './index.scss';
 import Pagination from '../Pagination/Pagination ';
@@ -13,12 +13,16 @@ interface Props extends HTMLAttributes<HTMLDivElement> {
   children?: React.ReactNode;
   data: TableData;
   pagination?: boolean;
+  perPage?: number;
+  moreTool?: boolean;
+  goTool?: boolean;
+  statistic?: boolean;
 }
 const TableWrap = styled.div`
   width: 100%;
   display: flex;
   flex-direction: column;
-  gap: 30px;
+  gap: 40px;
   align-items: center;
 `;
 const TableStyled = styled.div`
@@ -26,22 +30,15 @@ const TableStyled = styled.div`
 `;
 
 const Table: React.FC<Props> = (props) => {
-  const { children, data, pagination, ...rest } = props;
-  const [showData, setShowData] = useState<{ [key: string]: React.ReactNode }[]>([]);
+  const { children, data, perPage, pagination, ...rest } = props;
+  const [showData, setShowData] = useState<{ [key: string]: React.ReactNode }[]>(
+    pagination ? data.body.slice(0, perPage) : data.body
+  );
   const [page, setPage] = useState<number>(1);
   const fn = (currentPage: number, start: number, end: number) => {
     setShowData(data.body.slice(start, end));
     setPage(currentPage);
   };
-  useEffect(() => {
-    if (pagination) {
-      // 需要分页
-      setShowData(data.body.slice(0, 5));
-    } else {
-      // 不需要分页
-      setShowData(data.body);
-    }
-  }, []);
   const bodyRender = (arr: { [key: string]: React.ReactNode }) => {
     const vNode: ReactNode[] = [];
     // eslint-disable-next-line no-restricted-syntax
@@ -53,6 +50,7 @@ const Table: React.FC<Props> = (props) => {
     return vNode;
   };
   const render = () => {
+    // console.log('执行了');
     return (
       <table id="ui-table">
         <thead>
@@ -85,10 +83,16 @@ const Table: React.FC<Props> = (props) => {
     );
   };
   return (
-    <TableWrap {...rest}>
+    <TableWrap>
       <TableStyled>{render()}</TableStyled>
       {pagination ? (
-        <Pagination callback={fn} defaultPage={page} totalSrc={data.body.length} perPage={5} />
+        <Pagination
+          {...rest}
+          perPage={perPage}
+          callback={fn}
+          defaultPage={page}
+          totalSrc={data.body.length}
+        />
       ) : (
         ''
       )}
@@ -97,7 +101,11 @@ const Table: React.FC<Props> = (props) => {
 };
 Table.defaultProps = {
   children: '',
-  pagination: false
+  pagination: false,
+  perPage: 10,
+  moreTool: false,
+  statistic: false,
+  goTool: false
 };
 
 export default Table;
