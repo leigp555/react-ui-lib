@@ -10,7 +10,8 @@
 
 //头尾行颜色
 thead>tr,tfoot>tr {
-  //background-color: orange;
+  border-top: 1px solid red;
+  border-bottom: 1px solid red;
 }
 //文字属性设置
 #ui-table td, #ui-table th {
@@ -33,6 +34,4 @@ thead>tr,tfoot>tr {
 #ui-table>tbody>tr:hover {
   background: #40a9ff;
 }
-#ui-table>tfoot>tr>td:nth-child(2){
-  color:red;
-}
+

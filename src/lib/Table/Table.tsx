@@ -13,11 +13,11 @@ interface Props extends HTMLAttributes<HTMLDivElement> {
   children?: React.ReactNode;
   data: Data;
 }
-const TemplateStyled = styled.div`
+const TableStyled = styled.div`
   width: 100%;
 `;
 
-const Template: React.FC<Props> = (props) => {
+const Table: React.FC<Props> = (props) => {
   const { children, data, ...rest } = props;
 
   const bodyRender = (arr: { [key: string]: React.ReactNode }) => {
@@ -25,7 +25,8 @@ const Template: React.FC<Props> = (props) => {
     // eslint-disable-next-line no-restricted-syntax
     for (const key in arr) {
       // eslint-disable-next-line no-prototype-builtins
-      if (arr.hasOwnProperty(key)) vNode.push(<td>{arr[key]}</td>);
+      if (arr.hasOwnProperty(key))
+        vNode.push(<td key={arr[key] + Math.random().toString()}>{arr[key]}</td>);
     }
     return vNode;
   };
@@ -36,7 +37,7 @@ const Template: React.FC<Props> = (props) => {
           <tr>
             {data.header.map((item) => {
               return (
-                <th>
+                <th key={item + Math.random().toString()}>
                   <div>{item}</div>
                 </th>
               );
@@ -44,8 +45,8 @@ const Template: React.FC<Props> = (props) => {
           </tr>
         </thead>
         <tbody>
-          {data.body.map((item) => {
-            return <tr>{bodyRender(item)}</tr>;
+          {data.body.map((item: { [key: string]: React.ReactNode }) => {
+            return <tr key={item.toString() + Math.random().toString()}>{bodyRender(item)}</tr>;
           })}
         </tbody>
         <tfoot>
@@ -58,14 +59,14 @@ const Template: React.FC<Props> = (props) => {
     );
   };
   return (
-    <TemplateStyled {...rest}>
+    <TableStyled {...rest}>
       <div>{render()}</div>
       <Pagination defaultPage={1} totalSrc={500} perPage={5} goTool moreTool />
-    </TemplateStyled>
+    </TableStyled>
   );
 };
-Template.defaultProps = {
+Table.defaultProps = {
   children: ''
 };
 
-export default Template;
+export default Table;
