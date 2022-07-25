@@ -1,4 +1,4 @@
-import React, { HTMLAttributes, ReactNode, useState } from 'react';
+import React, { HTMLAttributes, ReactNode, useEffect, useState } from 'react';
 import styled from 'styled-components';
 import './index.scss';
 import Pagination from '../Pagination/Pagination ';
@@ -39,6 +39,10 @@ const Table: React.FC<Props> = (props) => {
     setShowData(data.body.slice(start, end));
     setPage(currentPage);
   };
+
+  useEffect(() => {
+    setShowData(data.body);
+  }, [data]);
   const bodyRender = (arr: { [key: string]: React.ReactNode }) => {
     const vNode: ReactNode[] = [];
     // eslint-disable-next-line no-restricted-syntax
@@ -50,7 +54,6 @@ const Table: React.FC<Props> = (props) => {
     return vNode;
   };
   const render = () => {
-    // console.log('执行了');
     return (
       <table id="ui-table">
         <thead>

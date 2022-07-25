@@ -74,8 +74,12 @@ const Pagination: React.FC<Props> = (props) => {
     totalSrc,
     ...rest
   } = props;
+
   const totalPage = Math.ceil(Math.abs(totalSrc!) / perPage!);
-  const [n, setN] = useState(Math.abs(defaultPage! > totalPage ? 1 : defaultPage!)); // 当前处于那一页
+  const [n, setN] = useState(1); // 当前处于那一页
+  useEffect(() => {
+    setN(Math.abs(defaultPage! > totalPage ? 1 : defaultPage!));
+  });
   const pageWrap = useRef<HTMLDivElement | null>(null);
   const inputRef = useRef<HTMLInputElement | null>(null);
   const dom: ReactNode[] = [];
@@ -174,8 +178,7 @@ const Pagination: React.FC<Props> = (props) => {
         }
       });
     }
-  }, [n]);
-
+  });
   return (
     <PaginationStyled {...rest}>
       <PageButton onClick={leftClick} style={{ cursor: n <= 1 ? 'not-allowed' : 'pointer' }}>
@@ -231,4 +234,4 @@ Pagination.defaultProps = {
   goTool: false
 };
 
-export default Pagination;
+export default React.memo(Pagination);
