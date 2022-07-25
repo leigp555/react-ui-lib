@@ -77,12 +77,12 @@ const Pagination: React.FC<Props> = (props) => {
 
   const totalPage = Math.ceil(Math.abs(totalSrc!) / perPage!);
   const [n, setN] = useState(1); // 当前处于那一页
-  useEffect(() => {
-    setN(Math.abs(defaultPage! > totalPage ? 1 : defaultPage!));
-  });
   const pageWrap = useRef<HTMLDivElement | null>(null);
   const inputRef = useRef<HTMLInputElement | null>(null);
   const dom: ReactNode[] = [];
+  useEffect(() => {
+    setN(Math.abs(defaultPage! > totalPage ? 1 : defaultPage!));
+  });
   // eslint-disable-next-line consistent-return
   const createPageNumber = (i: number): number => {
     let endPage = 0;
