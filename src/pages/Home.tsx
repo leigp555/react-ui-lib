@@ -1,64 +1,59 @@
 import React from 'react';
 import styled from 'styled-components';
 import Button from '../lib/Button/Button';
-import Popover from '../lib/Popover/Popover';
+import Tooltip from '../lib/Tooltip/Tooltip';
 
 const Wrap = styled.div`
-  position: relative;
   display: flex;
-  gap: 50px;
   flex-direction: column;
-  width: 350px;
+  gap: 100px;
+  justify-content: center;
+  align-items: center;
 `;
 
 const Home: React.FC = () => {
-  const content = (
-    <>
-      <p>Content</p>
-      <p>Content</p>
-    </>
-  );
+  const text = 'prompt text';
   return (
     <Wrap>
-      <Popover position="rightTop" content={content} title="Title" trigger="hover">
-        <Button>rightTop</Button>
-      </Popover>
-      <Popover position="rightCenter" content={content} title="Title" trigger="hover">
-        <Button>rightCenter</Button>
-      </Popover>
-      <Popover position="rightBottom" content={content} title="Title" trigger="click">
-        <Button>rightBottom</Button>
-      </Popover>
+      <Tooltip position="rightTop" tip={text}>
+        <Button>rightTopxxxxxxxxx</Button>
+      </Tooltip>
+      <Tooltip position="rightCenter" tip={text}>
+        <Button>rightCenterxxxxxxxxxx</Button>
+      </Tooltip>
+      <Tooltip position="rightBottom" tip={text}>
+        <Button>rightBottomxxxxxxxxxx</Button>
+      </Tooltip>
 
-      <Popover position="leftTop" content={content} title="Title" trigger="click">
-        <Button>leftTop</Button>
-      </Popover>
-      <Popover position="leftCenter" content={content} title="Title" trigger="click">
-        <Button>leftCenter</Button>
-      </Popover>
-      <Popover position="leftBottom" content={content} title="Title" trigger="click">
-        <Button>leftBottom</Button>
-      </Popover>
+      <Tooltip position="leftTop" tip={text}>
+        <Button>leftTopxxxxxxx</Button>
+      </Tooltip>
+      <Tooltip position="leftCenter" tip={text}>
+        <Button>leftCenterxxxxxxxx</Button>
+      </Tooltip>
+      <Tooltip position="leftBottom" tip={text}>
+        <Button>leftBottomxxxxxx</Button>
+      </Tooltip>
 
-      <Popover position="topLeft" content={content} title="Title" trigger="click">
-        <Button>topLeft</Button>
-      </Popover>
-      <Popover position="topCenter" content={content} title="Title" trigger="click">
-        <Button>topCenter</Button>
-      </Popover>
-      <Popover position="topRight" content={content} title="Title" trigger="click">
-        <Button>topRight</Button>
-      </Popover>
+      <Tooltip position="topLeft" tip={text}>
+        <Button>topLeftxxxxxxx</Button>
+      </Tooltip>
+      <Tooltip position="topCenter" tip={text}>
+        <Button>topCenterxxxxxx</Button>
+      </Tooltip>
+      <Tooltip position="topRight" tip={text}>
+        <Button>topRightxxxxxx</Button>
+      </Tooltip>
 
-      <Popover position="bottomLeft" content={content} title="Title" trigger="click">
-        <Button>bottomLeft</Button>
-      </Popover>
-      <Popover position="bottomCenter" content={content} title="Title" trigger="click">
-        <Button>bottomCenter</Button>
-      </Popover>
-      <Popover position="bottomRight" content={content} title="Title" trigger="click">
-        <Button>bottomRight</Button>
-      </Popover>
+      <Tooltip position="bottomLeft" tip={text}>
+        <Button>bottomLeftxxxxx</Button>
+      </Tooltip>
+      <Tooltip position="bottomCenter" tip={text}>
+        <Button>bottomCenterxxxxxxx</Button>
+      </Tooltip>
+      <Tooltip position="bottomRight" tip={text}>
+        <Button>bottomRightxxxxxx</Button>
+      </Tooltip>
     </Wrap>
   );
 };
