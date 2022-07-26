@@ -1,8 +1,8 @@
-import React, { HTMLAttributes, useRef, useState } from 'react';
+import React, { HTMLAttributes, useContext, useEffect, useRef } from 'react';
 import styled from 'styled-components';
 import classNames from 'classnames';
 import RightIcon from '../icons/right2.svg';
-import './index.scss';
+import { ctx } from './Collapse';
 
 interface Props extends HTMLAttributes<HTMLDivElement> {
   children?: React.ReactNode;
@@ -14,7 +14,7 @@ const PanelStyled = styled.div`
   flex-direction: column;
   > .header {
     padding: 12px 16px;
-    border: 1px solid rgba(0, 0, 0, 0.1);
+    border-top: 1px solid rgba(0, 0, 0, 0.1);
     display: flex;
     gap: 10px;
     align-items: center;
@@ -26,8 +26,6 @@ const PanelStyled = styled.div`
   }
   > .body {
     line-height: 1.5em;
-    border-left: 1px solid rgba(0, 0, 0, 0.1);
-    border-right: 1px solid rgba(0, 0, 0, 0.1);
     background-color: #ffffff;
     height: 0;
     overflow: hidden;
@@ -37,32 +35,44 @@ const PanelStyled = styled.div`
 
 const Panel: React.FC<Props> = (props) => {
   const { children, header, order, ...rest } = props;
-  const [isOpen, setOpen] = useState<boolean>(false);
+  const { currentOrder, setOrder } = useContext(ctx);
   const divRef = useRef<HTMLDivElement | null>(null);
   const divRef2 = useRef<HTMLDivElement | null>(null);
+  useEffect(() => {
+    if (currentOrder === order) {
+      divRef2.current!.style.height = `${divRef.current!.getBoundingClientRect().height}px`;
+    } else {
+      divRef2.current!.style.height = `${0}px`;
+    }
+  }, [currentOrder]);
   return (
     <PanelStyled {...rest}>
       <div
         role="presentation"
         className="header"
         onClick={() => {
-          setOpen(!isOpen);
-          if (!isOpen) {
-            divRef2.current!.style.height = `${divRef.current!.getBoundingClientRect().height}px`;
+          if (currentOrder !== order) {
+            setOrder(order);
           } else {
-            divRef2.current!.style.height = `${0}px`;
+            setOrder('null');
           }
         }}
       >
         <span
-          style={{ transform: isOpen ? 'rotate(90deg)' : 'rotate(0)', transition: 'all 250ms' }}
+          style={{
+            transform: currentOrder === order ? 'rotate(90deg)' : 'rotate(0)',
+            transition: 'all 250ms'
+          }}
         >
           <RightIcon width="1em" height="1em" fill="black" />
         </span>
 
         <p>{header}</p>
       </div>
-      <div className={classNames('body', `${isOpen ? 'open' : 'close'}`)} ref={divRef2}>
+      <div
+        className={classNames('body', `${currentOrder === order ? 'open' : 'close'}`)}
+        ref={divRef2}
+      >
         <div ref={divRef} style={{ padding: '16px' }}>
           {children}
         </div>
