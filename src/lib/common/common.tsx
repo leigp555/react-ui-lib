@@ -9,7 +9,7 @@ type PropsStyled = {
   alignSelf?: 'center' | 'start' | 'end';
   justifySelf?: 'center' | 'start' | 'end' | 'space-between' | 'space-around';
   justify?: 'center' | 'start' | 'end' | 'space-between' | 'space-around';
-  aline?: 'center' | 'start' | 'end';
+  aline?: 'center' | 'start' | 'end' | 'baseline';
   direction?: 'column' | 'row';
 };
 
