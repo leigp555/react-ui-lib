@@ -1,6 +1,6 @@
 import React, { HTMLAttributes, useState } from 'react';
 import styled from 'styled-components';
-import { CSSTransition } from 'react-transition-group';
+import classNames from 'classnames';
 import RightIcon from '../icons/right2.svg';
 import './index.scss';
 
@@ -25,12 +25,14 @@ const PanelStyled = styled.div`
     }
   }
   > .body {
-    padding: 16px;
     line-height: 1.5em;
+    padding: 0 16px;
     border-left: 1px solid rgba(0, 0, 0, 0.1);
     border-right: 1px solid rgba(0, 0, 0, 0.1);
-    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
     background-color: #ffffff;
+    height: 0;
+    overflow: hidden;
+    transition: all 250ms;
   }
 `;
 
@@ -54,9 +56,7 @@ const Panel: React.FC<Props> = (props) => {
 
         <p>{header}</p>
       </div>
-      <CSSTransition in={isOpen} classNames="box" timeout={2000} unmountOnExit>
-        <div className="body">{children}</div>
-      </CSSTransition>
+      <div className={classNames('body', `${isOpen ? 'open' : ''}`)}>{children}</div>
     </PanelStyled>
   );
 };
