@@ -1,34 +1,36 @@
 import React from 'react';
 import styled from 'styled-components';
-import Notification, { openNotification } from '../lib/Notification/Notification';
-
-import Button from '../lib/Button/Button';
+import Collapse from '../lib/Collapse/Collapse';
+import Panel from '../lib/Collapse/Panel';
 
 const Wrap = styled.div`
   display: flex;
   flex-direction: column;
   gap: 50px;
+  width: 600px;
 `;
 
 const Home: React.FC = () => {
-  const open = () => {
-    openNotification(
-      <Notification>
-        <p>Notification Title</p>
-        <div>
-          Lorem ipsum dolor sit amet, consectetur adipisicing elit. Adipisci assumenda cum ex
-          explicabo fuga, illo ipsa laudantium libero magni minus nobis nostrum, odio quam quibusdam
-          recusandae saepe soluta totam voluptates?
-        </div>
-      </Notification>,
-      3000
-    );
-  };
+  const text = (
+    <p>
+      A dog is a type of domesticated animal. Known for its loyalty and faithfulness, it can be
+      found as a welcome guest in many households across the world.
+    </p>
+  );
+
   return (
     <Wrap>
-      <div>
-        <Button onClick={open}>按钮</Button>
-      </div>
+      <Collapse defaultKey="1">
+        <Panel header="This is panel header 1" key="1">
+          <p>{text}</p>
+        </Panel>
+        <Panel header="This is panel header 2" key="2">
+          <p>{text}</p>
+        </Panel>
+        <Panel header="This is panel header 3" key="3">
+          <p>{text}</p>
+        </Panel>
+      </Collapse>
     </Wrap>
   );
 };
