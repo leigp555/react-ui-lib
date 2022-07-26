@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import Palette from '../lib/Palette/Palette';
 
 const Wrap = styled.div`
   display: flex;
@@ -10,7 +11,11 @@ const Wrap = styled.div`
 `;
 
 const Home: React.FC = () => {
-  return <Wrap>xxx</Wrap>;
+  return (
+    <Wrap>
+      <Palette />
+    </Wrap>
+  );
 };
 
 export default Home;
