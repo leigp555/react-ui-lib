@@ -2,7 +2,6 @@ import React, { HTMLAttributes, useState } from 'react';
 import styled from 'styled-components';
 import { CSSTransition } from 'react-transition-group';
 import RightIcon from '../icons/right2.svg';
-import DownIcon from '../icons/down.svg';
 import './index.scss';
 
 interface Props extends HTMLAttributes<HTMLDivElement> {
@@ -34,6 +33,7 @@ const PanelStyled = styled.div`
     background-color: #ffffff;
   }
 `;
+
 const Panel: React.FC<Props> = (props) => {
   const { children, header, key, ...rest } = props;
   const [isOpen, setOpen] = useState<boolean>(false);
@@ -46,15 +46,12 @@ const Panel: React.FC<Props> = (props) => {
           setOpen(!isOpen);
         }}
       >
-        {isOpen ? (
-          <span>
-            <DownIcon width="1em" height="1em" fill="black" />
-          </span>
-        ) : (
-          <span>
-            <RightIcon width="1em" height="1em" fill="black" />
-          </span>
-        )}
+        <span
+          style={{ transform: isOpen ? 'rotate(90deg)' : 'rotate(0)', transition: 'all 250ms' }}
+        >
+          <RightIcon width="1em" height="1em" fill="black" />
+        </span>
+
         <p>{header}</p>
       </div>
       <CSSTransition in={isOpen} classNames="box" timeout={2000} unmountOnExit>
