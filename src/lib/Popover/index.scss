@@ -1,0 +1,210 @@
+.box-enter {
+  opacity: 0;
+  transform: scale(0.6)
+}
+.box-enter-active {
+  opacity: 1;
+  transform: scale(1);
+  transition: all 250ms;
+}
+
+.box-exit {
+  opacity: 1;
+  transform: scale(1);
+}
+
+.box-exit-active {
+  opacity: 0;
+  transform: scale(.6);
+  transition: all 250ms
+}
+
+
+.wrap{
+  position: relative;
+  display: inline-block;
+  .tip {
+    position: absolute;
+    background-color: white;
+    z-index: 10;
+    white-space: nowrap;
+    border-radius: 2px;
+    box-shadow: 5px 10px 20px 0 rgba(0,0,0,.1),-5px 10px 20px 1px rgba(0,0,0,.1);
+    >.tipWrap{
+      display: flex;
+      flex-direction: column;
+      min-height: 100px;
+      min-width: 180px;
+      >.title{
+        border-bottom: 1px solid rgba(0,0,0,.1);
+        padding: 5px 16px 4px;
+        font-weight: 700;
+      }
+      >.content{
+         padding: 12px 16px ;
+         display: flex;
+         flex-direction: column;
+         gap: 10px;
+      }
+    }
+    &:after {
+      content: '';
+      position: absolute;
+      z-index: 10;
+      width: 10px;
+      height: 10px;
+      background-color: white;
+    }
+  }
+  //
+  > .tip.topLeft {
+    top: 0;
+    left: 0;
+    transform: translateY(calc(-100% - 15px));
+    &:after {
+      bottom: 0;
+      left: 25%;
+      transform: translate(-25%, 50%) rotate(45deg);
+      border-right: 1px solid rgba(0, 0, 0, 0.1);
+      border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+    }
+  }
+  > .tip.topCenter {
+    top: 0;
+    left: 50%;
+    transform: translate(-50%, calc(-100% - 15px));
+    &:after {
+      bottom: 0;
+      left: 50%;
+      transform: translate(-50%, 50%) rotate(45deg);
+      border-right: 1px solid rgba(0, 0, 0, 0.1);
+      border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+    }
+  }
+  > .tip.topRight {
+    top: 0;
+    right: 0;
+    transform: translateY(calc(-100% - 15px));
+    &:after {
+      bottom: 0;
+      left: 75%;
+      transform: translate(-75%, 50%) rotate(45deg);
+      border-right: 1px solid rgba(0, 0, 0, 0.1);
+      border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+    }
+  }
+
+  //
+  > .tip.bottomLeft {
+    bottom: 0;
+    left: 0;
+    transform: translateY(calc(100% + 15px));
+    &:after {
+      top: 0;
+      left: 25%;
+      transform: translate(-25%, -50%) rotate(45deg);
+      border-left: 1px solid rgba(0, 0, 0, 0.1);
+      border-top: 1px solid rgba(0, 0, 0, 0.1);
+    }
+  }
+  > .tip.bottomCenter {
+    bottom: 0;
+    left: 50%;
+    transform: translate(-50%,calc(100% + 15px));
+    &:after {
+      top: 0;
+      left: 50%;
+      transform: translate(-50%, -50%) rotate(45deg);
+      border-left: 1px solid rgba(0, 0, 0, 0.1);
+      border-top: 1px solid rgba(0, 0, 0, 0.1);
+    }
+  }
+  > .tip.bottomRight {
+    bottom: 0;
+    right: 0;
+    transform: translateY(calc(100% + 15px));
+    &:after {
+      top: 0;
+      left: 75%;
+      transform: translate(-50%, -50%) rotate(45deg);
+      border-left: 1px solid rgba(0, 0, 0, 0.1);
+      border-top: 1px solid rgba(0, 0, 0, 0.1);
+    }
+  }
+
+  //
+  > .tip.leftTop{
+    bottom: 0;
+    left: 0;
+    transform: translateX(calc(-100% - 15px));
+    &:after {
+      bottom: 15%;
+      right: 0;
+      transform: translate(50%, 15%) rotate(45deg);
+      border-right: 1px solid rgba(0, 0, 0, 0.1);
+      border-top: 1px solid rgba(0, 0, 0, 0.1);
+    }
+  }
+  > .tip.leftCenter {
+    top: 50%;
+    left: 0;
+    transform: translate(calc(-100% - 15px),-50%);
+    &:after {
+      top: 50%;
+      right: 0;
+      transform: translate(50%, -50%) rotate(45deg);
+      border-right: 1px solid rgba(0, 0, 0, 0.1);
+      border-top: 1px solid rgba(0, 0, 0, 0.1);
+    }
+  }
+  > .tip.leftBottom {
+    top: 0;
+    left: 0;
+    transform: translateX(calc(-100% - 15px));
+    &:after {
+      top: 15%;
+      right: 0;
+      transform: translate(50%, -15%) rotate(45deg);
+      border-right: 1px solid rgba(0, 0, 0, 0.1);
+      border-top: 1px solid rgba(0, 0, 0, 0.1);
+    }
+  }
+
+  //
+  > .tip.rightTop{
+    bottom: 0;
+    right: 0;
+    transform: translateX(calc(100% + 15px));
+    &:after {
+      bottom: 15%;
+      left: 0;
+      transform: translate(-50%, -15%) rotate(45deg);
+      border-left: 1px solid rgba(0, 0, 0, 0.1);
+      border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+    }
+  }
+  > .tip.rightCenter {
+    top: 50%;
+    right: 0;
+    transform: translate(calc(100% + 15px),-50%);
+    &:after {
+      top: 50%;
+      left: 0;
+      transform: translate(-50%, -50%) rotate(45deg);
+      border-left: 1px solid rgba(0, 0, 0, 0.1);
+      border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+    }
+  }
+  > .tip.rightBottom {
+    top: 0;
+    right: 0;
+    transform: translateX(calc(100% + 15px));
+    &:after {
+      top: 15%;
+      left: 0;
+      transform: translate(-50%, -15%) rotate(45deg);
+      border-left: 1px solid rgba(0, 0, 0, 0.1);
+      border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+    }
+  }
+}
