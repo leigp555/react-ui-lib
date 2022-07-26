@@ -1,7 +1,9 @@
 import React, { HTMLAttributes, useState } from 'react';
 import styled from 'styled-components';
+import { CSSTransition } from 'react-transition-group';
 import RightIcon from '../icons/right2.svg';
 import DownIcon from '../icons/down.svg';
+import './index.scss';
 
 interface Props extends HTMLAttributes<HTMLDivElement> {
   children?: React.ReactNode;
@@ -50,14 +52,14 @@ const Panel: React.FC<Props> = (props) => {
           </span>
         ) : (
           <span>
-            <RightIcon width="0.8em" height="0.8em" fill="black" />
+            <RightIcon width="1em" height="1em" fill="black" />
           </span>
         )}
         <p>{header}</p>
       </div>
-      <div className="body" style={{ display: isOpen ? 'block' : 'none' }}>
-        {children}
-      </div>
+      <CSSTransition in={isOpen} classNames="box" timeout={2000} unmountOnExit>
+        <div className="body">{children}</div>
+      </CSSTransition>
     </PanelStyled>
   );
 };

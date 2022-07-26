@@ -1,0 +1,17 @@
+.box-enter {
+  opacity: 0;
+}
+.box-enter-active {
+  opacity: 1;
+  transition: all 2000ms ease-in-out;
+}
+
+.box-exit {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.box-exit-active {
+  opacity: 0;
+  transition: all 2000ms ease-in-out ;
+}
