@@ -14,30 +14,25 @@ interface Props extends HTMLAttributes<HTMLDivElement> {
 }
 const AlertStyled = styled.div`
   max-width: 400px;
-  min-width: 200px;
+  min-width: 100px;
   padding: 10px 15px;
   display: inline-flex;
   align-items: start;
   gap: 10px;
   &.success {
     background-color: #e6f7ff;
-    border: 1px solid #91d5ff;
   }
   &.info {
     background-color: #f6ffed;
-    border: 1px solid #b7eb8f;
   }
   &.warning {
     background-color: #fffbe6;
-    border: 1px solid #ffe58f;
   }
   &.error {
     background-color: #fff2f0;
-    border: 1px solid #ffccc7;
   }
   &.loading {
     background-color: #e6f7ff;
-    border: 1px solid #91d5ff;
   }
   > .icon {
     display: flex;
