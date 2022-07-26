@@ -21,14 +21,14 @@ const Home: React.FC = () => {
   return (
     <Wrap>
       <Collapse defaultKey="1">
-        <Panel header="This is panel header 1" key="1">
-          <p>{text}</p>
+        <Panel header="This is panel header 1" order="1">
+          <div>{text}</div>
         </Panel>
-        <Panel header="This is panel header 2" key="2">
-          <p>{text}</p>
+        <Panel header="This is panel header 2" order="2">
+          <div>{text}</div>
         </Panel>
-        <Panel header="This is panel header 3" key="3">
-          <p>{text}</p>
+        <Panel header="This is panel header 3" order="3">
+          <div>{text}</div>
         </Panel>
       </Collapse>
     </Wrap>

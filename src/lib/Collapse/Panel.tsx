@@ -1,4 +1,4 @@
-import React, { HTMLAttributes, useState } from 'react';
+import React, { HTMLAttributes, useRef, useState } from 'react';
 import styled from 'styled-components';
 import classNames from 'classnames';
 import RightIcon from '../icons/right2.svg';
@@ -7,7 +7,7 @@ import './index.scss';
 interface Props extends HTMLAttributes<HTMLDivElement> {
   children?: React.ReactNode;
   header: string;
-  key: string;
+  order: string;
 }
 const PanelStyled = styled.div`
   display: flex;
@@ -26,19 +26,20 @@ const PanelStyled = styled.div`
   }
   > .body {
     line-height: 1.5em;
-    padding: 0 16px;
     border-left: 1px solid rgba(0, 0, 0, 0.1);
     border-right: 1px solid rgba(0, 0, 0, 0.1);
     background-color: #ffffff;
     height: 0;
     overflow: hidden;
-    transition: all 250ms;
+    transition: all 300ms;
   }
 `;
 
 const Panel: React.FC<Props> = (props) => {
-  const { children, header, key, ...rest } = props;
+  const { children, header, order, ...rest } = props;
   const [isOpen, setOpen] = useState<boolean>(false);
+  const divRef = useRef<HTMLDivElement | null>(null);
+  const divRef2 = useRef<HTMLDivElement | null>(null);
   return (
     <PanelStyled {...rest}>
       <div
@@ -46,6 +47,11 @@ const Panel: React.FC<Props> = (props) => {
         className="header"
         onClick={() => {
           setOpen(!isOpen);
+          if (!isOpen) {
+            divRef2.current!.style.height = `${divRef.current!.getBoundingClientRect().height}px`;
+          } else {
+            divRef2.current!.style.height = `${0}px`;
+          }
         }}
       >
         <span
@@ -56,7 +62,11 @@ const Panel: React.FC<Props> = (props) => {
 
         <p>{header}</p>
       </div>
-      <div className={classNames('body', `${isOpen ? 'open' : ''}`)}>{children}</div>
+      <div className={classNames('body', `${isOpen ? 'open' : 'close'}`)} ref={divRef2}>
+        <div ref={divRef} style={{ padding: '16px' }}>
+          {children}
+        </div>
+      </div>
     </PanelStyled>
   );
 };
