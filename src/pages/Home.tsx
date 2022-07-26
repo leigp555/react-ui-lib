@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useCallback, useEffect, useState } from 'react';
 import styled from 'styled-components';
 import List from '../lib/List/List';
 import Avatar from '../lib/Avatar/Avatar';
@@ -19,9 +19,9 @@ interface UserData {
 }
 
 // 伪造数据接口不用看
-const createUserData = () => {
+const createUserData = (total: number) => {
   const dataSrc: UserData[] = [];
-  for (let i = 0; i < 10; i++) {
+  for (let i = 0; i < total; i++) {
     dataSrc.push({
       id: i,
       avatar: 'https://joeschmoe.io/api/v1/random',
@@ -35,7 +35,8 @@ const createUserData = () => {
 };
 // 伪造数据接口不用看
 // 模拟一些数据
-const dataSrc = createUserData();
+const dataSrc1 = createUserData(10);
+const dataSrc2 = createUserData(1000);
 // 伪造数据接口不用看
 // 模拟数据请求
 const ajax = (
@@ -44,12 +45,20 @@ const ajax = (
   limit: number
 ): Promise<{ status: number; data: UserData[]; total: number }> => {
   return new Promise((resolve) => {
-    if (url === '/data') {
+    if (url === '/loadmore') {
       setTimeout(() => {
         resolve({
           status: 200,
-          data: dataSrc.slice(offset, offset + limit),
-          total: dataSrc.length
+          data: dataSrc1.slice(offset, offset + limit),
+          total: dataSrc1.length
+        });
+      }, 1000);
+    } else if (url === '/paginate') {
+      setTimeout(() => {
+        resolve({
+          status: 200,
+          data: dataSrc2.slice(offset, offset + limit),
+          total: dataSrc2.length
         });
       }, 1000);
     }
@@ -70,24 +79,28 @@ const Home: React.FC = () => {
 
   // 初始化数据
   useEffect(() => {
+    // 按钮时加载初始化数据
     setLoading(true);
-    setLoading2(true);
-    ajax('/data', 0, 5).then((res) => {
+    ajax('/loadmore', 0, 5).then((res) => {
       setLoading(false);
-      setLoading2(false);
-      setTotalData(res.total);
       setData((state) => {
         return [...state, ...res.data];
       });
+    });
+    // 分页式加载初始化数据
+    setLoading2(true);
+    ajax('/paginate', 0, 5).then((res) => {
+      setLoading2(false);
+      setTotalData(res.total);
       setData2((state) => {
         return [...state, ...res.data];
       });
     });
   }, []);
   // 加载更多回调函数
-  const loadMore = () => {
+  const loadMore = useCallback(() => {
     setLoading(true);
-    ajax('/data', data.length, 5).then((res) => {
+    ajax('/loadmore', data.length, 5).then((res) => {
       setLoading(false);
       if (res.data[0]) {
         setData((state) => {
@@ -97,13 +110,12 @@ const Home: React.FC = () => {
         setLoadFinish(true);
       }
     });
-  };
+  }, [isLoading]);
   // 分页的函数回调
-  const paginateMore = (start: number) => {
+  const paginateMore = useCallback((start: number) => {
     setLoading2(true);
-    ajax('/data', start, 5).then((res) => {
+    ajax('/paginate', start, 5).then((res) => {
       setLoading2(false);
-      setTotalData(res.total);
       if (res.data[0]) {
         setData2(() => {
           return [...res.data];
@@ -112,11 +124,12 @@ const Home: React.FC = () => {
         setLoadFinish2(true);
       }
     });
-  };
+  }, []);
   return (
     <Wrap>
       <List
         model="pagination"
+        perPage={5} // 这个数据根据每次请求多少条数据来,不能瞎写不然分页数会乱
         totalData={totalData}
         paginateCallback={paginateMore}
         data={data2}
@@ -143,6 +156,31 @@ const Home: React.FC = () => {
       />
       <List
         model="loadMore"
+        data={data}
+        loadMoreCallback={loadMore}
+        isLoading={isLoading}
+        isLoadFinish={isLoadFinish}
+        renderItem={(item: UserData) => (
+          <ListItem
+            key={`${Math.random() + item.id}`}
+            avatar={<Avatar src={item.avatar} size={32} />}
+            title={<span>{item.title}</span>}
+            description={item.description}
+            actions={
+              <>
+                <Button radius onClick={() => console.log('item id', item.id)}>
+                  编辑
+                </Button>
+                <Button radius onClick={() => console.log('item id', item.id)}>
+                  查看
+                </Button>
+              </>
+            }
+          />
+        )}
+      />
+      <List
+        model="normal"
         data={data}
         loadMoreCallback={loadMore}
         isLoading={isLoading}

@@ -1,4 +1,4 @@
-import React, { HTMLAttributes, ReactNode, useState } from 'react';
+import React, { HTMLAttributes, ReactNode, useCallback, useState } from 'react';
 import styled from 'styled-components';
 import Button from '../Button/Button';
 import Skeleton from '../Skeleton/Skeleton';
@@ -14,6 +14,7 @@ interface Props extends HTMLAttributes<HTMLDivElement> {
   isLoadFinish?: boolean;
   model: 'loadMore' | 'pagination' | 'normal';
   totalData?: number;
+  perPage?: number;
 }
 const ListStyled = styled.div`
   border: 1px solid rgba(0, 0, 0, 0.1);
@@ -34,6 +35,7 @@ const List: React.FC<Props> = (props) => {
   const {
     renderItem,
     model,
+    perPage,
     totalData,
     loadMoreCallback,
     paginateCallback,
@@ -42,10 +44,10 @@ const List: React.FC<Props> = (props) => {
     data
   } = props;
   const [currentPage, setPage] = useState<number>(1);
-  const fn = (page: number, start: number) => {
+  const fn = useCallback((page: number, start: number) => {
     paginateCallback!(start);
     setPage(page);
-  };
+  }, []);
   const bottomRender = () => {
     if (model === 'normal') {
       return '';
@@ -75,7 +77,7 @@ const List: React.FC<Props> = (props) => {
             callback={fn}
             defaultPage={currentPage}
             totalSrc={totalData!}
-            perPage={5}
+            perPage={perPage!}
             moreTool
             statistic
             goTool
@@ -107,7 +109,8 @@ List.defaultProps = {
   paginateCallback: () => {},
   isLoading: false,
   isLoadFinish: false,
-  totalData: 0
+  totalData: 0,
+  perPage: 5
 };
 
 export default List;
