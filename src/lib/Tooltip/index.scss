@@ -26,16 +26,18 @@
   display: inline-block;
   .tip {
     position: absolute;
-    background-color: orange;
+    background-color: white;
     padding: 8px;
     white-space: nowrap;
     border-radius: 2px;
+    z-index: 10;
+    box-shadow: 5px 10px 20px 0 rgba(0,0,0,.1),-5px 10px 20px 1px rgba(0,0,0,.1);
     &:after {
       content: '';
       position: absolute;
       width: 10px;
       height: 10px;
-      background-color: orange;
+      background-color: white;
     }
   }
   //
