@@ -151,6 +151,8 @@ const Pagination: React.FC<Props> = (props) => {
     if (n + 5 < totalPage) {
       setN(() => n + 5);
       call(n + 5);
+    } else if (n === totalPage) {
+      return null;
     } else {
       setN(totalPage);
       call(totalPage);
