@@ -1,4 +1,4 @@
-import React, { HTMLAttributes } from 'react';
+import React, { HTMLAttributes, ReactNode } from 'react';
 import styled from 'styled-components';
 
 const BreadcrumbStyled = styled.div`
@@ -12,21 +12,28 @@ const BreadcrumbStyled = styled.div`
 
 interface Props extends HTMLAttributes<HTMLDivElement> {
   separator?: string;
+  renderItem: (item: any) => ReactNode;
+  data: any[];
   children?: React.ReactNode;
 }
+const Wrap = styled.div`
+  display: flex;
+  gap: 2px;
+`;
+
 const Breadcrumb: React.FC<Props> = (props) => {
-  const { children, separator, ...rest } = props;
+  const { children, separator, renderItem, data, ...rest } = props;
   const render = () => {
-    return React.Children.map(children, (child, index) => {
-      if (React.isValidElement(child) && index !== 0) {
+    return data.map((item, index) => {
+      if (index !== 0) {
         return (
-          <>
+          <Wrap key={Math.random()}>
             <span>{separator}</span>
-            {child}
-          </>
+            <span>{renderItem(item)}</span>
+          </Wrap>
         );
       }
-      return child;
+      return <div key={Math.random()}>{renderItem(item)}</div>;
     });
   };
   return <BreadcrumbStyled {...rest}>{render()}</BreadcrumbStyled>;

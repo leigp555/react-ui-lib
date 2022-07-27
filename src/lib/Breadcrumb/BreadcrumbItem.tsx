@@ -11,14 +11,16 @@ const BreadcrumbItemStyled = styled.span`
   align-items: center;
   gap: 2px;
   color: #8c8c8c;
-  &:last-child {
-    color: #262626;
-  }
+  white-space: nowrap;
 `;
 
 const BreadcrumbItem: React.FC<Props> = (props) => {
   const { children, ...rest } = props;
-  return <BreadcrumbItemStyled {...rest}>{children}</BreadcrumbItemStyled>;
+  return (
+    <BreadcrumbItemStyled {...rest} key={Math.random()}>
+      {children}
+    </BreadcrumbItemStyled>
+  );
 };
 BreadcrumbItem.defaultProps = {
   children: ''
