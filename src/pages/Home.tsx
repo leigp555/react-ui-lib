@@ -6,7 +6,6 @@ const Wrap = styled.div`
   display: flex;
   flex-direction: column;
   gap: 100px;
-  height: 200px;
 `;
 
 const Home: React.FC = () => {

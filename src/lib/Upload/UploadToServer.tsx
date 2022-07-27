@@ -13,8 +13,23 @@ interface Props extends HTMLAttributes<HTMLDivElement> {
   children?: React.ReactNode;
   config: Config;
 }
+
+const Wrap = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+  > .processBar {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    > .title {
+      display: flex;
+      justify-content: space-between;
+    }
+  }
+`;
 const UploadToServerStyled = styled.div`
-  height: 100%;
+  height: 20vh;
 `;
 
 const UploadToServer: React.FC<Props> = (props) => {
@@ -63,11 +78,9 @@ const UploadToServer: React.FC<Props> = (props) => {
       if (processBar.hasOwnProperty.call(processBar, item)) {
         return (
           <>
-            <div key={Math.random()} style={{ display: 'flex', justifyContent: 'space-between' }}>
+            <div className="title" key={Math.random()}>
               <span>{item}</span>
-              <div style={{ display: 'flex', gap: '5px' }}>
-                <span>上传进度:</span>
-              </div>
+              <span>上传进度:</span>
             </div>
             <Progress percent={(processBar[item].loaded / processBar[item].total) * 100 || 0} />
           </>
@@ -77,12 +90,12 @@ const UploadToServer: React.FC<Props> = (props) => {
     });
   };
   return (
-    <UploadToServerStyled {...rest}>
-      <Upload getFiles={getFiles} tip="点击或拖拽上传文件" multiple={multiple} />
-      <div style={{ marginTop: '30px', display: 'flex', flexDirection: 'column', gap: '10px' }}>
-        {processBarRender()}
-      </div>
-    </UploadToServerStyled>
+    <Wrap>
+      <UploadToServerStyled {...rest}>
+        <Upload getFiles={getFiles} tip="点击或拖拽上传文件" multiple={multiple} />
+      </UploadToServerStyled>
+      <div className="processBar">{processBarRender()}</div>
+    </Wrap>
   );
 };
 UploadToServer.defaultProps = {
