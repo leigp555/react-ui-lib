@@ -32,7 +32,7 @@ const StyledTip = styled.div`
 `;
 
 interface Props extends HTMLAttributes<HTMLInputElement> {
-  getFiles: (data: Blob[]) => void;
+  getFiles: (data: File[]) => void;
   getImgUrls?: undefined | ((data: string[]) => void);
   getUrlFail?: undefined | (() => void);
   accept?: string;
@@ -46,7 +46,7 @@ const Upload: React.FC<Props> = (props) => {
   // 支持点击上传
   const inputFile = useCallback((e: Event) => {
     const el = e.target as HTMLInputElement;
-    const fileBlob = Array.from(el.files ? el.files : []);
+    const fileBlob = Array.from(el.files ? el.files : []) as File[];
     // 执行回调函数
     getFiles(fileBlob);
     if (getImgUrls) {
@@ -66,7 +66,7 @@ const Upload: React.FC<Props> = (props) => {
   // 支持拖拽上传
   const DropFile = (e: React.DragEvent<HTMLInputElement>) => {
     if (inputRef.current) inputRef.current.removeEventListener('change', inputFile);
-    const fileBlob = Array.from(e.dataTransfer.files);
+    const fileBlob = Array.from(e.dataTransfer.files) as File[];
     getFiles(fileBlob);
     if (getImgUrls) {
       const queue = fileBlob.map((item) => {

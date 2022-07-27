@@ -1,6 +1,5 @@
 import React, { HTMLAttributes } from 'react';
 import styled from 'styled-components';
-import './index.scss';
 
 interface Props extends HTMLAttributes<HTMLDivElement> {
   percent: number;
