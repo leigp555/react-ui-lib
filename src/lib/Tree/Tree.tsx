@@ -23,6 +23,9 @@ const TreeStyled = styled.div`
     margin-top: 5px;
     gap: 8px;
     .title {
+      .content {
+        white-space: nowrap;
+      }
     }
   }
   .container {
@@ -33,6 +36,9 @@ const TreeStyled = styled.div`
       display: flex;
       gap: 8px;
       align-items: center;
+      .content {
+        white-space: nowrap;
+      }
       > .icon {
         display: flex;
         align-items: center;
@@ -59,6 +65,9 @@ const TreeStyled = styled.div`
 
 const NoChild = styled.div`
   margin-left: calc(0.8em + 8px);
+  display: flex;
+  gap: 5px;
+  align-items: center;
 `;
 const Tree: React.FC<Props> = (props) => {
   const { data } = props;
@@ -85,7 +94,7 @@ const Tree: React.FC<Props> = (props) => {
               >
                 <RightIcon width="0.8em" height="0.8em" />
               </span>
-              <span>{item.title}</span>
+              <span className="content">{item.title}</span>
             </div>
             <div className={classNames('inner-container', 'hidden')} style={{ marginLeft: '20px' }}>
               {render(item.children)}
