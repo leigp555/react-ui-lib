@@ -1,6 +1,5 @@
 import React from 'react';
 import styled from 'styled-components';
-import Image from '../lib/Image/Image';
 
 const Wrap = styled.div`
   display: flex;
@@ -9,14 +8,7 @@ const Wrap = styled.div`
 `;
 
 const Home: React.FC = () => {
-  return (
-    <Wrap>
-      <Image
-        width={200}
-        src="https://zos.alipayobjects.com/rmsportal/jkjgkEfvpUPVyRjUImniVslZfWPnJuuZ.png"
-      />
-    </Wrap>
-  );
+  return <Wrap>zzz</Wrap>;
 };
 
 export default Home;
