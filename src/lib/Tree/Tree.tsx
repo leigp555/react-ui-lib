@@ -15,14 +15,14 @@ interface Props extends HTMLAttributes<HTMLDivElement> {
 const TreeStyled = styled.div`
   display: flex;
   flex-direction: column;
-  gap: 8px;
-  color: red;
+  gap: 10px;
+  color: rgba(0, 0, 0, 1);
   .inner-container {
     display: flex;
     flex-direction: column;
-    gap: 2px;
+    margin-top: 5px;
+    gap: 8px;
     .title {
-      color: orange;
     }
   }
   .container {
