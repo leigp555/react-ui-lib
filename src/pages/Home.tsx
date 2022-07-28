@@ -11,8 +11,8 @@ const Wrap = styled.div`
 export interface CommentData {
   id: number;
   avatar: string;
-  title: string;
-  description: string;
+  title: React.ReactNode;
+  description: React.ReactNode;
   createdAt: string;
   reply?: CommentData[];
 }
@@ -52,11 +52,14 @@ const data: CommentData[] = [
     avatar: 'https://joeschmoe.io/api/v1/random',
     title: 'Lorem3',
     createdAt: 'Thu Jul 26 2022 23:22:47 GMT+0800 (中国标准时间)',
-    description: `Accusantium ad ducimus eos et
-      exercitationem facilis itaque molestias necessitatibus odio, quod ratione rem similique
-      voluptatum? Distinctio ipsam nostrum nulla quibusdam sed.Accusantium ad ducimus eos et
-      exercitationem facilis itaque molestias necessitatibus odio, quod ratione rem similique
-      voluptatum? Distinctio ipsam nostrum nulla quibusdam sed.`,
+    description: (
+      <p style={{ color: 'red' }}>
+        Accusantium ad ducimus eos et exercitationem facilis itaque molestias necessitatibus odio,
+        quod ratione rem similique voluptatum? Distinctio ipsam nostrum nulla quibusdam
+        sed.Accusantium ad ducimus eos et exercitationem facilis itaque molestias necessitatibus
+        odio, quod ratione rem similique voluptatum? Distinctio ipsam nostrum nulla quibusdam sed.
+      </p>
+    ),
     reply: [
       {
         id: 3 - 1,
