@@ -21,29 +21,32 @@ const TreeStyled = styled.div`
     display: flex;
     flex-direction: column;
     gap: 2px;
-    color: orange;
+    .title {
+      color: orange;
+    }
   }
   .container {
     display: flex;
     flex-direction: column;
     gap: 5px;
-    cursor: pointer;
     > .title {
       display: flex;
       gap: 8px;
       align-items: center;
-      > span {
+      > .icon {
         display: flex;
         align-items: center;
         white-space: nowrap;
+        cursor: pointer;
+        transition: all 250ms;
+      }
+      .icon.rotate {
+        transform: rotate(90deg);
       }
     }
   }
   .inner-container {
-    opacity: 0;
-    transition: all 1s;
-  }
-  .hidden {
+    transition: all 250ms;
     opacity: 0;
     height: 0;
     overflow: hidden;
@@ -53,6 +56,10 @@ const TreeStyled = styled.div`
     height: auto;
   }
 `;
+
+const NoChild = styled.div`
+  margin-left: calc(0.8em + 8px);
+`;
 const Tree: React.FC<Props> = (props) => {
   const { data } = props;
   const render = (renderData: TypeTree[]): ReactNode => {
@@ -60,15 +67,22 @@ const Tree: React.FC<Props> = (props) => {
       if (item.children) {
         return (
           <div key={item.key} className="container">
-            <div
-              className="title"
-              role="presentation"
-              onClick={(e: MouseEvent<HTMLDivElement>) => {
-                const el = e.currentTarget.parentNode!.children[1] as HTMLDivElement;
-                el.classList.add('visible');
-              }}
-            >
-              <span>
+            <div className="title">
+              <span
+                className="icon"
+                role="presentation"
+                onClick={(e: MouseEvent<HTMLDivElement>) => {
+                  const el = e.currentTarget.parentNode!.parentNode!.children[1] as HTMLDivElement;
+                  const iconEl = e.currentTarget;
+                  if (el.getAttribute('class')!.split(' ').indexOf('visible') < 0) {
+                    el.classList.add('visible');
+                    iconEl.classList.add('rotate');
+                  } else {
+                    el.classList.remove('visible');
+                    iconEl.classList.remove('rotate');
+                  }
+                }}
+              >
                 <RightIcon width="0.8em" height="0.8em" />
               </span>
               <span>{item.title}</span>
@@ -79,11 +93,7 @@ const Tree: React.FC<Props> = (props) => {
           </div>
         );
       }
-      return (
-        <div style={{ marginLeft: '0.8em' }} key={item.key}>
-          {item.title}
-        </div>
-      );
+      return <NoChild key={item.key}>{item.title}</NoChild>;
     });
   };
   return <TreeStyled>{render(data)}</TreeStyled>;
