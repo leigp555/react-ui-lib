@@ -31,7 +31,12 @@ const treeData: TypeTree[] = [
                 key: '1-0-0-1-0'
               },
               {
-                title: 'leaf',
+                title: (
+                  <>
+                    <WarnIcon width="1em" height="1em" />
+                    <span>支持图标</span>
+                  </>
+                ),
                 key: '1-0-0-1-1',
                 children: [
                   {
@@ -44,12 +49,9 @@ const treeData: TypeTree[] = [
                   },
                   {
                     title: (
-                      <>
-                        <WarnIcon width="1em" height="1em" />
-                        <a style={{ color: 'red' }} href="/#">
-                          商品链接
-                        </a>
-                      </>
+                      <a style={{ color: 'red' }} href="/#">
+                        商品链接
+                      </a>
                     ),
                     key: '1-0-0-1-1-2'
                   }

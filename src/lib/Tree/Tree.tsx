@@ -25,6 +25,9 @@ const TreeStyled = styled.div`
     .title {
       .content {
         white-space: nowrap;
+        display: flex;
+        gap: 5px;
+        align-items: center;
       }
     }
   }
@@ -38,6 +41,9 @@ const TreeStyled = styled.div`
       align-items: center;
       .content {
         white-space: nowrap;
+        display: flex;
+        gap: 5px;
+        align-items: center;
       }
       > .icon {
         display: flex;

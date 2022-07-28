@@ -2,6 +2,7 @@
 import React from 'react';
 // import styled from 'styled-components';
 // import Tree, { TypeTree } from '../lib/Tree/Tree';
+// import WarnIcon from '../lib/icons/warning.svg';
 //
 // const Wrap = styled.div`
 //   display: flex;
@@ -31,16 +32,29 @@ import React from 'react';
 //                 key: '1-0-0-1-0'
 //               },
 //               {
-//                 title: 'leaf',
+//                 title: (
+//                   <>
+//                     <WarnIcon width="1em" height="1em" />
+//                     <span>支持图标</span>
+//                   </>
+//                 ),
 //                 key: '1-0-0-1-1',
 //                 children: [
 //                   {
-//                     title: 'leaf',
+//                     title: '商品价格',
 //                     key: '1-0-0-0-1-0'
 //                   },
 //                   {
-//                     title: 'leaf',
-//                     key: '1-0-0-1-1-1'
+//                     title: '商品详情',
+//                     key: '1-0-0-0-1-1'
+//                   },
+//                   {
+//                     title: (
+//                       <a style={{ color: 'red' }} href="/#">
+//                         商品链接
+//                       </a>
+//                     ),
+//                     key: '1-0-0-1-1-2'
 //                   }
 //                 ]
 //               }
