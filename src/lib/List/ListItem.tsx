@@ -1,11 +1,11 @@
-import React, { ReactNode } from 'react';
+import React, { HTMLAttributes, ReactNode } from 'react';
 import styled from 'styled-components';
 
-interface Props {
+interface Props extends Omit<HTMLAttributes<HTMLDivElement>, 'title'> {
   avatar: ReactNode;
   title: ReactNode;
   description: ReactNode;
-  actions: ReactNode;
+  actions?: ReactNode;
 }
 const ListItemStyled = styled.div`
   width: 100%;
@@ -26,6 +26,9 @@ const ListItemStyled = styled.div`
     > .title {
       white-space: nowrap;
       font-weight: 700;
+      display: flex;
+      align-items: center;
+      gap: 10px;
     }
   }
   > .actions {
@@ -35,9 +38,9 @@ const ListItemStyled = styled.div`
   }
 `;
 const ListItem: React.FC<Props> = (props) => {
-  const { avatar, title, description, actions } = props;
+  const { avatar, title, description, actions, ...rest } = props;
   return (
-    <ListItemStyled>
+    <ListItemStyled {...rest}>
       <div className="avatar">{avatar}</div>
       <div className="content">
         <div className="title">{title}</div>
@@ -47,6 +50,8 @@ const ListItem: React.FC<Props> = (props) => {
     </ListItemStyled>
   );
 };
-ListItem.defaultProps = {};
+ListItem.defaultProps = {
+  actions: ''
+};
 
 export default ListItem;

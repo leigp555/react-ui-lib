@@ -37,6 +37,7 @@ specifiers:
   css-loader: ^6.5.1
   css-minimizer-webpack-plugin: ^3.2.0
   cz-customizable: ^6.9.0
+  dayjs: ^1.11.4
   dotenv: ^10.0.0
   dotenv-expand: ^5.1.0
   eslint: ^8.6.0
@@ -98,6 +99,7 @@ dependencies:
   '@types/react-transition-group': 4.4.2
   axios: 0.27.2
   classnames: 2.3.1
+  dayjs: 1.11.4
   nprogress: 0.2.0
   qs: 6.11.0
   react: 18.2.0
@@ -4610,6 +4612,10 @@ packages:
       whatwg-mimetype: 2.3.0
       whatwg-url: 8.7.0
     dev: true
+
+  /dayjs/1.11.4:
+    resolution: {integrity: sha512-Zj/lPM5hOvQ1Bf7uAvewDaUcsJoI6JmNqmHhHl3nyumwe0XHwt8sWdOVAPACJzCebL8gQCi+K49w7iKWnGwX9g==}
+    dev: false
 
   /debug/2.6.9:
     resolution: {integrity: sha512-bC7ElrdJaJnPbAP+1EotYvqZsb3ecl5wi6Bfi6BJTUcNowp6cvspg0jXznRTKDjm/E7AdgFBVeAPVMNcKGsHMA==, registry: https://registry.npm.taobao.org/, tarball: https://registry.npm.taobao.org/debug/-/debug-2.6.9.tgz}
