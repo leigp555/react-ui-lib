@@ -27,12 +27,6 @@ const ListItemStyled = styled.div`
       white-space: nowrap;
       font-weight: 700;
     }
-    > .description {
-      white-space: nowrap;
-      max-width: 50vw;
-      text-overflow: ellipsis;
-      overflow: hidden;
-    }
   }
   > .actions {
     margin-left: auto;
