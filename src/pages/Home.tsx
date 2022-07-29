@@ -25,9 +25,21 @@ const Home: React.FC = () => {
         <Slider defaultRange={30} />
       </div>
       <div className="row">
-        <div>
-          <Progress percent={40} style={{ width: '200px', height: '10px' }} />
-        </div>
+        <Progress
+          percent={50}
+          style={{ width: '300px', height: '8px' }}
+          undoneColor="#e1e1e1"
+          finishColor="#91d5ff"
+          dot
+        />
+      </div>
+      <div className="row">
+        <Progress
+          percent={50}
+          style={{ width: '300px', height: '8px' }}
+          undoneColor="#e1e1e1"
+          finishColor="#91d5ff"
+        />
       </div>
     </Wrap>
   );

@@ -1,4 +1,4 @@
-import React, { HTMLAttributes } from 'react';
+import React, { HTMLAttributes, useRef, useState } from 'react';
 import styled from 'styled-components';
 
 interface Props extends HTMLAttributes<HTMLDivElement> {
@@ -8,6 +8,7 @@ interface Props extends HTMLAttributes<HTMLDivElement> {
   format?: (num: number) => string;
   children?: React.ReactNode;
   type?: 'line' | 'circle';
+  dot?: boolean;
 }
 
 const Wrap = styled.div`
@@ -40,19 +41,79 @@ const ProgressStyled = styled.div`
 `;
 const LineWrap = styled.div`
   align-items: center;
-  gap: 5px;
+  gap: 10px;
 `;
 
 const LineProgress = styled.div`
+  position: relative;
   width: 100%;
   height: 100%;
   border-radius: 5px;
   background: ${(props: ProgressStyledProp) =>
     `linear-gradient(90deg,${props.finishColor} 0%, ${props.finishColor} ${props.percent}%, ${props.undoneColor} ${props.percent}%, ${props.undoneColor} 100%)`};
+  > .dot {
+    width: 16px;
+    height: 16px;
+    outline: none;
+    border-radius: 50%;
+    background-color: white;
+    border: 1px solid #91d5ff;
+    position: absolute;
+    top: 0;
+    left: ${(props: ProgressStyledProp) => `${props.percent}%`};
+    transform: translate(-50%, -4px);
+    cursor: pointer;
+    &:active {
+      box-shadow: 0 0 4px 4px rgba(105, 192, 255, 0.5);
+    }
+    &.dotFocus {
+      box-shadow: 0 0 4px 4px rgba(105, 192, 255, 0.5);
+    }
+  }
 `;
 
 const Progress: React.FC<Props> = (props) => {
-  const { children, type, percent, finishColor, undoneColor, format, ...rest } = props;
+  const { children, type, percent, finishColor, undoneColor, format, dot, ...rest } = props;
+  const spanRef = useRef<HTMLButtonElement | null>(null);
+  const [defaultPercent, setPercent] = useState<number>(percent);
+  const [isMove, setMove] = useState<boolean>(false);
+  const dotFocus = () => {
+    spanRef.current?.classList.add('dotFocus');
+  };
+  const dotBlur = () => {
+    spanRef.current?.classList.remove('dotFocus');
+  };
+  const dotDown = () => {
+    setMove(true);
+  };
+  const dotMove = (e: React.MouseEvent<HTMLButtonElement>) => {
+    if (isMove && defaultPercent >= 0 && defaultPercent <= 100) {
+      const parentNode = e.currentTarget.parentNode as HTMLDivElement;
+      const movePercent = Math.floor(
+        ((e.nativeEvent.clientX - parentNode.getBoundingClientRect().left) /
+          parentNode.getBoundingClientRect().width) *
+          100
+      );
+      setPercent(() => {
+        if (movePercent < 0) {
+          return 0;
+        }
+        if (movePercent > 100) {
+          return 100;
+        }
+        return movePercent;
+      });
+    } else {
+      setMove(false);
+    }
+  };
+  const dotUp = () => {
+    setMove(false);
+  };
+  const dotOut = () => {
+    setMove(false);
+  };
+
   return (
     <div>
       <Wrap style={{ display: type === 'circle' ? 'inline-block' : 'none' }}>
@@ -70,12 +131,28 @@ const Progress: React.FC<Props> = (props) => {
       </Wrap>
       <LineWrap style={{ display: type === 'line' ? 'flex' : 'none' }}>
         <LineProgress
-          percent={percent}
+          percent={defaultPercent}
           finishColor={finishColor!}
           undoneColor={undoneColor!}
           {...rest}
-        />
-        <span style={{ fontSize: '12px' }}>{format!(percent)}</span>
+        >
+          {dot ? (
+            // eslint-disable-next-line jsx-a11y/control-has-associated-label
+            <button
+              className="dot"
+              onFocus={dotFocus}
+              onBlur={dotBlur}
+              onMouseDown={dotDown}
+              onMouseMove={(e: React.MouseEvent<HTMLButtonElement>) => dotMove(e)}
+              onMouseUp={dotUp}
+              onMouseOut={dotOut}
+              ref={spanRef}
+            />
+          ) : (
+            ''
+          )}
+        </LineProgress>
+        <span style={{ fontSize: '12px' }}>{format!(defaultPercent)}</span>
       </LineWrap>
     </div>
   );
@@ -85,7 +162,8 @@ Progress.defaultProps = {
   finishColor: '#1890ff',
   undoneColor: '#52c41a',
   format: (num: number) => `${num}%`,
-  type: 'line'
+  type: 'line',
+  dot: false
 };
 
 export default Progress;
