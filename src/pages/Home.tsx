@@ -2,6 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import Timeline from '../lib/Timeline/Timeline';
 import TimeItem from '../lib/Timeline/TimeItem';
+import SunIcon from '../static/icons/sunny.svg';
 
 const Wrap = styled.div`
   display: flex;
@@ -27,7 +28,9 @@ const Home: React.FC = () => {
         <TimeItem color="orange">
           Lorem ipsum dolor sit amet, consectetur adipisicing elit.{' '}
         </TimeItem>
-        <TimeItem>Lorem ipsum dolor sit amet, consectetur adipisicing elit. </TimeItem>
+        <TimeItem dotIcon={<SunIcon width="1em" height="1em" />}>
+          Lorem ipsum dolor sit amet, consectetur adipisicing elit.{' '}
+        </TimeItem>
       </Timeline>
     </Wrap>
   );

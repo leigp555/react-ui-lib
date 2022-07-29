@@ -4,6 +4,7 @@ import styled from 'styled-components';
 interface Props extends HTMLAttributes<HTMLDivElement> {
   children?: React.ReactNode;
   color?: string;
+  dotIcon?: React.ReactNode;
 }
 const TimeItemStyled = styled.div`
   padding: 0 20px 40px 20px;
@@ -28,17 +29,26 @@ const TimeItemStyled = styled.div`
     z-index: 10;
     transform: translateX(-52%);
     background-color: white;
-    width: 10px;
-    height: 10px;
+
     border-radius: 50%;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
   }
 `;
 
 const TimeItem: React.FC<Props> = (props) => {
-  const { children, color, ...rest } = props;
+  const { children, color, dotIcon, ...rest } = props;
   return (
     <TimeItemStyled>
-      <span style={{ border: `2px solid ${color}` }} className="dot" />
+      {dotIcon ? (
+        <div className="dot">{dotIcon}</div>
+      ) : (
+        <span
+          style={{ border: `2px solid ${color}`, width: '10px', height: '10px' }}
+          className="dot"
+        />
+      )}
       <div className="content" {...rest}>
         {children}
       </div>
@@ -47,7 +57,8 @@ const TimeItem: React.FC<Props> = (props) => {
 };
 TimeItem.defaultProps = {
   children: '',
-  color: '#1890ff'
+  color: '#1890ff',
+  dotIcon: ''
 };
 
 export default TimeItem;
