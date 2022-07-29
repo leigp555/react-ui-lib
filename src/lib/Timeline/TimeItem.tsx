@@ -3,6 +3,7 @@ import styled from 'styled-components';
 
 interface Props extends HTMLAttributes<HTMLDivElement> {
   children?: React.ReactNode;
+  color?: string;
 }
 const TimeItemStyled = styled.div`
   padding: 0 20px 40px 20px;
@@ -25,20 +26,19 @@ const TimeItemStyled = styled.div`
     top: 0;
     left: 0;
     z-index: 10;
-    transform: translateX(-50%);
+    transform: translateX(-52%);
     background-color: white;
     width: 10px;
     height: 10px;
     border-radius: 50%;
-    border: 2px solid #1890ff;
   }
 `;
 
 const TimeItem: React.FC<Props> = (props) => {
-  const { children, ...rest } = props;
+  const { children, color, ...rest } = props;
   return (
     <TimeItemStyled>
-      <span className="dot" />
+      <span style={{ border: `2px solid ${color}` }} className="dot" />
       <div className="content" {...rest}>
         {children}
       </div>
@@ -46,7 +46,8 @@ const TimeItem: React.FC<Props> = (props) => {
   );
 };
 TimeItem.defaultProps = {
-  children: ''
+  children: '',
+  color: '#1890ff'
 };
 
 export default TimeItem;
