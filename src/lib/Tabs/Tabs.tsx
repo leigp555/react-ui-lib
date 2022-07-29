@@ -35,7 +35,7 @@ const TabName = styled.div`
   display: flex;
   gap: 30px;
   justify-content: ${(props: TabNameProp) => props.position};
-  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+  //border-bottom: 1px solid rgba(0, 0, 0, 0.1);
   &.segmented {
     gap: 0;
     border-bottom: none;
@@ -74,7 +74,7 @@ const TabName = styled.div`
 `;
 
 const Content = styled.div`
-  padding: 20px 0;
+  padding: 10px 0;
 `;
 
 const Tabs: React.FC<Props> = (props) => {
