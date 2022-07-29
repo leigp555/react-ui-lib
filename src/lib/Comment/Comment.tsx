@@ -13,9 +13,11 @@ dayjs.extend(relativeTime);
 export interface CommentData {
   id: number;
   avatar: string;
-  title: React.ReactNode;
+  auth: React.ReactNode;
   description: React.ReactNode;
   createdAt: string;
+  like: number;
+  dislike: number;
   reply?: CommentData[];
 }
 
@@ -48,7 +50,7 @@ const CommentItemStyled = styled.div`
       > .title {
         white-space: nowrap;
         color: #00000073;
-        font-size: 14px;
+        font-size: 12px;
         display: flex;
         align-items: center;
         gap: 10px;
@@ -110,7 +112,7 @@ const Comment: React.FC<Props> = (props) => {
           </div>
           <div className="content">
             <div className="title">
-              <span>{item.title}</span>
+              <span>{item.auth}</span>
               <span>{dayjs(item.createdAt).fromNow()}</span>
             </div>
             <div className="description">{item.description}</div>
@@ -120,7 +122,7 @@ const Comment: React.FC<Props> = (props) => {
                   <span>
                     <AgreeIcon width="1em" height="1em" fill="black" />
                   </span>
-                  <span>10</span>
+                  <span>{item.like}</span>
                 </div>
                 <div className="opposeCount">
                   <span>
@@ -131,7 +133,7 @@ const Comment: React.FC<Props> = (props) => {
                       style={{ transform: 'rotate(180deg)' }}
                     />
                   </span>
-                  <span>20</span>
+                  <span>{item.dislike}</span>
                 </div>
               </div>
               <Button type="link" style={{ fontSize: '12px' }}>

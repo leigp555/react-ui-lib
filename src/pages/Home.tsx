@@ -11,9 +11,11 @@ const Wrap = styled.div`
 export interface CommentData {
   id: number;
   avatar: string;
-  title: React.ReactNode;
+  auth: React.ReactNode;
   description: React.ReactNode;
   createdAt: string;
+  like: number;
+  dislike: number;
   reply?: CommentData[];
 }
 
@@ -21,8 +23,10 @@ const data: CommentData[] = [
   {
     id: 1,
     avatar: 'https://joeschmoe.io/api/v1/random',
-    title: 'Lorem1',
+    auth: 'Lorem1',
     createdAt: 'Thu Jul 28 2022 23:22:47 GMT+0800 (中国标准时间)',
+    like: 10,
+    dislike: 0,
     description: `Accusantium ad ducimus eos et
       exercitationem facilis itaque molestias necessitatibus odio, quod ratione rem similique
       voluptatum? Distinctio ipsam nostrum nulla quibusdam sed.`
@@ -30,8 +34,10 @@ const data: CommentData[] = [
   {
     id: 2,
     avatar: 'https://joeschmoe.io/api/v1/random',
-    title: 'Lorem2',
+    auth: 'Lorem2',
     createdAt: 'Thu Jul 22 2022 23:22:47 GMT+0800 (中国标准时间)',
+    like: 10,
+    dislike: 0,
     description: `Accusantium ad ducimus eos et
       exercitationem facilis itaque molestias necessitatibus odio, quod ratione rem similique
       voluptatum? Distinctio ipsam nostrum nulla quibusdam sed.`,
@@ -39,8 +45,10 @@ const data: CommentData[] = [
       {
         id: 2 - 1,
         avatar: 'https://joeschmoe.io/api/v1/random',
-        title: 'Lorem2-1',
+        auth: 'Lorem2-1',
         createdAt: 'Thu Jul 23 2022 23:22:47 GMT+0800 (中国标准时间)',
+        like: 10,
+        dislike: 0,
         description: `Accusantium ad ducimus eos et
       exercitationem facilis itaque molestias necessitatibus odio, quod ratione rem similique
       voluptatum? Distinctio ipsam nostrum nulla quibusdam sed.`
@@ -50,7 +58,7 @@ const data: CommentData[] = [
   {
     id: 3,
     avatar: 'https://joeschmoe.io/api/v1/random',
-    title: 'Lorem3',
+    auth: 'Lorem3',
     createdAt: 'Thu Jul 26 2022 23:22:47 GMT+0800 (中国标准时间)',
     description: (
       <p style={{ color: 'red' }}>
@@ -60,12 +68,16 @@ const data: CommentData[] = [
         odio, quod ratione rem similique voluptatum? Distinctio ipsam nostrum nulla quibusdam sed.
       </p>
     ),
+    like: 10,
+    dislike: 0,
     reply: [
       {
         id: 3 - 1,
         avatar: 'https://joeschmoe.io/api/v1/random',
-        title: 'Lorem3-1',
+        auth: 'Lorem3-1',
         createdAt: 'Thu Jul 27 2022 23:22:47 GMT+0800 (中国标准时间)',
+        like: 10,
+        dislike: 0,
         description: `Accusantium ad ducimus eos et
       exercitationem facilis itaque molestias necessitatibus odio, quod ratione rem similique
       voluptatum? Distinctio ipsam nostrum nulla quibusdam sed.`
@@ -74,7 +86,9 @@ const data: CommentData[] = [
         id: 3 - 2,
         avatar: 'https://joeschmoe.io/api/v1/random',
         createdAt: 'Thu Jul 28 2022 23:22:47 GMT+0800 (中国标准时间)',
-        title: 'Lorem3-2',
+        like: 10,
+        dislike: 0,
+        auth: 'Lorem3-2',
         description: `Accusantium ad ducimus eos et
       exercitationem facilis itaque molestias necessitatibus odio, quod ratione rem similique
       voluptatum? Distinctio ipsam nostrum nulla quibusdam sed.`
