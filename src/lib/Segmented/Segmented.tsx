@@ -15,7 +15,7 @@ const Segmented: React.FC<Props> = (props) => {
   };
   return (
     <SegmentedStyled {...rest}>
-      <Tabs defaultKey="1" callback={onChange}>
+      <Tabs defaultKey="1" callback={onChange} bgc="black" segmented>
         {options.map((item, index) => {
           return <Tab tab={item} index={(index + 1).toString()} key={Math.random()} />;
         })}

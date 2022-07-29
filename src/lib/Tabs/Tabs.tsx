@@ -1,5 +1,6 @@
 import React, { HTMLAttributes, ReactElement, ReactNode, useEffect, useRef, useState } from 'react';
 import styled from 'styled-components';
+import classNames from 'classnames';
 
 type VNode = ReactElement & { type: { name: string } };
 
@@ -10,6 +11,7 @@ interface Props extends HTMLAttributes<HTMLDivElement> {
   callback?: (key: string) => void;
   defaultKey?: string;
   gap?: number;
+  segmented?: boolean;
 }
 
 type TabNameProp = {
@@ -34,8 +36,25 @@ const TabName = styled.div`
   gap: 30px;
   justify-content: ${(props: TabNameProp) => props.position};
   //border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+  &.segmented {
+    gap: 0;
+    background-color: #ededed;
+    box-shadow: 4px 4px 1px 1px rgba(237, 237, 237, 1), -4px 4px 1px 1px rgba(237, 237, 237, 1),
+      4px -4px 1px 1px rgba(237, 237, 237, 1), -4px -4px 1px 1px rgba(237, 237, 237, 1);
+    > span.title {
+      padding: 6px 20px;
+    }
+
+    > span.indicator {
+      height: 100%;
+      background-color: #ffffff;
+    }
+  }
+
   > span.title {
     padding: 10px 0;
+    position: relative;
+    z-index: 10;
     color: #262626;
   }
 
@@ -53,7 +72,7 @@ const Content = styled.div`
 `;
 
 const Tabs: React.FC<Props> = (props) => {
-  const { children, callback, gap, position, bgc, defaultKey, ...rest } = props;
+  const { children, callback, gap, segmented, position, bgc, defaultKey, ...rest } = props;
   const [currentIndex, setIndex] = useState<string>(defaultKey!);
   const spanRef = useRef<ReactNode[]>([]);
   const lastSpan = useRef<HTMLSpanElement | null>(null);
@@ -128,7 +147,12 @@ const Tabs: React.FC<Props> = (props) => {
     });
     return (
       <>
-        <TabName ref={spanWrap} bgc={bgc!} position={position!}>
+        <TabName
+          ref={spanWrap}
+          bgc={bgc!}
+          position={position!}
+          className={classNames(`${segmented ? 'segmented' : ''}`)}
+        >
           {spanRef.current}
           <span className="indicator" ref={indicator} />
         </TabName>
@@ -148,7 +172,8 @@ Tabs.defaultProps = {
   children: '',
   bgc: '#1890ff',
   position: 'start',
-  gap: 30
+  gap: 30,
+  segmented: false
 };
 
 export default Tabs;
