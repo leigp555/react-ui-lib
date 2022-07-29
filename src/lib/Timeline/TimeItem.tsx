@@ -20,7 +20,6 @@ const TimeItemStyled = styled.div`
     gap: 10px;
     line-height: 1.5em;
     transform: translateY(-5px);
-    //transform: translateY(-5px) translateX(calc(-100% - 40px));
   }
   > .dot {
     position: absolute;
@@ -40,7 +39,7 @@ const TimeItemStyled = styled.div`
 const TimeItem: React.FC<Props> = (props) => {
   const { children, color, dotIcon, ...rest } = props;
   return (
-    <TimeItemStyled>
+    <TimeItemStyled className="itemWrap">
       {dotIcon ? (
         <div className="dot">{dotIcon}</div>
       ) : (
