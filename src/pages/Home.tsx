@@ -1,97 +1,127 @@
 import React from 'react';
 import styled from 'styled-components';
-import Comment from '../lib/Comment/Comment';
+import Comment, { CommentData } from '../lib/Comment/Comment';
+import AgreeIcon from '../lib/icons/agree.svg';
+import Button from '../lib/Button/Button';
 
 const Wrap = styled.div`
   display: flex;
   flex-direction: column;
   gap: 50px;
 `;
+const Actions = styled.div`
+  display: flex;
+  align-items: center;
+  > .agree {
+    display: flex;
+    align-items: center;
+    gap: 15px;
 
-export interface CommentData {
-  id: number;
-  avatar: string;
-  auth: React.ReactNode;
-  description: React.ReactNode;
-  createdAt: string;
-  like: number;
-  dislike: number;
-  reply?: CommentData[];
-}
+    > .agreeCount,
+    .opposeCount {
+      font-size: 12px;
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      cursor: pointer;
+
+      span {
+        display: flex;
+        align-items: center;
+      }
+    }
+    > .opposeCount {
+      font-size: 12px;
+    }
+  }
+`;
 
 const data: CommentData[] = [
   {
     id: 1,
-    avatar: 'https://joeschmoe.io/api/v1/random',
-    auth: 'Lorem1',
-    createdAt: 'Thu Jul 28 2022 23:22:47 GMT+0800 (中国标准时间)',
-    like: 10,
-    dislike: 0,
-    description: `Accusantium ad ducimus eos et
+    type: 'main',
+    from_avatar: 'https://joeschmoe.io/api/v1/random',
+    from_auth: 'Lorem1',
+    to_auth: 'Auth',
+    content: `Accusantium ad ducimus eos et
       exercitationem facilis itaque molestias necessitatibus odio, quod ratione rem similique
-      voluptatum? Distinctio ipsam nostrum nulla quibusdam sed.`
+      voluptatum? Distinctio ipsam nostrum nulla quibusdam sed.`,
+    like_num: 10,
+    dislike_num: 0,
+    createdAt: 'Thu Jul 28 2022 23:22:47 GMT+0800 (中国标准时间)',
+    updatedAt: 'Thu Jul 28 2022 23:22:47 GMT+0800 (中国标准时间)'
   },
   {
     id: 2,
-    avatar: 'https://joeschmoe.io/api/v1/random',
-    auth: 'Lorem2',
-    createdAt: 'Thu Jul 22 2022 23:22:47 GMT+0800 (中国标准时间)',
-    like: 10,
-    dislike: 0,
-    description: `Accusantium ad ducimus eos et
+    type: 'main',
+    from_avatar: 'https://joeschmoe.io/api/v1/random',
+    from_auth: 'Lorem2',
+    to_auth: 'Auth',
+    content: `Accusantium ad ducimus eos et
       exercitationem facilis itaque molestias necessitatibus odio, quod ratione rem similique
       voluptatum? Distinctio ipsam nostrum nulla quibusdam sed.`,
+    like_num: 10,
+    dislike_num: 0,
+    createdAt: 'Thu Jul 28 2022 23:22:47 GMT+0800 (中国标准时间)',
+    updatedAt: 'Thu Jul 28 2022 23:22:47 GMT+0800 (中国标准时间)',
     reply: [
       {
-        id: 2 - 1,
-        avatar: 'https://joeschmoe.io/api/v1/random',
-        auth: 'Lorem2-1',
-        createdAt: 'Thu Jul 23 2022 23:22:47 GMT+0800 (中国标准时间)',
-        like: 10,
-        dislike: 0,
-        description: `Accusantium ad ducimus eos et
+        id: 3,
+        type: 'replay',
+        from_avatar: 'https://joeschmoe.io/api/v1/random',
+        from_auth: 'Lorem2-1',
+        to_auth: 'Lorem2',
+        content: `Accusantium ad ducimus eos et
       exercitationem facilis itaque molestias necessitatibus odio, quod ratione rem similique
-      voluptatum? Distinctio ipsam nostrum nulla quibusdam sed.`
+      voluptatum? Distinctio ipsam nostrum nulla quibusdam sed.`,
+        like_num: 10,
+        dislike_num: 0,
+        createdAt: 'Thu Jul 28 2022 23:22:47 GMT+0800 (中国标准时间)',
+        updatedAt: 'Thu Jul 28 2022 23:22:47 GMT+0800 (中国标准时间)'
       }
     ]
   },
   {
-    id: 3,
-    avatar: 'https://joeschmoe.io/api/v1/random',
-    auth: 'Lorem3',
-    createdAt: 'Thu Jul 26 2022 23:22:47 GMT+0800 (中国标准时间)',
-    description: (
-      <p style={{ color: 'red' }}>
-        Accusantium ad ducimus eos et exercitationem facilis itaque molestias necessitatibus odio,
-        quod ratione rem similique voluptatum? Distinctio ipsam nostrum nulla quibusdam
-        sed.Accusantium ad ducimus eos et exercitationem facilis itaque molestias necessitatibus
-        odio, quod ratione rem similique voluptatum? Distinctio ipsam nostrum nulla quibusdam sed.
-      </p>
-    ),
-    like: 10,
-    dislike: 0,
+    id: 4,
+    type: 'main',
+    from_avatar: 'https://joeschmoe.io/api/v1/random',
+    from_auth: 'Lorem3',
+    to_auth: 'Auth',
+    content: `Accusantium ad ducimus eos et
+      exercitationem facilis itaque molestias necessitatibus odio, quod ratione rem similique
+      voluptatum? Distinctio ipsam nostrum nulla quibusdam sed.`,
+    like_num: 10,
+    dislike_num: 0,
+    createdAt: 'Thu Jul 28 2022 23:22:47 GMT+0800 (中国标准时间)',
+    updatedAt: 'Thu Jul 28 2022 23:22:47 GMT+0800 (中国标准时间)',
     reply: [
       {
-        id: 3 - 1,
-        avatar: 'https://joeschmoe.io/api/v1/random',
-        auth: 'Lorem3-1',
-        createdAt: 'Thu Jul 27 2022 23:22:47 GMT+0800 (中国标准时间)',
-        like: 10,
-        dislike: 0,
-        description: `Accusantium ad ducimus eos et
+        id: 5,
+        type: 'replay',
+        from_avatar: 'https://joeschmoe.io/api/v1/random',
+        from_auth: 'Lorem3-1',
+        to_auth: 'Lorem3',
+        content: `Accusantium ad ducimus eos et
       exercitationem facilis itaque molestias necessitatibus odio, quod ratione rem similique
-      voluptatum? Distinctio ipsam nostrum nulla quibusdam sed.`
+      voluptatum? Distinctio ipsam nostrum nulla quibusdam sed.`,
+        like_num: 10,
+        dislike_num: 0,
+        createdAt: 'Thu Jul 28 2022 23:22:47 GMT+0800 (中国标准时间)',
+        updatedAt: 'Thu Jul 28 2022 23:22:47 GMT+0800 (中国标准时间)'
       },
       {
-        id: 3 - 2,
-        avatar: 'https://joeschmoe.io/api/v1/random',
-        createdAt: 'Thu Jul 28 2022 23:22:47 GMT+0800 (中国标准时间)',
-        like: 10,
-        dislike: 0,
-        auth: 'Lorem3-2',
-        description: `Accusantium ad ducimus eos et
+        id: 6,
+        type: 'replay',
+        from_avatar: 'https://joeschmoe.io/api/v1/random',
+        from_auth: 'Lorem3-2',
+        to_auth: 'Lorem3-1',
+        content: `Accusantium ad ducimus eos et
       exercitationem facilis itaque molestias necessitatibus odio, quod ratione rem similique
-      voluptatum? Distinctio ipsam nostrum nulla quibusdam sed.`
+      voluptatum? Distinctio ipsam nostrum nulla quibusdam sed.`,
+        like_num: 10,
+        dislike_num: 0,
+        createdAt: 'Thu Jul 28 2022 23:22:47 GMT+0800 (中国标准时间)',
+        updatedAt: 'Thu Jul 28 2022 23:22:47 GMT+0800 (中国标准时间)'
       }
     ]
   }
@@ -99,9 +129,37 @@ const data: CommentData[] = [
 
 // 组件使用
 const Home: React.FC = () => {
+  const actions = (item: CommentData) => {
+    return (
+      <Actions className="action">
+        <div className="agree">
+          <div className="agreeCount">
+            <span>
+              <AgreeIcon width="1em" height="1em" fill="black" />
+            </span>
+            <span>{item.like_num}</span>
+          </div>
+          <div className="opposeCount">
+            <span>
+              <AgreeIcon
+                width="1em"
+                height="1em"
+                fill="black"
+                style={{ transform: 'rotate(180deg)' }}
+              />
+            </span>
+            <span>{item.dislike_num}</span>
+          </div>
+        </div>
+        <Button type="link" style={{ fontSize: '12px' }}>
+          回复
+        </Button>
+      </Actions>
+    );
+  };
   return (
     <Wrap>
-      <Comment data={data} />
+      <Comment data={data} actions={actions} />
     </Wrap>
   );
 };
