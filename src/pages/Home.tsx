@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
 import Slider from '../lib/Slider/Slider';
 import Progress from '../lib/Progress/Progress';
@@ -19,10 +19,15 @@ const Wrap = styled.div`
 `;
 
 const Home: React.FC = () => {
+  const [defaultPercent, setPercent] = useState<number>(20);
   return (
     <Wrap>
       <div className="row">
-        <Slider defaultRange={30} />
+        <Slider
+          defaultPercent={defaultPercent}
+          setPercent={setPercent}
+          style={{ width: '300px' }}
+        />
       </div>
       <div className="row">
         <Progress

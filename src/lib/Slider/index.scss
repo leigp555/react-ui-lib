@@ -1,0 +1,32 @@
+.wrap{
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  width: 100%;
+  .inner{
+    position: relative;
+    flex-grow: 10;
+    height: 8px;
+    border-radius: 5px;
+    width: 300px;
+    > .dot {
+      width: 16px;
+      height: 16px;
+      outline: none;
+      border-radius: 50%;
+      background-color: white;
+      border: 1px solid #91d5ff;
+      position: absolute;
+      top: 50%;
+      transform: translate(-50%, -50%);
+      cursor: pointer;
+      &:active {
+        box-shadow: 0 0 4px 4px rgba(105, 192, 255, 0.5);
+      }
+      &.dotFocus {
+        box-shadow: 0 0 4px 4px rgba(105, 192, 255, 0.5);
+      }
+    }
+  }
+}
+

@@ -1,4 +1,4 @@
-import React, { HTMLAttributes, useRef, useState } from 'react';
+import React, { HTMLAttributes } from 'react';
 import styled from 'styled-components';
 
 interface Props extends HTMLAttributes<HTMLDivElement> {
@@ -9,6 +9,7 @@ interface Props extends HTMLAttributes<HTMLDivElement> {
   children?: React.ReactNode;
   type?: 'line' | 'circle';
   dot?: boolean;
+  statistic?: boolean;
 }
 
 const Wrap = styled.div`
@@ -73,45 +74,8 @@ const LineProgress = styled.div`
 `;
 
 const Progress: React.FC<Props> = (props) => {
-  const { children, type, percent, finishColor, undoneColor, format, dot, ...rest } = props;
-  const spanRef = useRef<HTMLButtonElement | null>(null);
-  const [defaultPercent, setPercent] = useState<number>(percent);
-  const [isMove, setMove] = useState<boolean>(false);
-  const dotFocus = () => {
-    spanRef.current?.classList.add('dotFocus');
-  };
-  const dotBlur = () => {
-    spanRef.current?.classList.remove('dotFocus');
-  };
-  const dotDown = () => {
-    setMove(true);
-  };
-  const dotMove = (e: React.MouseEvent<HTMLButtonElement>) => {
-    const parentNode = e.currentTarget.parentNode as HTMLDivElement;
-    const { clientX } = e.nativeEvent;
-    const parentClientX = parentNode.getBoundingClientRect().left;
-    const parentWidth = parentNode.getBoundingClientRect().width;
-    if (isMove && defaultPercent >= 0 && defaultPercent <= 100) {
-      const movePercent = Math.floor(((clientX - parentClientX) / parentWidth) * 100);
-      setPercent(() => {
-        if (movePercent < 0) {
-          return 0;
-        }
-        if (movePercent > 100) {
-          return 100;
-        }
-        return movePercent;
-      });
-    } else {
-      setMove(false);
-    }
-  };
-  const dotUp = () => {
-    setMove(false);
-  };
-  const dotOut = () => {
-    setMove(false);
-  };
+  const { children, type, percent, finishColor, statistic, undoneColor, format, dot, ...rest } =
+    props;
 
   return (
     <div>
@@ -130,28 +94,21 @@ const Progress: React.FC<Props> = (props) => {
       </Wrap>
       <LineWrap style={{ display: type === 'line' ? 'flex' : 'none' }}>
         <LineProgress
-          percent={defaultPercent}
+          percent={percent}
           finishColor={finishColor!}
           undoneColor={undoneColor!}
           {...rest}
         >
           {dot ? (
             // eslint-disable-next-line jsx-a11y/control-has-associated-label
-            <button
-              className="dot"
-              onFocus={dotFocus}
-              onBlur={dotBlur}
-              onMouseDown={dotDown}
-              onMouseMove={(e: React.MouseEvent<HTMLButtonElement>) => dotMove(e)}
-              onMouseUp={dotUp}
-              onMouseOut={dotOut}
-              ref={spanRef}
-            />
+            <button className="dot" />
           ) : (
             ''
           )}
         </LineProgress>
-        <span style={{ fontSize: '12px' }}>{format!(defaultPercent)}</span>
+        <span style={{ fontSize: '12px', display: statistic ? 'inline-block' : 'none' }}>
+          {format!(percent)}
+        </span>
       </LineWrap>
     </div>
   );
@@ -162,7 +119,8 @@ Progress.defaultProps = {
   undoneColor: '#52c41a',
   format: (num: number) => `${num}%`,
   type: 'line',
-  dot: false
+  dot: false,
+  statistic: true
 };
 
 export default Progress;
