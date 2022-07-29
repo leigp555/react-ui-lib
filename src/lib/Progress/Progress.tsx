@@ -87,13 +87,12 @@ const Progress: React.FC<Props> = (props) => {
     setMove(true);
   };
   const dotMove = (e: React.MouseEvent<HTMLButtonElement>) => {
+    const parentNode = e.currentTarget.parentNode as HTMLDivElement;
+    const { clientX } = e.nativeEvent;
+    const parentClientX = parentNode.getBoundingClientRect().left;
+    const parentWidth = parentNode.getBoundingClientRect().width;
     if (isMove && defaultPercent >= 0 && defaultPercent <= 100) {
-      const parentNode = e.currentTarget.parentNode as HTMLDivElement;
-      const movePercent = Math.floor(
-        ((e.nativeEvent.clientX - parentNode.getBoundingClientRect().left) /
-          parentNode.getBoundingClientRect().width) *
-          100
-      );
+      const movePercent = Math.floor(((clientX - parentClientX) / parentWidth) * 100);
       setPercent(() => {
         if (movePercent < 0) {
           return 0;
