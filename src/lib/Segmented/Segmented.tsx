@@ -1,4 +1,4 @@
-import React, { HTMLAttributes } from 'react';
+import React, { Dispatch, HTMLAttributes, SetStateAction } from 'react';
 import styled from 'styled-components';
 import Tab from '../Tabs/Tab';
 import Tabs from '../Tabs/Tabs';
@@ -6,18 +6,26 @@ import Tabs from '../Tabs/Tabs';
 interface Props extends HTMLAttributes<HTMLDivElement> {
   children?: React.ReactNode;
   options: React.ReactNode[];
+  value: React.ReactNode;
+  changeValue: Dispatch<SetStateAction<React.ReactNode>>;
 }
 const SegmentedStyled = styled.div``;
 const Segmented: React.FC<Props> = (props) => {
-  const { children, options, ...rest } = props;
+  const { children, options, value, changeValue, ...rest } = props;
   const onChange = (key: string) => {
-    console.log(key);
+    const index = parseInt(key, 10);
+    changeValue(options[index]);
   };
   return (
     <SegmentedStyled {...rest}>
-      <Tabs defaultKey="1" callback={onChange} bgc="black" segmented>
+      <Tabs
+        defaultKey={options.indexOf(value).toString()}
+        callback={onChange}
+        bgc="black"
+        segmented
+      >
         {options.map((item, index) => {
-          return <Tab tab={item} index={(index + 1).toString()} key={Math.random()} />;
+          return <Tab tab={item} index={index.toString()} key={Math.random()} />;
         })}
       </Tabs>
     </SegmentedStyled>

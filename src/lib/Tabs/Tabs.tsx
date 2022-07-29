@@ -35,14 +35,15 @@ const TabName = styled.div`
   display: flex;
   gap: 30px;
   justify-content: ${(props: TabNameProp) => props.position};
-  //border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
   &.segmented {
     gap: 0;
+    border-bottom: none;
     background-color: #ededed;
     box-shadow: 4px 4px 1px 1px rgba(237, 237, 237, 1), -4px 4px 1px 1px rgba(237, 237, 237, 1),
       4px -4px 1px 1px rgba(237, 237, 237, 1), -4px -4px 1px 1px rgba(237, 237, 237, 1);
     > span.title {
-      padding: 6px 20px;
+      padding: 6px 15px;
     }
 
     > span.indicator {
@@ -56,6 +57,11 @@ const TabName = styled.div`
     position: relative;
     z-index: 10;
     color: #262626;
+    -moz-user-select: none; /*火狐*/
+    -webkit-user-select: none; /*webkit浏览器*/
+    -ms-user-select: none; /*IE10*/
+    -khtml-user-select: none; /*早期浏览器*/
+    user-select: none;
   }
 
   > span.indicator {
