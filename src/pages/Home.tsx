@@ -1,5 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
+import Slider from '../lib/Slider/Slider';
+import Progress from '../lib/Progress/Progress';
 
 const Wrap = styled.div`
   display: flex;
@@ -19,7 +21,14 @@ const Wrap = styled.div`
 const Home: React.FC = () => {
   return (
     <Wrap>
-      <div className="row">xxx</div>
+      <div className="row">
+        <Slider defaultRange={30} />
+      </div>
+      <div className="row">
+        <div>
+          <Progress percent={40} style={{ width: '200px', height: '10px' }} />
+        </div>
+      </div>
     </Wrap>
   );
 };

@@ -42,11 +42,10 @@ const LineWrap = styled.div`
   align-items: center;
   gap: 5px;
 `;
-const LineInner = styled.div`
-  width: 100%;
-`;
+
 const LineProgress = styled.div`
-  height: 10px;
+  width: 100%;
+  height: 100%;
   border-radius: 5px;
   background: ${(props: ProgressStyledProp) =>
     `linear-gradient(90deg,${props.finishColor} 0%, ${props.finishColor} ${props.percent}%, ${props.undoneColor} ${props.percent}%, ${props.undoneColor} 100%)`};
@@ -70,9 +69,12 @@ const Progress: React.FC<Props> = (props) => {
         </div>
       </Wrap>
       <LineWrap style={{ display: type === 'line' ? 'flex' : 'none' }}>
-        <LineInner>
-          <LineProgress percent={percent} finishColor={finishColor!} undoneColor={undoneColor!} />
-        </LineInner>
+        <LineProgress
+          percent={percent}
+          finishColor={finishColor!}
+          undoneColor={undoneColor!}
+          {...rest}
+        />
         <span style={{ fontSize: '12px' }}>{format!(percent)}</span>
       </LineWrap>
     </div>
