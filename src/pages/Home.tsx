@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import Card from '../lib/Card/Card';
 
 const Wrap = styled.div`
   display: flex;
@@ -19,7 +20,44 @@ const Wrap = styled.div`
 const Home: React.FC = () => {
   return (
     <Wrap>
-      <div className="row">xxx</div>
+      <div className="row">
+        <Card
+          cardTitle="Default size card"
+          action={
+            <a href="/#" style={{ color: 'red' }}>
+              More
+            </a>
+          }
+          style={{ width: 300 }}
+        >
+          <p>Card content</p>
+          <p>Card content</p>
+          <p>Card content</p>
+        </Card>
+      </div>
+      <div className="row" style={{ backgroundColor: '#ccc', padding: '20px' }}>
+        <Card
+          bordered={false}
+          cardTitle="Default size card"
+          action={
+            <a href="/#" style={{ color: 'red' }}>
+              More
+            </a>
+          }
+          style={{ width: 300 }}
+        >
+          <p>Card content</p>
+          <p>Card content</p>
+          <p>Card content</p>
+        </Card>
+      </div>
+      <div className="row">
+        <Card style={{ width: 300 }}>
+          <p>Card content</p>
+          <p>Card content</p>
+          <p>Card content</p>
+        </Card>
+      </div>
     </Wrap>
   );
 };
