@@ -1,14 +1,16 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
-import Affix from '../lib/Affix/Affix';
+import Steps from '../lib/Steps/Steps';
+import Step from '../lib/Steps/Step';
 import Button from '../lib/Button/Button';
+import { Tip } from '../lib/Tip/Tip';
 
 const Wrap = styled.div`
-  //display: flex;
-  //flex-direction: column;
-  //gap: 50px;
-  //justify-content: start;
-  //align-items: start;
+  display: flex;
+  flex-direction: column;
+  gap: 50px;
+  justify-content: start;
+  align-items: start;
   line-height: 1.5em;
   > .row {
     //display: flex;
@@ -16,40 +18,75 @@ const Wrap = styled.div`
     //gap: 50px;
     //justify-content: start;
     //align-items: center;
+    width: 100%;
+    .steps-content {
+      min-height: 200px;
+      margin-top: 16px;
+      padding-top: 80px;
+      text-align: center;
+      background-color: #fafafa;
+      border: 1px dashed #e9e9e9;
+      border-radius: 2px;
+    }
+
+    .steps-action {
+      margin-top: 24px;
+      display: flex;
+      justify-content: center;
+    }
   }
 `;
 
+const steps = [
+  {
+    title: '步骤一',
+    content: '内容一'
+  },
+  {
+    title: '步骤二',
+    content: '内容二'
+  },
+  {
+    title: '步骤三',
+    content: '内容三'
+  }
+];
+
 const Home: React.FC = () => {
-  const [top, setTop] = useState(200);
-  const render = (num: number): React.ReactNode[] => {
-    const vNode: React.ReactNode[] = [];
-    for (let i = 0; i < num; i++) {
-      vNode.push(
-        <p key={Math.random()}>
-          Lorem ipsum dolor sit amet, consectetur adipisicing elit. A aperiam, delectus deleniti
-          enim, eveniet hic magnam nihil nisi placeat quam quibusdam ratione reiciendis rem
-          repellendus reprehenderit saepe sequi, similique tenetur.
-        </p>
-      );
-    }
-    return vNode;
+  const [current, setCurrent] = useState(0);
+  const next = () => {
+    setCurrent(current + 1);
+  };
+  const prev = () => {
+    setCurrent(current - 1);
   };
   return (
     <Wrap>
-      <div>{render(2)}</div>
-      <Affix offsetTop={50} rowPosition="center">
-        <Button onClick={() => setTop(top + 10)}>距离顶部50px固定,水平中间</Button>
-      </Affix>
-      <div>{render(8)}</div>
-      <Affix offsetTop={top}>
-        <div role="presentation">
-          <Button onClick={() => setTop(top + 10)}> 距离顶部200px固定，水平左边</Button>
+      <div className="row">
+        <Steps current={current}>
+          {steps.map((item) => (
+            <Step key={item.title} value={item.title} />
+          ))}
+        </Steps>
+        <div className="steps-content">{steps[current].content}</div>
+        <div className="steps-action">
+          {current > 0 && (
+            <Button style={{ margin: '0 8px' }} onClick={() => prev()}>
+              Previous
+            </Button>
+          )}
+          {current === steps.length - 1 && (
+            <Button type="primary" onClick={() => Tip('success', 'Processing complete!')}>
+              Done
+            </Button>
+          )}
+          {current < steps.length - 1 && (
+            <Button type="primary" onClick={() => next()}>
+              Next
+            </Button>
+          )}
         </div>
-      </Affix>
-      <Affix offsetTop={400} rowPosition="end">
-        <Button onClick={() => setTop(top + 10)}>距离顶部400px固定,水平右边</Button>
-      </Affix>
-      <div>{render(100)}</div>
+      </div>
     </Wrap>
   );
 };
