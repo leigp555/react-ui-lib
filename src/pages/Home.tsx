@@ -20,7 +20,7 @@ const Wrap = styled.div`
 `;
 
 const Home: React.FC = () => {
-  const [top, setTop] = useState(50);
+  const [top, setTop] = useState(200);
   const render = (num: number): React.ReactNode[] => {
     const vNode: React.ReactNode[] = [];
     for (let i = 0; i < num; i++) {
@@ -37,16 +37,17 @@ const Home: React.FC = () => {
   return (
     <Wrap>
       <div>{render(2)}</div>
-      <Affix offsetTop={top}>
-        <div role="presentation" style={{ display: 'flex', justifyContent: 'center' }}>
-          <Button onClick={() => setTop(top + 10)}>Affix top</Button>
-        </div>
+      <Affix offsetTop={50} rowPosition="center">
+        <Button onClick={() => setTop(top + 10)}>距离顶部50px固定,水平中间</Button>
       </Affix>
       <div>{render(8)}</div>
       <Affix offsetTop={top}>
         <div role="presentation">
-          <Button onClick={() => setTop(top + 10)}>Affix top</Button>
+          <Button onClick={() => setTop(top + 10)}> 距离顶部200px固定，水平左边</Button>
         </div>
+      </Affix>
+      <Affix offsetTop={400} rowPosition="end">
+        <Button onClick={() => setTop(top + 10)}>距离顶部400px固定,水平右边</Button>
       </Affix>
       <div>{render(100)}</div>
     </Wrap>
