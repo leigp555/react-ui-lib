@@ -1,51 +1,54 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
-import Slider from '../lib/Slider/Slider';
-import Progress from '../lib/Progress/Progress';
+import Affix from '../lib/Affix/Affix';
+import Button from '../lib/Button/Button';
 
 const Wrap = styled.div`
-  display: flex;
-  flex-direction: column;
-  gap: 50px;
-  justify-content: start;
-  align-items: start;
+  //display: flex;
+  //flex-direction: column;
+  //gap: 50px;
+  //justify-content: start;
+  //align-items: start;
+  line-height: 1.5em;
   > .row {
-    display: flex;
-    flex-direction: row;
-    gap: 50px;
-    justify-content: start;
-    align-items: center;
+    //display: flex;
+    //flex-direction: row;
+    //gap: 50px;
+    //justify-content: start;
+    //align-items: center;
   }
 `;
 
 const Home: React.FC = () => {
-  const [defaultPercent, setPercent] = useState<number>(20);
+  const [top, setTop] = useState(50);
+  const render = (num: number): React.ReactNode[] => {
+    const vNode: React.ReactNode[] = [];
+    for (let i = 0; i < num; i++) {
+      vNode.push(
+        <p key={Math.random()}>
+          Lorem ipsum dolor sit amet, consectetur adipisicing elit. A aperiam, delectus deleniti
+          enim, eveniet hic magnam nihil nisi placeat quam quibusdam ratione reiciendis rem
+          repellendus reprehenderit saepe sequi, similique tenetur.
+        </p>
+      );
+    }
+    return vNode;
+  };
   return (
     <Wrap>
-      <div className="row">
-        <Slider
-          defaultPercent={defaultPercent}
-          setPercent={setPercent}
-          style={{ width: '300px' }}
-        />
-      </div>
-      <div className="row">
-        <Progress
-          percent={50}
-          style={{ width: '300px', height: '8px' }}
-          undoneColor="#e1e1e1"
-          finishColor="#91d5ff"
-          dot
-        />
-      </div>
-      <div className="row">
-        <Progress
-          percent={50}
-          style={{ width: '300px', height: '8px' }}
-          undoneColor="#e1e1e1"
-          finishColor="#91d5ff"
-        />
-      </div>
+      <div>{render(2)}</div>
+      <Affix offsetTop={top}>
+        <div role="presentation" style={{ display: 'flex', justifyContent: 'center' }}>
+          <Button onClick={() => setTop(top + 10)}>Affix top</Button>
+        </div>
+      </Affix>
+      <div>{render(8)}</div>
+      <Affix offsetTop={top}>
+        <div role="presentation">
+          <Button onClick={() => setTop(top + 10)}>Affix top</Button>
+        </div>
+      </Affix>
+      <div>{render(100)}</div>
     </Wrap>
   );
 };
