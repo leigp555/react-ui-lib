@@ -40,31 +40,41 @@ import React, { useState } from 'react';
 //       <div className="row">
 //         <Checkbox options={options} checked={checked} setChecked={setChecked} />
 //       </div>
-//       <Button
-//         onClick={() => {
-//           console.log(checked);
-//         }}
-//       >
-//         log selected
-//       </Button>
-//       <Button
-//         onClick={() => {
-//           const arr = options.reduce((result, item) => {
-//             result.push(item.value);
-//             return result;
-//           }, [] as string[]);
-//           setChecked(arr);
-//         }}
-//       >
-//         check all
-//       </Button>
-//       <Button
-//         onClick={() => {
-//           setChecked([]);
-//         }}
-//       >
-//         clear all
-//       </Button>
+//       <div className="row">
+//         <Button
+//           onClick={() => {
+//             console.log(checked);
+//           }}
+//         >
+//           log selected
+//         </Button>
+//         <Button
+//           onClick={() => {
+//             const arr = options.reduce((result, item) => {
+//               result.push(item.value);
+//               return result;
+//             }, [] as string[]);
+//             setChecked(arr);
+//           }}
+//         >
+//           check all
+//         </Button>
+//         <Button
+//           onClick={() => {
+//             setChecked([]);
+//           }}
+//         >
+//           clear all
+//         </Button>
+//       </div>
+//       <div className="row">
+//         <Checkbox
+//           options={options}
+//           checked={checked}
+//           setChecked={setChecked}
+//           style={{ flexDirection: 'column', gap: '5px' }}
+//         />
+//       </div>
 //     </Wrap>
 //   );
 // };
