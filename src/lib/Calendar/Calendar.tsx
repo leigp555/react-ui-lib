@@ -114,7 +114,7 @@ const Calendar: React.FC<Props> = (props) => {
     // 获取当月首日星期几
     const firstDayWeek = dayjs(firstDay.current).day();
     // 获取当月总天数
-    // const currentMonthTotalDay = dayjs(firstDay.current).daysInMonth();
+    const currentMonthTotalDay = dayjs(firstDay.current).daysInMonth();
     // 获取上月首日
     const lastMonthFirstDay = getFirstDay(
       dayjs(firstDay.current).subtract(1, 'month').format('YYYY-MM')
@@ -138,12 +138,37 @@ const Calendar: React.FC<Props> = (props) => {
     };
     // 生成6行
     for (let i = 0; i < 6; i++) {
-      console.log(firstDay.current);
-      console.log(firstDayWeek);
-      console.log(lastMonthTotalDay);
+      console.log('firstDay.current', firstDay.current);
+      console.log('firstDayWeek', firstDayWeek);
+      console.log('currentMonthTotalDay', currentMonthTotalDay);
       if (i === 0) {
         const arr1 = mid.concat(row(firstDayWeek - 1, lastMonthTotalDay - firstDayWeek + 2));
         const arr2 = arr1.concat(row(8 - firstDayWeek, 1));
+        column.push(
+          <div key={Math.random()} className="everyRow">
+            {arr2}
+          </div>
+        );
+      } else if (i === 4 && firstDayWeek <= 5) {
+        const restDay = currentMonthTotalDay - (7 * 4 - firstDayWeek + 2) + 1;
+        const arr1 = mid.concat(row(restDay, 7 * 4 - firstDayWeek + 2));
+        const arr2 = arr1.concat(row(7 - restDay, 1));
+        column.push(
+          <div key={Math.random()} className="everyRow">
+            {arr2}
+          </div>
+        );
+      } else if (i === 5 && firstDayWeek <= 5) {
+        const restDay = currentMonthTotalDay - (7 * 4 - firstDayWeek + 2) + 1;
+        column.push(
+          <div key={Math.random()} className="everyRow">
+            {row(7, 7 - restDay + 1)}
+          </div>
+        );
+      } else if (i === 5 && firstDayWeek > 5) {
+        const restDay = currentMonthTotalDay - (7 * 5 - firstDayWeek + 2) + 1;
+        const arr1 = mid.concat(row(restDay, 7 * 5 - firstDayWeek + 2));
+        const arr2 = arr1.concat(row(7 - restDay, 1));
         column.push(
           <div key={Math.random()} className="everyRow">
             {arr2}
