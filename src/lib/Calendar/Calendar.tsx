@@ -48,8 +48,8 @@ const CalendarStyled = styled.div`
     align-items: center;
     cursor: pointer;
     > span {
-      width: 1.5em;
-      line-height: 1.5em;
+      width: 2em;
+      line-height: 2em;
       text-align: center;
     }
     &.selected {
@@ -156,7 +156,7 @@ const Calendar: React.FC<Props> = (props) => {
             )}
             title={`${year}-${cellMonth}-${start + i}`}
           >
-            <span>{start + i}</span>
+            <span>{start + i < 10 ? `0${start + i}` : start + i}</span>
           </div>
         );
       }
