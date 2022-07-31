@@ -7,6 +7,7 @@ import LeftIcon from '../icons/left2.svg';
 
 interface Props extends HTMLAttributes<HTMLDivElement> {
   children?: React.ReactNode;
+  callback?: (dataValue: string) => void;
 }
 const CalendarStyled = styled.div`
   border: 1px solid rgba(100, 100, 100, 0.2);
@@ -20,7 +21,7 @@ const CalendarStyled = styled.div`
     display: flex;
     gap: 10px;
     justify-content: end;
-    padding: 0 10px 10px 10px;
+    padding: 0 10px 12px 10px;
     border-bottom: 1px solid rgba(0, 0, 0, 0.1);
     > .year {
       width: 6em;
@@ -47,23 +48,23 @@ const CalendarStyled = styled.div`
     justify-content: center;
     align-items: center;
     cursor: pointer;
-    > span {
-      width: 2em;
-      line-height: 2em;
-      text-align: center;
+    &:hover {
+      background-color: rgba(100, 100, 100, 0.2);
     }
     &.selected {
-      > span {
-        background-color: #1890ff;
-        color: white;
-      }
+      background-color: #1890ff;
+      color: white;
     }
+  }
+  .day {
+    flex-grow: 10;
+    display: flex;
+    flex-direction: column;
   }
   .week {
     display: flex;
-    height: 2.5em;
     width: 100%;
-    padding: 0 10px;
+    padding: 10px;
     font-size: 14px;
     line-height: 1.5em;
     font-weight: 400;
@@ -111,10 +112,12 @@ const yearTip: Tip[] = createYear();
 const monthTip: Tip[] = createMonth();
 
 const Calendar: React.FC<Props> = (props) => {
-  const { children, ...rest } = props;
+  const { children, callback, ...rest } = props;
   const [year, setYear] = useState<number>(currentYear);
   const [month, setMonth] = useState<number>(currentMonth);
-  const selectedDay = useRef<string>(month.toString() + currentDay.toString());
+  const [selectedDay, setSelectedDay] = useState<string>(
+    currentMonth.toString() + currentDay.toString()
+  );
 
   const firstDay = useRef<string>(getFirstDay(`${year}-${month}`));
   const changeYear = (value: string) => {
@@ -123,8 +126,27 @@ const Calendar: React.FC<Props> = (props) => {
   const changeMonth = (value: string) => {
     const newMonth = parseInt(value.split(' ')[0], 10);
     setMonth(newMonth);
-    selectedDay.current = newMonth.toString() + currentDay.toString();
+    setSelectedDay(newMonth.toString() + currentDay.toString());
   };
+  const changeDay = (e: React.MouseEvent<HTMLDivElement>) => {
+    const el = e.target as HTMLSpanElement;
+    const classArr = Array.from(el.classList);
+    if (el.tagName.toLowerCase() === 'span' && classArr.indexOf('everyCell') >= 0) {
+      const day = el.getAttribute('data-day');
+      const dayArr = day?.split('-');
+      if (dayArr) {
+        setSelectedDay(`${dayArr[1]}${dayArr[2]}`);
+        if (dayArr[1] === '0') {
+          callback!(`${parseInt(dayArr[0], 10) - 1}-12-${dayArr[2]}`);
+        } else if (dayArr[1] === '13') {
+          callback!(`${parseInt(dayArr[0], 10) + 1}-01-${dayArr[2]}`);
+        } else {
+          callback!(`${dayArr[0]}-${dayArr[1]}-${dayArr[2]}`);
+        }
+      }
+    }
+  };
+
   const render = () => {
     firstDay.current = getFirstDay(`${year}-${month}`);
     // 获取当月首日星期几
@@ -150,18 +172,17 @@ const Calendar: React.FC<Props> = (props) => {
       const arr: React.ReactNode[] = [];
       for (let i = 0; i < num; i++) {
         arr.push(
-          <div
+          <span
             key={Math.random()}
             className={classNames(
               'everyCell',
-              selectedDay.current === cellMonth.toString() + (start + i).toString()
-                ? 'selected'
-                : ''
+              selectedDay === cellMonth.toString() + (start + i).toString() ? 'selected' : ''
             )}
             title={`${year}-${cellMonth}-${start + i}`}
+            data-day={`${year}-${cellMonth}-${start + i}`}
           >
-            <span>{start + i < 10 ? `0${start + i}` : start + i}</span>
-          </div>
+            {start + i < 10 ? `0${start + i}` : start + i}
+          </span>
         );
       }
       return arr;
@@ -222,7 +243,15 @@ const Calendar: React.FC<Props> = (props) => {
             );
           })}
         </div>
-        {column}
+        <div
+          className="day"
+          role="presentation"
+          onClick={(e: React.MouseEvent<HTMLDivElement>) => {
+            changeDay(e);
+          }}
+        >
+          {column}
+        </div>
       </>
     );
   };
@@ -255,7 +284,8 @@ const Calendar: React.FC<Props> = (props) => {
   );
 };
 Calendar.defaultProps = {
-  children: ''
+  children: '',
+  callback: () => {}
 };
 
 export default Calendar;

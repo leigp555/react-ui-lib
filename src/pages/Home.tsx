@@ -21,10 +21,13 @@ const Wrap = styled.div`
 `;
 
 const Home: React.FC = () => {
+  const fn = (dataValue: string) => {
+    console.log(dataValue);
+  };
   return (
     <Wrap>
       <div className="row">
-        <Calendar />
+        <Calendar callback={fn} />
       </div>
     </Wrap>
   );
