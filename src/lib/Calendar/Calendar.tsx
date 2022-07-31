@@ -1,6 +1,7 @@
 import React, { HTMLAttributes, useRef, useState } from 'react';
 import styled from 'styled-components';
 import dayjs from 'dayjs';
+import classNames from 'classnames';
 import AutoComplete, { Tip } from '../AutoComplete/AutoComplete';
 import LeftIcon from '../icons/left2.svg';
 
@@ -34,10 +35,19 @@ const CalendarStyled = styled.div`
   }
   .everyCell {
     flex-grow: 1;
+    flex-shrink: -1;
     display: flex;
     justify-content: center;
     align-items: center;
     cursor: pointer;
+    > span {
+      width: 2.5em;
+      text-align: center;
+    }
+    &.selected {
+      background-color: #1890ff;
+      color: white;
+    }
   }
   .week {
     display: flex;
@@ -57,6 +67,9 @@ const currentMonth = dayjs().month() + 1;
 
 // 获取当前年份
 const currentYear = dayjs().year();
+
+// 获取当前处于本月那一天
+const currentDay = dayjs().date();
 
 // 创建年份提示
 const createYear = () => {
@@ -86,12 +99,16 @@ const Calendar: React.FC<Props> = (props) => {
   const { children, ...rest } = props;
   const [year, setYear] = useState<number>(currentYear);
   const [month, setMonth] = useState<number>(currentMonth);
+  const selectedDay = useRef<string>(month.toString() + currentDay.toString());
+
   const firstDay = useRef<string>(getFirstDay(`${year}-${month}`));
   const changeYear = (value: string) => {
     setYear(parseInt(value.split(' ')[0], 10));
   };
   const changeMonth = (value: string) => {
-    setMonth(parseInt(value.split(' ')[0], 10));
+    const newMonth = parseInt(value.split(' ')[0], 10);
+    setMonth(newMonth);
+    selectedDay.current = newMonth.toString() + currentDay.toString();
   };
   const render = () => {
     firstDay.current = getFirstDay(`${year}-${month}`);
@@ -120,10 +137,15 @@ const Calendar: React.FC<Props> = (props) => {
         arr.push(
           <div
             key={Math.random()}
-            className="everyCell"
+            className={classNames(
+              'everyCell',
+              selectedDay.current === cellMonth.toString() + (start + i).toString()
+                ? 'selected'
+                : ''
+            )}
             title={`${year}-${cellMonth}-${start + i}`}
           >
-            {start + i}
+            <span>{start + i}</span>
           </div>
         );
       }
