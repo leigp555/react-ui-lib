@@ -64,6 +64,10 @@ const CalendarStyled = styled.div`
     height: 2.5em;
     width: 100%;
     padding: 0 10px;
+    font-size: 14px;
+    line-height: 1.5em;
+    font-weight: 400;
+    color: #000000d9;
   }
   .everyWeek {
     flex-grow: 1;
@@ -140,7 +144,7 @@ const Calendar: React.FC<Props> = (props) => {
     const lastMonthTotalDay = dayjs(lastMonthFirstDay).daysInMonth();
     const column: React.ReactNode[] = [];
     const mid: React.ReactNode[] = [];
-    const week = ['周一', '周二', '周三', '周四', '周五', '周六', '周日'];
+    const week = ['一', '二', '三', '四', '五', '六', '日'];
     // 生成一行7个元素
     const row = (num: number, start: number, cellMonth: number) => {
       const arr: React.ReactNode[] = [];
