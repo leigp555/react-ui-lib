@@ -52,7 +52,8 @@ const CalendarStyled = styled.div`
 `;
 
 // 获取当前月份
-const currentMonth = dayjs().month() + 1;
+// const currentMonth = dayjs().month() + 1;
+const currentMonth = 2;
 
 // 获取当前年份
 const currentYear = dayjs().year();
@@ -88,19 +89,19 @@ const Calendar: React.FC<Props> = (props) => {
   const firstDay = useRef<string>(getFirstDay(`${year}-${month}`));
   useEffect(() => {
     // 获取当月首日
-    console.log(firstDay.current);
+    // console.log(firstDay.current);
     // 获取当月首日星期几
-    console.log(dayjs(firstDay.current).day());
+    // console.log(dayjs(firstDay.current).day());
     // 获取当月总天数
-    console.log(dayjs(firstDay.current).daysInMonth());
+    // console.log(dayjs(firstDay.current).daysInMonth());
     // 获取上月首日
-    console.log(getFirstDay(dayjs(firstDay.current).subtract(1, 'month').format('YYYY-MM')));
+    // console.log(getFirstDay(dayjs(firstDay.current).subtract(1, 'month').format('YYYY-MM')));
     // 获取上月总天数
-    console.log(
+    /* console.log(
       dayjs(
         getFirstDay(dayjs(firstDay.current).subtract(1, 'month').format('YYYY-MM'))
       ).daysInMonth()
-    );
+    ); */
   }, [year, month]);
   const changeYear = (value: string) => {
     setYear(parseInt(value.split(' ')[0], 10));
@@ -111,33 +112,50 @@ const Calendar: React.FC<Props> = (props) => {
   const render = () => {
     firstDay.current = getFirstDay(`${year}-${month}`);
     // 获取当月首日星期几
-    // const firstDayWeek = dayjs(firstDay.current).day();
+    const firstDayWeek = dayjs(firstDay.current).day();
     // 获取当月总天数
     // const currentMonthTotalDay = dayjs(firstDay.current).daysInMonth();
     // 获取上月首日
-    /* const lastMonthFirstDay = getFirstDay(
+    const lastMonthFirstDay = getFirstDay(
       dayjs(firstDay.current).subtract(1, 'month').format('YYYY-MM')
-    ); */
+    );
     // 获取上月总天数
-    // lastMonthTotalDay = dayjs(lastMonthFirstDay).daysInMonth();
-    const row: React.ReactNode[] = [];
+    const lastMonthTotalDay = dayjs(lastMonthFirstDay).daysInMonth();
     const column: React.ReactNode[] = [];
+    const mid: React.ReactNode[] = [];
     const week = ['周一', '周二', '周三', '周四', '周五', '周六', '周日'];
     // 生成一行7个元素
-    for (let i = 0; i < 7; i++) {
-      row.push(
-        <div key={Math.random()} className="everyCell">
-          {i}
-        </div>
-      );
-    }
+    const row = (num: number, start: number) => {
+      const arr: React.ReactNode[] = [];
+      for (let i = 0; i < num; i++) {
+        arr.push(
+          <div key={Math.random()} className="everyCell">
+            {start + i}
+          </div>
+        );
+      }
+      return arr;
+    };
     // 生成6行
     for (let i = 0; i < 6; i++) {
-      column.push(
-        <div key={Math.random()} className="everyRow">
-          {row}
-        </div>
-      );
+      console.log(firstDay.current);
+      console.log(firstDayWeek);
+      console.log(lastMonthTotalDay);
+      if (i === 0) {
+        const arr1 = mid.concat(row(firstDayWeek - 1, lastMonthTotalDay - firstDayWeek + 2));
+        const arr2 = arr1.concat(row(8 - firstDayWeek, 1));
+        column.push(
+          <div key={Math.random()} className="everyRow">
+            {arr2}
+          </div>
+        );
+      } else {
+        column.push(
+          <div key={Math.random()} className="everyRow">
+            {row(7, 7 * i - firstDayWeek + 2)}
+          </div>
+        );
+      }
     }
     return (
       <>
