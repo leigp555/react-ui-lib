@@ -15,8 +15,8 @@ const Wrap = styled.div`
     gap: 50px;
     justify-content: center;
     align-items: center;
-    width: 600px;
-    height: 500px;
+    width: 300px;
+    height: 300px;
   }
 `;
 

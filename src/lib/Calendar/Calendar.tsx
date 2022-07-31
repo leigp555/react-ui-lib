@@ -15,11 +15,13 @@ const CalendarStyled = styled.div`
   display: flex;
   flex-direction: column;
   user-select: none;
+  padding: 10px 0;
   .select {
     display: flex;
     gap: 10px;
     justify-content: end;
-    padding: 10px 20px;
+    padding: 0 10px 10px 10px;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
     > .year {
       width: 6em;
       height: 1.5em;
@@ -32,6 +34,11 @@ const CalendarStyled = styled.div`
   .everyRow {
     display: flex;
     flex-grow: 1;
+    padding: 0 10px;
+    font-size: 14px;
+    line-height: 1.5em;
+    font-weight: 400;
+    color: #000000d9;
   }
   .everyCell {
     flex-grow: 1;
@@ -41,18 +48,22 @@ const CalendarStyled = styled.div`
     align-items: center;
     cursor: pointer;
     > span {
-      width: 2.5em;
+      width: 1.5em;
+      line-height: 1.5em;
       text-align: center;
     }
     &.selected {
-      background-color: #1890ff;
-      color: white;
+      > span {
+        background-color: #1890ff;
+        color: white;
+      }
     }
   }
   .week {
     display: flex;
     height: 2.5em;
     width: 100%;
+    padding: 0 10px;
   }
   .everyWeek {
     flex-grow: 1;
