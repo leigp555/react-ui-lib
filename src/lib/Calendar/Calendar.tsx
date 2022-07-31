@@ -1,4 +1,4 @@
-import React, { HTMLAttributes, useEffect, useRef, useState } from 'react';
+import React, { HTMLAttributes, useRef, useState } from 'react';
 import styled from 'styled-components';
 import dayjs from 'dayjs';
 import AutoComplete, { Tip } from '../AutoComplete/AutoComplete';
@@ -37,6 +37,7 @@ const CalendarStyled = styled.div`
     display: flex;
     justify-content: center;
     align-items: center;
+    cursor: pointer;
   }
   .week {
     display: flex;
@@ -52,8 +53,7 @@ const CalendarStyled = styled.div`
 `;
 
 // 获取当前月份
-// const currentMonth = dayjs().month() + 1;
-const currentMonth = 2;
+const currentMonth = dayjs().month() + 1;
 
 // 获取当前年份
 const currentYear = dayjs().year();
@@ -87,22 +87,6 @@ const Calendar: React.FC<Props> = (props) => {
   const [year, setYear] = useState<number>(currentYear);
   const [month, setMonth] = useState<number>(currentMonth);
   const firstDay = useRef<string>(getFirstDay(`${year}-${month}`));
-  useEffect(() => {
-    // 获取当月首日
-    // console.log(firstDay.current);
-    // 获取当月首日星期几
-    // console.log(dayjs(firstDay.current).day());
-    // 获取当月总天数
-    // console.log(dayjs(firstDay.current).daysInMonth());
-    // 获取上月首日
-    // console.log(getFirstDay(dayjs(firstDay.current).subtract(1, 'month').format('YYYY-MM')));
-    // 获取上月总天数
-    /* console.log(
-      dayjs(
-        getFirstDay(dayjs(firstDay.current).subtract(1, 'month').format('YYYY-MM'))
-      ).daysInMonth()
-    ); */
-  }, [year, month]);
   const changeYear = (value: string) => {
     setYear(parseInt(value.split(' ')[0], 10));
   };
@@ -125,11 +109,15 @@ const Calendar: React.FC<Props> = (props) => {
     const mid: React.ReactNode[] = [];
     const week = ['周一', '周二', '周三', '周四', '周五', '周六', '周日'];
     // 生成一行7个元素
-    const row = (num: number, start: number) => {
+    const row = (num: number, start: number, cellMonth: number) => {
       const arr: React.ReactNode[] = [];
       for (let i = 0; i < num; i++) {
         arr.push(
-          <div key={Math.random()} className="everyCell">
+          <div
+            key={Math.random()}
+            className="everyCell"
+            title={`${year}-${cellMonth}-${start + i}`}
+          >
             {start + i}
           </div>
         );
@@ -138,12 +126,11 @@ const Calendar: React.FC<Props> = (props) => {
     };
     // 生成6行
     for (let i = 0; i < 6; i++) {
-      console.log('firstDay.current', firstDay.current);
-      console.log('firstDayWeek', firstDayWeek);
-      console.log('currentMonthTotalDay', currentMonthTotalDay);
       if (i === 0) {
-        const arr1 = mid.concat(row(firstDayWeek - 1, lastMonthTotalDay - firstDayWeek + 2));
-        const arr2 = arr1.concat(row(8 - firstDayWeek, 1));
+        const arr1 = mid.concat(
+          row(firstDayWeek - 1, lastMonthTotalDay - firstDayWeek + 2, month - 1)
+        );
+        const arr2 = arr1.concat(row(8 - firstDayWeek, 1, month));
         column.push(
           <div key={Math.random()} className="everyRow">
             {arr2}
@@ -151,8 +138,8 @@ const Calendar: React.FC<Props> = (props) => {
         );
       } else if (i === 4 && firstDayWeek <= 5) {
         const restDay = currentMonthTotalDay - (7 * 4 - firstDayWeek + 2) + 1;
-        const arr1 = mid.concat(row(restDay, 7 * 4 - firstDayWeek + 2));
-        const arr2 = arr1.concat(row(7 - restDay, 1));
+        const arr1 = mid.concat(row(restDay, 7 * 4 - firstDayWeek + 2, month));
+        const arr2 = arr1.concat(row(7 - restDay, 1, month + 1));
         column.push(
           <div key={Math.random()} className="everyRow">
             {arr2}
@@ -162,13 +149,13 @@ const Calendar: React.FC<Props> = (props) => {
         const restDay = currentMonthTotalDay - (7 * 4 - firstDayWeek + 2) + 1;
         column.push(
           <div key={Math.random()} className="everyRow">
-            {row(7, 7 - restDay + 1)}
+            {row(7, 7 - restDay + 1, month + 1)}
           </div>
         );
       } else if (i === 5 && firstDayWeek > 5) {
         const restDay = currentMonthTotalDay - (7 * 5 - firstDayWeek + 2) + 1;
-        const arr1 = mid.concat(row(restDay, 7 * 5 - firstDayWeek + 2));
-        const arr2 = arr1.concat(row(7 - restDay, 1));
+        const arr1 = mid.concat(row(restDay, 7 * 5 - firstDayWeek + 2, month));
+        const arr2 = arr1.concat(row(7 - restDay, 1, month + 1));
         column.push(
           <div key={Math.random()} className="everyRow">
             {arr2}
@@ -177,7 +164,7 @@ const Calendar: React.FC<Props> = (props) => {
       } else {
         column.push(
           <div key={Math.random()} className="everyRow">
-            {row(7, 7 * i - firstDayWeek + 2)}
+            {row(7, 7 * i - firstDayWeek + 2, month)}
           </div>
         );
       }
