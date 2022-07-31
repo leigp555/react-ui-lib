@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import Calendar from '../lib/Calendar/Calendar';
 
 const Wrap = styled.div`
   display: flex;
@@ -12,16 +13,19 @@ const Wrap = styled.div`
     display: flex;
     flex-direction: row;
     gap: 50px;
-    justify-content: start;
+    justify-content: center;
     align-items: center;
-    width: 100%;
+    width: 600px;
+    height: 500px;
   }
 `;
 
 const Home: React.FC = () => {
   return (
     <Wrap>
-      <div className="row">xxx</div>
+      <div className="row">
+        <Calendar />
+      </div>
     </Wrap>
   );
 };

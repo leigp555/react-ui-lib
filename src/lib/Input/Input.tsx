@@ -104,11 +104,12 @@ const IconsLeft = styled(IconCommon)`
 `;
 const IconsRight = styled(IconCommon)`
   right: 10px;
-  gap: 5px;
-  width: 100px;
+  //gap: 5px;
+  //width: 100px;
   display: flex;
   justify-content: end;
   cursor: pointer;
+  width: 1em;
 `;
 
 const CommonDom = styled.div`
@@ -140,13 +141,34 @@ const TipDom = styled(CommonDom)`
   padding: 8px 0;
   background-color: #fff;
   border-radius: 2px;
+  max-height: 10em;
+  overflow-y: auto;
   box-shadow: 0 3px 2px 1px rgba(0, 0, 0, 0.1), 1px 0 2px 1px rgba(0, 0, 0, 0.1),
     -1px 0 2px 1px rgba(0, 0, 0, 0.1);
+  &::-webkit-scrollbar {
+    //整个滚动条的宽高设置
+    width: 6px; //宽高只有一个能生效，如果是横向滚动条高度生效，纵向滚动条宽度生效
+    height: 8px;
+  }
+  &::-webkit-scrollbar-thumb {
+    //滚动条滑块的设置
+    border-radius: 3px;
+    -moz-border-radius: 3px;
+    -webkit-border-radius: 3px;
+    background-color: #c3c3c3;
+  }
+  &::-webkit-scrollbar-track {
+    //滚动条轨道设置
+    background-color: transparent;
+  }
 `;
 const PerTip = styled(CommonPer)`
   > p {
     width: 100%;
-    padding: 10px 10px;
+    font-size: 14px;
+    padding: 0 10px;
+    cursor: pointer;
+    color: #262626;
   }
 
   &:hover {
@@ -225,7 +247,11 @@ const Input: React.FC<Props> = (props) => {
         <InputWrap>
           <IconsLeft>{leftNode}</IconsLeft>
           <span style={{ display: 'flex', gap: '4px' }}>
-            <IconsRight>
+            <IconsRight
+              onClick={() => {
+                setTipShow(!tipShow);
+              }}
+            >
               {rightNode}
               <EyeShow
                 style={{ display: inputType === 'text' && type === 'password' ? 'inline' : 'none' }}
