@@ -13,13 +13,12 @@ interface Props extends HTMLAttributes<HTMLDivElement> {
 }
 const AutoCompleteStyled = styled.div`
   position: relative;
-  display: inline-flex;
-  align-items: center;
   > input {
     border: 1px solid rgba(100, 100, 100, 0.5);
     padding: 5px calc(1em + 15px) 5px 5px;
     border-radius: 3px;
     outline: none;
+    max-width: 100%;
     :hover {
       border: 1px solid #1890ff;
     }
