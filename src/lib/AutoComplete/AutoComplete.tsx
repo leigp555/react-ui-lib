@@ -1,4 +1,4 @@
-import React, { Dispatch, HTMLAttributes, SetStateAction, useRef } from 'react';
+import React, { HTMLAttributes, useRef } from 'react';
 import styled from 'styled-components';
 
 export type Tip = {
@@ -8,8 +8,8 @@ export type Tip = {
 interface Props extends HTMLAttributes<HTMLDivElement> {
   children?: React.ReactNode;
   tips?: Tip[];
-  value: string;
-  setValue: Dispatch<SetStateAction<string>>;
+  value: string | number;
+  callback: (value: any) => void;
 }
 const AutoCompleteStyled = styled.div`
   position: relative;
@@ -88,7 +88,7 @@ const AutoCompleteStyled = styled.div`
   }
 `;
 const AutoComplete: React.FC<Props> = (props) => {
-  const { children, tips, value, setValue, ...rest } = props;
+  const { children, tips, value, callback, ...rest } = props;
   const tipWrapRef = useRef<HTMLDivElement | null>(null);
   const tipRef = useRef<HTMLDivElement | null>(null);
   const inputRef = useRef<HTMLInputElement | null>(null);
@@ -100,14 +100,14 @@ const AutoComplete: React.FC<Props> = (props) => {
   };
   const tipHandle = (e: React.MouseEvent<HTMLDivElement>) => {
     const el = e.target as HTMLParagraphElement;
-    setValue(el.innerText);
+    callback(el.innerText);
   };
   return (
     <AutoCompleteStyled>
       <input
         value={value}
         onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
-          setValue(e.target.value);
+          callback(e.target.value);
         }}
         {...rest}
         ref={inputRef}

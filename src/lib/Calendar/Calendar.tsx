@@ -1,8 +1,7 @@
-import React, { HTMLAttributes } from 'react';
+import React, { HTMLAttributes, useEffect, useRef, useState } from 'react';
 import styled from 'styled-components';
 import dayjs from 'dayjs';
-import Input, { Tip } from '../Input/Input';
-import InputIcon from '../Input/InputIcon';
+import AutoComplete, { Tip } from '../AutoComplete/AutoComplete';
 import LeftIcon from '../icons/left2.svg';
 
 interface Props extends HTMLAttributes<HTMLDivElement> {
@@ -21,11 +20,11 @@ const CalendarStyled = styled.div`
     justify-content: end;
     padding: 10px 20px;
     > .year {
-      width: 5em;
+      width: 6em;
       height: 1.5em;
     }
     > .month {
-      width: 4em;
+      width: 4.5em;
       height: 1.5em;
     }
   }
@@ -53,7 +52,8 @@ const CalendarStyled = styled.div`
 `;
 
 // 获取当前月份
-// const currentMonth = dayjs().month();
+const currentMonth = dayjs().month() + 1;
+
 // 获取当前年份
 const currentYear = dayjs().year();
 
@@ -62,7 +62,7 @@ const createYear = () => {
   const year: Tip[] = [];
   const startYear = currentYear - 5;
   for (let i = 0; i < 10; i++) {
-    year.push({ id: i, message: `${startYear + i}年` });
+    year.push({ id: i, message: `${startYear + i} 年` });
   }
   return year;
 };
@@ -70,17 +70,56 @@ const createYear = () => {
 const createMonth = () => {
   const month: Tip[] = [];
   for (let i = 0; i < 12; i++) {
-    month.push({ id: i, message: `${i + 1}月` });
+    month.push({ id: i, message: `${i + 1} 月` });
   }
   return month;
 };
-
-const year: Tip[] = createYear();
-const month: Tip[] = createMonth();
+// 获取月份的第一天
+const getFirstDay = (data: string) => {
+  return `${data}-01`;
+};
+const yearTip: Tip[] = createYear();
+const monthTip: Tip[] = createMonth();
 
 const Calendar: React.FC<Props> = (props) => {
   const { children, ...rest } = props;
+  const [year, setYear] = useState<number>(currentYear);
+  const [month, setMonth] = useState<number>(currentMonth);
+  const firstDay = useRef<string>(getFirstDay(`${year}-${month}`));
+  useEffect(() => {
+    // 获取当月首日
+    console.log(firstDay.current);
+    // 获取当月首日星期几
+    console.log(dayjs(firstDay.current).day());
+    // 获取当月总天数
+    console.log(dayjs(firstDay.current).daysInMonth());
+    // 获取上月首日
+    console.log(getFirstDay(dayjs(firstDay.current).subtract(1, 'month').format('YYYY-MM')));
+    // 获取上月总天数
+    console.log(
+      dayjs(
+        getFirstDay(dayjs(firstDay.current).subtract(1, 'month').format('YYYY-MM'))
+      ).daysInMonth()
+    );
+  }, [year, month]);
+  const changeYear = (value: string) => {
+    setYear(parseInt(value.split(' ')[0], 10));
+  };
+  const changeMonth = (value: string) => {
+    setMonth(parseInt(value.split(' ')[0], 10));
+  };
   const render = () => {
+    firstDay.current = getFirstDay(`${year}-${month}`);
+    // 获取当月首日星期几
+    // const firstDayWeek = dayjs(firstDay.current).day();
+    // 获取当月总天数
+    // const currentMonthTotalDay = dayjs(firstDay.current).daysInMonth();
+    // 获取上月首日
+    /* const lastMonthFirstDay = getFirstDay(
+      dayjs(firstDay.current).subtract(1, 'month').format('YYYY-MM')
+    ); */
+    // 获取上月总天数
+    // lastMonthTotalDay = dayjs(lastMonthFirstDay).daysInMonth();
     const row: React.ReactNode[] = [];
     const column: React.ReactNode[] = [];
     const week = ['周一', '周二', '周三', '周四', '周五', '周六', '周日'];
@@ -119,36 +158,24 @@ const Calendar: React.FC<Props> = (props) => {
     <CalendarStyled {...rest}>
       <div className="select">
         <div className="year">
-          <Input
-            tips={year}
-            placeholder=""
-            style={{
-              padding: '0.4em 0.4em',
-              minHeight: '1em',
-              fontSize: '12px',
-              cursor: 'pointer'
-            }}
+          <AutoComplete
+            tips={yearTip}
+            value={`${year.toString()} 年`}
+            callback={changeYear}
+            style={{ cursor: 'pointer' }}
           >
-            <InputIcon position="right" style={{ transform: 'rotate(-90deg)' }}>
-              <LeftIcon width="0.8em" height="0.8em" />
-            </InputIcon>
-          </Input>
+            <LeftIcon width="0.8em" height="0.8em" style={{ transform: 'rotate(-90deg)' }} />
+          </AutoComplete>
         </div>
         <div className="month">
-          <Input
-            tips={month}
-            placeholder=""
-            style={{
-              padding: '0.4em 0.4em',
-              minHeight: '1em',
-              fontSize: '12px',
-              cursor: 'pointer'
-            }}
+          <AutoComplete
+            tips={monthTip}
+            value={`${month.toString()} 月`}
+            callback={changeMonth}
+            style={{ cursor: 'pointer' }}
           >
-            <InputIcon position="right" style={{ transform: 'rotate(-90deg)' }}>
-              <LeftIcon width="0.8em" height="0.8em" />
-            </InputIcon>
-          </Input>
+            <LeftIcon width="0.8em" height="0.8em" style={{ transform: 'rotate(-90deg)' }} />
+          </AutoComplete>
         </div>
       </div>
       {render()}
