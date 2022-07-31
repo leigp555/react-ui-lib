@@ -16,16 +16,19 @@ import React from 'react';
 //     gap: 50px;
 //     justify-content: center;
 //     align-items: center;
-//     width: 600px;
-//     height: 500px;
+//     width: 300px;
+//     height: 300px;
 //   }
 // `;
 //
 // const Home: React.FC = () => {
+//   const fn = (dataValue: string) => {
+//     console.log(dataValue);
+//   };
 //   return (
 //     <Wrap>
 //       <div className="row">
-//         <Calendar />
+//         <Calendar callback={fn} />
 //       </div>
 //     </Wrap>
 //   );
