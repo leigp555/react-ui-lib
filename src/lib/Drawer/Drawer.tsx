@@ -16,14 +16,23 @@ interface Props extends HTMLAttributes<HTMLDivElement> {
 }
 
 const Wrap = styled.div`
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  z-index: 1;
+  transition: all 500ms;
   .overflow {
     position: absolute;
     top: 0;
     left: 0;
     width: 100vw;
     height: 100vh;
+    overflow: hidden;
     background-color: rgba(0, 0, 0, 0.1);
-    z-index: 1;
+    z-index: 10;
   }
 `;
 
@@ -83,10 +92,10 @@ const DrawerStyled = styled.div`
     }
   }
 `;
-const Drawer: React.FC<Props> = (props) => {
+export const Drawer: React.FC<Props> = (props) => {
   const { children, title, width, height, position, onClose, visible } = props;
   return createPortal(
-    <Wrap>
+    <Wrap style={{ zIndex: visible ? 1 : -1 }}>
       <CSSTransition in={visible} classNames={position} timeout={250} unmountOnExit>
         <DrawerStyled className={classNames(position!)} width={width!} height={height!}>
           <div className="main">

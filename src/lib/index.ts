@@ -1,163 +1,82 @@
-import Affix from './Affix/Affix';
-import Alert from './Alert/Alert';
-import AutoComplete from './AutoComplete/AutoComplete';
-import Avatar from './Avatar/Avatar';
-import BackTop from './BackTop/BackTop';
-import Badge from './Badge/Badge';
-import Breadcrumb from './Breadcrumb/Breadcrumb';
-import BreadcrumbItem from './Breadcrumb/BreadcrumbItem';
-import Button from './Button/Button';
-import Calendar from './Calendar/Calendar';
-import Card from './Card/Card';
-import Carousel from './Carousel/Carousel ';
-import CarouselItem from './Carousel/CarouselItem';
-import Checkbox from './Checkbox/Checkbox';
-import Collapse from './Collapse/Collapse';
-import Panel from './Collapse/Panel';
-import Comment from './Comment/Comment';
-import Divider from './Divider/Divider';
-import Drawer from './Drawer/Drawer';
-import Dropdown from './Dropdown/Dropdown ';
-import DropdownItem from './Dropdown/DropdownItem';
-import Empty from './Empty/Empty';
-import Form from './Form/Form';
-import FormItem from './Form/FormItem';
-import Col from './Grid/Col';
-import Row from './Grid/Row';
-import Image from './Image/Image';
-import Input from './Input/Input';
-import InputIcon from './Input/InputIcon';
-import Content from './Layout/Content';
-import Footer from './Layout/Footer';
-import Header from './Layout/Header';
-import Layout from './Layout/Layout';
-import LayoutWrap from './Layout/LayoutWrap';
-import Sider from './Layout/Sider';
-import List from './List/List';
-import ListItem from './List/ListItem';
-import Loading from './Loading/Loading';
-import ColumnSub from './Menu/ColumnSub';
-import ColumnMenu from './Menu/ColumnMenu';
-import ItemGroup from './Menu/ItemGroup';
-import Label from './Menu/Label';
-import Menu from './Menu/Menu ';
-import MenuItem from './Menu/MenuItem';
-import SubMenu from './Menu/SubMenu';
-import Modal from './Modal/Modal';
-import Notification from './Notification/Notification';
-import Paragraph from './Typography/Paragraph';
-import Palette from './Palette/Palette';
-import PopConfirm from './Popconfirm/Popconfirm';
-import Popover from './Popover/Popover';
-import Progress from './Progress/Progress';
-import Radio from './Radio/Radio';
-import RadioItem from './Radio/RadioItem';
-import Result from './Result/Result';
-import Segmented from './Segmented/Segmented';
-import Skeleton from './Skeleton/Skeleton';
-import SkeletonItem from './Skeleton/SkeletonItem';
-import Slider from './Slider/Slider';
-import Space from './Space/Space';
-import Step from './Steps/Step';
-import Steps from './Steps/Steps';
-import Switch from './Switch/Switch';
-import AsyncTable from './Table/AsyncTable';
-import Table from './Table/Table';
-import Tab from './Tabs/Tab';
-import Tabs from './Tabs/Tabs';
-import Tag from './Tag/Tag';
-import TagGroup from './Tag/TagGroup';
-import Timeline from './Timeline/Timeline';
-import TimeItem from './Timeline/TimeItem';
-import { Tip } from './Tip/Tip';
-import Tooltip from './Tooltip/Tooltip';
-import Tree from './Tree/Tree';
-import Pagination from './Pagination/Pagination ';
-import Text from './Typography/Text';
-import Title from './Typography/Title';
-import Typography from './Typography/Typography';
-import Upload from './Upload/Upload';
-import UploadToServer from './Upload/UploadToServer';
+export { default as AutoComplete } from './AutoComplete/AutoComplete';
+export { default as Avatar } from './Avatar/Avatar';
+export { default as BackTop } from './BackTop/BackTop';
+export { default as Badge } from './Badge/Badge';
+export { default as Breadcrumb } from './Breadcrumb/Breadcrumb';
+export { default as BreadcrumbItem } from './Breadcrumb/BreadcrumbItem';
+export { default as Calendar } from './Calendar/Calendar';
+export { default as Card } from './Card/Card';
+export { default as Carousel } from './Carousel/Carousel ';
+export { default as CarouselItem } from './Carousel/CarouselItem';
+export { default as Checkbox } from './Checkbox/Checkbox';
+export { default as Collapse } from './Collapse/Collapse';
+export { default as Panel } from './Collapse/Panel';
+export { default as Comment } from './Comment/Comment';
+export { default as Divider } from './Divider/Divider';
+export { default as Drawer } from './Drawer/Drawer';
+export { default as Dropdown } from './Dropdown/Dropdown ';
+export { default as DropdownItem } from './Dropdown/DropdownItem';
+export { default as Empty } from './Empty/Empty';
+export { default as Form } from './Form/Form';
+export { default as FormItem } from './Form/FormItem';
+export { default as Col } from './Grid/Col';
+export { default as Row } from './Grid/Row';
+export { default as Image } from './Image/Image';
+export { default as Input } from './Input/Input';
+export { default as InputIcon } from './Input/InputIcon';
+export { default as Content } from './Layout/Content';
+export { default as Footer } from './Layout/Footer';
+export { default as Header } from './Layout/Header';
+export { default as Layout } from './Layout/Layout';
+export { default as LayoutWrap } from './Layout/LayoutWrap';
+export { default as Sider } from './Layout/Sider';
+export { default as List } from './List/List';
+export { default as ListItem } from './List/ListItem';
+export { default as Loading } from './Loading/Loading';
+export { default as ColumnSub } from './Menu/ColumnSub';
+export { default as ColumnMenu } from './Menu/ColumnMenu';
+export { default as ItemGroup } from './Menu/ItemGroup';
+export { default as Label } from './Menu/Label';
+export { default as Menu } from './Menu/Menu ';
+export { default as MenuItem } from './Menu/MenuItem';
+export { default as SubMenu } from './Menu/SubMenu';
+export { default as Modal } from './Modal/Modal';
+export { default as Notification } from './Notification/Notification';
+export { default as Paragraph } from './Typography/Paragraph';
+export { default as Palette } from './Palette/Palette';
+export { default as PopConfirm } from './Popconfirm/Popconfirm';
+export { default as Popover } from './Popover/Popover';
+export { default as Progress } from './Progress/Progress';
+export { default as Radio } from './Radio/Radio';
+export { default as RadioItem } from './Radio/RadioItem';
+export { default as Result } from './Result/Result';
+export { default as Segmented } from './Segmented/Segmented';
+export { default as Skeleton } from './Skeleton/Skeleton';
+export { default as SkeletonItem } from './Skeleton/SkeletonItem';
+export { default as Slider } from './Slider/Slider';
+export { default as Space } from './Space/Space';
+export { default as Step } from './Steps/Step';
+export { default as Steps } from './Steps/Steps';
+export { default as Switch } from './Switch/Switch';
+export { default as AsyncTable } from './Table/AsyncTable';
+export { default as Table } from './Table/Table';
+export { default as Tab } from './Tabs/Tab';
+export { default as Tabs } from './Tabs/Tabs';
+export { default as Tag } from './Tag/Tag';
+export { default as TagGroup } from './Tag/TagGroup';
+export { default as Timeline } from './Timeline/Timeline';
+export { default as TimeItem } from './Timeline/TimeItem';
+export { Tip } from './Tip/Tip';
+export { default as Tooltip } from './Tooltip/Tooltip';
+export { default as Tree } from './Tree/Tree';
+export { default as Pagination } from './Pagination/Pagination ';
+export { default as Text } from './Typography/Text';
+export { default as Title } from './Typography/Title';
+export { default as Typography } from './Typography/Typography';
+export { default as Upload } from './Upload/Upload';
+export { default as UploadToServer } from './Upload/UploadToServer';
 
-export {
-  UploadToServer,
-  Upload,
-  Tooltip,
-  Tree,
-  Pagination,
-  Text,
-  Title,
-  Typography,
-  Tip,
-  Tab,
-  Tag,
-  Tabs,
-  TagGroup,
-  TimeItem,
-  Timeline,
-  Segmented,
-  SkeletonItem,
-  Skeleton,
-  Slider,
-  Space,
-  Steps,
-  Step,
-  Switch,
-  AsyncTable,
-  Table,
-  Modal,
-  Notification,
-  Paragraph,
-  Palette,
-  PopConfirm,
-  Popover,
-  Progress,
-  Radio,
-  RadioItem,
-  Result,
-  SubMenu,
-  MenuItem,
-  Menu,
-  Label,
-  ItemGroup,
-  ColumnMenu,
-  ColumnSub,
-  Loading,
-  ListItem,
-  List,
-  Content,
-  Footer,
-  Header,
-  Layout,
-  LayoutWrap,
-  Sider,
-  Image,
-  Input,
-  InputIcon,
-  Form,
-  FormItem,
-  Col,
-  Row,
-  Empty,
-  DropdownItem,
-  Dropdown,
-  Drawer,
-  Divider,
-  Comment,
-  Panel,
-  Collapse,
-  Checkbox,
-  CarouselItem,
-  Carousel,
-  Card,
-  Affix,
-  Alert,
-  AutoComplete,
-  Avatar,
-  BackTop,
-  Badge,
-  Breadcrumb,
-  BreadcrumbItem,
-  Button,
-  Calendar
-};
+export { default as Button } from './Button/Button';
+
+export { default as Alert } from './Alert/Alert';
+export { default as Affix } from './Affix/Affix';
