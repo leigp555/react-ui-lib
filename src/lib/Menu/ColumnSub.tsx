@@ -1,4 +1,4 @@
-import React, { HTMLAttributes, useContext, useRef } from 'react';
+import React, { HTMLAttributes, useContext } from 'react';
 import styled from 'styled-components';
 import { columnMenuCtx } from './ColunmMenu';
 import { common, nodeList } from './common';
@@ -8,15 +8,16 @@ interface Props extends HTMLAttributes<HTMLDivElement> {
   children?: React.ReactNode;
 }
 const SubMenuStyled = styled.div`
-  display: inline-flex;
+  display: flex;
   > .wrap {
-    display: inline-flex;
+    display: flex;
     min-width: 150px;
     flex-direction: column;
     > .content {
       background-color: #fff;
-      padding: 10px 5px;
-      box-shadow: 0 0 2px 1px rgba(0, 0, 0, 0.2);
+      //padding: 10px 5px;
+      padding: 10px 0;
+      border: 1px solid #dcdfe6;
     }
     > .label {
       cursor: pointer;
@@ -26,9 +27,8 @@ const SubMenuStyled = styled.div`
 `;
 const ColumnSub: React.FC<Props> = (props) => {
   const { children, label, ...rest } = props;
-  const { callback } = useContext(columnMenuCtx);
-  const activeRef = useRef<HTMLDivElement | null>(null);
-  const getOrder = (e: React.MouseEvent<HTMLDivElement>) => common(activeRef, callback)(e);
+  const { setOrder } = useContext(columnMenuCtx);
+  const getOrder = (e: React.MouseEvent<HTMLDivElement>) => common(setOrder)(e);
   const render = () => {
     const { labelNode, otherNode } = nodeList(children);
     return (
@@ -51,7 +51,7 @@ const ColumnSub: React.FC<Props> = (props) => {
   );
 };
 ColumnSub.defaultProps = {
-  label: '导航',
+  label: '',
   children: ''
 };
 

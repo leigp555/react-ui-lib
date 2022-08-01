@@ -1,4 +1,4 @@
-import React, { HTMLAttributes, useContext, useRef, useState } from 'react';
+import React, { HTMLAttributes, useContext, useState } from 'react';
 import styled from 'styled-components';
 import { CSSTransition } from 'react-transition-group';
 import { menuCtx } from './Menu ';
@@ -51,11 +51,10 @@ const SubMenuStyled = styled.div`
 `;
 const SubMenu: React.FC<Props> = (props) => {
   const { children, label, ...rest } = props;
-  const { callback } = useContext(menuCtx);
+  const { setOrder } = useContext(menuCtx);
   const needBorder = children instanceof Array;
-  const activeRef = useRef<HTMLDivElement | null>(null);
   const [enter, setEnter] = useState<boolean>(false);
-  const getOrder = (e: React.MouseEvent<HTMLDivElement>) => common(activeRef, callback)(e);
+  const getOrder = (e: React.MouseEvent<HTMLDivElement>) => common(setOrder)(e);
   const render = () => {
     const { labelNode, otherNode } = nodeList(children);
     return (

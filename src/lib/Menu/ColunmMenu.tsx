@@ -1,24 +1,24 @@
-import React, { HTMLAttributes, useCallback } from 'react';
+import React, { Dispatch, HTMLAttributes, SetStateAction, useMemo } from 'react';
 import styled from 'styled-components';
 
 interface Ctx {
-  callback: (order: number) => void;
+  setOrder: Dispatch<SetStateAction<number>>;
+  defaultOrder: number;
 }
 export const columnMenuCtx = React.createContext<Ctx>(null!);
 
 interface Props extends HTMLAttributes<HTMLDivElement> {
-  callback?: (key: number) => void;
   children?: React.ReactNode;
+  setOrder: Dispatch<SetStateAction<number>>;
+  defaultOrder: number;
 }
 
-const MenuStyled = styled.div`
-  display: inline-block;
-`;
+const MenuStyled = styled.div``;
 const ColumnMenu: React.FC<Props> = (props) => {
-  const { children, callback } = props;
-  const fn = useCallback(callback!, []);
-  // eslint-disable-next-line react/jsx-no-constructed-context-values
-  const value = { callback: fn };
+  const { children, setOrder, defaultOrder } = props;
+  const value = useMemo(() => {
+    return { setOrder, defaultOrder };
+  }, [defaultOrder]);
   return (
     <MenuStyled>
       <columnMenuCtx.Provider value={value}>{children}</columnMenuCtx.Provider>
@@ -26,7 +26,6 @@ const ColumnMenu: React.FC<Props> = (props) => {
   );
 };
 ColumnMenu.defaultProps = {
-  callback: () => {},
   children: ''
 };
 

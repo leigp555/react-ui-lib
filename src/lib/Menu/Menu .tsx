@@ -1,17 +1,19 @@
-import React, { HTMLAttributes, useCallback } from 'react';
+import React, { Dispatch, HTMLAttributes, SetStateAction, useMemo } from 'react';
 import styled from 'styled-components';
 import { CommonStyle } from '../common/common';
 
 interface Ctx {
-  callback: (order: number) => void;
+  setOrder: Dispatch<SetStateAction<number>>;
+  defaultOrder: number;
 }
 export const menuCtx = React.createContext<Ctx>(null!);
 
 interface Props extends HTMLAttributes<HTMLDivElement> {
-  callback?: (key: number) => void;
   bgc?: string;
   justify?: 'center' | 'start' | 'end' | 'space-between' | 'space-around';
   children?: React.ReactNode;
+  setOrder: Dispatch<SetStateAction<number>>;
+  defaultOrder: number;
 }
 
 type PropsStyled = { bgc?: string };
@@ -26,10 +28,10 @@ const MenuStyled = styled(CommonStyle)`
   padding: 0 50px;
 `;
 const Menu: React.FC<Props> = (props) => {
-  const { children, bgc, callback, ...rest } = props;
-  const fn = useCallback(callback!, []);
-  // eslint-disable-next-line react/jsx-no-constructed-context-values
-  const value = { callback: fn };
+  const { children, bgc, setOrder, defaultOrder, ...rest } = props;
+  const value = useMemo(() => {
+    return { setOrder, defaultOrder };
+  }, [defaultOrder]);
   return (
     <MenuStyled bgc={bgc} {...rest}>
       <menuCtx.Provider value={value}>{children}</menuCtx.Provider>
@@ -37,7 +39,6 @@ const Menu: React.FC<Props> = (props) => {
   );
 };
 Menu.defaultProps = {
-  callback: () => {},
   bgc: 'inherit',
   justify: 'center',
   children: ''
