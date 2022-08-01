@@ -1,7 +1,7 @@
 import React, { HTMLAttributes, useContext } from 'react';
 import styled from 'styled-components';
 import classNames from 'classnames';
-import { columnMenuCtx } from './ColunmMenu';
+import { columnMenuCtx } from './ColumnMenu';
 
 interface Props extends HTMLAttributes<HTMLDivElement> {
   order: number;
@@ -17,8 +17,11 @@ const MenuItemStyled = styled.div`
   background-color: #fff;
   font-weight: 500;
   color: #2c3e50;
+  transition: all 250ms;
   &.active {
     color: #1890ff !important;
+    border-right: 3px solid #1890ff;
+    background-color: #ecf5ff;
   }
   &:hover {
     color: #1890ff;

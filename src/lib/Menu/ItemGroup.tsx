@@ -12,8 +12,10 @@ const ItemGroupStyled = styled.div`
   display: flex;
   flex-direction: column;
   width: 100%;
-  //padding-left: 8px;
-  //border: 2px solid blue;
+  &.copy {
+    //padding-left: calc(1em);
+  }
+
   > .label {
     color: #a1a1a1;
     padding: 16px 10px 8px 10px;
@@ -29,7 +31,7 @@ const ItemGroup: React.FC<Props> = (props) => {
       {React.Children.map(children, (child) => {
         const vNode = child as VNode;
         if (React.isValidElement(vNode) && vNode.type.name === 'ItemGroup') {
-          return <ItemGroupStyled>{vNode}</ItemGroupStyled>;
+          return <ItemGroupStyled className="copy">{vNode}</ItemGroupStyled>;
         }
         if (React.isValidElement(vNode) && vNode.type.name === 'Label') {
           return <div className="label">{vNode}</div>;

@@ -1,5 +1,10 @@
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
 import React, { useCallback } from 'react';
+// import ColumnMenu from './ColumnMenu';
+// import ColumnSub from './ColumnSub';
+// import ItemGroup from './ItemGroup';
+// import Label from './Label';
+// import MenuItem from './MenuItem';
 // import styled from 'styled-components';
 // import Menu from '../lib/Menu/Menu ';
 // import MenuItem from '../lib/Menu/MenuItem';
@@ -107,6 +112,33 @@ import React, { useCallback } from 'react';
 //           </ItemGroup>
 //         </ColumnSub>
 //       </ColumnMenu>
+// <Wrap>
+//   <ColumnMenu
+//     defaultOrder={order}
+//     setOrder={setOrder}
+//     style={{ width: '150px', height: '500px' }}
+//   >
+//     <ColumnSub>
+//       <ItemGroup>
+//         <Label>标签1</Label>
+//         <MenuItem order={1}>鼠标离开</MenuItem>
+//         <MenuItem order={2}>反若是通</MenuItem>
+//         <ItemGroup>
+//           <Label>标签2</Label>
+//           <MenuItem order={5}>元素套一</MenuItem>
+//           <MenuItem order={6}>父级，那么</MenuItem>
+//           <MenuItem order={7}>学习总结，</MenuItem>
+//         </ItemGroup>
+//       </ItemGroup>
+//       <ItemGroup>
+//         <Label>标签3</Label>
+//         <MenuItem order={11}>反若是通</MenuItem>
+//         <MenuItem order={12}>和选中了。</MenuItem>
+//         <MenuItem order={13}>这两个兄弟</MenuItem>
+//       </ItemGroup>
+//     </ColumnSub>
+//   </ColumnMenu>
+// </Wrap>
 //     </Wrap>
 //   );
 // };

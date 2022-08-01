@@ -13,14 +13,17 @@ interface Props extends HTMLAttributes<HTMLDivElement> {
   defaultOrder: number;
 }
 
-const MenuStyled = styled.div``;
+const MenuStyled = styled.div`
+  display: flex;
+  user-select: none;
+`;
 const ColumnMenu: React.FC<Props> = (props) => {
-  const { children, setOrder, defaultOrder } = props;
+  const { children, setOrder, defaultOrder, ...rest } = props;
   const value = useMemo(() => {
     return { setOrder, defaultOrder };
   }, [defaultOrder]);
   return (
-    <MenuStyled>
+    <MenuStyled {...rest}>
       <columnMenuCtx.Provider value={value}>{children}</columnMenuCtx.Provider>
     </MenuStyled>
   );

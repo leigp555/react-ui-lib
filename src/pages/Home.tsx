@@ -1,10 +1,6 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
-import MenuItem from '../lib/Menu/MenuItem';
-import ItemGroup from '../lib/Menu/ItemGroup';
-import Label from '../lib/Menu/Label';
-import ColumnSub from '../lib/Menu/ColumnSub';
-import ColumnMenu from '../lib/Menu/ColunmMenu';
+import { Affix, Button } from '../lib/index';
 
 const Wrap = styled.div`
   //position: relative;
@@ -13,30 +9,37 @@ const Wrap = styled.div`
 `;
 
 const Home: React.FC = () => {
-  const [order, setOrder] = useState<number>(1);
+  const [top, setTop] = useState(200);
+  const render = (num: number): React.ReactNode[] => {
+    const vNode: React.ReactNode[] = [];
+    for (let i = 0; i < num; i++) {
+      vNode.push(
+        <p key={Math.random()}>
+          Lorem ipsum dolor sit amet, consectetur adipisicing elit. A aperiam, delectus deleniti
+          enim, eveniet hic magnam nihil nisi placeat quam quibusdam ratione reiciendis rem
+          repellendus reprehenderit saepe sequi, similique tenetur.
+        </p>
+      );
+    }
+    return vNode;
+  };
   return (
     <Wrap>
-      <ColumnMenu defaultOrder={order} setOrder={setOrder}>
-        <ColumnSub>
-          <ItemGroup>
-            <Label>标签1</Label>
-            <MenuItem order={1}>鼠标离开</MenuItem>
-            <MenuItem order={2}>反若是通</MenuItem>
-          </ItemGroup>
-          <ItemGroup>
-            <Label>标签2</Label>
-            <MenuItem order={3}>元素套一</MenuItem>
-            <MenuItem order={4}>父级，那么</MenuItem>
-            <MenuItem order={5}>学习总结，</MenuItem>
-          </ItemGroup>
-          <ItemGroup>
-            <Label>标签3</Label>
-            <MenuItem order={6}>反若是通</MenuItem>
-            <MenuItem order={7}>和选中了。</MenuItem>
-            <MenuItem order={8}>这两个兄弟</MenuItem>
-          </ItemGroup>
-        </ColumnSub>
-      </ColumnMenu>
+      <div>{render(2)}</div>
+      <Affix offsetTop={50} rowPosition="center">
+        <Button onClick={() => setTop(top + 10)}>距离顶部50px固定,水平中间</Button>
+      </Affix>
+      <div>{render(8)}</div>
+      <Affix offsetTop={top}>
+        <div role="presentation">
+          <Button onClick={() => setTop(top + 10)}> 距离顶部200px固定，水平左边</Button>
+        </div>
+      </Affix>
+      <div>{render(20)}</div>
+      <Affix offsetTop={100} rowPosition="end">
+        <Button onClick={() => setTop(top + 10)}>距离顶部100px固定,水平右边</Button>
+      </Affix>
+      <div>{render(50)}</div>
     </Wrap>
   );
 };

@@ -1,6 +1,6 @@
 import React, { HTMLAttributes, useContext } from 'react';
 import styled from 'styled-components';
-import { columnMenuCtx } from './ColunmMenu';
+import { columnMenuCtx } from './ColumnMenu';
 import { common, nodeList } from './common';
 
 interface Props extends HTMLAttributes<HTMLDivElement> {
@@ -8,16 +8,20 @@ interface Props extends HTMLAttributes<HTMLDivElement> {
   children?: React.ReactNode;
 }
 const SubMenuStyled = styled.div`
-  display: flex;
+  flex-grow: 10;
+
   > .wrap {
     display: flex;
+    height: 100%;
     min-width: 150px;
     flex-direction: column;
+
     > .content {
       background-color: #fff;
       //padding: 10px 5px;
       padding: 10px 0;
       border: 1px solid #dcdfe6;
+      flex-grow: 10;
     }
     > .label {
       cursor: pointer;
