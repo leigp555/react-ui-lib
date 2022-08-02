@@ -1,7 +1,14 @@
 {
-  "name": "my-app",
-  "version": "0.1.0",
-  "private": true,
+  "name": "uix-react",
+  "version": "1.0.3",
+  "private": false,
+  "files": ["lib/*/*"],
+  "main": "lib/index.ts",
+  "license": "MIT",
+  "keywords": [
+    "React",
+    "ui"
+  ],
   "scripts": {
     "dev": "node scripts/start.js",
     "build": "node scripts/build.js",
