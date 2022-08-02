@@ -75,13 +75,13 @@ const NoChildren = styled.div`
   gap: 15px;
 `;
 
-type Props = {
+export type CommentProps = {
   data: CommentData[];
   actions: (item: CommentData) => React.ReactNode;
 };
 
 // 组件使用
-const Comment: React.FC<Props> = (props) => {
+const Comment: React.FC<CommentProps> = (props) => {
   const { data, actions } = props;
   const render = (comments: CommentData[]): React.ReactNode => {
     return comments.map((item) => (

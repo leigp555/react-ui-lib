@@ -2,7 +2,7 @@ import React, { HTMLAttributes } from 'react';
 import styled from 'styled-components';
 import EmptyIcon from '../icons/empty1.svg';
 
-interface Props extends HTMLAttributes<HTMLDivElement> {
+export interface EmptyProps extends HTMLAttributes<HTMLDivElement> {
   children?: React.ReactNode;
   icon?: React.ReactNode;
   description?: React.ReactNode;
@@ -23,7 +23,7 @@ const EmptyWrap = styled.div`
   align-items: center;
   max-width: 400px;
 `;
-const Empty: React.FC<Props> = (props) => {
+const Empty: React.FC<EmptyProps> = (props) => {
   const { children, icon, description, ...rest } = props;
   return (
     <EmptyStyled {...rest}>

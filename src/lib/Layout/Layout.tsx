@@ -1,12 +1,12 @@
 import React, { HTMLAttributes } from 'react';
 import styled from 'styled-components';
 
-interface Props extends HTMLAttributes<HTMLDivElement> {
+export interface LayoutProps extends HTMLAttributes<HTMLDivElement> {
   gap?: number;
   bgc?: string;
   children?: React.ReactNode;
 }
-type PropsStyled = Omit<Props, 'children'>;
+type PropsStyled = Omit<LayoutProps, 'children'>;
 // 元素纵向排列
 const LayoutStyled = styled.div`
   display: flex;
@@ -16,10 +16,7 @@ const LayoutStyled = styled.div`
   background-color: ${(props: PropsStyled) => props.bgc};
 `;
 
-interface Props extends HTMLAttributes<HTMLDivElement> {
-  children?: React.ReactNode;
-}
-const Layout: React.FC<Props> = (props) => {
+const Layout: React.FC<LayoutProps> = (props) => {
   const { children, ...rest } = props;
   return <LayoutStyled {...rest}>{children}</LayoutStyled>;
 };

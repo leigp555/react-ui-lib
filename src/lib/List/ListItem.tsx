@@ -1,7 +1,7 @@
 import React, { HTMLAttributes, ReactNode } from 'react';
 import styled from 'styled-components';
 
-interface Props extends Omit<HTMLAttributes<HTMLDivElement>, 'title'> {
+export interface ListItemProps extends Omit<HTMLAttributes<HTMLDivElement>, 'title'> {
   avatar: ReactNode;
   title: ReactNode;
   description: ReactNode;
@@ -37,7 +37,7 @@ const ListItemStyled = styled.div`
     gap: 10px;
   }
 `;
-const ListItem: React.FC<Props> = (props) => {
+const ListItem: React.FC<ListItemProps> = (props) => {
   const { avatar, title, description, actions, ...rest } = props;
   return (
     <ListItemStyled {...rest}>

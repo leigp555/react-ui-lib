@@ -6,7 +6,7 @@ import Button from '../Button/Button';
 import './index.scss';
 import CancelIcon from '../icons/cha.svg';
 
-interface Props extends HTMLAttributes<HTMLDivElement> {
+export interface ModalProps extends HTMLAttributes<HTMLDivElement> {
   children?: React.ReactNode;
   title?: string;
   visible?: boolean;
@@ -60,7 +60,7 @@ const Mask = styled.div`
   z-index: -10;
   height: 100vh;
 `;
-const Modal: React.FC<Props> = (props) => {
+const Modal: React.FC<ModalProps> = (props) => {
   const { children, title, mask, visible, onOk, onCancel, ...rest } = props;
   return createPortal(
     <>

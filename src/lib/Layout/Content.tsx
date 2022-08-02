@@ -2,7 +2,7 @@ import React, { HTMLAttributes } from 'react';
 import styled from 'styled-components';
 import { CommonStyle } from '../common/common';
 
-interface Props extends HTMLAttributes<HTMLHeadElement> {
+export interface ContentProps extends HTMLAttributes<HTMLHeadElement> {
   height?: number | string;
   width?: number | string;
   bgc?: string;
@@ -11,13 +11,13 @@ interface Props extends HTMLAttributes<HTMLHeadElement> {
   aline?: 'center' | 'start' | 'end';
   children?: React.ReactNode;
 }
-type PropsStyled = Omit<Props, 'children'>;
+type PropsStyled = Omit<ContentProps, 'children'>;
 const ContentStyled = styled(CommonStyle)`
   display: flex;
   flex-direction: ${(props: PropsStyled) => props.direction};
 `;
 
-const Content: React.FC<Props> = (props) => {
+const Content: React.FC<ContentProps> = (props) => {
   const { children, ...rest } = props;
   return <ContentStyled {...rest}>{children}</ContentStyled>;
 };

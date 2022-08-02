@@ -4,7 +4,7 @@ import { CSSTransition } from 'react-transition-group';
 import { menuCtx } from './Menu ';
 import { common, nodeList } from './common';
 
-interface Props extends HTMLAttributes<HTMLDivElement> {
+export interface SubMenuProps extends HTMLAttributes<HTMLDivElement> {
   label?: string;
   children?: React.ReactNode;
 }
@@ -49,7 +49,7 @@ const SubMenuStyled = styled.div`
     }
   }
 `;
-const SubMenu: React.FC<Props> = (props) => {
+const SubMenu: React.FC<SubMenuProps> = (props) => {
   const { children, label, ...rest } = props;
   const { setOrder } = useContext(menuCtx);
   const needBorder = children instanceof Array;

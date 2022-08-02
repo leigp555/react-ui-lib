@@ -4,7 +4,7 @@ import Tag from './Tag';
 
 export type Tags = { id: string; tagContent: string; color: string; closeable?: boolean }[];
 
-interface Props extends HTMLAttributes<HTMLDivElement> {
+export interface TagGroupProps extends HTMLAttributes<HTMLDivElement> {
   tags: Tags;
   closeable: boolean;
   callback?: (tag: Tags) => void;
@@ -15,7 +15,7 @@ const TagGroupStyled = styled.div`
   display: inline-flex;
   gap: 2px;
 `;
-const TagGroup: React.FC<Props> = (props) => {
+const TagGroup: React.FC<TagGroupProps> = (props) => {
   const { children, closeable, tags, setTag, callback, ...rest } = props;
   const close = (el: HTMLDivElement) => {
     const deleteId = el.getAttribute('data-id');

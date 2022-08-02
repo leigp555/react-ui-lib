@@ -2,7 +2,7 @@ import React, { HTMLAttributes } from 'react';
 import styled from 'styled-components';
 import classNames from 'classnames';
 
-interface Props extends HTMLAttributes<HTMLDivElement> {
+export interface BadgeProps extends HTMLAttributes<HTMLDivElement> {
   children?: React.ReactNode;
   count?: React.ReactNode;
   overflowCount?: number;
@@ -38,7 +38,7 @@ const BadgeStyled = styled.div`
     transform: translate(50%, -50%);
   }
 `;
-const Badge: React.FC<Props> = (props) => {
+const Badge: React.FC<BadgeProps> = (props) => {
   const { children, count, overflowCount, dot, ...rest } = props;
   const render = () => {
     if (typeof count === 'number') {

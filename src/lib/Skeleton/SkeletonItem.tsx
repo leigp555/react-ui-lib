@@ -4,7 +4,7 @@ import { CommonStyle } from '../common/common';
 import Row from '../Grid/Row';
 import Col from '../Grid/Col';
 
-interface Props extends HTMLAttributes<HTMLDivElement> {
+export interface SkeletonItemProps extends HTMLAttributes<HTMLDivElement> {
   children?: React.ReactNode;
   span?: number;
   offset?: number | 'auto';
@@ -33,7 +33,7 @@ const SkeletonItemStyled = styled(CommonStyle)`
     clip-path: circle(50%);
   }
 `;
-const SkeletonItem: React.FC<Props> = (props) => {
+const SkeletonItem: React.FC<SkeletonItemProps> = (props) => {
   const { children, span, offset, ...rest } = props;
   return (
     <Row>

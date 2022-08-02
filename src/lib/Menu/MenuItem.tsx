@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import classNames from 'classnames';
 import { columnMenuCtx } from './ColumnMenu';
 
-interface Props extends HTMLAttributes<HTMLDivElement> {
+export interface MenuItemProps extends HTMLAttributes<HTMLDivElement> {
   order: number;
   children?: React.ReactNode;
 }
@@ -28,7 +28,7 @@ const MenuItemStyled = styled.div`
     background-color: #ecf5ff;
   }
 `;
-const MenuItem: React.FC<Props> = (props) => {
+const MenuItem: React.FC<MenuItemProps> = (props) => {
   const { children, order } = props;
   const { defaultOrder } = useContext(columnMenuCtx);
   return (

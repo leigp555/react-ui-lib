@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import { columnMenuCtx } from './ColumnMenu';
 import { common, nodeList } from './common';
 
-interface Props extends HTMLAttributes<HTMLDivElement> {
+export interface ColumnSubProps extends HTMLAttributes<HTMLDivElement> {
   label?: string;
   children?: React.ReactNode;
 }
@@ -29,7 +29,7 @@ const SubMenuStyled = styled.div`
     }
   }
 `;
-const ColumnSub: React.FC<Props> = (props) => {
+const ColumnSub: React.FC<ColumnSubProps> = (props) => {
   const { children, label, ...rest } = props;
   const { setOrder } = useContext(columnMenuCtx);
   const getOrder = (e: React.MouseEvent<HTMLDivElement>) => common(setOrder)(e);

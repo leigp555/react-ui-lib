@@ -1,7 +1,7 @@
 import React, { HTMLAttributes } from 'react';
 import styled from 'styled-components';
 
-interface Props extends HTMLAttributes<HTMLDivElement> {
+export interface TextProps extends HTMLAttributes<HTMLDivElement> {
   children?: React.ReactNode;
   strong?: boolean;
   code?: boolean;
@@ -20,7 +20,7 @@ const TextStyled = styled.span`
     background-color: orange;
   }
 `;
-const Text: React.FC<Props> = (props) => {
+const Text: React.FC<TextProps> = (props) => {
   const { children, strong, keyboard, mark, code, ...rest } = props;
   const render = () => {
     if (strong) {

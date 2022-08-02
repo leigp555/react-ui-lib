@@ -2,7 +2,7 @@ import React, { HTMLAttributes, useContext } from 'react';
 import styled from 'styled-components';
 import { callbackProvider } from './Dropdown ';
 
-interface Props extends HTMLAttributes<HTMLDivElement> {
+export interface DropdownItemProps extends HTMLAttributes<HTMLDivElement> {
   order: number;
   children: React.ReactNode;
 }
@@ -14,7 +14,7 @@ const DropdownItemStyled = styled.div`
   background-color: #ffffff;
 `;
 
-const DropdownItem: React.FC<Props> = (props) => {
+const DropdownItem: React.FC<DropdownItemProps> = (props) => {
   const { children, order, ...rest } = props;
   const { callback } = useContext(callbackProvider);
   const divClick = () => {

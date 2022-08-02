@@ -5,7 +5,7 @@ import './index.scss';
 import LeftIcon from '../icons/left.svg';
 import RightIcon from '../icons/right.svg';
 
-interface Props extends HTMLAttributes<HTMLDivElement> {
+export interface CarouselProps extends HTMLAttributes<HTMLDivElement> {
   dot?: boolean;
   autoPlay?: boolean;
   callback?: (index: number) => void;
@@ -77,7 +77,7 @@ const RightDot = styled(CommonDot)`
   right: 10px;
 `;
 
-const Carousel: React.FC<Props> = (props) => {
+const Carousel: React.FC<CarouselProps> = (props) => {
   const { children, autoPlay, callback, dot, ...rest } = props;
   const [index, setIndex] = useState<number>(1);
   const kids = children as ReactElement[];

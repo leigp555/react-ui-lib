@@ -6,7 +6,7 @@ import Button from '../Button/Button';
 import Warning from '../icons/warning.svg';
 import './index.scss';
 
-interface Props extends HTMLAttributes<HTMLDivElement> {
+export interface PopConfirmProps extends HTMLAttributes<HTMLDivElement> {
   title?: string;
   onConfirm?: () => void;
   onCancel?: () => void;
@@ -102,7 +102,7 @@ const PopWrap = styled.div`
     background-color: #ffffff;
   }
 `;
-const PopConfirm: React.FC<Props> = (props) => {
+const PopConfirm: React.FC<PopConfirmProps> = (props) => {
   const { children, onConfirm, position, title, onCancel, okText, cancelText, ...rest } = props;
   const [isShow, setShow] = useState<boolean>(false);
   return (

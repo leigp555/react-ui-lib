@@ -5,7 +5,7 @@ import WarningIcon from '../icons/warning.svg';
 import ErrIcon from '../icons/error.svg';
 import NotFoundIcon from '../icons/notFound.svg';
 
-interface Props extends HTMLAttributes<HTMLDivElement> {
+export interface ResultProps extends HTMLAttributes<HTMLDivElement> {
   status: 'success' | 'warning' | 'error' | '404';
   title?: string;
   subTitle?: string;
@@ -40,7 +40,7 @@ const ResultStyled = styled.div`
     gap: 10px;
   }
 `;
-const Result: React.FC<Props> = (props) => {
+const Result: React.FC<ResultProps> = (props) => {
   const { children, gap, title, subTitle, status, ...rest } = props;
   return (
     <ResultStyled style={{ gap: `${gap}px` }} {...rest}>

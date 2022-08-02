@@ -5,7 +5,7 @@ import Left from '../icons/left.svg';
 import Right from '../icons/right.svg';
 import DoubleLeft from '../icons/doubleLeft.svg';
 
-interface Props extends HTMLAttributes<HTMLDivElement> {
+export interface PaginationProps extends HTMLAttributes<HTMLDivElement> {
   defaultPage?: number;
   totalSrc: number;
   perPage?: number;
@@ -52,7 +52,7 @@ const InputStyled = styled.input`
     box-shadow: 0 0 4px 1px rgba(24, 144, 255, 0.2);
   }
 `;
-type MoreProps = Pick<Props, 'moreTool' | 'goTool'>;
+type MoreProps = Pick<PaginationProps, 'moreTool' | 'goTool'>;
 const MoreStyled = styled(PageButton)`
   display: ${(props: MoreProps) => (props.moreTool ? 'inline-flex' : 'none')};
 `;
@@ -62,7 +62,7 @@ const GoStyled = styled.div`
   align-items: center;
 `;
 
-const Pagination: React.FC<Props> = (props) => {
+const Pagination: React.FC<PaginationProps> = (props) => {
   const {
     children,
     statistic,

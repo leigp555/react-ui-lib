@@ -17,7 +17,7 @@ type Position =
   | 'rightCenter'
   | 'rightBottom';
 
-interface Props extends HTMLAttributes<HTMLDivElement> {
+export interface PopoverProps extends HTMLAttributes<HTMLDivElement> {
   position?: Position;
   content: ReactNode;
   title: string;
@@ -25,7 +25,7 @@ interface Props extends HTMLAttributes<HTMLDivElement> {
   children?: React.ReactNode;
 }
 
-const Popover: React.FC<Props> = (props) => {
+const Popover: React.FC<PopoverProps> = (props) => {
   const { children, position, content, title, trigger, ...rest } = props;
   const [isShow, setShow] = useState<boolean>(false);
   return (

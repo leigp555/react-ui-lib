@@ -2,7 +2,7 @@ import React, { HTMLAttributes, useRef, useState } from 'react';
 import classNames from 'classnames';
 import './index.scss';
 
-interface Props extends HTMLAttributes<HTMLDivElement> {
+export interface SwitchProps extends HTMLAttributes<HTMLDivElement> {
   defaultChecked?: boolean;
   onColor?: string;
   offColor?: string;
@@ -10,7 +10,7 @@ interface Props extends HTMLAttributes<HTMLDivElement> {
   children?: React.ReactNode;
 }
 
-const Switch: React.FC<Props> = (props) => {
+const Switch: React.FC<SwitchProps> = (props) => {
   const { children, onColor, offColor, defaultChecked, callback, ...rest } = props;
   const [selected, setSelected] = useState<boolean>(defaultChecked!);
   const wrapRef = useRef<HTMLDivElement>(null);

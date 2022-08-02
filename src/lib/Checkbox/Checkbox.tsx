@@ -6,7 +6,7 @@ export interface Options {
   value: string;
 }
 
-interface Props extends HTMLAttributes<HTMLDivElement> {
+export interface CheckboxProps extends HTMLAttributes<HTMLDivElement> {
   children?: React.ReactNode;
   options: Options[];
   checked: string[];
@@ -31,7 +31,7 @@ const CheckboxStyled = styled.div`
   }
 `;
 
-const Checkbox: React.FC<Props> = (props) => {
+const Checkbox: React.FC<CheckboxProps> = (props) => {
   const { children, options, checked, setChecked, ...rest } = props;
   const haveChange = (e: React.MouseEvent<HTMLDivElement>) => {
     const el = e.currentTarget as HTMLDivElement;

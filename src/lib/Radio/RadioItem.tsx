@@ -1,7 +1,7 @@
 import React, { HTMLAttributes } from 'react';
 import styled from 'styled-components';
 
-interface RadioItemProps extends HTMLAttributes<HTMLDivElement> {
+export interface RadioItemProps extends HTMLAttributes<HTMLDivElement> {
   value?: number;
   checked?: boolean;
   name?: string;

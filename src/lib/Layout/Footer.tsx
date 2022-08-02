@@ -2,7 +2,7 @@ import React, { HTMLAttributes } from 'react';
 import styled from 'styled-components';
 import { CommonStyle } from '../common/common';
 
-interface Props extends HTMLAttributes<HTMLHeadElement> {
+export interface FooterProps extends HTMLAttributes<HTMLHeadElement> {
   height?: number | string;
   width?: number | string;
   bgc?: string;
@@ -11,13 +11,13 @@ interface Props extends HTMLAttributes<HTMLHeadElement> {
   direction?: 'column' | 'row';
   children?: React.ReactNode;
 }
-type PropsStyled = Omit<Props, 'children'>;
+type PropsStyled = Omit<FooterProps, 'children'>;
 const FooterStyled = styled(CommonStyle)`
   display: flex;
   flex-direction: ${(props: PropsStyled) => props.direction};
 `;
 
-const Footer: React.FC<Props> = (props) => {
+const Footer: React.FC<FooterProps> = (props) => {
   const { children, ...rest } = props;
   return <FooterStyled {...rest}>{children}</FooterStyled>;
 };

@@ -7,7 +7,7 @@ import WarningIcon from '../icons/warning.svg';
 import ErrorIcon from '../icons/error.svg';
 import LoadingIcon from '../icons/loading.svg';
 
-interface Props extends HTMLAttributes<HTMLDivElement> {
+export interface AlertProps extends HTMLAttributes<HTMLDivElement> {
   children?: React.ReactNode;
   type?: 'success' | 'info' | 'warning' | 'error' | 'loading';
   defineIcon?: React.ReactNode;
@@ -44,7 +44,7 @@ const AlertStyled = styled.div`
   }
 `;
 
-const Alert: React.FC<Props> = (props) => {
+const Alert: React.FC<AlertProps> = (props) => {
   const { children, type, defineIcon, ...rest } = props;
   const render = () => {
     if (type === 'success' && !defineIcon) {

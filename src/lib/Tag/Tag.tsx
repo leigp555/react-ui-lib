@@ -4,7 +4,7 @@ import { colourNameToHex, colours } from './colorNameToHex';
 import { colorToRGB } from './colorToRGB';
 import CancelIcon from '../icons/cha.svg';
 
-interface Props extends HTMLAttributes<HTMLDivElement> {
+export interface TagProps extends HTMLAttributes<HTMLDivElement> {
   color?: string;
   children?: React.ReactNode;
   callback?: (el: HTMLDivElement) => void;
@@ -45,7 +45,7 @@ const Cancel = styled.span`
   cursor: pointer;
 `;
 
-const Tag: React.FC<Props> = (props) => {
+const Tag: React.FC<TagProps> = (props) => {
   const { children, color, closeable, callback, ...rest } = props;
   const divRef = useRef<HTMLDivElement | null>(null);
   const colorTransform = (colour: string, opt: number) => {

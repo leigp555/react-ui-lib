@@ -17,13 +17,13 @@ type Position =
   | 'rightCenter'
   | 'rightBottom';
 
-interface Props extends HTMLAttributes<HTMLDivElement> {
+export interface TooltipProps extends HTMLAttributes<HTMLDivElement> {
   position?: Position;
   tip?: string;
   children?: React.ReactNode;
 }
 
-const Tooltip: React.FC<Props> = (props) => {
+const Tooltip: React.FC<TooltipProps> = (props) => {
   const { children, position, tip, ...rest } = props;
   const [isShow, setShow] = useState<boolean>(false);
   return (

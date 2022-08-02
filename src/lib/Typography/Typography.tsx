@@ -1,7 +1,7 @@
 import React, { HTMLAttributes } from 'react';
 import styled from 'styled-components';
 
-interface Props extends HTMLAttributes<HTMLDivElement> {
+export interface TypographyProps extends HTMLAttributes<HTMLDivElement> {
   children?: React.ReactNode;
 }
 const TypographyStyled = styled.div`
@@ -49,7 +49,7 @@ const TypographyStyled = styled.div`
     }
   }
 `;
-const Typography: React.FC<Props> = (props) => {
+const Typography: React.FC<TypographyProps> = (props) => {
   const { children, ...rest } = props;
   return <TypographyStyled {...rest}>{children}</TypographyStyled>;
 };

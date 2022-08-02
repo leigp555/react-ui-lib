@@ -10,7 +10,7 @@ const BreadcrumbStyled = styled.div`
   gap: 5px;
 `;
 
-interface Props extends HTMLAttributes<HTMLDivElement> {
+export interface BreadcrumbProps extends HTMLAttributes<HTMLDivElement> {
   separator?: string;
   renderItem: (item: any) => ReactNode;
   data: any[];
@@ -21,7 +21,7 @@ const Wrap = styled.div`
   gap: 2px;
 `;
 
-const Breadcrumb: React.FC<Props> = (props) => {
+const Breadcrumb: React.FC<BreadcrumbProps> = (props) => {
   const { children, separator, renderItem, data, ...rest } = props;
   const render = () => {
     return data.map((item, index) => {

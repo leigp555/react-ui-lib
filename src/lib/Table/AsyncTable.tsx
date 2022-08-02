@@ -11,7 +11,7 @@ export type TableData = {
   footer: { title: string; result: string };
 };
 
-interface Props extends HTMLAttributes<HTMLDivElement> {
+export interface AsyncTableProps extends HTMLAttributes<HTMLDivElement> {
   currentData: TableData;
   callback: (currentPage: number, offset: number) => void;
   perPage: number;
@@ -29,7 +29,7 @@ const AsyncTableWrapStyled = styled.div`
   width: 100%;
 `;
 
-const AsyncTable: React.FC<Props> = (props) => {
+const AsyncTable: React.FC<AsyncTableProps> = (props) => {
   const { currentData, loading, perPage, callback, totalData } = props;
   const [page, setPage] = useState<number>(1);
   const fn = React.useCallback(

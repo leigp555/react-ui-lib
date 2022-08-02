@@ -1,7 +1,7 @@
 import React, { HTMLAttributes } from 'react';
 import styled from 'styled-components';
 
-interface Props extends HTMLAttributes<HTMLDivElement> {
+export interface TimeItemProps extends HTMLAttributes<HTMLDivElement> {
   children?: React.ReactNode;
   color?: string;
   dotIcon?: React.ReactNode;
@@ -36,7 +36,7 @@ const TimeItemStyled = styled.div`
   }
 `;
 
-const TimeItem: React.FC<Props> = (props) => {
+const TimeItem: React.FC<TimeItemProps> = (props) => {
   const { children, color, dotIcon, ...rest } = props;
   return (
     <TimeItemStyled className="itemWrap">

@@ -1,7 +1,7 @@
 import React, { HTMLAttributes, useRef } from 'react';
 import styled from 'styled-components';
 
-interface Props extends HTMLAttributes<HTMLDivElement> {
+export interface BackTopProps extends HTMLAttributes<HTMLDivElement> {
   children?: React.ReactNode;
   action: React.ReactNode;
 }
@@ -39,7 +39,7 @@ const Wrap = styled.div`
   }
 `;
 
-const BackTop: React.FC<Props> = (props) => {
+const BackTop: React.FC<BackTopProps> = (props) => {
   const { children, action } = props;
   const wrapRef = useRef<HTMLDivElement | null>(null);
   const scrollHeight = useRef<number>(0);

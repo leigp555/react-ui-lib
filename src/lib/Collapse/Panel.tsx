@@ -4,7 +4,7 @@ import classNames from 'classnames';
 import RightIcon from '../icons/right2.svg';
 import { ctx } from './Collapse';
 
-interface Props extends HTMLAttributes<HTMLDivElement> {
+export interface PanelProps extends HTMLAttributes<HTMLDivElement> {
   children?: React.ReactNode;
   header: string;
   order: string;
@@ -33,7 +33,7 @@ const PanelStyled = styled.div`
   }
 `;
 
-const Panel: React.FC<Props> = (props) => {
+const Panel: React.FC<PanelProps> = (props) => {
   const { children, header, order, ...rest } = props;
   const { currentOrder, setOrder } = useContext(ctx);
   const divRef = useRef<HTMLDivElement | null>(null);

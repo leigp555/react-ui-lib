@@ -9,7 +9,7 @@ export interface TypeTree {
   children?: TypeTree[];
 }
 
-interface Props extends HTMLAttributes<HTMLDivElement> {
+export interface TreeProps extends HTMLAttributes<HTMLDivElement> {
   data: TypeTree[];
 }
 const TreeStyled = styled.div`
@@ -75,7 +75,7 @@ const NoChild = styled.div`
   gap: 5px;
   align-items: center;
 `;
-const Tree: React.FC<Props> = (props) => {
+const Tree: React.FC<TreeProps> = (props) => {
   const { data } = props;
   const render = (renderData: TypeTree[]): ReactNode => {
     return renderData.map((item) => {

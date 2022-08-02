@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import { CommonStyle } from '../common/common';
 import Col from '../Grid/Col';
 
-interface Props extends HTMLAttributes<HTMLHeadElement> {
+export interface LayoutWrapProps extends HTMLAttributes<HTMLHeadElement> {
   height?: number | string;
   width?: number | string;
   bgc?: string;
@@ -13,7 +13,7 @@ const LayoutWrapStyled = styled(CommonStyle)`
   display: flex;
 `;
 
-const LayoutWrap: React.FC<Props> = (props) => {
+const LayoutWrap: React.FC<LayoutWrapProps> = (props) => {
   const { children, ...rest } = props;
   return (
     <LayoutWrapStyled {...rest}>

@@ -5,7 +5,7 @@ import { createPortal } from 'react-dom';
 import { CSSTransition } from 'react-transition-group';
 import './index.scss';
 
-interface Props extends HTMLAttributes<HTMLDivElement> {
+export interface DrawerProps extends HTMLAttributes<HTMLDivElement> {
   title?: string;
   position?: 'left' | 'right' | 'top' | 'bottom';
   visible?: boolean;
@@ -92,7 +92,7 @@ const DrawerStyled = styled.div`
     }
   }
 `;
-export const Drawer: React.FC<Props> = (props) => {
+export const Drawer: React.FC<DrawerProps> = (props) => {
   const { children, title, width, height, position, onClose, visible } = props;
   return createPortal(
     <Wrap style={{ zIndex: visible ? 1 : -1 }}>

@@ -1,7 +1,7 @@
 import React, { HTMLAttributes } from 'react';
 import styled from 'styled-components';
 
-interface Props extends HTMLAttributes<HTMLDivElement> {
+export interface BreadcrumbItemProps extends HTMLAttributes<HTMLDivElement> {
   children?: React.ReactNode;
 }
 
@@ -14,7 +14,7 @@ const BreadcrumbItemStyled = styled.span`
   white-space: nowrap;
 `;
 
-const BreadcrumbItem: React.FC<Props> = (props) => {
+const BreadcrumbItem: React.FC<BreadcrumbItemProps> = (props) => {
   const { children, ...rest } = props;
   return (
     <BreadcrumbItemStyled {...rest} key={Math.random()}>

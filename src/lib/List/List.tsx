@@ -5,7 +5,7 @@ import Skeleton from '../Skeleton/Skeleton';
 import SkeletonItem from '../Skeleton/SkeletonItem';
 import Pagination from '../Pagination/Pagination ';
 
-interface Props extends HTMLAttributes<HTMLDivElement> {
+export interface ListProps extends HTMLAttributes<HTMLDivElement> {
   data: any[];
   renderItem: (item: any) => ReactNode;
   loadMoreCallback?: () => void;
@@ -31,7 +31,7 @@ const LoadMore = styled.div`
   justify-content: center;
 `;
 
-const List: React.FC<Props> = (props) => {
+const List: React.FC<ListProps> = (props) => {
   const {
     renderItem,
     model,

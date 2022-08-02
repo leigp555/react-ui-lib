@@ -5,7 +5,7 @@ import classNames from 'classnames';
 import AutoComplete, { Tip } from '../AutoComplete/AutoComplete';
 import LeftIcon from '../icons/left2.svg';
 
-interface Props extends HTMLAttributes<HTMLDivElement> {
+export interface CalendarProps extends HTMLAttributes<HTMLDivElement> {
   children?: React.ReactNode;
   callback?: (dataValue: string) => void;
 }
@@ -111,7 +111,7 @@ const getFirstDay = (data: string) => {
 const yearTip: Tip[] = createYear();
 const monthTip: Tip[] = createMonth();
 
-const Calendar: React.FC<Props> = (props) => {
+const Calendar: React.FC<CalendarProps> = (props) => {
   const { children, callback, ...rest } = props;
   const [year, setYear] = useState<number>(currentYear);
   const [month, setMonth] = useState<number>(currentMonth);

@@ -2,7 +2,7 @@ import React, { HTMLAttributes, useEffect, useRef, useState } from 'react';
 import styled from 'styled-components';
 import classNames from 'classnames';
 
-interface Props extends HTMLAttributes<HTMLDivElement> {
+export interface AffixProps extends HTMLAttributes<HTMLDivElement> {
   children?: React.ReactNode;
   offsetTop?: number;
   offsetBottom?: number;
@@ -18,7 +18,7 @@ const AffixStyled = styled.div`
     position: fixed;
   }
 `;
-const Affix: React.FC<Props> = (props) => {
+const Affix: React.FC<AffixProps> = (props) => {
   const { children, offsetBottom, rowPosition, offsetTop, ...rest } = props;
   const containerRef = useRef<HTMLDivElement | null>(null);
   const contentRef = useRef<HTMLDivElement | null>(null);

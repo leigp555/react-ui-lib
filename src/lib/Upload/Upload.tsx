@@ -31,7 +31,7 @@ const StyledTip = styled.div`
   gap: 10px;
 `;
 
-interface Props extends HTMLAttributes<HTMLInputElement> {
+export interface UploadProps extends HTMLAttributes<HTMLInputElement> {
   getFiles: (data: File[]) => void;
   getImgUrls?: undefined | ((data: string[]) => void);
   getUrlFail?: undefined | (() => void);
@@ -40,7 +40,7 @@ interface Props extends HTMLAttributes<HTMLInputElement> {
   tip?: ReactNode;
 }
 
-const Upload: React.FC<Props> = (props) => {
+const Upload: React.FC<UploadProps> = (props) => {
   const { getFiles, getImgUrls, tip, getUrlFail, ...rest } = props;
   const inputRef = useRef<HTMLInputElement>(null);
   // 支持点击上传

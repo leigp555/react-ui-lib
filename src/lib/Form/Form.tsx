@@ -2,7 +2,7 @@ import React, { createContext, HTMLAttributes, useMemo, useState } from 'react';
 import styled from 'styled-components';
 import { CommonStyle } from '../common/common';
 
-interface Props extends HTMLAttributes<HTMLDivElement> {
+export interface FormProps extends HTMLAttributes<HTMLDivElement> {
   gap?: number | string;
   onFinish?: (value: { [key: string]: string }) => void;
   children?: React.ReactNode;
@@ -28,7 +28,7 @@ type User = {
 type Err = {
   [key: string]: string[];
 };
-const Form: React.FC<Props> = (props) => {
+const Form: React.FC<FormProps> = (props) => {
   const { children, onFinish, ...rest } = props;
   const [user, setUser] = useState<User>({});
   const [haveErr, setErr] = useState<Err>();

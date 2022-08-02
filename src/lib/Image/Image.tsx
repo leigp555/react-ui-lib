@@ -9,7 +9,7 @@ import BigIcon from '../icons/biger.svg';
 import SmallIcon from '../icons/smaller.svg';
 import TurnLeftIcon from '../icons/turnLeft.svg';
 
-interface Props extends HTMLAttributes<HTMLDivElement> {
+export interface ImageProps extends HTMLAttributes<HTMLDivElement> {
   width?: number;
   src: string;
 }
@@ -80,7 +80,7 @@ const PortalImg = styled.img`
   transition: all 500ms;
   pointer-events: none;
 `;
-const Image: React.FC<Props> = (props) => {
+const Image: React.FC<ImageProps> = (props) => {
   const { width, src } = props;
   const imgRef = useRef<HTMLImageElement | null>(null);
   const rotate = useRef<number>(0);

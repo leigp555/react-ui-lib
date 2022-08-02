@@ -1,7 +1,7 @@
 import React, { HTMLAttributes, useMemo, useState } from 'react';
 import styled from 'styled-components';
 
-interface Props extends HTMLAttributes<HTMLDivElement> {
+export interface CollapseProps extends HTMLAttributes<HTMLDivElement> {
   children?: React.ReactNode;
   defaultKey?: string;
 }
@@ -17,7 +17,7 @@ type Ctx = {
 
 export const ctx = React.createContext<Ctx>(null!);
 
-const Collapse: React.FC<Props> = (props) => {
+const Collapse: React.FC<CollapseProps> = (props) => {
   const { children, defaultKey, ...rest } = props;
   const [currentOrder, setOrder] = useState<string>(defaultKey!);
   const value = useMemo(() => {

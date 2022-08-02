@@ -8,7 +8,7 @@ interface Ctx {
 }
 export const menuCtx = React.createContext<Ctx>(null!);
 
-interface Props extends HTMLAttributes<HTMLDivElement> {
+export interface MenuProps extends HTMLAttributes<HTMLDivElement> {
   bgc?: string;
   justify?: 'center' | 'start' | 'end' | 'space-between' | 'space-around';
   children?: React.ReactNode;
@@ -27,7 +27,7 @@ const MenuStyled = styled(CommonStyle)`
   position: relative;
   padding: 0 50px;
 `;
-const Menu: React.FC<Props> = (props) => {
+const Menu: React.FC<MenuProps> = (props) => {
   const { children, bgc, setOrder, defaultOrder, ...rest } = props;
   const value = useMemo(() => {
     return { setOrder, defaultOrder };

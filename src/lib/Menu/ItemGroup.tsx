@@ -1,7 +1,7 @@
 import React, { HTMLAttributes, ReactElement } from 'react';
 import styled from 'styled-components';
 
-interface Props extends HTMLAttributes<HTMLDivElement> {
+export interface ItemGroupProps extends HTMLAttributes<HTMLDivElement> {
   label?: string;
   children?: React.ReactNode;
 }
@@ -24,7 +24,7 @@ const ItemGroupStyled = styled.div`
   }
 `;
 
-const ItemGroup: React.FC<Props> = (props) => {
+const ItemGroup: React.FC<ItemGroupProps> = (props) => {
   const { children, label, ...rest } = props;
   return (
     <ItemGroupStyled {...rest}>

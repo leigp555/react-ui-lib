@@ -1,7 +1,7 @@
 import React, { HTMLAttributes } from 'react';
 import styled from 'styled-components';
 
-interface Props extends HTMLAttributes<HTMLDivElement> {
+export interface CarouselItemProps extends HTMLAttributes<HTMLDivElement> {
   order: number;
   children?: React.ReactNode;
 }
@@ -11,7 +11,7 @@ const CarouselItemStyled = styled.div`
   top: 0;
   left: 0;
 `;
-const CarouselItem: React.FC<Props> = (props) => {
+const CarouselItem: React.FC<CarouselItemProps> = (props) => {
   const { children, order, ...rest } = props;
   return <CarouselItemStyled {...rest}>{children}</CarouselItemStyled>;
 };

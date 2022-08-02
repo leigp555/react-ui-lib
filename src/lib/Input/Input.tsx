@@ -20,7 +20,7 @@ export type Validate = {
   message: string;
 };
 
-interface Props extends HTMLAttributes<HTMLDivElement> {
+export interface InputProps extends HTMLAttributes<HTMLDivElement> {
   type?: string;
   tips?: Tip[];
   callback?: (value: string, error: string[]) => void;
@@ -182,7 +182,7 @@ const PerTip = styled(CommonPer)`
 // 4.自定义border/阴影
 // 5.支持清除
 
-const Input: React.FC<Props> = (props) => {
+const Input: React.FC<InputProps> = (props) => {
   const { children, tips, callback, type, allowClear, rules, ...rest } = props;
   const [value, setValue] = useState<string>('');
   const [errs, setError] = useState<string[]>([]);

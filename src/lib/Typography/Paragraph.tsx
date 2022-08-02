@@ -1,7 +1,7 @@
 import React, { HTMLAttributes } from 'react';
 import styled from 'styled-components';
 
-interface Props extends HTMLAttributes<HTMLDivElement> {
+export interface ParagraphProps extends HTMLAttributes<HTMLDivElement> {
   children?: React.ReactNode;
 }
 const ParagraphStyled = styled.p`
@@ -10,7 +10,7 @@ const ParagraphStyled = styled.p`
   margin-bottom: 14px;
   line-height: 1.5em;
 `;
-const Paragraph: React.FC<Props> = (props) => {
+const Paragraph: React.FC<ParagraphProps> = (props) => {
   const { children, ...rest } = props;
   return <ParagraphStyled {...rest}>{children}</ParagraphStyled>;
 };

@@ -2,7 +2,7 @@ import React, { HTMLAttributes, ReactElement, ReactNode } from 'react';
 import styled from 'styled-components';
 
 type VNode = ReactElement & { type: { name: string } };
-interface Props extends HTMLAttributes<HTMLDivElement> {
+export interface AvatarProps extends HTMLAttributes<HTMLDivElement> {
   size?: number;
   icon?: ReactNode;
   src?: string;
@@ -24,7 +24,7 @@ const AvatarStyled = styled.div`
   background-color: ${(props: PropsStyled) => props.bgc};
 `;
 
-const Avatar: React.FC<Props> = (props) => {
+const Avatar: React.FC<AvatarProps> = (props) => {
   const { children, size, icon, src, ...rest } = props;
   const render = () => {
     return React.Children.map(children, (child: ReactNode) => {

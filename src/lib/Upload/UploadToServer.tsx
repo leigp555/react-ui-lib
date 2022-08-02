@@ -9,7 +9,7 @@ export type Config = {
   action: string;
 };
 
-interface Props extends HTMLAttributes<HTMLDivElement> {
+export interface UploadToServerProps extends HTMLAttributes<HTMLDivElement> {
   children?: React.ReactNode;
   config: Config;
 }
@@ -32,7 +32,7 @@ const UploadToServerStyled = styled.div`
   height: 20vh;
 `;
 
-const UploadToServer: React.FC<Props> = (props) => {
+const UploadToServer: React.FC<UploadToServerProps> = (props) => {
   const { children, config, ...rest } = props;
   const { multiple, action } = config;
   const [processBar, setProcessBar] = useState<{

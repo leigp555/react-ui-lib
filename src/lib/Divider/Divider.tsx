@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import Col from '../Grid/Col';
 import Row from '../Grid/Row';
 
-interface Props extends HTMLAttributes<HTMLDivElement> {
+export interface DividerProps extends HTMLAttributes<HTMLDivElement> {
   children?: React.ReactNode;
   position?: 'left' | 'right' | 'center';
   offset?: number;
@@ -20,7 +20,7 @@ const DividerStyled = styled.div`
   }
 `;
 
-const Divider: React.FC<Props> = (props) => {
+const Divider: React.FC<DividerProps> = (props) => {
   const { children, position, offset, ...rest } = props;
   const render = () => {
     if (position === 'left') {

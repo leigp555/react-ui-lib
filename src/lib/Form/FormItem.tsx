@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import { Validate } from '../Input/Input';
 import { ctx } from './Form';
 
-interface Props extends HTMLAttributes<HTMLDivElement> {
+export interface FormItemProps extends HTMLAttributes<HTMLDivElement> {
   label?: string;
   rules?: Validate[];
   children?: React.ReactNode;
@@ -18,7 +18,7 @@ const FormItemStyled = styled.div`
   align-items: center;
 `;
 
-const FormItem: React.FC<Props> = (props) => {
+const FormItem: React.FC<FormItemProps> = (props) => {
   const { user, setUser, finishCallback, haveErr, setErr } = useContext(ctx);
   const { children, label, rules, ...rest } = props;
 

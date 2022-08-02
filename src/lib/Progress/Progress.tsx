@@ -1,7 +1,7 @@
 import React, { HTMLAttributes } from 'react';
 import styled from 'styled-components';
 
-interface Props extends HTMLAttributes<HTMLDivElement> {
+export interface ProgressProps extends HTMLAttributes<HTMLDivElement> {
   percent: number;
   finishColor?: string;
   undoneColor?: string;
@@ -73,7 +73,7 @@ const LineProgress = styled.div`
   }
 `;
 
-const Progress: React.FC<Props> = (props) => {
+const Progress: React.FC<ProgressProps> = (props) => {
   const { children, type, percent, finishColor, statistic, undoneColor, format, dot, ...rest } =
     props;
 

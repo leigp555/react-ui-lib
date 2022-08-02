@@ -31,7 +31,7 @@ export const openNotification = (vNode: ReactNode, delay = 3000) => {
   }, delay);
 };
 
-interface Props extends HTMLAttributes<HTMLDivElement> {
+export interface NotificationProps extends HTMLAttributes<HTMLDivElement> {
   children?: React.ReactNode;
 }
 const NotificationStyled = styled.div`
@@ -52,7 +52,7 @@ const NotificationStyled = styled.div`
     cursor: pointer;
   }
 `;
-const Notification: React.FC<Props> = (props) => {
+const Notification: React.FC<NotificationProps> = (props) => {
   const { children, ...rest } = props;
   const [show, setShow] = useState<boolean>(true);
   return (

@@ -2,7 +2,7 @@ import React, { HTMLAttributes, ReactNode } from 'react';
 import styled from 'styled-components';
 import SuccessIcon from '../icons/success.svg';
 
-interface Props extends HTMLAttributes<HTMLDivElement> {
+export interface StepsProps extends HTMLAttributes<HTMLDivElement> {
   children: React.ReactNode[];
   current?: number;
 }
@@ -41,7 +41,7 @@ const StepsStyled = styled.div`
     }
   }
 `;
-const Steps: React.FC<Props> = (props) => {
+const Steps: React.FC<StepsProps> = (props) => {
   const { children, current, ...rest } = props;
   const render = () => {
     return React.Children.map(children, (child, index) => {

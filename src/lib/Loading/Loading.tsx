@@ -2,7 +2,7 @@ import React, { HTMLAttributes } from 'react';
 import styled, { keyframes } from 'styled-components';
 import LoadIcon from '../icons/loading.svg';
 
-interface Props extends HTMLAttributes<HTMLDivElement> {
+export interface LoadingProps extends HTMLAttributes<HTMLDivElement> {
   children?: React.ReactNode;
   loading?: boolean;
 }
@@ -28,7 +28,7 @@ const LoadWrap = styled.span`
     animation: ${loadAction} infinite 1s linear;
   }
 `;
-const Loading: React.FC<Props> = (props) => {
+const Loading: React.FC<LoadingProps> = (props) => {
   const { children, loading, ...rest } = props;
   return (
     <LoadingStyled {...rest}>

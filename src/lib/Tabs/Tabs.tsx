@@ -4,7 +4,7 @@ import classNames from 'classnames';
 
 type VNode = ReactElement & { type: { name: string } };
 
-interface Props extends HTMLAttributes<HTMLDivElement> {
+export interface TabsProps extends HTMLAttributes<HTMLDivElement> {
   bgc?: string;
   position?: 'center' | 'start' | 'end';
   children?: React.ReactNode;
@@ -77,7 +77,7 @@ const Content = styled.div`
   padding: 10px 0;
 `;
 
-const Tabs: React.FC<Props> = (props) => {
+const Tabs: React.FC<TabsProps> = (props) => {
   const { children, callback, gap, segmented, position, bgc, defaultKey, ...rest } = props;
   const [currentIndex, setIndex] = useState<string>(defaultKey!);
   const spanRef = useRef<ReactNode[]>([]);

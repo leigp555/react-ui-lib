@@ -9,7 +9,7 @@ export type TableData = {
   footer?: { title: string; result: string };
 };
 
-interface Props extends HTMLAttributes<HTMLDivElement> {
+export interface TableProps extends HTMLAttributes<HTMLDivElement> {
   children?: React.ReactNode;
   data: TableData;
   pagination?: boolean;
@@ -29,7 +29,7 @@ const TableStyled = styled.div`
   width: 100%;
 `;
 
-const Table: React.FC<Props> = (props) => {
+const Table: React.FC<TableProps> = (props) => {
   const { children, data, perPage, pagination, ...rest } = props;
   const [showData, setShowData] = useState<{ [key: string]: React.ReactNode }[]>(
     pagination ? data.body.slice(0, perPage) : data.body

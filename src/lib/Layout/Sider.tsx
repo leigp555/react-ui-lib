@@ -2,7 +2,7 @@ import React, { HTMLAttributes } from 'react';
 import styled from 'styled-components';
 import { CommonStyle } from '../common/common';
 
-interface Props extends HTMLAttributes<HTMLHeadElement> {
+export interface SiderProps extends HTMLAttributes<HTMLHeadElement> {
   height?: number | string;
   width?: number | string;
   bgc?: string;
@@ -17,7 +17,7 @@ const SiderStyled = styled(CommonStyle)`
   align-self: stretch;
 `;
 
-const Sider: React.FC<Props> = (props) => {
+const Sider: React.FC<SiderProps> = (props) => {
   const { children, ...rest } = props;
   return <SiderStyled {...rest}>{children}</SiderStyled>;
 };

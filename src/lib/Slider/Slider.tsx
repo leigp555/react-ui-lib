@@ -1,14 +1,14 @@
 import React, { Dispatch, HTMLAttributes, SetStateAction, useEffect, useRef } from 'react';
 import './index.scss';
 
-interface Props extends HTMLAttributes<HTMLDivElement> {
+export interface SliderProps extends HTMLAttributes<HTMLDivElement> {
   children?: React.ReactNode;
   format?: (num: number) => string;
   defaultPercent: number;
   setPercent: Dispatch<SetStateAction<number>>;
 }
 
-const Slider: React.FC<Props> = (props) => {
+const Slider: React.FC<SliderProps> = (props) => {
   const { children, defaultPercent, setPercent, format, ...rest } = props;
 
   const isMove = useRef<boolean>(false);

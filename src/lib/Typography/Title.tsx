@@ -2,7 +2,7 @@ import React, { HTMLAttributes } from 'react';
 import styled from 'styled-components';
 import classNames from 'classnames';
 
-interface Props extends HTMLAttributes<HTMLDivElement> {
+export interface TitleProps extends HTMLAttributes<HTMLDivElement> {
   children?: React.ReactNode;
   level?: 1 | 2 | 3 | 4 | 5 | 6;
 }
@@ -36,7 +36,7 @@ const TitleStyled = styled.div`
     font-size: 0.75em;
   }
 `;
-const Title: React.FC<Props> = (props) => {
+const Title: React.FC<TitleProps> = (props) => {
   const { children, level, ...rest } = props;
   const render = () => {
     switch (level) {

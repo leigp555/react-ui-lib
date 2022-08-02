@@ -7,7 +7,7 @@ interface Ctx {
 }
 export const columnMenuCtx = React.createContext<Ctx>(null!);
 
-interface Props extends HTMLAttributes<HTMLDivElement> {
+export interface ColumnMenuProps extends HTMLAttributes<HTMLDivElement> {
   children?: React.ReactNode;
   setOrder: Dispatch<SetStateAction<number>>;
   defaultOrder: number;
@@ -17,7 +17,7 @@ const MenuStyled = styled.div`
   display: flex;
   user-select: none;
 `;
-const ColumnMenu: React.FC<Props> = (props) => {
+const ColumnMenu: React.FC<ColumnMenuProps> = (props) => {
   const { children, setOrder, defaultOrder, ...rest } = props;
   const value = useMemo(() => {
     return { setOrder, defaultOrder };

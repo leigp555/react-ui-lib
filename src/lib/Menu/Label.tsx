@@ -1,7 +1,7 @@
 import React, { HTMLAttributes } from 'react';
 import styled from 'styled-components';
 
-interface Props extends HTMLAttributes<HTMLDivElement> {
+export interface LabelProps extends HTMLAttributes<HTMLDivElement> {
   children?: React.ReactNode;
 }
 const LabelStyled = styled.div`
@@ -12,7 +12,7 @@ const LabelStyled = styled.div`
   color: #2c3e50;
   font-size: 16px;
 `;
-const Label: React.FC<Props> = (props) => {
+const Label: React.FC<LabelProps> = (props) => {
   const { children, ...rest } = props;
   return <LabelStyled {...rest}>{children}</LabelStyled>;
 };

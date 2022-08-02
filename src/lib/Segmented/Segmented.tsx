@@ -3,14 +3,14 @@ import styled from 'styled-components';
 import Tab from '../Tabs/Tab';
 import Tabs from '../Tabs/Tabs';
 
-interface Props extends HTMLAttributes<HTMLDivElement> {
+export interface SegmentedProps extends HTMLAttributes<HTMLDivElement> {
   children?: React.ReactNode;
   options: React.ReactNode[];
   value: React.ReactNode;
   changeValue: Dispatch<SetStateAction<React.ReactNode>>;
 }
 const SegmentedStyled = styled.div``;
-const Segmented: React.FC<Props> = (props) => {
+const Segmented: React.FC<SegmentedProps> = (props) => {
   const { children, options, value, changeValue, ...rest } = props;
   const onChange = (key: string) => {
     const index = parseInt(key, 10);

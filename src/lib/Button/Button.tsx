@@ -70,13 +70,13 @@ const ButtonStyled = styled.button`
   white-space: nowrap;
 `;
 
-interface Props extends HTMLAttributes<HTMLButtonElement> {
+export interface ButtonProps extends HTMLAttributes<HTMLButtonElement> {
   radius?: boolean;
   disabled?: boolean;
   type?: 'primary' | 'text' | 'link' | 'dashed' | 'default';
   children?: ReactNode;
 }
-const Button: React.FC<Props> = (props) => {
+const Button: React.FC<ButtonProps> = (props) => {
   const { radius, disabled, type, children, className, ...rest } = props;
   return (
     <ButtonStyled

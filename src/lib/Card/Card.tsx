@@ -2,7 +2,7 @@ import React, { HTMLAttributes } from 'react';
 import styled from 'styled-components';
 import classNames from 'classnames';
 
-interface Props extends HTMLAttributes<HTMLDivElement> {
+export interface CardProps extends HTMLAttributes<HTMLDivElement> {
   children?: React.ReactNode;
   cardTitle?: React.ReactNode;
   action?: React.ReactNode;
@@ -31,7 +31,7 @@ const CardStyled = styled.div`
     gap: 10px;
   }
 `;
-const Card: React.FC<Props> = (props) => {
+const Card: React.FC<CardProps> = (props) => {
   const { children, cardTitle, bordered, action, ...rest } = props;
   return (
     <CardStyled {...rest} className={classNames(`${bordered ? 'bordered' : ''}`)}>

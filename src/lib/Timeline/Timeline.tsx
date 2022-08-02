@@ -2,7 +2,7 @@ import React, { HTMLAttributes } from 'react';
 import styled from 'styled-components';
 import classNames from 'classnames';
 
-interface Props extends HTMLAttributes<HTMLDivElement> {
+export interface TimelineProps extends HTMLAttributes<HTMLDivElement> {
   children?: React.ReactNode;
   mode?: 'left' | 'right' | 'alternate';
 }
@@ -27,7 +27,7 @@ const TimelineStyled = styled.div`
     }
   }
 `;
-const Timeline: React.FC<Props> = (props) => {
+const Timeline: React.FC<TimelineProps> = (props) => {
   const { children, mode, ...rest } = props;
   return (
     <TimelineStyled {...rest}>

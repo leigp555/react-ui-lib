@@ -4,7 +4,7 @@ import { CommonStyle } from '../common/common';
 // 24/100
 // 这个组件内的元素横向排列
 
-interface Props extends HTMLAttributes<HTMLDivElement> {
+export interface ColProps extends HTMLAttributes<HTMLDivElement> {
   span?: number;
   offset?: number | 'auto';
   gap?: number;
@@ -16,7 +16,7 @@ interface Props extends HTMLAttributes<HTMLDivElement> {
   aline?: 'center' | 'start' | 'end';
   children?: React.ReactNode;
 }
-type PropsStyled = Omit<Props, 'children'>;
+type PropsStyled = Omit<ColProps, 'children'>;
 
 const ColStyled = styled(CommonStyle)`
   height: 100%;
@@ -27,7 +27,7 @@ const ColStyled = styled(CommonStyle)`
   margin-left: ${(props: PropsStyled) => (props.offset === 'auto' ? 'auto' : `${props.offset}%`)};
 `;
 
-const Col: React.FC<Props> = (props) => {
+const Col: React.FC<ColProps> = (props) => {
   const { children, ...rest } = props;
   return <ColStyled {...rest}>{children}</ColStyled>;
 };

@@ -2,7 +2,7 @@ import React, { HTMLAttributes } from 'react';
 import styled from 'styled-components';
 import { CommonStyle } from '../common/common';
 
-interface Props extends HTMLAttributes<HTMLDivElement> {
+export interface SpaceProps extends HTMLAttributes<HTMLDivElement> {
   children?: React.ReactNode;
   size?: number | string;
   align?: 'start' | 'center' | 'end' | 'baseline';
@@ -11,7 +11,7 @@ interface Props extends HTMLAttributes<HTMLDivElement> {
 const SpaceStyled = styled(CommonStyle)`
   display: flex;
 `;
-const Space: React.FC<Props> = (props) => {
+const Space: React.FC<SpaceProps> = (props) => {
   const { children, size, align, direction } = props;
   return (
     <div>

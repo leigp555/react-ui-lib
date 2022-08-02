@@ -2,7 +2,7 @@ import React, { HTMLAttributes } from 'react';
 import styled from 'styled-components';
 import { CommonStyle } from '../common/common';
 // 这个组件内的元素纵向排列
-interface Props extends HTMLAttributes<HTMLDivElement> {
+export interface RowProps extends HTMLAttributes<HTMLDivElement> {
   gap?: number;
   color?: string;
   bgc?: string;
@@ -20,7 +20,7 @@ const RowStyled = styled(CommonStyle)`
   width: 100%;
 `;
 
-const Row: React.FC<Props> = (props) => {
+const Row: React.FC<RowProps> = (props) => {
   const { children, ...rest } = props;
   return <RowStyled {...rest}>{children}</RowStyled>;
 };

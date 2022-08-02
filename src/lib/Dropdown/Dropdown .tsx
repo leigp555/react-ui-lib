@@ -2,7 +2,7 @@ import React, { HTMLAttributes, ReactElement, useMemo, useState } from 'react';
 import styled from 'styled-components';
 import { CSSTransition } from 'react-transition-group';
 
-interface Props extends HTMLAttributes<HTMLDivElement> {
+export interface DropdownProps extends HTMLAttributes<HTMLDivElement> {
   callback: (key: number) => void;
   children: React.ReactNode;
 }
@@ -66,7 +66,7 @@ interface Provider {
 }
 export const callbackProvider = React.createContext<Provider>(null!);
 
-const Dropdown: React.FC<Props> = (props) => {
+const Dropdown: React.FC<DropdownProps> = (props) => {
   const { children, callback } = props;
   const fn = useMemo(() => callback, []);
   const [enter, setEnter] = useState<boolean>(false);

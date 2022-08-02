@@ -5,7 +5,7 @@ export type Tip = {
   id: number;
   message: string;
 };
-interface Props extends HTMLAttributes<HTMLDivElement> {
+export interface AutoCompleteProps extends HTMLAttributes<HTMLDivElement> {
   children?: React.ReactNode;
   tips?: Tip[];
   value: string | number;
@@ -87,7 +87,7 @@ const AutoCompleteStyled = styled.div`
     }
   }
 `;
-const AutoComplete: React.FC<Props> = (props) => {
+const AutoComplete: React.FC<AutoCompleteProps> = (props) => {
   const { children, tips, value, callback, ...rest } = props;
   const tipWrapRef = useRef<HTMLDivElement | null>(null);
   const tipRef = useRef<HTMLDivElement | null>(null);

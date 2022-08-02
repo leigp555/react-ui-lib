@@ -2,7 +2,7 @@ import React, { HTMLAttributes } from 'react';
 import styled from 'styled-components';
 import { CommonStyle } from '../common/common';
 
-interface Props extends HTMLAttributes<HTMLDivElement> {
+export interface SkeletonProps extends HTMLAttributes<HTMLDivElement> {
   children?: React.ReactNode;
   gap?: number;
   loading?: boolean;
@@ -12,7 +12,7 @@ interface Props extends HTMLAttributes<HTMLDivElement> {
 const SkeletonStyled = styled(CommonStyle)`
   flex-direction: column;
 `;
-const Skeleton: React.FC<Props> = (props) => {
+const Skeleton: React.FC<SkeletonProps> = (props) => {
   const { children, active, loading, ...rest } = props;
   return (
     <SkeletonStyled style={{ display: loading ? 'flex' : 'none' }} {...rest}>
