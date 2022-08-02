@@ -1,6 +1,5 @@
 import React, { HTMLAttributes } from 'react';
 import styled from 'styled-components';
-import { Omit } from '@reduxjs/toolkit/dist/tsHelpers';
 import { CommonStyle } from '../common/common';
 
 interface Props extends HTMLAttributes<HTMLHeadElement> {
