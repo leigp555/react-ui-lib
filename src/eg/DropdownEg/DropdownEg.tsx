@@ -1,8 +1,10 @@
 import React from 'react';
 import { marked } from 'marked';
 import hljs from 'highlight.js';
-import { Typography, Paragraph, Title, Palette } from '../../lib';
+import { Typography, Paragraph, Title, Table, Dropdown, DropdownItem } from '../../lib';
+import { TableData } from '../../lib/Table/Table';
 import '../content.scss';
+import { dropdown } from './dropdown';
 
 // 配置marked
 marked.setOptions({
@@ -13,11 +15,21 @@ marked.setOptions({
   langPrefix: 'hljs language-',
   gfm: true
 });
-
-const PaletteEg: React.FC = () => {
+const dataBody = [
+  { 姓名: '张三', 年龄: 1, 班级: 335, 身高: 175 },
+  { 姓名: '张三', 年龄: 2, 班级: 335, 身高: 175 }
+];
+const DropdownEg: React.FC = () => {
+  const data: TableData = {
+    header: ['属性', '说明', '类型', '默认值'],
+    body: dataBody
+  };
+  const render = () => {
+    return marked(dropdown, { breaks: true });
+  };
   return (
     <div className="content-wrap">
-      <h2 className="title">Palette 调色板</h2>
+      <h2 className="title">Button按钮</h2>
       <Typography>
         <Title level={3}>简介</Title>
         <Paragraph>
@@ -39,11 +51,28 @@ const PaletteEg: React.FC = () => {
       <Title level={3}>案例</Title>
       <div className="Eg">
         <div className="showEg">
-          <Palette />
+          <div style={{ display: 'flex', gap: '10px' }}>
+            <Dropdown callback={(item: number) => console.log(item)}>
+              <DropdownItem order={1}>xxxx</DropdownItem>
+              <DropdownItem order={2}>xxxx</DropdownItem>
+              <DropdownItem order={3}>xxxx</DropdownItem>
+            </Dropdown>
+          </div>
         </div>
+        <Title level={3}>代码示例</Title>
+        <div
+          className="showCode"
+          dangerouslySetInnerHTML={{
+            __html: render()
+          }}
+        />
+      </div>
+      <Title level={3}>接口</Title>
+      <div className="interface">
+        <Table data={data} />
       </div>
     </div>
   );
 };
 
-export default PaletteEg;
+export default DropdownEg;

@@ -1,6 +1,6 @@
 import { translate } from '../translate';
 
-export const button = translate(`
+export const menu = translate(`
 import { Button } from 'uix';\n
 export const App:React.RC=()=>{
   return (
