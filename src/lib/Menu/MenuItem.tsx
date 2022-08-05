@@ -9,6 +9,8 @@ export interface MenuItemProps extends HTMLAttributes<HTMLDivElement> {
 }
 const MenuItemStyled = styled.div`
   display: flex;
+  align-items: center;
+  min-height: 40px;
   min-width: 100px;
   padding: 0 0 0 2.5em;
   cursor: pointer;

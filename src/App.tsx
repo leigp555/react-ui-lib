@@ -12,8 +12,8 @@ import Loading from './components/Loading';
 // import ButtonEg from './eg/ButtonEg/ButtonEg';
 // import TypographyEg from './eg/Typography/Typography';
 
-const ButtonEg = lazy(() => import('./eg/ButtonEg/ButtonEg'));
-const TypographyEg = lazy(() => import('./eg/TypographyEg/TypographyEg'));
+const ButtonEg = lazy(() => import('./eg/ButtonEg/index'));
+const TypographyEg = lazy(() => import('./eg/TypographyEg/index'));
 const PaletteEg = lazy(() => import('./eg/PaletteEg/PaletteEg'));
 const SpaceEg = lazy(() => import('./eg/SpaceEg/SpaceEg'));
 const LayoutEg = lazy(() => import('./eg/LayoutEg/LayoutEg'));
@@ -22,6 +22,7 @@ const DividerEg = lazy(() => import('./eg/DividerEg/DividerEg'));
 const StepsEg = lazy(() => import('./eg/StepsEg/StepsEg'));
 const PaginationEg = lazy(() => import('./eg/PaginationEg/PaginationEg'));
 const MenuEg = lazy(() => import('./eg/MenuEg/MenuEg'));
+const DropdownEg = lazy(() => import('./eg/DropdownEg/DropdownEg'));
 
 // 文档页
 // const Docs: React.FC = () => {
@@ -62,6 +63,7 @@ const App: React.FC = () => (
           <Route path="steps" element={<StepsEg />} />
           <Route path="pagination" element={<PaginationEg />} />
           <Route path="menu" element={<MenuEg />} />
+          <Route path="dropdown" element={<DropdownEg />} />
         </Route>
       </Routes>
     </Suspense>

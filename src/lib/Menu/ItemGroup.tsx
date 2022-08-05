@@ -13,7 +13,7 @@ const ItemGroupStyled = styled.div`
   flex-direction: column;
   width: 100%;
   &.copy {
-    //padding-left: calc(1em);
+    padding-left: calc(1em);
   }
 
   > .label {
@@ -22,7 +22,7 @@ const ItemGroupStyled = styled.div`
   }
   > .content {
     &:last-child {
-      margin-bottom: 50px;
+      margin-bottom: 10px;
     }
   }
 `;
