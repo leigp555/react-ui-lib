@@ -1,6 +1,7 @@
-.ui-wrap{
+.ui-autoComplete-wrap{
   position: relative;
   > input {
+    width: 100%;
     border: 1px solid rgba(100, 100, 100, 0.5);
     padding: 5px calc(1em + 15px) 5px 5px;
     border-radius: 3px;

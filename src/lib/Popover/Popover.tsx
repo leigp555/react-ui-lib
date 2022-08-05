@@ -33,7 +33,7 @@ const Popover: React.FC<PopoverProps> = (props) => {
       <div
         role="presentation"
         {...rest}
-        className="wrap"
+        className="ui-popover-wrap"
         onClick={() => {
           if (trigger === 'click') setShow(true);
         }}
@@ -50,7 +50,7 @@ const Popover: React.FC<PopoverProps> = (props) => {
         <CSSTransition in={isShow} classNames="box" timeout={250} unmountOnExit>
           <div className={classNames('tip', position)}>
             <div className="tipWrap">
-              <span className="title">{title}</span>
+              <p className="ui-popover-title">{title}</p>
               <div className="content"> {content}</div>
             </div>
           </div>

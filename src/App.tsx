@@ -28,6 +28,12 @@ const AffixEg = lazy(() => import('./eg/AffixEg/index'));
 const SliderEg = lazy(() => import('./eg/SliderEg/index'));
 const SwitchEg = lazy(() => import('./eg/SwitchEg/index'));
 const FormEg = lazy(() => import('./eg/FormEg/index'));
+const InputEg = lazy(() => import('./eg/InputEg/index'));
+const RadioEg = lazy(() => import('./eg/RadioEg/index'));
+const CheckBoxEg = lazy(() => import('./eg/CheckBoxEg/index'));
+const AutoCompleteEg = lazy(() => import('./eg/AutoCompleteEg/index'));
+const UploadEg = lazy(() => import('./eg/UploadEg/index'));
+const PopoverEg = lazy(() => import('./eg/PopoverEg/index'));
 
 // 文档页
 // const Docs: React.FC = () => {
@@ -75,6 +81,12 @@ const App: React.FC = () => (
         <Route path="slider" element={<SliderEg />} />
         <Route path="switch" element={<SwitchEg />} />
         <Route path="form" element={<FormEg />} />
+        <Route path="input" element={<InputEg />} />
+        <Route path="radio" element={<RadioEg />} />
+        <Route path="checkBox" element={<CheckBoxEg />} />
+        <Route path="autoComplete" element={<AutoCompleteEg />} />
+        <Route path="upload" element={<UploadEg />} />
+        <Route path="popover" element={<PopoverEg />} />
       </Route>
     </Routes>
   </Layout>

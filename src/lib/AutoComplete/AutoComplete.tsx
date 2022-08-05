@@ -28,13 +28,12 @@ const AutoComplete: React.FC<AutoCompleteProps> = (props) => {
     callback(el.innerText);
   };
   return (
-    <div className="ui-wrap">
+    <div className="ui-autoComplete-wrap" {...rest}>
       <input
         value={value}
         onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
           callback(e.target.value);
         }}
-        {...rest}
         ref={inputRef}
         type="text"
         onFocus={open}
