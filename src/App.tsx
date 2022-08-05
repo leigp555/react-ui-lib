@@ -20,7 +20,7 @@ const LayoutEg = lazy(() => import('./eg/LayoutEg/index'));
 const GridEg = lazy(() => import('./eg/GridEg/index'));
 const DividerEg = lazy(() => import('./eg/DividerEg/index'));
 const StepsEg = lazy(() => import('./eg/StepsEg/index'));
-const PaginationEg = lazy(() => import('./eg/PaginationEg/PaginationEg'));
+const PaginationEg = lazy(() => import('./eg/PaginationEg/index'));
 const MenuEg = lazy(() => import('./eg/MenuEg/MenuEg'));
 const DropdownEg = lazy(() => import('./eg/DropdownEg/DropdownEg'));
 

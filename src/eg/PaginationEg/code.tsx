@@ -1,6 +1,6 @@
 import { translate } from '../translate';
 
-export const pagination = translate(`
+export const code = translate(`
 import { Pagination } from 'uix';\n
 export const App:React.RC=()=>{
   const [page, setPage] = useState<number>(1);
