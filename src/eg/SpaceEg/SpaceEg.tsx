@@ -4,6 +4,7 @@ import hljs from 'highlight.js';
 import { Button, Typography, Paragraph, Title, Table, Space } from '../../lib';
 import { TableData } from '../../lib/Table/Table';
 import '../content.scss';
+import { space } from './space';
 
 // 配置marked
 marked.setOptions({
@@ -24,19 +25,7 @@ const SpaceEg: React.FC = () => {
     body: dataBody
   };
   const render = () => {
-    return marked(
-      '```html\n' +
-        '<Button>按钮</Button>\n' +
-        '<Button type="primary">按钮</Button>\n' +
-        '<Button type="default">按钮</Button>\n' +
-        '<Button type="link">按钮</Button>\n' +
-        '<Button type="text">按钮</Button>\n' +
-        '<Button type="dashed">按钮</Button>\n' +
-        '<Button disabled>按钮</Button>\n' +
-        '<Button radius>按钮</Button>\n' +
-        '```',
-      { breaks: true }
-    );
+    return marked(space, { breaks: true });
   };
   return (
     <div className="content-wrap">
@@ -75,54 +64,58 @@ const SpaceEg: React.FC = () => {
               </div>
             </Space>
           </div>
-        </div>
-        <div style={{ border: '1px solid rgba(0,0,0,.1)' }}>
-          <Space size={8} align="center" direction="row">
-            <div>
-              <Button>Center</Button>
-            </div>
-            <div>
-              <Button>Center</Button>
-            </div>
-            <div style={{ height: '100px', backgroundColor: 'orange', padding: '20px 0' }}>
-              Center
-            </div>
-          </Space>
-        </div>
-        <div style={{ border: '1px solid rgba(0,0,0,.1)' }}>
-          <Space size={8} align="end" direction="row">
-            <div>
-              <Button>End</Button>
-            </div>
-            <div>
-              <Button>End</Button>
-            </div>
-            <div style={{ height: '100px', backgroundColor: 'orange', padding: '20px 0' }}>End</div>
-          </Space>
-        </div>
-        <div style={{ border: '1px solid rgba(0,0,0,.1)' }}>
-          <Space size={8} align="baseline" direction="row">
-            <div>
-              <Button>Baseline</Button>
-            </div>
-            <div>
-              <Button>Baseline</Button>
-            </div>
-            <div style={{ height: '100px', backgroundColor: 'orange', padding: '20px 0' }}>
-              Baseline
-            </div>
-          </Space>
-        </div>
-        <div style={{ height: '200px', border: '1px solid rgba(0,0,0,.1)' }}>
-          <Space direction="column">
-            <div>
-              <Button>Row</Button>
-            </div>
-            <div>
-              <Button>Row</Button>
-            </div>
-            <div style={{ height: '100px', backgroundColor: 'orange', padding: '20px 0' }}>Row</div>
-          </Space>
+          <div style={{ border: '1px solid rgba(0,0,0,.1)' }}>
+            <Space size={8} align="center" direction="row">
+              <div>
+                <Button>Center</Button>
+              </div>
+              <div>
+                <Button>Center</Button>
+              </div>
+              <div style={{ height: '100px', backgroundColor: 'orange', padding: '20px 0' }}>
+                Center
+              </div>
+            </Space>
+          </div>
+          <div style={{ border: '1px solid rgba(0,0,0,.1)' }}>
+            <Space size={8} align="end" direction="row">
+              <div>
+                <Button>End</Button>
+              </div>
+              <div>
+                <Button>End</Button>
+              </div>
+              <div style={{ height: '100px', backgroundColor: 'orange', padding: '20px 0' }}>
+                End
+              </div>
+            </Space>
+          </div>
+          <div style={{ border: '1px solid rgba(0,0,0,.1)' }}>
+            <Space size={8} align="baseline" direction="row">
+              <div>
+                <Button>Baseline</Button>
+              </div>
+              <div>
+                <Button>Baseline</Button>
+              </div>
+              <div style={{ height: '100px', backgroundColor: 'orange', padding: '20px 0' }}>
+                Baseline
+              </div>
+            </Space>
+          </div>
+          <div style={{ height: '200px', border: '1px solid rgba(0,0,0,.1)' }}>
+            <Space direction="column">
+              <div>
+                <Button>Row</Button>
+              </div>
+              <div>
+                <Button>Row</Button>
+              </div>
+              <div style={{ height: '100px', backgroundColor: 'orange', padding: '20px 0' }}>
+                Row
+              </div>
+            </Space>
+          </div>
         </div>
         <Title level={3}>代码示例</Title>
         <div
