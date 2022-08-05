@@ -1,18 +1,54 @@
 import { translate } from '../translate';
 
 export const button = translate(`
-import { Button } from 'uix';\n
+import { Divider } from 'uix';\n
 export const App:React.RC=()=>{
   return (
      <div>
-        <Button>按钮</Button>
-        <Button type="primary">按钮</Button>
-        <Button type="default">按钮</Button>
-        <Button type="link">按钮</Button>
-        <Button type="text">按钮</Button>
-        <Button type="dashed">按钮</Button>
-        <Button disabled>按钮</Button>
-        <Button radius>按钮</Button>
+       <div>
+            <p>
+              Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquid delectus deleniti
+              expedita inventore ipsum, magni pariatur vel. Accusantium, assumenda ea et iure,
+              laborum nesciunt, omnis possimus quam quasi repellendus tempora?
+            </p>
+            <Divider position="left">Text</Divider>
+          </div>
+          <div>
+            <p>
+              Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquid delectus deleniti
+              expedita inventore ipsum, magni pariatur vel. Accusantium, assumenda ea et iure,
+              laborum nesciunt, omnis possimus quam quasi repellendus tempora?
+            </p>
+            <Divider position="left" offset={5}>
+              Text
+            </Divider>
+          </div>
+          <div>
+            <p>
+              Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquid delectus deleniti
+              expedita inventore ipsum, magni pariatur vel. Accusantium, assumenda ea et iure,
+              laborum nesciunt, omnis possimus quam quasi repellendus tempora?
+            </p>
+            <Divider position="center">Text</Divider>
+          </div>
+          <div>
+            <p>
+              Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquid delectus deleniti
+              expedita inventore ipsum, magni pariatur vel. Accusantium, assumenda ea et iure,
+              laborum nesciunt, omnis possimus quam quasi repellendus tempora?
+            </p>
+            <Divider offset={5} position="right">
+              Text
+            </Divider>
+          </div>
+          <div>
+            <p>
+              Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquid delectus deleniti
+              expedita inventore ipsum, magni pariatur vel. Accusantium, assumenda ea et iure,
+              laborum nesciunt, omnis possimus quam quasi repellendus tempora?
+            </p>
+            <Divider position="right">Text</Divider>
+          </div>
      </div>
   )
 }

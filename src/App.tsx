@@ -17,7 +17,11 @@ const TypographyEg = lazy(() => import('./eg/TypographyEg/TypographyEg'));
 const PaletteEg = lazy(() => import('./eg/PaletteEg/PaletteEg'));
 const SpaceEg = lazy(() => import('./eg/SpaceEg/SpaceEg'));
 const LayoutEg = lazy(() => import('./eg/LayoutEg/LayoutEg'));
-const GridEg = lazy(() => import('./eg/Grid/GridEg'));
+const GridEg = lazy(() => import('./eg/GridEg/GridEg'));
+const DividerEg = lazy(() => import('./eg/DividerEg/DividerEg'));
+const StepsEg = lazy(() => import('./eg/StepsEg/StepsEg'));
+const PaginationEg = lazy(() => import('./eg/PaginationEg/PaginationEg'));
+const MenuEg = lazy(() => import('./eg/MenuEg/MenuEg'));
 
 // 文档页
 // const Docs: React.FC = () => {
@@ -54,6 +58,10 @@ const App: React.FC = () => (
           <Route path="space" element={<SpaceEg />} />
           <Route path="layout" element={<LayoutEg />} />
           <Route path="grid" element={<GridEg />} />
+          <Route path="divider" element={<DividerEg />} />
+          <Route path="steps" element={<StepsEg />} />
+          <Route path="pagination" element={<PaginationEg />} />
+          <Route path="menu" element={<MenuEg />} />
         </Route>
       </Routes>
     </Suspense>

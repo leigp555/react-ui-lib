@@ -197,11 +197,11 @@ const Pagination: React.FC<PaginationProps> = (props) => {
       </PageWrap>
       <MoreStyled
         onClick={moreClick}
-        moreTool={moreTool}
         style={{
           cursor: n >= totalPage ? 'not-allowed' : 'pointer',
           border: 'none',
-          backgroundColor: 'inherit'
+          backgroundColor: 'inherit',
+          display: moreTool ? 'block' : 'none'
         }}
       >
         <DoubleLeft fill="#636567" width="1.1em" height="1.1em" />

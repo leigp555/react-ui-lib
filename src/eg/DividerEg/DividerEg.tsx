@@ -1,7 +1,7 @@
 import React from 'react';
 import { marked } from 'marked';
 import hljs from 'highlight.js';
-import { Button, Typography, Paragraph, Title, Table } from '../../lib';
+import { Divider, Typography, Paragraph, Title, Table } from '../../lib';
 import { TableData } from '../../lib/Table/Table';
 import '../content.scss';
 import { button } from './divider';
@@ -19,7 +19,7 @@ const dataBody = [
   { 姓名: '张三', 年龄: 1, 班级: 335, 身高: 175 },
   { 姓名: '张三', 年龄: 2, 班级: 335, 身高: 175 }
 ];
-const ButtonEg: React.FC = () => {
+const DividerEg: React.FC = () => {
   const data: TableData = {
     header: ['属性', '说明', '类型', '默认值'],
     body: dataBody
@@ -51,15 +51,49 @@ const ButtonEg: React.FC = () => {
       <Title level={3}>案例</Title>
       <div className="Eg">
         <div className="showEg">
-          <div style={{ display: 'flex', gap: '10px' }}>
-            <Button>按钮</Button>
-            <Button type="primary">按钮</Button>
-            <Button type="default">按钮</Button>
-            <Button type="link">按钮</Button>
-            <Button type="text">按钮</Button>
-            <Button type="dashed">按钮</Button>
-            <Button disabled>按钮</Button>
-            <Button radius>按钮</Button>
+          <div>
+            <p>
+              Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquid delectus deleniti
+              expedita inventore ipsum, magni pariatur vel. Accusantium, assumenda ea et iure,
+              laborum nesciunt, omnis possimus quam quasi repellendus tempora?
+            </p>
+            <Divider position="left">Text</Divider>
+          </div>
+          <div>
+            <p>
+              Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquid delectus deleniti
+              expedita inventore ipsum, magni pariatur vel. Accusantium, assumenda ea et iure,
+              laborum nesciunt, omnis possimus quam quasi repellendus tempora?
+            </p>
+            <Divider position="left" offset={5}>
+              Text
+            </Divider>
+          </div>
+          <div>
+            <p>
+              Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquid delectus deleniti
+              expedita inventore ipsum, magni pariatur vel. Accusantium, assumenda ea et iure,
+              laborum nesciunt, omnis possimus quam quasi repellendus tempora?
+            </p>
+            <Divider position="center">Text</Divider>
+          </div>
+          <div>
+            <p>
+              Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquid delectus deleniti
+              expedita inventore ipsum, magni pariatur vel. Accusantium, assumenda ea et iure,
+              laborum nesciunt, omnis possimus quam quasi repellendus tempora?
+            </p>
+            <Divider offset={5} position="right">
+              Text
+            </Divider>
+          </div>
+          <div>
+            <p>
+              Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquid delectus deleniti
+              expedita inventore ipsum, magni pariatur vel. Accusantium, assumenda ea et iure,
+              laborum nesciunt, omnis possimus quam quasi repellendus tempora?
+            </p>
+            <Divider position="right">Text</Divider>
           </div>
         </div>
         <Title level={3}>代码示例</Title>
@@ -78,4 +112,4 @@ const ButtonEg: React.FC = () => {
   );
 };
 
-export default ButtonEg;
+export default DividerEg;

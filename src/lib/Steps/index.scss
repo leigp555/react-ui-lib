@@ -1,0 +1,35 @@
+.ui-steps-wrap{
+  width: 100%;
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  > .ui-step-title {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    > .icon {
+      display: flex;
+      align-items: center;
+    }
+    > .stepNum {
+      width: 1.8em;
+      height: 1.8em;
+      border-radius: 50%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background-color: #1890ff;
+    }
+  }
+  > .line {
+    flex-grow: 10;
+    display: flex;
+    align-items: center;
+    height: 100%;
+    > .lineContent {
+      width: 100%;
+      height: 1px;
+      background-color: #1890ff;
+    }
+  }
+}
