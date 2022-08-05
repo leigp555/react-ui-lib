@@ -3,6 +3,7 @@ import classNames from 'classnames';
 import './index.scss';
 
 export interface AffixProps extends HTMLAttributes<HTMLDivElement> {
+  container?: HTMLElement | null;
   children?: React.ReactNode;
   offsetTop?: number;
   offsetBottom?: number;
@@ -10,7 +11,7 @@ export interface AffixProps extends HTMLAttributes<HTMLDivElement> {
 }
 
 const Affix: React.FC<AffixProps> = (props) => {
-  const { children, offsetBottom, rowPosition, offsetTop, ...rest } = props;
+  const { children, container, offsetBottom, rowPosition, offsetTop, ...rest } = props;
   const containerRef = useRef<HTMLDivElement | null>(null);
   const contentRef = useRef<HTMLDivElement | null>(null);
   const leftPosition = useRef<number>(0);
@@ -23,13 +24,18 @@ const Affix: React.FC<AffixProps> = (props) => {
   useEffect(() => {
     const { left } = contentRef.current!.getBoundingClientRect();
     leftPosition.current = left;
-    document.addEventListener('scroll', scrollHandle);
+    if (container) container.addEventListener('scroll', scrollHandle);
     return () => {
       document.removeEventListener('scroll', scrollHandle);
     };
   }, []);
   return (
-    <div className="ui-wrap" {...rest} ref={containerRef} style={{ justifyContent: rowPosition }}>
+    <div
+      className="ui-affix-wrap"
+      {...rest}
+      ref={containerRef}
+      style={{ justifyContent: rowPosition }}
+    >
       <div
         style={{ top: `${offsetTop}px`, left: `${leftPosition.current}px` }}
         className={classNames('content', `${shouldFixed ? 'fixed' : ''}`)}
@@ -44,7 +50,8 @@ Affix.defaultProps = {
   children: '',
   offsetBottom: 0,
   offsetTop: 0,
-  rowPosition: 'start'
+  rowPosition: 'start',
+  container: document.body
 };
 
 export default Affix;
