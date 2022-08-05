@@ -15,7 +15,7 @@ import Loading from './components/Loading';
 const ButtonEg = lazy(() => import('./eg/ButtonEg/index'));
 const TypographyEg = lazy(() => import('./eg/TypographyEg/index'));
 const PaletteEg = lazy(() => import('./eg/PaletteEg/index'));
-const SpaceEg = lazy(() => import('./eg/SpaceEg/SpaceEg'));
+const SpaceEg = lazy(() => import('./eg/SpaceEg/index'));
 const LayoutEg = lazy(() => import('./eg/LayoutEg/LayoutEg'));
 const GridEg = lazy(() => import('./eg/GridEg/GridEg'));
 const DividerEg = lazy(() => import('./eg/DividerEg/DividerEg'));
