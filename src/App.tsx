@@ -24,6 +24,8 @@ const PaginationEg = lazy(() => import('./eg/PaginationEg/index'));
 const MenuEg = lazy(() => import('./eg/MenuEg/index'));
 const DropdownEg = lazy(() => import('./eg/DropdownEg/index'));
 const BreadcrumbEg = lazy(() => import('./eg/BreadcrumbEg/index'));
+const AffixEg = lazy(() => import('./eg/AffixEg/index'));
+const SliderEg = lazy(() => import('./eg/SliderEg/index'));
 
 // 文档页
 // const Docs: React.FC = () => {
@@ -41,8 +43,10 @@ const Components: React.FC = () => {
   return (
     <Content>
       <ComponentAside />
-      <div className="component-show">
-        <Outlet />
+      <div className="component-show" id="app-component-show">
+        <Suspense fallback={<Loading />}>
+          <Outlet />
+        </Suspense>
       </div>
     </Content>
   );
@@ -51,24 +55,24 @@ const Components: React.FC = () => {
 const App: React.FC = () => (
   <Layout>
     <Head />
-    <Suspense fallback={<Loading />}>
-      <Routes>
-        <Route path="/" element={<Components />}>
-          <Route index element={<TypographyEg />} />
-          <Route path="button" element={<ButtonEg />} />
-          <Route path="palette" element={<PaletteEg />} />
-          <Route path="space" element={<SpaceEg />} />
-          <Route path="layout" element={<LayoutEg />} />
-          <Route path="grid" element={<GridEg />} />
-          <Route path="divider" element={<DividerEg />} />
-          <Route path="steps" element={<StepsEg />} />
-          <Route path="pagination" element={<PaginationEg />} />
-          <Route path="menu" element={<MenuEg />} />
-          <Route path="dropdown" element={<DropdownEg />} />
-          <Route path="breadcrumb" element={<BreadcrumbEg />} />
-        </Route>
-      </Routes>
-    </Suspense>
+    <Routes>
+      <Route path="/" element={<Components />}>
+        <Route index element={<TypographyEg />} />
+        <Route path="button" element={<ButtonEg />} />
+        <Route path="palette" element={<PaletteEg />} />
+        <Route path="space" element={<SpaceEg />} />
+        <Route path="layout" element={<LayoutEg />} />
+        <Route path="grid" element={<GridEg />} />
+        <Route path="divider" element={<DividerEg />} />
+        <Route path="steps" element={<StepsEg />} />
+        <Route path="pagination" element={<PaginationEg />} />
+        <Route path="menu" element={<MenuEg />} />
+        <Route path="dropdown" element={<DropdownEg />} />
+        <Route path="breadcrumb" element={<BreadcrumbEg />} />
+        <Route path="affix" element={<AffixEg />} />
+        <Route path="slider" element={<SliderEg />} />
+      </Route>
+    </Routes>
   </Layout>
 );
 
