@@ -1,10 +1,10 @@
-import { translate } from '../translate';
+import React from 'react';
+import { Button } from '../../lib';
 
-export const dropdown = translate(`
-import { Button } from 'uix';\n
-export const App:React.RC=()=>{
+export const Demo: React.FC = () => {
   return (
-     <div>
+    <div className="Eg">
+      <div className="showEg">
         <Button>按钮</Button>
         <Button type="primary">按钮</Button>
         <Button type="default">按钮</Button>
@@ -13,7 +13,7 @@ export const App:React.RC=()=>{
         <Button type="dashed">按钮</Button>
         <Button disabled>按钮</Button>
         <Button radius>按钮</Button>
-     </div>
-  )
-}
-`);
+      </div>
+    </div>
+  );
+};

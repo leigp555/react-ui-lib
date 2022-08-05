@@ -8,7 +8,7 @@ export interface BreadcrumbItemProps extends HTMLAttributes<HTMLDivElement> {
 const BreadcrumbItem: React.FC<BreadcrumbItemProps> = (props) => {
   const { children, ...rest } = props;
   return (
-    <p className="itemWrap" {...rest} key={Math.random()}>
+    <p className="ui-breadcrumbItem-wrap" {...rest} key={Math.random()}>
       {children}
     </p>
   );

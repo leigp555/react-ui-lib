@@ -24,7 +24,7 @@ const Breadcrumb: React.FC<BreadcrumbProps> = (props) => {
     });
   };
   return (
-    <div className="ui-wrap" {...rest}>
+    <div className="ui-breadcrumb-wrap" {...rest}>
       {render()}
     </div>
   );

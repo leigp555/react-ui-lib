@@ -21,8 +21,9 @@ const GridEg = lazy(() => import('./eg/GridEg/index'));
 const DividerEg = lazy(() => import('./eg/DividerEg/index'));
 const StepsEg = lazy(() => import('./eg/StepsEg/index'));
 const PaginationEg = lazy(() => import('./eg/PaginationEg/index'));
-const MenuEg = lazy(() => import('./eg/MenuEg/MenuEg'));
-const DropdownEg = lazy(() => import('./eg/DropdownEg/DropdownEg'));
+const MenuEg = lazy(() => import('./eg/MenuEg/index'));
+const DropdownEg = lazy(() => import('./eg/DropdownEg/index'));
+const BreadcrumbEg = lazy(() => import('./eg/BreadcrumbEg/index'));
 
 // 文档页
 // const Docs: React.FC = () => {
@@ -64,6 +65,7 @@ const App: React.FC = () => (
           <Route path="pagination" element={<PaginationEg />} />
           <Route path="menu" element={<MenuEg />} />
           <Route path="dropdown" element={<DropdownEg />} />
+          <Route path="breadcrumb" element={<BreadcrumbEg />} />
         </Route>
       </Routes>
     </Suspense>
