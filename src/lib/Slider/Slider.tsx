@@ -72,10 +72,9 @@ const Slider: React.FC<SliderProps> = (props) => {
     };
   }, []);
   return (
-    <div className="wrap">
+    <div className="ui-slider-wrap" {...rest}>
       <div
         className="inner"
-        {...rest}
         style={{
           background: `
         linear-gradient(
