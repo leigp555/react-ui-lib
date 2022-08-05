@@ -21,6 +21,7 @@ const FormStyled = styled(CommonStyle)`
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  gap: 2em;
 `;
 type User = {
   [key: string]: string;

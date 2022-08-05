@@ -104,12 +104,11 @@ const IconsLeft = styled(IconCommon)`
 `;
 const IconsRight = styled(IconCommon)`
   right: 10px;
-  //gap: 5px;
-  //width: 100px;
+  gap: 5px;
+  width: 2.5em;
   display: flex;
   justify-content: end;
   cursor: pointer;
-  width: 1em;
 `;
 
 const CommonDom = styled.div`

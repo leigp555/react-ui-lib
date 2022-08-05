@@ -26,6 +26,8 @@ const DropdownEg = lazy(() => import('./eg/DropdownEg/index'));
 const BreadcrumbEg = lazy(() => import('./eg/BreadcrumbEg/index'));
 const AffixEg = lazy(() => import('./eg/AffixEg/index'));
 const SliderEg = lazy(() => import('./eg/SliderEg/index'));
+const SwitchEg = lazy(() => import('./eg/SwitchEg/index'));
+const FormEg = lazy(() => import('./eg/FormEg/index'));
 
 // 文档页
 // const Docs: React.FC = () => {
@@ -71,6 +73,8 @@ const App: React.FC = () => (
         <Route path="breadcrumb" element={<BreadcrumbEg />} />
         <Route path="affix" element={<AffixEg />} />
         <Route path="slider" element={<SliderEg />} />
+        <Route path="switch" element={<SwitchEg />} />
+        <Route path="form" element={<FormEg />} />
       </Route>
     </Routes>
   </Layout>
