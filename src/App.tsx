@@ -17,6 +17,7 @@ const TypographyEg = lazy(() => import('./eg/TypographyEg/TypographyEg'));
 const PaletteEg = lazy(() => import('./eg/PaletteEg/PaletteEg'));
 const SpaceEg = lazy(() => import('./eg/SpaceEg/SpaceEg'));
 const LayoutEg = lazy(() => import('./eg/LayoutEg/LayoutEg'));
+const GridEg = lazy(() => import('./eg/Grid/GridEg'));
 
 // 文档页
 // const Docs: React.FC = () => {
@@ -52,6 +53,7 @@ const App: React.FC = () => (
           <Route path="palette" element={<PaletteEg />} />
           <Route path="space" element={<SpaceEg />} />
           <Route path="layout" element={<LayoutEg />} />
+          <Route path="grid" element={<GridEg />} />
         </Route>
       </Routes>
     </Suspense>
