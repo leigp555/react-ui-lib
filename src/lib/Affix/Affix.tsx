@@ -1,6 +1,6 @@
 import React, { HTMLAttributes, useEffect, useRef, useState } from 'react';
-import styled from 'styled-components';
 import classNames from 'classnames';
+import './index.scss';
 
 export interface AffixProps extends HTMLAttributes<HTMLDivElement> {
   children?: React.ReactNode;
@@ -9,15 +9,6 @@ export interface AffixProps extends HTMLAttributes<HTMLDivElement> {
   rowPosition?: 'start' | 'center' | 'end';
 }
 
-const AffixStyled = styled.div`
-  display: flex;
-  > .content {
-    display: inline-block;
-  }
-  .content.fixed {
-    position: fixed;
-  }
-`;
 const Affix: React.FC<AffixProps> = (props) => {
   const { children, offsetBottom, rowPosition, offsetTop, ...rest } = props;
   const containerRef = useRef<HTMLDivElement | null>(null);
@@ -38,7 +29,7 @@ const Affix: React.FC<AffixProps> = (props) => {
     };
   }, []);
   return (
-    <AffixStyled {...rest} ref={containerRef} style={{ justifyContent: rowPosition }}>
+    <div className="ui-wrap" {...rest} ref={containerRef} style={{ justifyContent: rowPosition }}>
       <div
         style={{ top: `${offsetTop}px`, left: `${leftPosition.current}px` }}
         className={classNames('content', `${shouldFixed ? 'fixed' : ''}`)}
@@ -46,7 +37,7 @@ const Affix: React.FC<AffixProps> = (props) => {
       >
         {children}
       </div>
-    </AffixStyled>
+    </div>
   );
 };
 Affix.defaultProps = {

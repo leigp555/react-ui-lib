@@ -1,0 +1,9 @@
+.ui-wrap{
+  display: flex;
+  > .content {
+    display: inline-block;
+  }
+  .content.fixed {
+    position: fixed;
+  }
+}

@@ -75,10 +75,14 @@ import React, { useState } from 'react';
 //
 // const Home: React.FC = () => {
 //   const [value, setValue] = useState<string>('111');
+//   const fn = (selected: string) => {
+//     console.log(selected);
+// setValue(selected);
+//   };
 //   return (
 //     <Wrap>
 //       <div className="row">
-//         <AutoComplete tips={tips} value={value} setValue={setValue}>
+//         <AutoComplete tips={tips} value={value} callback={fn}>
 //           <LeftIcon width="0.8em" height="0.8em" style={{ transform: 'rotate(-90deg)' }} />
 //         </AutoComplete>
 //       </div>

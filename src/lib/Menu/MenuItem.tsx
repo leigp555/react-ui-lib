@@ -10,7 +10,7 @@ export interface MenuItemProps extends HTMLAttributes<HTMLDivElement> {
 const MenuItemStyled = styled.div`
   display: flex;
   min-width: 100px;
-  padding: 8px 20px;
+  padding: 0 0 0 2.5em;
   cursor: pointer;
   border: none;
   width: 100%;
@@ -19,8 +19,7 @@ const MenuItemStyled = styled.div`
   color: #2c3e50;
   transition: all 250ms;
   &.active {
-    color: #1890ff !important;
-    border-right: 3px solid #1890ff;
+    color: #1890ff;
     background-color: #ecf5ff;
   }
   &:hover {

@@ -4,14 +4,14 @@ import { Tip } from '../Tip/Tip';
 
 const Wrap = styled.div`
   display: flex;
-  width: 306px;
   gap: 1px;
+  flex-grow: 10;
   flex-wrap: wrap;
 `;
 const StyledItem = styled.div`
   color: #222222;
-  width: 100px;
-  height: 60px;
+  min-width: 80px;
+  min-height: 40px;
 `;
 
 type Props = {

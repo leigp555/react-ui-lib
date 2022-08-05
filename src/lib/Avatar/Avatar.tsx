@@ -1,5 +1,5 @@
 import React, { HTMLAttributes, ReactElement, ReactNode } from 'react';
-import styled from 'styled-components';
+import './index.scss';
 
 type VNode = ReactElement & { type: { name: string } };
 export interface AvatarProps extends HTMLAttributes<HTMLDivElement> {
@@ -10,22 +10,8 @@ export interface AvatarProps extends HTMLAttributes<HTMLDivElement> {
   bgc?: string;
 }
 
-type PropsStyled = {
-  size: number;
-  bgc?: string;
-};
-
-const AvatarStyled = styled.div`
-  padding: ${(props: PropsStyled) => `${props.size * 0.2}px`};
-  border-radius: 50%;
-  display: inline-flex;
-  justify-content: center;
-  align-items: center;
-  background-color: ${(props: PropsStyled) => props.bgc};
-`;
-
 const Avatar: React.FC<AvatarProps> = (props) => {
-  const { children, size, icon, src, ...rest } = props;
+  const { children, size, icon, src, bgc, ...rest } = props;
   const render = () => {
     return React.Children.map(children, (child: ReactNode) => {
       const vNode = child as VNode;
@@ -38,7 +24,11 @@ const Avatar: React.FC<AvatarProps> = (props) => {
   };
   return (
     <div>
-      <AvatarStyled size={size!} {...rest}>
+      <div
+        className="ui-wrap"
+        style={{ padding: `${size! * 0.2}px`, backgroundColor: bgc }}
+        {...rest}
+      >
         {render()}
         <img
           src={src}
@@ -49,7 +39,7 @@ const Avatar: React.FC<AvatarProps> = (props) => {
             display: src ? 'block' : 'none'
           }}
         />
-      </AvatarStyled>
+      </div>
     </div>
   );
 };

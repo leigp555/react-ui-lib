@@ -9,11 +9,17 @@ export interface TabProps extends HTMLAttributes<HTMLDivElement> {
 const TabStyled = styled.div``;
 const Tab: React.FC<TabProps> = (props) => {
   const { children, tab, index, ...rest } = props;
-  return (
-    <TabStyled {...rest}>
-      <div className="content">{children}</div>
-    </TabStyled>
-  );
+  const render = () => {
+    if (children) {
+      return (
+        <TabStyled {...rest}>
+          <div className="content">{children}</div>
+        </TabStyled>
+      );
+    }
+    return <div style={{ display: 'none' }} />;
+  };
+  return render();
 };
 Tab.defaultProps = {
   children: '',

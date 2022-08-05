@@ -1,5 +1,5 @@
 import React, { HTMLAttributes } from 'react';
-import styled from 'styled-components';
+import './index.scss';
 import classNames from 'classnames';
 
 export interface BadgeProps extends HTMLAttributes<HTMLDivElement> {
@@ -8,36 +8,7 @@ export interface BadgeProps extends HTMLAttributes<HTMLDivElement> {
   overflowCount?: number;
   dot?: boolean;
 }
-const BadgeStyled = styled.div`
-  //background-color: #cccccc;
-  position: relative;
-  .badge {
-    position: absolute;
-    top: 0;
-    right: 0;
-    transform: translate(50%, -50%);
-    background-color: #df4402;
-    color: white;
-    padding: 3px 10px;
-    border-radius: 10px;
-    border: 2px solid white;
-    font-size: 12px;
-    &.dot {
-      padding: 0;
-      border-radius: 50%;
-      transform: translate(100%, -100%);
-      width: 4px;
-      height: 4px;
-      border: 4px solid red;
-    }
-  }
-  .badgeIcon {
-    position: absolute;
-    top: 0;
-    right: 0;
-    transform: translate(50%, -50%);
-  }
-`;
+
 const Badge: React.FC<BadgeProps> = (props) => {
   const { children, count, overflowCount, dot, ...rest } = props;
   const render = () => {
@@ -51,10 +22,10 @@ const Badge: React.FC<BadgeProps> = (props) => {
     return <div className="badgeIcon">{count}</div>;
   };
   return (
-    <BadgeStyled {...rest}>
+    <div className="ui-wrap" {...rest}>
       <div className="content">{children}</div>
       <div>{render()}</div>
-    </BadgeStyled>
+    </div>
   );
 };
 Badge.defaultProps = {

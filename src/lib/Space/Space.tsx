@@ -1,6 +1,5 @@
 import React, { HTMLAttributes } from 'react';
-import styled from 'styled-components';
-import { CommonStyle } from '../common/common';
+import './index.scss';
 
 export interface SpaceProps extends HTMLAttributes<HTMLDivElement> {
   children?: React.ReactNode;
@@ -8,16 +7,21 @@ export interface SpaceProps extends HTMLAttributes<HTMLDivElement> {
   align?: 'start' | 'center' | 'end' | 'baseline';
   direction?: 'row' | 'column';
 }
-const SpaceStyled = styled(CommonStyle)`
-  display: flex;
-`;
+
 const Space: React.FC<SpaceProps> = (props) => {
   const { children, size, align, direction } = props;
   return (
     <div>
-      <SpaceStyled gap={size} direction={direction} aline={align}>
+      <div
+        className="ui-space-wrap"
+        style={{
+          gap: typeof size === 'string' ? size : `${size}px`,
+          flexDirection: direction,
+          alignItems: align
+        }}
+      >
         {children}
-      </SpaceStyled>
+      </div>
     </div>
   );
 };

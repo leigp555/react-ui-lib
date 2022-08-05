@@ -1,0 +1,85 @@
+.ui-button{
+  &:hover {
+    border: none;
+    outline: none;
+    box-shadow: none;
+  }
+  &.primary {
+    background-color: #1890ff;
+    color: #f5f5f5;
+    outline: 1px solid #1890ff;
+    &.disabled{
+      background-color: #f5f5f5;
+      color:#b8b8cb ;
+      outline:1px solid #b8b8cb ;
+    }
+    &:hover {
+      outline: 1px solid #1890ff;
+      background-color: lighten(#1890ff,10)
+    }
+  }
+  &.default {
+    background-color: #ffffff;
+    color: #636567;
+    outline: 1px solid #b8b8cb;
+    &.disabled{
+      background-color: #f5f5f5;
+      color:#b8b8cb ;
+    }
+    &:hover {
+      outline: 1px solid #1890ff;
+      color:  #1890ff;
+    }
+  }
+  &.text {
+    background-color:#ffffff;
+    color: #636567;
+    &.disabled{
+      background-color: #f5f5f5;
+      color:#b8b8cb ;
+      outline:1px solid #b8b8cb ;
+    }
+    &:hover {
+      -webkit-filter: brightness(95%);
+    }
+  }
+  &.dashed {
+    background-color: #ffffff;
+    color: #636567;
+    outline: 1px dashed #b8b8cb;
+    &.disabled{
+      background-color: #f5f5f5;
+      color:#b8b8cb ;
+      outline:1px solid #b8b8cb ;
+    }
+    &:hover {
+      color: #1890ff;
+      outline: 1px dashed #1890ff;
+    }
+  }
+  &.link {
+    background-color: inherit;
+    color: #1890ff;
+    &.disabled{
+      color:#b8b8cb ;
+    }
+
+  }
+  border: none;
+  outline: none;
+  box-shadow: none;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  padding: 4px 15px;
+  transition: all 250ms;
+  border-radius: 1px;
+  &.disabled{
+    cursor:not-allowed
+  }
+  cursor:pointer;
+  &.radius{
+    border-radius: 3px;
+  }
+  white-space: nowrap;
+}

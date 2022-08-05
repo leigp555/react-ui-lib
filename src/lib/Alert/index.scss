@@ -1,6 +1,39 @@
+.ui-wrap{
+  max-width: 400px;
+  min-width: 100px;
+  padding: 10px 15px;
+  display: inline-flex;
+  align-items: start;
+  gap: 10px;
+  &.success {
+    background-color: #e6f7ff;
+  }
+  &.info {
+    background-color: #f6ffed;
+  }
+  &.warning {
+    background-color: #fffbe6;
+  }
+  &.error {
+    background-color: #fff2f0;
+  }
+  &.loading {
+    background-color: #e6f7ff;
+  }
+  > .icon {
+    display: flex;
+    align-items: center;
+  }
+  > .content {
+    display: flex;
+    align-items: center;
+  }
+}
+
+
+
 .loading>.icon{
   animation: loading infinite 1s linear;
-  color: red;
 }
 
 @keyframes loading {

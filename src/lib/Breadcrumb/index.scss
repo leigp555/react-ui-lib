@@ -1,0 +1,21 @@
+.ui-wrap{
+  display: flex;
+  align-items: center;
+  height: 1.5em;
+  line-height: 1.5em;
+  text-align: center;
+  gap: 5px;
+  .ui-inner{
+    display: flex;
+    gap: 2px;
+  }
+}
+
+.itemWrap{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 2px;
+  color: #8c8c8c;
+  white-space: nowrap;
+}

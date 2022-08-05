@@ -1,0 +1,30 @@
+.ui-wrap{
+  //background-color: #cccccc;
+  position: relative;
+  .badge {
+    position: absolute;
+    top: 0;
+    right: 0;
+    transform: translate(50%, -50%);
+    background-color: #df4402;
+    color: white;
+    padding: 3px 10px;
+    border-radius: 10px;
+    border: 2px solid white;
+    font-size: 12px;
+    &.dot {
+      padding: 0;
+      border-radius: 50%;
+      transform: translate(100%, -100%);
+      width: 4px;
+      height: 4px;
+      border: 4px solid red;
+    }
+  }
+  .badgeIcon {
+    position: absolute;
+    top: 0;
+    right: 0;
+    transform: translate(50%, -50%);
+  }
+}

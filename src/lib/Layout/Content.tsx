@@ -13,7 +13,10 @@ export interface ContentProps extends HTMLAttributes<HTMLHeadElement> {
 }
 type PropsStyled = Omit<ContentProps, 'children'>;
 const ContentStyled = styled(CommonStyle)`
+  flex-grow: 10;
   display: flex;
+  height: 200px;
+  //border: 10px solid red;
   flex-direction: ${(props: PropsStyled) => props.direction};
 `;
 
@@ -28,7 +31,7 @@ Content.defaultProps = {
   bgc: 'inherit',
   direction: 'row',
   justify: 'start',
-  aline: 'center'
+  aline: 'start'
 };
 
 export default Content;

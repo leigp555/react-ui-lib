@@ -23,7 +23,6 @@ type TabNameProp = {
 const TabsStyled = styled.div`
   width: 100%;
   height: 100%;
-  padding: 20px;
   display: flex;
   flex-direction: column;
   gap: ${(props: TabNameProp) => `${props.gap}px`};
@@ -33,7 +32,7 @@ const TabName = styled.div`
   position: relative;
   cursor: pointer;
   display: flex;
-  gap: 30px;
+  gap: 5vw;
   justify-content: ${(props: TabNameProp) => props.position};
   //border-bottom: 1px solid rgba(0, 0, 0, 0.1);
   &.segmented {
@@ -73,9 +72,7 @@ const TabName = styled.div`
   }
 `;
 
-const Content = styled.div`
-  padding: 10px 0;
-`;
+const Content = styled.div``;
 
 const Tabs: React.FC<TabsProps> = (props) => {
   const { children, callback, gap, segmented, position, bgc, defaultKey, ...rest } = props;

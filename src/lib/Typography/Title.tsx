@@ -1,41 +1,12 @@
 import React, { HTMLAttributes } from 'react';
-import styled from 'styled-components';
+import './index.scss';
 import classNames from 'classnames';
 
 export interface TitleProps extends HTMLAttributes<HTMLDivElement> {
   children?: React.ReactNode;
   level?: 1 | 2 | 3 | 4 | 5 | 6;
 }
-const TitleStyled = styled.div`
-  h1,
-  h2,
-  h3,
-  h4.h5.h6 {
-    font-weight: bold;
-    color: #262626;
-    text-align: start;
-    display: inline-block;
-    margin-bottom: 19px;
-  }
-  h1 {
-    font-size: 2em;
-  }
-  h2 {
-    font-size: 1.5em;
-  }
-  h3 {
-    font-size: 1.17em;
-  }
-  h4 {
-    font-size: 1em;
-  }
-  h5 {
-    font-size: 0.83em;
-  }
-  h6 {
-    font-size: 0.75em;
-  }
-`;
+
 const Title: React.FC<TitleProps> = (props) => {
   const { children, level, ...rest } = props;
   const render = () => {
@@ -57,9 +28,9 @@ const Title: React.FC<TitleProps> = (props) => {
     }
   };
   return (
-    <TitleStyled {...rest} className={classNames(`level${level}`)}>
+    <div {...rest} className={classNames(`level${level}`, 'ui-title-wrap')}>
       {render()}
-    </TitleStyled>
+    </div>
   );
 };
 Title.defaultProps = {

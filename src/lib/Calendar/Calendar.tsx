@@ -1,82 +1,14 @@
 import React, { HTMLAttributes, useRef, useState } from 'react';
-import styled from 'styled-components';
 import dayjs from 'dayjs';
 import classNames from 'classnames';
 import AutoComplete, { Tip } from '../AutoComplete/AutoComplete';
 import LeftIcon from '../icons/left2.svg';
+import './index.scss';
 
 export interface CalendarProps extends HTMLAttributes<HTMLDivElement> {
   children?: React.ReactNode;
   callback?: (dataValue: string) => void;
 }
-const CalendarStyled = styled.div`
-  border: 1px solid rgba(100, 100, 100, 0.2);
-  width: 100%;
-  height: 100%;
-  display: flex;
-  flex-direction: column;
-  user-select: none;
-  padding: 10px 0;
-  .select {
-    display: flex;
-    gap: 10px;
-    justify-content: end;
-    padding: 0 10px 12px 10px;
-    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
-    > .year {
-      width: 6em;
-      height: 1.5em;
-    }
-    > .month {
-      width: 4.5em;
-      height: 1.5em;
-    }
-  }
-  .everyRow {
-    display: flex;
-    flex-grow: 1;
-    padding: 0 10px;
-    font-size: 14px;
-    line-height: 1.5em;
-    font-weight: 400;
-    color: #000000d9;
-  }
-  .everyCell {
-    flex-grow: 1;
-    flex-shrink: -1;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    cursor: pointer;
-    &:hover {
-      background-color: rgba(100, 100, 100, 0.2);
-    }
-    &.selected {
-      background-color: #1890ff;
-      color: white;
-    }
-  }
-  .day {
-    flex-grow: 10;
-    display: flex;
-    flex-direction: column;
-  }
-  .week {
-    display: flex;
-    width: 100%;
-    padding: 10px;
-    font-size: 14px;
-    line-height: 1.5em;
-    font-weight: 400;
-    color: #000000d9;
-  }
-  .everyWeek {
-    flex-grow: 1;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
-`;
 
 // 获取当前月份
 const currentMonth = dayjs().month() + 1;
@@ -256,7 +188,7 @@ const Calendar: React.FC<CalendarProps> = (props) => {
     );
   };
   return (
-    <CalendarStyled {...rest}>
+    <div className="ui-wrap" {...rest}>
       <div className="select">
         <div className="year">
           <AutoComplete
@@ -280,7 +212,7 @@ const Calendar: React.FC<CalendarProps> = (props) => {
         </div>
       </div>
       {render()}
-    </CalendarStyled>
+    </div>
   );
 };
 Calendar.defaultProps = {

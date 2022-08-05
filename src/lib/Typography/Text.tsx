@@ -1,5 +1,5 @@
 import React, { HTMLAttributes } from 'react';
-import styled from 'styled-components';
+import './index.scss';
 
 export interface TextProps extends HTMLAttributes<HTMLDivElement> {
   children?: React.ReactNode;
@@ -8,18 +8,7 @@ export interface TextProps extends HTMLAttributes<HTMLDivElement> {
   keyboard?: boolean;
   mark?: boolean;
 }
-const TextStyled = styled.span`
-  .ui-keyboard {
-    padding: 0.15em 0.4em 0.1em;
-    background-color: #f9f9f9;
-    border: 1px solid rgba(100, 100, 100, 0.2);
-    font-size: 0.9em;
-    border-radius: 2px;
-  }
-  .ui-marked {
-    background-color: orange;
-  }
-`;
+
 const Text: React.FC<TextProps> = (props) => {
   const { children, strong, keyboard, mark, code, ...rest } = props;
   const render = () => {
@@ -36,7 +25,11 @@ const Text: React.FC<TextProps> = (props) => {
       return <code>{children}</code>;
     }
   };
-  return <TextStyled {...rest}>{render()}</TextStyled>;
+  return (
+    <div className="ui-Text-wrap" {...rest}>
+      {render()}
+    </div>
+  );
 };
 Text.defaultProps = {
   children: '',

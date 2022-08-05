@@ -1,14 +1,5 @@
 import React, { HTMLAttributes, ReactNode } from 'react';
-import styled from 'styled-components';
-
-const BreadcrumbStyled = styled.div`
-  display: flex;
-  align-items: center;
-  height: 1.5em;
-  line-height: 1.5em;
-  text-align: center;
-  gap: 5px;
-`;
+import './index.scss';
 
 export interface BreadcrumbProps extends HTMLAttributes<HTMLDivElement> {
   separator?: string;
@@ -16,10 +7,6 @@ export interface BreadcrumbProps extends HTMLAttributes<HTMLDivElement> {
   data: any[];
   children?: React.ReactNode;
 }
-const Wrap = styled.div`
-  display: flex;
-  gap: 2px;
-`;
 
 const Breadcrumb: React.FC<BreadcrumbProps> = (props) => {
   const { children, separator, renderItem, data, ...rest } = props;
@@ -27,16 +14,20 @@ const Breadcrumb: React.FC<BreadcrumbProps> = (props) => {
     return data.map((item, index) => {
       if (index !== 0) {
         return (
-          <Wrap key={Math.random()}>
+          <div className="ui-inner" key={Math.random()}>
             <span>{separator}</span>
             <span>{renderItem(item)}</span>
-          </Wrap>
+          </div>
         );
       }
       return <div key={Math.random()}>{renderItem(item)}</div>;
     });
   };
-  return <BreadcrumbStyled {...rest}>{render()}</BreadcrumbStyled>;
+  return (
+    <div className="ui-wrap" {...rest}>
+      {render()}
+    </div>
+  );
 };
 Breadcrumb.defaultProps = {
   separator: '/',

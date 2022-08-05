@@ -18,9 +18,12 @@ const ItemGroupStyled = styled.div`
 
   > .label {
     color: #a1a1a1;
-    padding: 16px 10px 8px 10px;
+    padding: 16px 10px 8px 20px;
   }
   > .content {
+    &:last-child {
+      margin-bottom: 50px;
+    }
   }
 `;
 

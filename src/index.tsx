@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-
+import 'nprogress/nprogress.css';
 import './style/index.scss';
 import { HashRouter as Router } from 'react-router-dom';
 

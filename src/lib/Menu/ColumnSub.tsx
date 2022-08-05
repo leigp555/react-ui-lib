@@ -9,19 +9,16 @@ export interface ColumnSubProps extends HTMLAttributes<HTMLDivElement> {
 }
 const SubMenuStyled = styled.div`
   flex-grow: 10;
-
   > .wrap {
-    display: flex;
     height: 100%;
     min-width: 150px;
-    flex-direction: column;
 
     > .content {
       background-color: #fff;
-      //padding: 10px 5px;
+      height: 100%;
       padding: 10px 0;
-      border: 1px solid #dcdfe6;
-      flex-grow: 10;
+      width: 100%;
+      border: none;
     }
     > .label {
       cursor: pointer;
