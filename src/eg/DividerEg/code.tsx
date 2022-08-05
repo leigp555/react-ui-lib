@@ -1,6 +1,6 @@
 import { translate } from '../translate';
 
-export const button = translate(`
+export const code = translate(`
 import { Divider } from 'uix';\n
 export const App:React.RC=()=>{
   return (

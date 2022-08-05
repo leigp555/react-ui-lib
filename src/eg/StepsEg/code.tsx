@@ -1,6 +1,6 @@
 import { translate } from '../translate';
 
-export const button = translate(`
+export const code = translate(`
 import { Steps,Step } from 'uix';\n
 
 const steps = [
