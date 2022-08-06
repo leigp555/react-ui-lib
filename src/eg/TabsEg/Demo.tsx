@@ -48,7 +48,7 @@ export const Demo: React.FC = () => {
         </Tabs>
       </div>
       <div style={{ border: '1px solid orange', padding: '30px' }}>
-        <Tabs defaultKey="1" callback={onChange} gap={100}>
+        <Tabs defaultKey="1" callback={onChange} gap={30}>
           <Tab tab="Tab 1" index="1">
             Content of Tab Pane 1
           </Tab>
@@ -61,7 +61,7 @@ export const Demo: React.FC = () => {
         </Tabs>
       </div>
       <div style={{ border: '1px solid orange', padding: '30px' }}>
-        <Tabs defaultKey="1" callback={onChange} gap={100}>
+        <Tabs defaultKey="1" callback={onChange} gap={30}>
           <Tab
             tab={
               <>
