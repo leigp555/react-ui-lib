@@ -34,6 +34,7 @@ const CheckBoxEg = lazy(() => import('./eg/CheckBoxEg/index'));
 const AutoCompleteEg = lazy(() => import('./eg/AutoCompleteEg/index'));
 const UploadEg = lazy(() => import('./eg/UploadEg/index'));
 const PopoverEg = lazy(() => import('./eg/PopoverEg/index'));
+const SegmentedEg = lazy(() => import('./eg/SegmentedEg/index'));
 
 // 文档页
 // const Docs: React.FC = () => {
@@ -87,6 +88,7 @@ const App: React.FC = () => (
         <Route path="autoComplete" element={<AutoCompleteEg />} />
         <Route path="upload" element={<UploadEg />} />
         <Route path="popover" element={<PopoverEg />} />
+        <Route path="segmented" element={<SegmentedEg />} />
       </Route>
     </Routes>
   </Layout>

@@ -22,6 +22,7 @@ type TabNameProp = {
 
 const TabsStyled = styled.div`
   width: 100%;
+  border: 3px solid blue;
   height: 100%;
   display: flex;
   flex-direction: column;
@@ -37,14 +38,17 @@ const TabName = styled.div`
   //border-bottom: 1px solid rgba(0, 0, 0, 0.1);
   &.segmented {
     gap: 0;
+    height: 35px;
     border-bottom: none;
     background-color: #ededed;
     box-shadow: 4px 4px 1px 1px rgba(237, 237, 237, 1), -4px 4px 1px 1px rgba(237, 237, 237, 1),
       4px -4px 1px 1px rgba(237, 237, 237, 1), -4px -4px 1px 1px rgba(237, 237, 237, 1);
     > span.title {
+      height: 100%;
+      display: flex;
+      align-items: center;
       padding: 6px 15px;
     }
-
     > span.indicator {
       height: 100%;
       background-color: #ffffff;

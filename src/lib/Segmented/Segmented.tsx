@@ -9,7 +9,9 @@ export interface SegmentedProps extends HTMLAttributes<HTMLDivElement> {
   value: React.ReactNode;
   changeValue: Dispatch<SetStateAction<React.ReactNode>>;
 }
-const SegmentedStyled = styled.div``;
+const SegmentedStyled = styled.div`
+  display: inline-flex;
+`;
 const Segmented: React.FC<SegmentedProps> = (props) => {
   const { children, options, value, changeValue, ...rest } = props;
   const onChange = (key: string) => {
@@ -18,16 +20,19 @@ const Segmented: React.FC<SegmentedProps> = (props) => {
   };
   return (
     <SegmentedStyled {...rest}>
-      <Tabs
-        defaultKey={options.indexOf(value).toString()}
-        callback={onChange}
-        bgc="black"
-        segmented
-      >
-        {options.map((item, index) => {
-          return <Tab tab={item} index={index.toString()} key={Math.random()} />;
-        })}
-      </Tabs>
+      <div>
+        <Tabs
+          defaultKey={options.indexOf(value).toString()}
+          callback={onChange}
+          bgc="black"
+          segmented
+          gap={0}
+        >
+          {options.map((item, index) => {
+            return <Tab tab={item} index={index.toString()} key={Math.random()} />;
+          })}
+        </Tabs>
+      </div>
     </SegmentedStyled>
   );
 };
