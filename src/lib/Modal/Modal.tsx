@@ -19,6 +19,7 @@ const Wrap = styled.div`
   position: absolute;
   top: 35%;
   left: 50%;
+  z-index: 100;
   transform: translate(-50%, -50%);
 `;
 
@@ -57,7 +58,7 @@ const Mask = styled.div`
   top: 0;
   left: 0;
   width: 100vw;
-  z-index: -10;
+  z-index: 10;
   height: 100vh;
 `;
 const Modal: React.FC<ModalProps> = (props) => {
@@ -81,7 +82,7 @@ const Modal: React.FC<ModalProps> = (props) => {
           </ModalStyled>
         </CSSTransition>
       </Wrap>
-      <CSSTransition in={visible && mask} classNames="overflow" timeout={1000} unmountOnExit>
+      <CSSTransition in={visible && mask} classNames="overflow" timeout={250} unmountOnExit>
         <Mask className="mask" />
       </CSSTransition>
     </>,

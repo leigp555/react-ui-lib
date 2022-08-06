@@ -50,6 +50,7 @@ const BadgeEg = lazy(() => import('./eg/BadgeEg/index'));
 const AvatarEg = lazy(() => import('./eg/AvatarEg/index'));
 const DrawerEg = lazy(() => import('./eg/DrawerEg/index'));
 const LoadingEg = lazy(() => import('./eg/LoadingEg/index'));
+const ModalEg = lazy(() => import('./eg/ModalEg/index'));
 
 // 文档页
 // const Docs: React.FC = () => {
@@ -122,6 +123,7 @@ const App: React.FC = () => (
         <Route path="avatar" element={<AvatarEg />} />
         <Route path="drawer" element={<DrawerEg />} />
         <Route path="loading" element={<LoadingEg />} />
+        <Route path="modal" element={<ModalEg />} />
       </Route>
     </Routes>
   </Layout>
