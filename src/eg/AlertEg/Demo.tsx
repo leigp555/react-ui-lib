@@ -28,7 +28,7 @@ export const Demo: React.FC = () => {
         </span>
       </Alert>
       <Alert type="loading">
-        <span>Success Text</span>
+        <span>Success Text Lorem ipsum dolor</span>
       </Alert>
     </div>
   );

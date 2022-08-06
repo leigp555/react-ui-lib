@@ -9,7 +9,7 @@ export const Demo: React.FC = () => {
     </>
   );
   return (
-    <div className="Eg" style={{ alignItems: 'center' }}>
+    <div className="Eg" style={{ alignItems: 'center', padding: '100px 0' }}>
       <div className="showEg">
         <Popover position="rightTop" content={content} title="Title" trigger="hover">
           <Button>rightTop</Button>

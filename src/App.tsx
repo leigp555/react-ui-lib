@@ -58,6 +58,7 @@ const ResultEg = lazy(() => import('./eg/ResultEg/index'));
 const SkeletonEg = lazy(() => import('./eg/SkeletonEg/index'));
 const TipEg = lazy(() => import('./eg/TipEg/index'));
 const AlertEg = lazy(() => import('./eg/AlertEg/index'));
+const BackTopEg = lazy(() => import('./eg/BackTopEg/index'));
 
 // 文档页
 // const Docs: React.FC = () => {
@@ -138,6 +139,7 @@ const App: React.FC = () => (
         <Route path="skeleton" element={<SkeletonEg />} />
         <Route path="tip" element={<TipEg />} />
         <Route path="alert" element={<AlertEg />} />
+        <Route path="backTop" element={<BackTopEg />} />
       </Route>
     </Routes>
   </Layout>
