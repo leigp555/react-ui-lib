@@ -1,4 +1,4 @@
-#ui-tip{
+#ui-tip-pop{
   position: fixed;
   top: 0;
   left: 50%;
@@ -14,10 +14,11 @@
     display: none;
   }
 }
-.popMain{
-  animation: show alternate 400ms ;
-}
-@keyframes show {
+.ui-tip-popMain{
+    animation: ui-tip-show alternate 400ms ;
+  }
+
+@keyframes ui-tip-show {
   0%{
     opacity: 0;
     transform: translateY(calc(-100% - 20px));

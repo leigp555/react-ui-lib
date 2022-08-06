@@ -37,7 +37,7 @@ const Alert: React.FC<AlertProps> = (props) => {
   };
   return (
     <div>
-      <div className={classNames(type, 'ui-wrap')} {...rest}>
+      <div className={classNames(type, 'ui-alert-wrap')} {...rest}>
         <span className="icon">{render()}</span>
         <p className="content">{children}</p>
       </div>

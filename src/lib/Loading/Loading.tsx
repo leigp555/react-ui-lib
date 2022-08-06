@@ -26,6 +26,10 @@ const LoadWrap = styled.span`
   transform: translate(-50%, -50%);
   > .inner {
     animation: ${loadAction} infinite 1s linear;
+
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
   }
 `;
 const Loading: React.FC<LoadingProps> = (props) => {

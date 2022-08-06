@@ -1,10 +1,17 @@
-.ui-wrap{
-  max-width: 400px;
+.ui-alert-wrap{
   min-width: 100px;
   padding: 10px 15px;
   display: inline-flex;
-  align-items: start;
-  gap: 10px;
+  align-items: center;
+  gap: 15px;
+  min-height: 2.5em;
+  >.content{
+    max-width: 25em;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+
+  }
   &.success {
     background-color: #e6f7ff;
   }
@@ -24,23 +31,25 @@
     display: flex;
     align-items: center;
   }
-  > .content {
-    display: flex;
-    align-items: center;
-  }
 }
 
 
 
 .loading>.icon{
   animation: loading infinite 1s linear;
+  transform-origin: center;
+  display:inline-flex;
+  justify-content: center;
+  align-items: center;
 }
 
 @keyframes loading {
   0%{
     transform: rotate(0deg);
+    transform-origin: center;
   }
   100%{
     transform: rotate(1turn);
+    transform-origin: center;
   }
 }

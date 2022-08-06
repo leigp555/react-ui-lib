@@ -55,6 +55,9 @@ const NotificationEg = lazy(() => import('./eg/NotificationEg/index'));
 const PopConfirmEg = lazy(() => import('./eg/PopConfirmEg/index'));
 const ProgressEg = lazy(() => import('./eg/ProgressEg/index'));
 const ResultEg = lazy(() => import('./eg/ResultEg/index'));
+const SkeletonEg = lazy(() => import('./eg/SkeletonEg/index'));
+const TipEg = lazy(() => import('./eg/TipEg/index'));
+const AlertEg = lazy(() => import('./eg/AlertEg/index'));
 
 // 文档页
 // const Docs: React.FC = () => {
@@ -132,6 +135,9 @@ const App: React.FC = () => (
         <Route path="popConfirm" element={<PopConfirmEg />} />
         <Route path="progress" element={<ProgressEg />} />
         <Route path="result" element={<ResultEg />} />
+        <Route path="skeleton" element={<SkeletonEg />} />
+        <Route path="tip" element={<TipEg />} />
+        <Route path="alert" element={<AlertEg />} />
       </Route>
     </Routes>
   </Layout>
