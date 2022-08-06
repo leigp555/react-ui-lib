@@ -22,7 +22,7 @@ const Badge: React.FC<BadgeProps> = (props) => {
     return <div className="badgeIcon">{count}</div>;
   };
   return (
-    <div className="ui-wrap" {...rest}>
+    <div className="ui-badge-wrap" {...rest}>
       <div className="content">{children}</div>
       <div>{render()}</div>
     </div>
