@@ -9,9 +9,6 @@ import ComponentAside from './components/ComponentAside';
 // import DocAside from './components/DocAside';
 import Loading from './components/Loading';
 
-// import ButtonEg from './eg/ButtonEg/ButtonEg';
-// import TypographyEg from './eg/Typography/Typography';
-
 const ButtonEg = lazy(() => import('./eg/ButtonEg/index'));
 const TypographyEg = lazy(() => import('./eg/TypographyEg/index'));
 const PaletteEg = lazy(() => import('./eg/PaletteEg/index'));
@@ -46,6 +43,7 @@ const EmptyEg = lazy(() => import('./eg/EmptyEg/index'));
 const ImageEg = lazy(() => import('./eg/ImageEg/index'));
 const ListEg = lazy(() => import('./eg/ListEg/index'));
 const CalendarEg = lazy(() => import('./eg/CalendarEg/index'));
+const CardEg = lazy(() => import('./eg/CardEg/index'));
 
 // 文档页
 // const Docs: React.FC = () => {
@@ -111,6 +109,7 @@ const App: React.FC = () => (
         <Route path="image" element={<ImageEg />} />
         <Route path="list" element={<ListEg />} />
         <Route path="calendar" element={<CalendarEg />} />
+        <Route path="card" element={<CardEg />} />
       </Route>
     </Routes>
   </Layout>

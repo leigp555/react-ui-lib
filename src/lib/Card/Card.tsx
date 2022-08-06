@@ -12,7 +12,7 @@ const CardStyled = styled.div`
   &.bordered {
     border: 1px solid rgba(0, 0, 0, 0.1);
   }
-  > .title {
+  > .ui-card-title {
     padding: 8px 12px;
     display: flex;
     align-items: center;
@@ -35,7 +35,7 @@ const Card: React.FC<CardProps> = (props) => {
   const { children, cardTitle, bordered, action, ...rest } = props;
   return (
     <CardStyled {...rest} className={classNames(`${bordered ? 'bordered' : ''}`)}>
-      <div className="title" style={{ display: cardTitle ? 'flex' : 'none' }}>
+      <div className="ui-card-title" style={{ display: cardTitle ? 'flex' : 'none' }}>
         <div className="cardTitle">{cardTitle}</div>
         <div className="action">{action}</div>
       </div>
