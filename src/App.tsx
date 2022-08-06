@@ -53,6 +53,8 @@ const LoadingEg = lazy(() => import('./eg/LoadingEg/index'));
 const ModalEg = lazy(() => import('./eg/ModalEg/index'));
 const NotificationEg = lazy(() => import('./eg/NotificationEg/index'));
 const PopConfirmEg = lazy(() => import('./eg/PopConfirmEg/index'));
+const ProgressEg = lazy(() => import('./eg/ProgressEg/index'));
+const ResultEg = lazy(() => import('./eg/ResultEg/index'));
 
 // 文档页
 // const Docs: React.FC = () => {
@@ -128,6 +130,8 @@ const App: React.FC = () => (
         <Route path="modal" element={<ModalEg />} />
         <Route path="notification" element={<NotificationEg />} />
         <Route path="popConfirm" element={<PopConfirmEg />} />
+        <Route path="progress" element={<ProgressEg />} />
+        <Route path="result" element={<ResultEg />} />
       </Route>
     </Routes>
   </Layout>

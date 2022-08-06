@@ -43,6 +43,7 @@ const ProgressStyled = styled.div`
 const LineWrap = styled.div`
   align-items: center;
   gap: 10px;
+  height: 8px;
 `;
 
 const LineProgress = styled.div`

@@ -25,7 +25,7 @@ const ResultStyled = styled.div`
     justify-content: center;
     align-items: center;
     gap: 15px;
-    > .title {
+    > .ui-result-title {
       font-size: 1.5em;
       font-weight: 700;
     }
@@ -67,7 +67,7 @@ const Result: React.FC<ResultProps> = (props) => {
         />
       </span>
       <div className="titles">
-        <p className="title">{title}</p>
+        <p className="ui-result-title">{title}</p>
         <p className="subTitle">{subTitle}</p>
       </div>
       <div className="actions">{children}</div>
