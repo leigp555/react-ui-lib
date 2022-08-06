@@ -43,6 +43,8 @@ const TooltipEg = lazy(() => import('./eg/TooltipEg/index'));
 const TreeEg = lazy(() => import('./eg/TreeEg/index'));
 const CommentEg = lazy(() => import('./eg/CommentEg/index'));
 const EmptyEg = lazy(() => import('./eg/EmptyEg/index'));
+const ImageEg = lazy(() => import('./eg/ImageEg/index'));
+const ListEg = lazy(() => import('./eg/ListEg/index'));
 
 // 文档页
 // const Docs: React.FC = () => {
@@ -105,6 +107,8 @@ const App: React.FC = () => (
         <Route path="tree" element={<TreeEg />} />
         <Route path="comment" element={<CommentEg />} />
         <Route path="empty" element={<EmptyEg />} />
+        <Route path="image" element={<ImageEg />} />
+        <Route path="list" element={<ListEg />} />
       </Route>
     </Routes>
   </Layout>
