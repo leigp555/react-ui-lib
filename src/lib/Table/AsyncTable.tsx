@@ -8,7 +8,7 @@ import Loading from '../Loading/Loading';
 export type TableData = {
   header: React.ReactNode[];
   body: { [key: string]: React.ReactNode }[];
-  footer: { title: string; result: string };
+  footer?: { title: string; result: string } | any;
 };
 
 export interface AsyncTableProps extends HTMLAttributes<HTMLDivElement> {

@@ -6,7 +6,7 @@ import Pagination from '../Pagination/Pagination ';
 export type TableData = {
   header: React.ReactNode[];
   body: { [key: string]: React.ReactNode }[];
-  footer?: { title: string; result: string };
+  footer?: { title: string; result: string } | any;
 };
 
 export interface TableProps extends HTMLAttributes<HTMLDivElement> {
@@ -31,18 +31,20 @@ const TableStyled = styled.div`
 
 const Table: React.FC<TableProps> = (props) => {
   const { children, data, perPage, pagination, ...rest } = props;
-  const [showData, setShowData] = useState<{ [key: string]: React.ReactNode }[]>(
-    pagination ? data.body.slice(0, perPage) : data.body
-  );
+  const [showData, setShowData] = useState<{ [key: string]: React.ReactNode }[]>([]);
+  useEffect(() => {
+    if (pagination) {
+      setShowData(data.body.slice(0, perPage));
+    } else {
+      setShowData(data.body);
+    }
+  }, [data.body]);
   const [page, setPage] = useState<number>(1);
   const fn = (currentPage: number, start: number, end: number) => {
     setShowData(data.body.slice(start, end));
     setPage(currentPage);
   };
 
-  useEffect(() => {
-    setShowData(data.body);
-  }, [data]);
   const bodyRender = (arr: { [key: string]: React.ReactNode }) => {
     const vNode: ReactNode[] = [];
     // eslint-disable-next-line no-restricted-syntax
