@@ -92,7 +92,7 @@ const PopWrap = styled.div`
   display: flex;
   flex-direction: column;
   gap: 10px;
-  z-index: 10;
+  z-index: 100;
   background-color: #ffffff;
   &:after {
     content: '';

@@ -1,19 +1,56 @@
 import React from 'react';
-import { Button } from '../../lib';
+import { Button, PopConfirm } from '../../lib';
 
 export const Demo: React.FC = () => {
+  const confirm = () => {
+    console.log('confirm');
+  };
+
+  const cancel = () => {
+    console.log('cancel');
+  };
   return (
-    <div className="Eg">
-      <div className="showEg">
-        <Button>按钮</Button>
-        <Button type="primary">按钮</Button>
-        <Button type="default">按钮</Button>
-        <Button type="link">按钮</Button>
-        <Button type="text">按钮</Button>
-        <Button type="dashed">按钮</Button>
-        <Button disabled>按钮</Button>
-        <Button radius>按钮</Button>
-      </div>
+    <div className="Eg" style={{ alignItems: 'center', padding: '120px' }}>
+      <PopConfirm
+        title="Are you sure to delete this task?"
+        onConfirm={confirm}
+        onCancel={cancel}
+        okText="Yes"
+        cancelText="No"
+        position="top"
+      >
+        <Button type="link">delete</Button>
+      </PopConfirm>
+      <PopConfirm
+        title="Are you sure to delete this task?"
+        onConfirm={confirm}
+        onCancel={cancel}
+        okText="Yes"
+        cancelText="No"
+        position="bottom"
+      >
+        <Button type="link">delete</Button>
+      </PopConfirm>
+      <PopConfirm
+        title="Are you sure to delete this task?"
+        onConfirm={confirm}
+        onCancel={cancel}
+        okText="Yes"
+        cancelText="No"
+        position="left"
+      >
+        <Button type="link">delete</Button>
+      </PopConfirm>
+      <PopConfirm
+        title="Are you sure to delete this task?"
+        onConfirm={confirm}
+        onCancel={cancel}
+        okText="Yes"
+        cancelText="No"
+        position="right"
+      >
+        <Button type="link">delete</Button>
+      </PopConfirm>
     </div>
   );
 };
