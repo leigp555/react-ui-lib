@@ -47,6 +47,9 @@ const CardEg = lazy(() => import('./eg/CardEg/index'));
 const CarouselEg = lazy(() => import('./eg/CarouselEg/index'));
 const CollapseEg = lazy(() => import('./eg/CollapseEg/index'));
 const BadgeEg = lazy(() => import('./eg/BadgeEg/index'));
+const AvatarEg = lazy(() => import('./eg/AvatarEg/index'));
+const DrawerEg = lazy(() => import('./eg/DrawerEg/index'));
+const LoadingEg = lazy(() => import('./eg/LoadingEg/index'));
 
 // 文档页
 // const Docs: React.FC = () => {
@@ -116,6 +119,9 @@ const App: React.FC = () => (
         <Route path="carousel" element={<CarouselEg />} />
         <Route path="collapse" element={<CollapseEg />} />
         <Route path="badge" element={<BadgeEg />} />
+        <Route path="avatar" element={<AvatarEg />} />
+        <Route path="drawer" element={<DrawerEg />} />
+        <Route path="loading" element={<LoadingEg />} />
       </Route>
     </Routes>
   </Layout>
