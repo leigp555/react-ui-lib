@@ -44,6 +44,7 @@ const ImageEg = lazy(() => import('./eg/ImageEg/index'));
 const ListEg = lazy(() => import('./eg/ListEg/index'));
 const CalendarEg = lazy(() => import('./eg/CalendarEg/index'));
 const CardEg = lazy(() => import('./eg/CardEg/index'));
+const CarouselEg = lazy(() => import('./eg/CarouselEg/index'));
 
 // 文档页
 // const Docs: React.FC = () => {
@@ -110,6 +111,7 @@ const App: React.FC = () => (
         <Route path="list" element={<ListEg />} />
         <Route path="calendar" element={<CalendarEg />} />
         <Route path="card" element={<CardEg />} />
+        <Route path="carousel" element={<CarouselEg />} />
       </Route>
     </Routes>
   </Layout>

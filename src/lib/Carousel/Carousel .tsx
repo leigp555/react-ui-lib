@@ -2,7 +2,6 @@ import React, { HTMLAttributes, ReactElement, useEffect, useState } from 'react'
 import styled from 'styled-components';
 import { CSSTransition, TransitionGroup } from 'react-transition-group';
 import './index.scss';
-import LeftIcon from '../icons/left.svg';
 import RightIcon from '../icons/right.svg';
 
 export interface CarouselProps extends HTMLAttributes<HTMLDivElement> {
@@ -163,10 +162,15 @@ const Carousel: React.FC<CarouselProps> = (props) => {
         {createSpan()}
       </SpanWrap>
       <LeftDot onClick={clickLeftIcon}>
-        <LeftIcon width="1.1em" height="1.1em" />
+        <RightIcon
+          width="1.1em"
+          height="1.1em"
+          fill="#22222a"
+          style={{ transform: 'rotate(180deg)' }}
+        />
       </LeftDot>
       <RightDot onClick={clickRightIcon}>
-        <RightIcon width="1.1em" height="1.1em" />
+        <RightIcon width="1.1em" height="1.1em" fill="#22222a" />
       </RightDot>
     </CarouselStyled>
   );
