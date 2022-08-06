@@ -23,7 +23,7 @@ const ListItemStyled = styled.div`
     display: flex;
     flex-direction: column;
     gap: 10px;
-    > .title {
+    > .ui-list-title {
       white-space: nowrap;
       font-weight: 700;
       display: flex;
@@ -43,7 +43,7 @@ const ListItem: React.FC<ListItemProps> = (props) => {
     <ListItemStyled {...rest}>
       <div className="avatar">{avatar}</div>
       <div className="content">
-        <div className="title">{title}</div>
+        <div className="ui-list-title">{title}</div>
         <div className="description">{description}</div>
       </div>
       <div className="actions">{actions}</div>
