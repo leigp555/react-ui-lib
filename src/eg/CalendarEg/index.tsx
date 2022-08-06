@@ -10,7 +10,7 @@ import { code } from './code';
 const Example: React.FC = () => {
   return (
     <div className="content-wrap">
-      <h2 className="title">List 列表</h2>
+      <h2 className="title">Calendar 日历</h2>
       <Intro />
       <Title level={3}>案例</Title>
       <Demo />

@@ -188,7 +188,7 @@ const Calendar: React.FC<CalendarProps> = (props) => {
     );
   };
   return (
-    <div className="ui-wrap" {...rest}>
+    <div className="ui-calendar-wrap" {...rest}>
       <div className="select">
         <div className="year">
           <AutoComplete

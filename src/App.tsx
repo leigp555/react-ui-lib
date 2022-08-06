@@ -45,6 +45,7 @@ const CommentEg = lazy(() => import('./eg/CommentEg/index'));
 const EmptyEg = lazy(() => import('./eg/EmptyEg/index'));
 const ImageEg = lazy(() => import('./eg/ImageEg/index'));
 const ListEg = lazy(() => import('./eg/ListEg/index'));
+const CalendarEg = lazy(() => import('./eg/CalendarEg/index'));
 
 // 文档页
 // const Docs: React.FC = () => {
@@ -109,6 +110,7 @@ const App: React.FC = () => (
         <Route path="empty" element={<EmptyEg />} />
         <Route path="image" element={<ImageEg />} />
         <Route path="list" element={<ListEg />} />
+        <Route path="calendar" element={<CalendarEg />} />
       </Route>
     </Routes>
   </Layout>
