@@ -40,6 +40,9 @@ const TabsEg = lazy(() => import('./eg/TabsEg/index'));
 const TagEg = lazy(() => import('./eg/TagEg/index'));
 const TimelineEg = lazy(() => import('./eg/TimelineEg/index'));
 const TooltipEg = lazy(() => import('./eg/TooltipEg/index'));
+const TreeEg = lazy(() => import('./eg/TreeEg/index'));
+const CommentEg = lazy(() => import('./eg/CommentEg/index'));
+const EmptyEg = lazy(() => import('./eg/EmptyEg/index'));
 
 // 文档页
 // const Docs: React.FC = () => {
@@ -99,6 +102,9 @@ const App: React.FC = () => (
         <Route path="tag" element={<TagEg />} />
         <Route path="timeline" element={<TimelineEg />} />
         <Route path="tooltip" element={<TooltipEg />} />
+        <Route path="tree" element={<TreeEg />} />
+        <Route path="comment" element={<CommentEg />} />
+        <Route path="empty" element={<EmptyEg />} />
       </Route>
     </Routes>
   </Layout>

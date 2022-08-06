@@ -31,9 +31,10 @@ const CommentItemStyled = styled.div`
   width: 100%;
   display: flex;
   align-items: center;
-  gap: 10px;
+  //gap: 10px;
   flex-direction: column;
-  > .wrap {
+
+  > .ui-comment-wrap {
     display: flex;
     gap: 20px;
     > .avatar {
@@ -49,7 +50,7 @@ const CommentItemStyled = styled.div`
       font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Helvetica Neue, Arial,
         Noto Sans, sans-serif, apple color emoji, segoe ui emoji, Segoe UI Symbol, noto color emoji;
 
-      > .title {
+      > .ui-comment-title {
         white-space: nowrap;
         color: #00000073;
         font-size: 12px;
@@ -86,12 +87,12 @@ const Comment: React.FC<CommentProps> = (props) => {
   const render = (comments: CommentData[]): React.ReactNode => {
     return comments.map((item) => (
       <CommentItemStyled key={item.id}>
-        <div className="wrap">
+        <div className="ui-comment-wrap">
           <div className="avatar">
             <Avatar src={item.from_avatar} size={32} />
           </div>
           <div className="content">
-            <div className="title">
+            <div className="ui-comment-title">
               <span>{item.from_auth}</span>
               <span>{dayjs(item.createdAt).fromNow()}</span>
             </div>

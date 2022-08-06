@@ -25,7 +25,7 @@ const Avatar: React.FC<AvatarProps> = (props) => {
   return (
     <div>
       <div
-        className="ui-wrap"
+        className="ui-avatar-wrap"
         style={{ padding: `${size! * 0.2}px`, backgroundColor: bgc }}
         {...rest}
       >

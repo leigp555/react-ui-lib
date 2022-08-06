@@ -22,6 +22,11 @@ const EmptyWrap = styled.div`
   justify-content: center;
   align-items: center;
   max-width: 400px;
+  > .ui-empty-description {
+    word-break: break-all;
+    text-align: center;
+    font-size: 14px;
+  }
 `;
 const Empty: React.FC<EmptyProps> = (props) => {
   const { children, icon, description, ...rest } = props;
@@ -29,7 +34,7 @@ const Empty: React.FC<EmptyProps> = (props) => {
     <EmptyStyled {...rest}>
       <EmptyWrap>
         <span>{icon}</span>
-        <div>{description}</div>
+        <div className="ui-empty-description">{description}</div>
         <div>{children}</div>
       </EmptyWrap>
     </EmptyStyled>

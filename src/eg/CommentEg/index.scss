@@ -1,0 +1,26 @@
+.eg-actions{
+  display: flex;
+  align-items: center;
+  > .agree {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+
+    > .agreeCount,
+    .opposeCount {
+      font-size: 12px;
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      cursor: pointer;
+
+      span {
+        display: flex;
+        align-items: center;
+      }
+    }
+    > .opposeCount {
+      font-size: 12px;
+    }
+  }
+}

@@ -14,14 +14,16 @@ export interface TreeProps extends HTMLAttributes<HTMLDivElement> {
 }
 const TreeStyled = styled.div`
   display: flex;
-  flex-direction: column;
   gap: 10px;
+  flex-direction: column;
   color: rgba(0, 0, 0, 1);
   .inner-container {
     display: flex;
     flex-direction: column;
     margin-top: 5px;
+    margin-left: 1em;
     gap: 8px;
+    //border: 2px solid red;
     .title {
       .content {
         white-space: nowrap;
@@ -32,10 +34,13 @@ const TreeStyled = styled.div`
     }
   }
   .container {
-    display: flex;
+    //display: flex;
     flex-direction: column;
-    gap: 5px;
-    > .title {
+
+    //gap: 5px;
+    //border: 2px solid red;
+    //margin-bottom: 10px;
+    > .ui-tree-title {
       display: flex;
       gap: 8px;
       align-items: center;
@@ -72,7 +77,7 @@ const TreeStyled = styled.div`
 const NoChild = styled.div`
   margin-left: calc(0.8em + 8px);
   display: flex;
-  gap: 5px;
+  //gap: 5px;
   align-items: center;
 `;
 const Tree: React.FC<TreeProps> = (props) => {
@@ -82,7 +87,7 @@ const Tree: React.FC<TreeProps> = (props) => {
       if (item.children) {
         return (
           <div key={item.key} className="container">
-            <div className="title">
+            <div className="ui-tree-title">
               <span
                 className="icon"
                 role="presentation"
@@ -102,9 +107,7 @@ const Tree: React.FC<TreeProps> = (props) => {
               </span>
               <span className="content">{item.title}</span>
             </div>
-            <div className={classNames('inner-container', 'hidden')} style={{ marginLeft: '20px' }}>
-              {render(item.children)}
-            </div>
+            <div className={classNames('inner-container', 'hidden')}>{render(item.children)}</div>
           </div>
         );
       }
