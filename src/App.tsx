@@ -36,6 +36,7 @@ const UploadEg = lazy(() => import('./eg/UploadEg/index'));
 const PopoverEg = lazy(() => import('./eg/PopoverEg/index'));
 const SegmentedEg = lazy(() => import('./eg/SegmentedEg/index'));
 const TableEg = lazy(() => import('./eg/TableEg/index'));
+const TabsEg = lazy(() => import('./eg/TabsEg/index'));
 
 // 文档页
 // const Docs: React.FC = () => {
@@ -91,6 +92,7 @@ const App: React.FC = () => (
         <Route path="popover" element={<PopoverEg />} />
         <Route path="segmented" element={<SegmentedEg />} />
         <Route path="table" element={<TableEg />} />
+        <Route path="tabs" element={<TabsEg />} />
       </Route>
     </Routes>
   </Layout>

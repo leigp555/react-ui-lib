@@ -22,7 +22,6 @@ type TabNameProp = {
 
 const TabsStyled = styled.div`
   width: 100%;
-  border: 3px solid blue;
   height: 100%;
   display: flex;
   flex-direction: column;
@@ -30,6 +29,7 @@ const TabsStyled = styled.div`
 `;
 
 const TabName = styled.div`
+  height: 40px;
   position: relative;
   cursor: pointer;
   display: flex;
@@ -56,6 +56,7 @@ const TabName = styled.div`
   }
 
   > span.title {
+    height: 100%;
     padding: 10px 0;
     position: relative;
     z-index: 10;
