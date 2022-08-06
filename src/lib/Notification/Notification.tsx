@@ -6,12 +6,12 @@ import Cha from '../icons/cha.svg';
 import './index.scss';
 
 const getRoot = () => {
-  const el = document.getElementById('ui-pop');
+  const el = document.getElementById('ui-notification-pop');
   if (el) {
     return el;
   }
   const newEl = document.createElement('div');
-  newEl.setAttribute('id', 'ui-pop');
+  newEl.setAttribute('id', 'ui-notification-pop');
   document.body.appendChild(newEl);
   return newEl;
 };
@@ -56,7 +56,11 @@ const Notification: React.FC<NotificationProps> = (props) => {
   const { children, ...rest } = props;
   const [show, setShow] = useState<boolean>(true);
   return (
-    <NotificationStyled style={{ display: show ? 'flex' : 'none' }} className="popMain" {...rest}>
+    <NotificationStyled
+      style={{ display: show ? 'flex' : 'none' }}
+      className="ui-notification-popMain"
+      {...rest}
+    >
       {children}
       <div className="u1-button" role="presentation" onClick={() => setShow(false)}>
         <Cha width="1em" height="1em" />

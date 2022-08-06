@@ -51,6 +51,8 @@ const AvatarEg = lazy(() => import('./eg/AvatarEg/index'));
 const DrawerEg = lazy(() => import('./eg/DrawerEg/index'));
 const LoadingEg = lazy(() => import('./eg/LoadingEg/index'));
 const ModalEg = lazy(() => import('./eg/ModalEg/index'));
+const NotificationEg = lazy(() => import('./eg/NotificationEg/index'));
+const PopConfirmEg = lazy(() => import('./eg/PopConfirmEg/index'));
 
 // 文档页
 // const Docs: React.FC = () => {
@@ -124,6 +126,8 @@ const App: React.FC = () => (
         <Route path="drawer" element={<DrawerEg />} />
         <Route path="loading" element={<LoadingEg />} />
         <Route path="modal" element={<ModalEg />} />
+        <Route path="notification" element={<NotificationEg />} />
+        <Route path="popConfirm" element={<PopConfirmEg />} />
       </Route>
     </Routes>
   </Layout>

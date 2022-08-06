@@ -1,4 +1,4 @@
-#ui-pop{
+#ui-notification-pop{
   position: fixed;
   top: 0;
   right: 20px;
@@ -14,11 +14,11 @@
   }
 }
 
-.popMain{
+.ui-notification-popMain{
   border: 1px solid rgba(0,0,0,.1);
-  animation: show alternate 400ms ;
+  animation: ui-notification-show alternate 400ms ;
 }
-@keyframes show {
+@keyframes ui-notification-show {
   0%{
     opacity: 0;
     transform: translateX(calc(100% + 20px));
