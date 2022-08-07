@@ -1,19 +1,41 @@
 import { translate } from '../translate';
 
 export const code = translate(`
-import { Button } from 'uix';\n
+import {  Button, Skeleton, SkeletonItem } from 'uix';\n
 export const App:React.RC=()=>{
+  const [loading, setLoading] = useState<boolean>(true);
+  const [loading2, setLoading2] = useState<boolean>(true);
+  const wrapCss: React.CSSProperties = {
+    display: 'flex',
+    flexDirection: 'column',
+    gap: '30px'
+  };
   return (
-     <div>
-        <Button>按钮</Button>
-        <Button type="primary">按钮</Button>
-        <Button type="default">按钮</Button>
-        <Button type="link">按钮</Button>
-        <Button type="text">按钮</Button>
-        <Button type="dashed">按钮</Button>
-        <Button disabled>按钮</Button>
-        <Button radius>按钮</Button>
-     </div>
-  )
+    <div className="Eg">
+      <div style={wrapCss}>
+        <div>
+          <Button onClick={() => setLoading(!loading)}>{loading ? '正在加载' : '已加载'}</Button>
+        </div>
+
+        <Skeleton loading={loading}>
+          <SkeletonItem height={60} span={50} offset={20} />
+          <SkeletonItem span={50} offset={10} />
+          <SkeletonItem span={50} offset={10} />
+          <SkeletonItem span={50} offset={10} />
+        </Skeleton>
+      </div>
+      <div style={wrapCss}>
+        <div>
+          <Button onClick={() => setLoading2(!loading2)}>{loading2 ? '正在加载' : '已加载'}</Button>
+        </div>
+        <Skeleton loading={loading2}>
+          <SkeletonItem span={20} offset={0} />
+          <SkeletonItem span={80} offset={0} />
+          <SkeletonItem span={60} offset={0} />
+          <SkeletonItem span={100} offset={0} />
+        </Skeleton>
+      </div>
+    </div>
+  );
 }
 `);

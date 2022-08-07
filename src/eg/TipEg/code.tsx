@@ -1,19 +1,48 @@
 import { translate } from '../translate';
 
 export const code = translate(`
-import { Button } from 'uix';\n
+import { Button, Tip } from 'uix';\n
 export const App:React.RC=()=>{
   return (
-     <div>
-        <Button>按钮</Button>
-        <Button type="primary">按钮</Button>
-        <Button type="default">按钮</Button>
-        <Button type="link">按钮</Button>
-        <Button type="text">按钮</Button>
-        <Button type="dashed">按钮</Button>
-        <Button disabled>按钮</Button>
-        <Button radius>按钮</Button>
-     </div>
-  )
+    <div className="Eg">
+      <div className="showEg">
+        <Button
+          onClick={() => {
+            Tip('success', 'Lorem ipsum dolor sit amet', 3000);
+          }}
+        >
+          success
+        </Button>
+        <Button
+          onClick={() => {
+            Tip('info', 'Lorem ipsum dolor sit amet', 3000);
+          }}
+        >
+          info
+        </Button>
+        <Button
+          onClick={() => {
+            Tip('warning', 'Lorem ipsum dolor sit amet', 3000);
+          }}
+        >
+          warning
+        </Button>
+        <Button
+          onClick={() => {
+            Tip('error', 'Lorem ipsum dolor sit amet', 3000);
+          }}
+        >
+          error
+        </Button>
+        <Button
+          onClick={() => {
+            Tip('loading', 'Lorem ipsum dolor sit amet,Lorem ipsum dolor sit amet', 3000);
+          }}
+        >
+          loading
+        </Button>
+      </div>
+    </div>
+  );
 }
 `);

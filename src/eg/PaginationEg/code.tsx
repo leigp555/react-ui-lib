@@ -10,9 +10,9 @@ export const App:React.RC=()=>{
   };
   return (
      <div>
-        <Pagination callback={fn} defaultPage={page} totalSrc={10} perPage={5} />{' '}
-        <Pagination callback={fn} defaultPage={page} totalSrc={500} perPage={5} />{' '}
-        <Pagination callback={fn} defaultPage={page} totalSrc={500} perPage={5} />{' '}
+        <Pagination callback={fn} defaultPage={page} totalSrc={10} perPage={5} />
+        <Pagination callback={fn} defaultPage={page} totalSrc={500} perPage={5} />
+        <Pagination callback={fn} defaultPage={page} totalSrc={500} perPage={5} />
         <Pagination
           callback={fn}
           defaultPage={page}

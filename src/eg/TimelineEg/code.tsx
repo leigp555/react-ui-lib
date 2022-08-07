@@ -1,19 +1,65 @@
 import { translate } from '../translate';
 
 export const code = translate(`
-import { Button } from 'uix';\n
+import { TimeItem, Timeline } from 'uix';\n
 export const App:React.RC=()=>{
   return (
-     <div>
-        <Button>按钮</Button>
-        <Button type="primary">按钮</Button>
-        <Button type="default">按钮</Button>
-        <Button type="link">按钮</Button>
-        <Button type="text">按钮</Button>
-        <Button type="dashed">按钮</Button>
-        <Button disabled>按钮</Button>
-        <Button radius>按钮</Button>
-     </div>
-  )
+    <div className="Eg">
+      <Timeline mode="left">
+        <TimeItem color="red">
+          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+        </TimeItem>
+        <TimeItem color="green">
+          Lorem ipsum dolor sit amet, consectetur adipisicing elit.{' '}
+        </TimeItem>
+        <TimeItem color="blue">Lorem ipsum dolor sit amet, consectetur adipisicing elit. </TimeItem>
+        <TimeItem color="orange">
+          Lorem ipsum dolor sit amet, consectetur adipisicing elit.{' '}
+        </TimeItem>
+        <TimeItem dotIcon={<SunIcon width="1em" height="1em" />}>
+          Lorem ipsum dolor sit amet, consectetur adipisicing elit.{' '}
+        </TimeItem>
+      </Timeline>
+      <Timeline mode="right">
+        <TimeItem color="red">
+          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+        </TimeItem>
+        <TimeItem color="green">
+          Lorem ipsum dolor sit amet, consectetur adipisicing elit.{' '}
+        </TimeItem>
+        <TimeItem color="blue">Lorem ipsum dolor sit amet, consectetur adipisicing elit. </TimeItem>
+        <TimeItem color="orange">
+          Lorem ipsum dolor sit amet, consectetur adipisicing elit.{' '}
+        </TimeItem>
+        <TimeItem dotIcon={<SunIcon width="1em" height="1em" />}>
+          Lorem ipsum dolor sit amet, consectetur adipisicing elit.{' '}
+        </TimeItem>
+      </Timeline>
+      <Timeline mode="alternate">
+        <TimeItem color="red">
+          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+        </TimeItem>
+        <TimeItem color="green">
+          Lorem ipsum dolor sit amet, consectetur adipisicing elit.{' '}
+        </TimeItem>
+        <TimeItem color="blue">Lorem ipsum dolor sit amet, consectetur adipisicing elit. </TimeItem>
+        <TimeItem color="orange">
+          Lorem ipsum dolor sit amet, consectetur adipisicing elit.{' '}
+        </TimeItem>
+        <TimeItem dotIcon={<SunIcon width="1em" height="1em" />}>
+          Lorem ipsum dolor sit amet, consectetur adipisicing elit.{' '}
+        </TimeItem>
+      </Timeline>
+    </div>
+  );
 }
 `);

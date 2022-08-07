@@ -1,19 +1,36 @@
 import { translate } from '../translate';
 
 export const code = translate(`
-import { Button } from 'uix';\n
+import { Alert } from 'uix';\n
 export const App:React.RC=()=>{
   return (
-     <div>
-        <Button>按钮</Button>
-        <Button type="primary">按钮</Button>
-        <Button type="default">按钮</Button>
-        <Button type="link">按钮</Button>
-        <Button type="text">按钮</Button>
-        <Button type="dashed">按钮</Button>
-        <Button disabled>按钮</Button>
-        <Button radius>按钮</Button>
-     </div>
-  )
+    <div className="Eg">
+      <Alert type="success">
+        <span>Success Text Lorem ipsum dolor</span>
+      </Alert>
+      <Alert type="info">
+        <span>Info Text Lorem ipsum dolor</span>
+      </Alert>
+      <Alert type="warning">
+        <span>Warning Text Lorem ipsum dolor</span>
+      </Alert>
+      <Alert type="error">
+        <span>Error Text Lorem ipsum dolor</span>
+      </Alert>
+      <Alert type="error">
+        <span>Success Text Lorem ipsum dolor</span>
+      </Alert>
+      <Alert defineIcon={<SuccessIcon width="1.5em" height="1.5em" />}>
+        <span>
+          Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ab autem blanditiis consequuntur
+          corporis exercitationem ipsam, nihil nobis optio perspiciatis quas quibusdam repellendus,
+          sequi voluptate! Deleniti fuga pariatur qui ratione voluptatibus!
+        </span>
+      </Alert>
+      <Alert type="loading">
+        <span>Success Text Lorem ipsum dolor</span>
+      </Alert>
+    </div>
+  );
 }
 `);

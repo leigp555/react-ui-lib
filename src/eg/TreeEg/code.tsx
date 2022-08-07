@@ -1,19 +1,94 @@
 import { translate } from '../translate';
 
 export const code = translate(`
-import { Button } from 'uix';\n
+import { Tree } from 'uix';\n
+const treeData: TypeTree[] = [
+  {
+    title: 'Parent 1',
+    key: '1-0',
+    children: [
+      {
+        title: 'Parent 1-0',
+        key: '1-0-0',
+        children: [
+          {
+            title: 'leaf',
+            key: '1-0-0-0'
+          },
+          {
+            title: 'leaf',
+            key: '1-0-0-1',
+            children: [
+              {
+                title: 'leaf',
+                key: '1-0-0-1-0'
+              },
+              {
+                title: <span>支持图标</span>,
+                key: '1-0-0-1-1',
+                children: [
+                  {
+                    title: '商品价格',
+                    key: '1-0-0-0-1-0'
+                  },
+                  {
+                    title: '商品详情',
+                    key: '1-0-0-0-1-1'
+                  },
+                  {
+                    title: (
+                      <a style={{ color: 'red' }} href="/#">
+                        商品链接
+                      </a>
+                    ),
+                    key: '1-0-0-1-1-2'
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      {
+        title: 'Parent 1-1',
+        key: '0-0-1',
+        children: [{ title: <span style={{ color: '#1890ff' }}>sss</span>, key: '0-0-1-0' }]
+      }
+    ]
+  },
+  {
+    title: 'Parent 2',
+    key: '2-0',
+    children: [
+      {
+        title: 'Parent 2-0',
+        key: '2-0-0',
+        children: [
+          {
+            title: 'leaf',
+            key: '2-0-0-0'
+          },
+          {
+            title: 'leaf',
+            key: '0-0-0-1'
+          }
+        ]
+      },
+      {
+        title: 'Parent 2-1',
+        key: '2-0-1',
+        children: [{ title: <span style={{ color: '#1890ff' }}>sss</span>, key: '0-0-1-0' }]
+      }
+    ]
+  }
+];
 export const App:React.RC=()=>{
   return (
-     <div>
-        <Button>按钮</Button>
-        <Button type="primary">按钮</Button>
-        <Button type="default">按钮</Button>
-        <Button type="link">按钮</Button>
-        <Button type="text">按钮</Button>
-        <Button type="dashed">按钮</Button>
-        <Button disabled>按钮</Button>
-        <Button radius>按钮</Button>
-     </div>
-  )
+    <div className="Eg">
+      <div className="showEg">
+        <Tree data={treeData} />
+      </div>
+    </div>
+  );
 }
 `);

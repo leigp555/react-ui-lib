@@ -1,19 +1,41 @@
 import { translate } from '../translate';
 
 export const code = translate(`
-import { Button } from 'uix';\n
+import { Button, Empty } from 'uix';\n
 export const App:React.RC=()=>{
-  return (
-     <div>
-        <Button>按钮</Button>
-        <Button type="primary">按钮</Button>
-        <Button type="default">按钮</Button>
-        <Button type="link">按钮</Button>
-        <Button type="text">按钮</Button>
-        <Button type="dashed">按钮</Button>
-        <Button disabled>按钮</Button>
-        <Button radius>按钮</Button>
-     </div>
-  )
+return (
+    <div className="Eg">
+      <div style={{ border: '1px solid orange', padding: '20px' }}>
+        <Empty
+          icon={<EmptyIcon width="3em" height="3em" />}
+          description={
+            <p>
+              Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aperiam deleniti dolores
+              dolorum ducimus, eos, impedit
+            </p>
+          }
+        >
+          <Button type="primary">back</Button>
+        </Empty>
+      </div>
+      <div style={{ border: '1px solid orange', padding: '20px' }}>
+        <Empty
+          description={
+            <p>
+              Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aperiam deleniti dolores
+              dolorum ducimus, eos, impedit
+            </p>
+          }
+        >
+          <Button type="primary">back</Button>
+        </Empty>
+      </div>
+      <div style={{ border: '1px solid orange', padding: '20px' }}>
+        <Empty icon={<EmptyIcon3 width="3em" height="3em" />}>
+          <Button type="primary">back</Button>
+        </Empty>
+      </div>
+    </div>
+  );
 }
 `);

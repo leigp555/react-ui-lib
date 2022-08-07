@@ -1,19 +1,62 @@
 import { translate } from '../translate';
 
 export const code = translate(`
-import { Button } from 'uix';\n
+import { Button, Checkbox } from 'uix';\n
 export const App:React.RC=()=>{
+  const options: Options[] = [
+    { label: 'apple', value: 'apple' },
+    { label: 'pear', value: 'pear' },
+    { label: 'orange', value: 'orange' },
+    { label: 'yellow', value: 'yellow' },
+    { label: 'red', value: 'red' },
+    { label: 'black', value: 'black' },
+    { label: 'blue', value: 'blue' }
+  ];
+  const [checked, setChecked] = useState<string[]>(['apple']);
+  useEffect(() => {
+    console.log(checked);
+  }, [checked]);
   return (
-     <div>
-        <Button>按钮</Button>
-        <Button type="primary">按钮</Button>
-        <Button type="default">按钮</Button>
-        <Button type="link">按钮</Button>
-        <Button type="text">按钮</Button>
-        <Button type="dashed">按钮</Button>
-        <Button disabled>按钮</Button>
-        <Button radius>按钮</Button>
-     </div>
-  )
+    <div className="Eg">
+      <div>
+        <Checkbox options={options} checked={checked} setChecked={setChecked} />
+      </div>
+      <div style={{ display: 'flex', gap: '20px' }}>
+        <Button
+          onClick={() => {
+            console.log(checked);
+          }}
+        >
+          log selected
+        </Button>
+        <Button
+          onClick={() => {
+            const arr = options.reduce((result, item) => {
+              result.push(item.value);
+              return result;
+            }, [] as string[]);
+            setChecked(arr);
+          }}
+        >
+          check all
+        </Button>
+        <Button
+          onClick={() => {
+            setChecked([]);
+          }}
+        >
+          clear all
+        </Button>
+      </div>
+      <div>
+        <Checkbox
+          options={options}
+          checked={checked}
+          setChecked={setChecked}
+          style={{ flexDirection: 'column', gap: '5px' }}
+        />
+      </div>
+    </div>
+  );
 }
 `);

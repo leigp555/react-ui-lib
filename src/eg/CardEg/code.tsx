@@ -4,16 +4,46 @@ export const code = translate(`
 import { Button } from 'uix';\n
 export const App:React.RC=()=>{
   return (
-     <div>
-        <Button>按钮</Button>
-        <Button type="primary">按钮</Button>
-        <Button type="default">按钮</Button>
-        <Button type="link">按钮</Button>
-        <Button type="text">按钮</Button>
-        <Button type="dashed">按钮</Button>
-        <Button disabled>按钮</Button>
-        <Button radius>按钮</Button>
-     </div>
-  )
+    <div className="Eg">
+      <div>
+        <Card
+          cardTitle="Default size card"
+          action={
+            <a href="/#" style={{ color: 'red' }}>
+              More
+            </a>
+          }
+          style={{ width: 300 }}
+        >
+          <p>Card content</p>
+          <p>Card content</p>
+          <p>Card content</p>
+        </Card>
+      </div>
+      <div>
+        <Card
+          bordered={false}
+          cardTitle="Default size card"
+          action={
+            <a href="/#" style={{ color: 'red' }}>
+              More
+            </a>
+          }
+          style={{ width: 300 }}
+        >
+          <p>Card content</p>
+          <p>Card content</p>
+          <p>Card content</p>
+        </Card>
+      </div>
+      <div>
+        <Card style={{ width: 300 }}>
+          <p>Card content</p>
+          <p>Card content</p>
+          <p>Card content</p>
+        </Card>
+      </div>
+    </div>
+  );
 }
 `);

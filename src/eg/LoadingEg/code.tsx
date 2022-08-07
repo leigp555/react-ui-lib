@@ -1,19 +1,32 @@
 import { translate } from '../translate';
 
 export const code = translate(`
-import { Button } from 'uix';\n
+import {  Button, Loading } from 'uix';\n
 export const App:React.RC=()=>{
+  const [loading, setLoading] = useState(true);
   return (
-     <div>
-        <Button>按钮</Button>
-        <Button type="primary">按钮</Button>
-        <Button type="default">按钮</Button>
-        <Button type="link">按钮</Button>
-        <Button type="text">按钮</Button>
-        <Button type="dashed">按钮</Button>
-        <Button disabled>按钮</Button>
-        <Button radius>按钮</Button>
-     </div>
-  )
+    <div className="Eg">
+      <div className="showEg">
+        <Loading loading={loading}>
+          <p>
+            Lorem ipsum dolor sit amet, consectetur adipisicing elit. A aliquam beatae cum, delectus
+            dolore doloribus ducimus eveniet explicabo iusto labore numquam quae quaerat quis
+            recusandae reprehenderit sapiente, suscipit totam velit.
+          </p>
+          <p>
+            Lorem ipsum dolor sit amet, consectetur adipisicing elit. A aliquam beatae cum, delectus
+            dolore doloribus ducimus eveniet explicabo iusto labore numquam quae quaerat quis
+            recusandae reprehenderit sapiente, suscipit totam velit.
+          </p>
+          <p>
+            Lorem ipsum dolor sit amet, consectetur adipisicing elit. A aliquam beatae cum, delectus
+            dolore doloribus ducimus eveniet explicabo iusto labore numquam quae quaerat quis
+            recusandae reprehenderit sapiente, suscipit totam velit.
+          </p>
+        </Loading>
+        <Button onClick={() => setLoading(!loading)}>{loading ? '加载中' : ' 未加载'}</Button>
+      </div>
+    </div>
+  );
 }
 `);

@@ -9,9 +9,9 @@ export const Demo: React.FC = () => {
   };
   return (
     <div className="Eg">
-      <Pagination callback={fn} defaultPage={page} totalSrc={10} perPage={5} />{' '}
-      <Pagination callback={fn} defaultPage={page} totalSrc={500} perPage={5} />{' '}
-      <Pagination callback={fn} defaultPage={page} totalSrc={500} perPage={5} />{' '}
+      <Pagination callback={fn} defaultPage={page} totalSrc={10} perPage={5} />
+      <Pagination callback={fn} defaultPage={page} totalSrc={500} perPage={5} />
+      <Pagination callback={fn} defaultPage={page} totalSrc={500} perPage={5} />
       <Pagination callback={fn} defaultPage={page} totalSrc={100} perPage={5} moreTool statistic />
       <Pagination callback={fn} defaultPage={page} totalSrc={500} perPage={5} goTool />
       <Pagination callback={fn} defaultPage={page} totalSrc={500} perPage={5} goTool moreTool />

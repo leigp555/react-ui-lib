@@ -1,19 +1,26 @@
 import { translate } from '../translate';
 
 export const code = translate(`
-import { Button } from 'uix';\n
+import { Avatar } from 'uix';\n
 export const App:React.RC=()=>{
   return (
-     <div>
-        <Button>按钮</Button>
-        <Button type="primary">按钮</Button>
-        <Button type="default">按钮</Button>
-        <Button type="link">按钮</Button>
-        <Button type="text">按钮</Button>
-        <Button type="dashed">按钮</Button>
-        <Button disabled>按钮</Button>
-        <Button radius>按钮</Button>
-     </div>
-  )
+    <div className="Eg">
+      <div className="showEg" style={{ gap: '50px' }}>
+        <Avatar size={20}>
+          <UserIcon width="5em" height="5em" />
+        </Avatar>
+        <Avatar src="https://joeschmoe.io/api/v1/random" size={40} />
+        <Avatar size={30}>
+          <UserIcon width="2em" height="2em" />
+        </Avatar>
+        <Avatar size={60} bgc="#1890ff">
+          <UserIcon width="2em" height="2em" />
+        </Avatar>
+        <Avatar size={50} bgc="inherit">
+          <UserIcon width="2em" height="2em" />
+        </Avatar>
+      </div>
+    </div>
+  );
 }
 `);
