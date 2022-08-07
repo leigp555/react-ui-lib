@@ -6,19 +6,25 @@ export const Intro: React.FC = () => {
     <Typography>
       <Title level={3}>简介</Title>
       <Paragraph>
-        <p>按钮用于开始一个即时操作。</p>
-        <p>在 Ant Design 中我们提供了五种按钮。</p>
+        <p>在需要等待加载内容的位置提供一个占位图形组合。</p>
+      </Paragraph>
+      <Title level={3}>组件概览</Title>
+      <Paragraph>
         <ul>
-          <li>主按钮：用于主行动点，一个操作区域只能有一个主按钮。</li>
-          <li>默认按钮：用于没有主次之分的一组行动点。</li>
-          <li>虚线按钮：常用于添加操作。</li>
-          <li>文本按钮：用于最次级的行动点。</li>
-          <li>链接按钮：一般用于链接，即导航至某位置。</li>
+          <li>Skeleton: 主要组件</li>
+          <li>SkeletonItem: 子组件</li>
         </ul>
       </Paragraph>
       <Title level={3}>使用场景</Title>
       <Paragraph>
-        <p>标记了一个（或封装一组）操作命令，响应用户点击行为，触发相应的业务逻辑。</p>
+        <ul>
+          <li>网络较慢，需要长时间等待加载处理的情况下。</li>
+          <li>图文信息内容较多的列表/卡片中。</li>
+          <li>只在第一次加载数据的时候使用。</li>
+          <li>
+            可以被 Spin 完全代替，但是在可用的场景下可以比 Spin 提供更好的视觉效果和用户体验。
+          </li>
+        </ul>
       </Paragraph>
     </Typography>
   );

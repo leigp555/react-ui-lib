@@ -6,19 +6,24 @@ export const Intro: React.FC = () => {
     <Typography>
       <Title level={3}>简介</Title>
       <Paragraph>
-        <p>按钮用于开始一个即时操作。</p>
-        <p>在 Ant Design 中我们提供了五种按钮。</p>
+        <p>协助进行页面级整体布局。</p>
+      </Paragraph>
+      <Title level={3}>组件概述</Title>
+      <Paragraph>
         <ul>
-          <li>主按钮：用于主行动点，一个操作区域只能有一个主按钮。</li>
-          <li>默认按钮：用于没有主次之分的一组行动点。</li>
-          <li>虚线按钮：常用于添加操作。</li>
-          <li>文本按钮：用于最次级的行动点。</li>
-          <li>链接按钮：一般用于链接，即导航至某位置。</li>
+          <li>
+            Layout：布局容器，其下可嵌套 Header Sider Content Footer 或 Layout
+            本身，可以放在任何父容器中。
+          </li>
+          <li>Header：顶部布局，自带默认样式，其下可嵌套任何元素，只能放在 Layout 中。</li>
+          <li>Sider：侧边栏，自带默认样式及基本功能，其下可嵌套任何元素，只能放在 Layout 中。</li>
+          <li>Content：内容部分，自带默认样式，其下可嵌套任何元素，只能放在 Layout 中。</li>
+          <li>Footer：底部布局，自带默认样式，其下可嵌套任何元素，只能放在 Layout 中。</li>
         </ul>
       </Paragraph>
       <Title level={3}>使用场景</Title>
       <Paragraph>
-        <p>标记了一个（或封装一组）操作命令，响应用户点击行为，触发相应的业务逻辑。</p>
+        <p>快速布局页面</p>
       </Paragraph>
     </Typography>
   );

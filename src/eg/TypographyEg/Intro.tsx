@@ -6,19 +6,23 @@ export const Intro: React.FC = () => {
     <Typography>
       <Title level={3}>简介</Title>
       <Paragraph>
-        <p>按钮用于开始一个即时操作。</p>
-        <p>在 Ant Design 中我们提供了五种按钮。</p>
+        <p>对文章内容进行排版，统一文章样式</p>
+      </Paragraph>
+      <Title level={3}>组件概述</Title>
+      <Paragraph>
         <ul>
-          <li>主按钮：用于主行动点，一个操作区域只能有一个主按钮。</li>
-          <li>默认按钮：用于没有主次之分的一组行动点。</li>
-          <li>虚线按钮：常用于添加操作。</li>
-          <li>文本按钮：用于最次级的行动点。</li>
-          <li>链接按钮：一般用于链接，即导航至某位置。</li>
+          <li>Typography：组件包裹</li>
+          <li>Paragraph：段落</li>
+          <li>Text：用于加粗，标记</li>
+          <li>Title：标题可设置h1-h6</li>
         </ul>
       </Paragraph>
       <Title level={3}>使用场景</Title>
       <Paragraph>
-        <p>标记了一个（或封装一组）操作命令，响应用户点击行为，触发相应的业务逻辑。</p>
+        <ul>
+          <li>当需要展示标题、段落、列表内容时使用，如文章/博客/日志的文本样式。</li>
+          <li>当需要一列基于文本的基础操作时，如拷贝/省略/可编辑。</li>
+        </ul>
       </Paragraph>
     </Typography>
   );

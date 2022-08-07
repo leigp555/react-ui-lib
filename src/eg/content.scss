@@ -20,12 +20,21 @@
     padding: 50px 20px;
     margin-bottom: 30px;
     overflow: hidden;
-    > .showEg {
+    >.perEg{
       display: flex;
-      flex-wrap: wrap;
-      gap: 10px;
-      margin-bottom: 30px;
-      max-width: 100%;
+      flex-direction: column;
+      gap: 20px;
+      >.showEg {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+        margin-bottom: 30px;
+        max-width: 100%;
+        border: 1px solid rgba(100,100,100,.2);
+
+
+        padding: 50px 10px;
+      }
     }
   }
   > .showCode {
