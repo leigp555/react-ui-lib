@@ -7,7 +7,7 @@ export const Demo: React.FC = () => {
   };
   return (
     <div className="Eg">
-      <div className="showEg" style={{ width: '300px', height: '300px' }}>
+      <div style={{ width: '300px', height: '280px' }}>
         <Calendar callback={fn} />
       </div>
     </div>

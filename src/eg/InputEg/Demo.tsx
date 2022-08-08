@@ -30,7 +30,7 @@ export const Demo: React.FC = () => {
   };
   return (
     <div className="Eg">
-      <Row height={30}>
+      <Row height={60}>
         <Col span={25} offset={0}>
           <Input placeholder="用户名" rules={validate} callback={callback}>
             <InputIcon position="left">
@@ -39,7 +39,7 @@ export const Demo: React.FC = () => {
           </Input>
         </Col>
       </Row>
-      <Row height={30}>
+      <Row height={60}>
         <Col span={25} offset={0}>
           <Input placeholder="用户名" rules={validate} allowClear>
             <InputIcon position="left">
@@ -48,7 +48,7 @@ export const Demo: React.FC = () => {
           </Input>
         </Col>
       </Row>
-      <Row height={30}>
+      <Row height={60}>
         <Col span={25} offset={0}>
           <Input type="password" placeholder="密码" allowClear>
             <InputIcon position="left">
@@ -57,7 +57,7 @@ export const Demo: React.FC = () => {
           </Input>
         </Col>
       </Row>
-      <Row height={30}>
+      <Row height={60} style={{ marginBottom: '100px' }}>
         <Col span={25} offset={0}>
           <Input allowClear tips={tips} />
         </Col>

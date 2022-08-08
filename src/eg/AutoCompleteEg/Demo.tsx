@@ -62,7 +62,12 @@ export const Demo: React.FC = () => {
   };
   return (
     <div className="Eg">
-      <AutoComplete tips={tips} value={value} callback={fn} style={{ width: '200px' }}>
+      <AutoComplete
+        tips={tips}
+        value={value}
+        callback={fn}
+        style={{ width: '200px', marginBottom: '100px' }}
+      >
         <LeftIcon width="0.8em" height="0.8em" style={{ transform: 'rotate(-90deg)' }} />
       </AutoComplete>
     </div>

@@ -22,7 +22,7 @@ const ItemGroupStyled = styled.div`
   }
   > .content {
     &:last-child {
-      margin-bottom: 10px;
+      margin-bottom: 100px;
     }
   }
 `;

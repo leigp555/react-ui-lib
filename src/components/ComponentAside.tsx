@@ -22,9 +22,9 @@ const NavLinkP = styled(NavLink)`
 `;
 
 const ComponentAside: React.FC = () => {
-  const [order, setOrder] = useState<number>(1);
+  const [order, setOrder] = useState<number>(-1);
   return (
-    <Sider style={{ width: '210px', backgroundColor: '#fff' }}>
+    <Sider style={{ width: '220px', backgroundColor: '#fff' }}>
       <div
         style={{
           height: '100%',

@@ -10,6 +10,7 @@ export interface ColumnSubProps extends HTMLAttributes<HTMLDivElement> {
 const SubMenuStyled = styled.div`
   flex-grow: 10;
   > .wrap {
+    width: 100%;
     height: 100%;
     min-width: 150px;
 
