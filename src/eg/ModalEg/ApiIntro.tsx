@@ -3,8 +3,11 @@ import { Table } from '../../lib';
 import { TableData } from '../../lib/Table/Table';
 
 const dataBody = [
-  { 姓名: '张三', 年龄: 1, 班级: 335, 身高: 175 },
-  { 姓名: '张三', 年龄: 2, 班级: 335, 身高: 175 }
+  { 属性: 'title', 说明: '标题', 类型: 'string', 默认值: '' },
+  { 属性: 'visible', 说明: '显示', 类型: 'boolean', 默认值: 'false' },
+  { 属性: 'onOk', 说明: '确定执行回调', 类型: ' () => void', 默认值: '' },
+  { 属性: 'onCancel', 说明: '取消执行回调', 类型: ' () => void', 默认值: '' },
+  { 属性: 'mask', 说明: '遮罩', 类型: 'boolean', 默认值: 'true' }
 ];
 const data: TableData = {
   header: ['属性', '说明', '类型', '默认值'],

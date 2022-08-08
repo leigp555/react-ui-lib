@@ -2,10 +2,7 @@ import React from 'react';
 import { Table } from '../../lib';
 import { TableData } from '../../lib/Table/Table';
 
-const dataBody = [
-  { 姓名: '张三', 年龄: 1, 班级: 335, 身高: 175 },
-  { 姓名: '张三', 年龄: 2, 班级: 335, 身高: 175 }
-];
+const dataBody = [{ 属性: 'loading', 说明: '显示加载中图标', 类型: 'boolean', 默认值: 'false' }];
 const data: TableData = {
   header: ['属性', '说明', '类型', '默认值'],
   body: dataBody

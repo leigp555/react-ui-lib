@@ -37,6 +37,11 @@
     margin-bottom: 30px;
   }
   .interface {
-    padding-bottom: 50px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    padding-bottom: 80px;
+    max-width: 100%;
+    overflow-x: auto;
   }
 }

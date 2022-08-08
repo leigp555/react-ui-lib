@@ -22,6 +22,12 @@ thead>tr,tfoot>tr {
 }
 #ui-table th,#ui-table tfoot td{
   font-weight: 700;
+
+}
+
+td{
+  word-break: break-all;
+
 }
 
 //奇偶行颜色设置
