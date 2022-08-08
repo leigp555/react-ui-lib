@@ -62,7 +62,7 @@ const Head: React.FC = () => {
             }}
           >
             <NavLinkP to="/docs">文档</NavLinkP>
-            <NavLinkP to="/">组件</NavLinkP>
+            <NavLinkP to="/components">组件</NavLinkP>
             <NavLinkP to="/about">关于</NavLinkP>
           </div>
         </Col>

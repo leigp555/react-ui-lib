@@ -15,7 +15,7 @@ export interface ColumnMenuProps extends HTMLAttributes<HTMLDivElement> {
 
 const MenuStyled = styled.div`
   display: flex;
-  user-select: none;
+  //user-select: none;
 `;
 const ColumnMenu: React.FC<ColumnMenuProps> = (props) => {
   const { children, setOrder, defaultOrder, ...rest } = props;

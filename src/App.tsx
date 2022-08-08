@@ -89,7 +89,7 @@ const App: React.FC = () => (
   <Layout>
     <Head />
     <Routes>
-      <Route path="/" element={<Components />}>
+      <Route path="/components" element={<Components />}>
         <Route index element={<TypographyEg />} />
         <Route path="button" element={<ButtonEg />} />
         <Route path="palette" element={<PaletteEg />} />
