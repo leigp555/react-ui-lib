@@ -72,9 +72,32 @@ const Drawer = lazy(() => import('./lib/Drawer/Drawer'));
 
 // 文档页
 const Docs: React.FC = () => {
+  const [visible, setVisible] = useState(false);
+  const showDrawer = () => {
+    setVisible(true);
+  };
+  const onClose = () => {
+    setVisible(false);
+  };
   return (
     <Content>
-      <DocAside />
+      <div className="menu-button">
+        <Button
+          onClick={() => {
+            showDrawer();
+          }}
+        >
+          菜单
+        </Button>
+      </div>
+      <Drawer title="简介" position="left" visible={visible} onClose={onClose} width={220}>
+        <div>
+          <DocAside />
+        </div>
+      </Drawer>
+      <div className="ui-aside-eg">
+        <DocAside />
+      </div>
       <div className="component-show">
         <Suspense fallback={<Loading />}>
           <Outlet />
@@ -94,7 +117,7 @@ const Components: React.FC = () => {
   };
   return (
     <Content>
-      <div style={{ position: 'fixed', top: '80px', right: '30px', zIndex: 1000 }}>
+      <div className="menu-button">
         <Button
           onClick={() => {
             showDrawer();

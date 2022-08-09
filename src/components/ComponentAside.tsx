@@ -23,6 +23,7 @@ const NavLinkP = styled(NavLink)`
 
 const ComponentAside: React.FC = () => {
   const [order, setOrder] = useState<number>(-1);
+  // const params = useParams();
   return (
     <Sider>
       <ColumnMenu
