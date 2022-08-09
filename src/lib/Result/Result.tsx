@@ -28,10 +28,14 @@ const ResultStyled = styled.div`
     > .ui-result-title {
       font-size: 1.5em;
       font-weight: 700;
+      word-break: break-word;
+      text-align: center;
     }
     > .subTitle {
       font-size: 12px;
       font-weight: 500;
+      word-break: break-word;
+      text-align: center;
     }
   }
   > .actions {

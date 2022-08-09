@@ -20,9 +20,16 @@ const Slider: React.FC<SliderProps> = (props) => {
     spanRef.current?.classList.remove('dotFocus');
   };
 
-  const moveHandle = (e: { clientX: number }) => {
+  const moveHandle: React.EventHandler<any> = (e) => {
+    const isTouchDevice = 'ontouchstart' in document.documentElement;
+    let clientX = 0;
+    if (!isTouchDevice) {
+      clientX = e.clientX;
+    } else {
+      clientX = e.touches[0].clientX;
+    }
+
     if (isMove.current) {
-      const { clientX } = e;
       const parentNode = spanRef.current!.parentNode as HTMLDivElement;
       const parentClientX = parentNode.getBoundingClientRect().left;
       const parentWidth = parentNode.getBoundingClientRect().width;
@@ -44,6 +51,7 @@ const Slider: React.FC<SliderProps> = (props) => {
   const cancelHandle = () => {
     isMove.current = false;
     document.body.removeEventListener('mousemove', moveHandle);
+    document.body.removeEventListener('touchmove', moveHandle);
   };
   const outHandle = () => {
     document.body.removeEventListener('mousemove', moveHandle);
@@ -52,10 +60,16 @@ const Slider: React.FC<SliderProps> = (props) => {
   };
   const dotDown = () => {
     isMove.current = true;
-    document.body.removeEventListener('mouseleave', outHandle);
-    document.body.addEventListener('mousemove', moveHandle);
-    document.body.addEventListener('mouseup', cancelHandle);
-    document.body.addEventListener('mouseleave', outHandle);
+    const isTouchDevice = 'ontouchstart' in document.documentElement;
+    if (!isTouchDevice) {
+      document.body.removeEventListener('mouseleave', outHandle);
+      document.body.addEventListener('mousemove', moveHandle);
+      document.body.addEventListener('mouseup', cancelHandle);
+      document.body.addEventListener('mouseleave', outHandle);
+    } else {
+      document.body.addEventListener('touchmove', moveHandle);
+      document.body.addEventListener('touchend', cancelHandle);
+    }
   };
   useEffect(() => {
     const parentNode = spanRef.current!.parentNode as HTMLDivElement;
@@ -93,6 +107,7 @@ const Slider: React.FC<SliderProps> = (props) => {
           onFocus={dotFocus}
           onBlur={dotBlur}
           onMouseDown={dotDown}
+          onTouchStart={dotDown}
           ref={spanRef}
         />
       </div>

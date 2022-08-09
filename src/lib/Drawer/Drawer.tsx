@@ -22,7 +22,7 @@ const Wrap = styled.div`
   width: 100vw;
   height: 100vh;
   overflow: hidden;
-  z-index: 1;
+  z-index: 1000;
   transition: all 500ms;
   .overflow {
     position: absolute;
@@ -42,7 +42,7 @@ type PropStyled = {
 };
 
 const DrawerStyled = styled.div`
-  z-index: 100;
+  z-index: 1000;
   background-color: white;
   // width: ${(props: PropStyled) => `${props.width}px`};
   // height: ${(props: PropStyled) => `${props.height}px`};
@@ -85,17 +85,35 @@ const DrawerStyled = styled.div`
       border-bottom: 1px solid rgba(0, 0, 0, 0.1);
     }
     > .content {
-      padding: 20px 15px;
+      //padding: 20px 15px;
       display: flex;
       gap: 10px;
       flex-direction: column;
+      overflow-y: auto;
+      max-height: 100vh;
+      &::-webkit-scrollbar {
+        //整个滚动条的宽高设置
+        width: 4px; //宽高只有一个能生效，如果是横向滚动条高度生效，纵向滚动条宽度生效
+        height: 4px;
+      }
+      &::-webkit-scrollbar-thumb {
+        //滚动条滑块的设置
+        border-radius: 3px;
+        -moz-border-radius: 3px;
+        -webkit-border-radius: 3px;
+        background-color: #c3c3c3;
+      }
+      &::-webkit-scrollbar-track {
+        //滚动条轨道设置
+        background-color: #f1f1f1;
+      }
     }
   }
 `;
 export const Drawer: React.FC<DrawerProps> = (props) => {
   const { children, title, width, height, position, onClose, visible } = props;
   return createPortal(
-    <Wrap style={{ zIndex: visible ? 1 : -1 }}>
+    <Wrap style={{ zIndex: visible ? 1000 : -1 }}>
       <CSSTransition in={visible} classNames={position} timeout={250} unmountOnExit>
         <DrawerStyled className={classNames(position!)} width={width!} height={height!}>
           <div className="main">

@@ -35,7 +35,7 @@ export const Demo: React.FC = () => {
         </Button>
         <Button
           onClick={() => {
-            Tip('loading', 'Lorem ipsum dolor sit amet,Lorem ipsum dolor sit amet', 3000);
+            Tip('loading', 'Lorem ipsum dolor sit amet', 3000);
           }}
         >
           loading

@@ -50,7 +50,7 @@ export const Demo: React.FC = () => {
           position="right"
           visible={visible}
           onClose={onClose}
-          width={400}
+          width={200}
           height={400}
         >
           <p>Some contents...</p>
@@ -62,7 +62,7 @@ export const Demo: React.FC = () => {
           position="left"
           visible={visible2}
           onClose={onClose2}
-          width={400}
+          width={200}
           height={400}
         >
           <p>Some contents...</p>
@@ -74,7 +74,7 @@ export const Demo: React.FC = () => {
           position="top"
           visible={visible3}
           onClose={onClose3}
-          width={400}
+          width={200}
           height={200}
         >
           <p>Some contents...</p>
@@ -86,7 +86,7 @@ export const Demo: React.FC = () => {
           position="bottom"
           visible={visible4}
           onClose={onClose4}
-          width={400}
+          width={200}
           height={200}
         >
           <p>Some contents...</p>

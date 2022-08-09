@@ -28,14 +28,8 @@ const DocAside: React.FC = () => {
     linkRef.current?.click();
   });
   return (
-    <Sider style={{ width: '220px', backgroundColor: '#fff' }}>
-      <div
-        style={{
-          height: '100%',
-          color: '#000000d9',
-          borderRight: '1px solid rgba(100,100,100,.2)'
-        }}
-      >
+    <Sider>
+      <div className="ui-aside-eg" style={{ borderRight: '1px solid rgba(100,100,100,.2)' }}>
         <ColumnMenu
           defaultOrder={order}
           setOrder={setOrder}

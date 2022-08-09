@@ -14,7 +14,7 @@ export interface SiderProps extends HTMLAttributes<HTMLHeadElement> {
 const SiderStyled = styled(CommonStyle)`
   flex-shrink: 0;
   height: 100%;
-  width: 100%;
+  //width: 100%;
   overflow-y: auto;
   &::-webkit-scrollbar {
     //整个滚动条的宽高设置
@@ -40,7 +40,7 @@ const Sider: React.FC<SiderProps> = (props) => {
 };
 Sider.defaultProps = {
   height: '100%',
-  width: '200px',
+  width: 'auto',
   children: '',
   bgc: 'inherit',
   direction: 'row',

@@ -1,5 +1,5 @@
 import React from 'react';
-import { Col, Input, InputIcon, Row } from '../../lib';
+import { Input, InputIcon } from '../../lib';
 import { Tip, Validate } from '../../lib/Input/Input';
 import UserIcon from '../../lib/icons/user.svg';
 import PassIcon from '../../lib/icons/password.svg';
@@ -30,38 +30,30 @@ export const Demo: React.FC = () => {
   };
   return (
     <div className="Eg">
-      <Row height={60}>
-        <Col span={25} offset={0}>
-          <Input placeholder="用户名" rules={validate} callback={callback}>
-            <InputIcon position="left">
-              <UserIcon width="1em" height="1em" />
-            </InputIcon>
-          </Input>
-        </Col>
-      </Row>
-      <Row height={60}>
-        <Col span={25} offset={0}>
-          <Input placeholder="用户名" rules={validate} allowClear>
-            <InputIcon position="left">
-              <UserIcon width="1em" height="1em" />
-            </InputIcon>
-          </Input>
-        </Col>
-      </Row>
-      <Row height={60}>
-        <Col span={25} offset={0}>
-          <Input type="password" placeholder="密码" allowClear>
-            <InputIcon position="left">
-              <PassIcon width="1em" height="1em" />
-            </InputIcon>
-          </Input>
-        </Col>
-      </Row>
-      <Row height={60} style={{ marginBottom: '100px' }}>
-        <Col span={25} offset={0}>
-          <Input allowClear tips={tips} />
-        </Col>
-      </Row>
+      <div style={{ height: '60px', width: '250px' }}>
+        <Input placeholder="用户名" rules={validate} callback={callback}>
+          <InputIcon position="left">
+            <UserIcon width="1em" height="1em" />
+          </InputIcon>
+        </Input>
+      </div>
+      <div style={{ height: '60px', width: '250px' }}>
+        <Input placeholder="用户名" rules={validate} allowClear>
+          <InputIcon position="left">
+            <UserIcon width="1em" height="1em" />
+          </InputIcon>
+        </Input>
+      </div>
+      <div style={{ height: '60px', width: '250px' }}>
+        <Input type="password" placeholder="密码" allowClear>
+          <InputIcon position="left">
+            <PassIcon width="1em" height="1em" />
+          </InputIcon>
+        </Input>
+      </div>
+      <div style={{ height: '60px', width: '250px' }}>
+        <Input allowClear tips={tips} />
+      </div>
     </div>
   );
 };

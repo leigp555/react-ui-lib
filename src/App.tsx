@@ -1,4 +1,4 @@
-import React, { Suspense, lazy } from 'react';
+import React, { Suspense, lazy, useState } from 'react';
 import { Routes, Route, Outlet } from 'react-router-dom';
 import './style/app.scss';
 import 'highlight.js/styles/github-dark-dimmed.css';
@@ -9,10 +9,15 @@ import ComponentAside from './components/ComponentAside';
 import Loading from './components/Loading';
 import DocAside from './components/DocAside';
 
+// import NotFound from './components/NotFound';
+
 const Intro = lazy(() => import('./docs/Intro'));
 const Install = lazy(() => import('./docs/Install'));
 const Usage = lazy(() => import('./docs/Usage'));
+
+const NotFound = lazy(() => import('./components/NotFound'));
 const ButtonEg = lazy(() => import('./eg/ButtonEg/index'));
+
 const TypographyEg = lazy(() => import('./eg/TypographyEg/index'));
 const PaletteEg = lazy(() => import('./eg/PaletteEg/index'));
 const SpaceEg = lazy(() => import('./eg/SpaceEg/index'));
@@ -62,6 +67,8 @@ const SkeletonEg = lazy(() => import('./eg/SkeletonEg/index'));
 const TipEg = lazy(() => import('./eg/TipEg/index'));
 const AlertEg = lazy(() => import('./eg/AlertEg/index'));
 const BackTopEg = lazy(() => import('./eg/BackTopEg/index'));
+const Button = lazy(() => import('./lib/Button/Button'));
+const Drawer = lazy(() => import('./lib/Drawer/Drawer'));
 
 // 文档页
 const Docs: React.FC = () => {
@@ -78,9 +85,32 @@ const Docs: React.FC = () => {
 };
 // 组件页
 const Components: React.FC = () => {
+  const [visible, setVisible] = useState(false);
+  const showDrawer = () => {
+    setVisible(true);
+  };
+  const onClose = () => {
+    setVisible(false);
+  };
   return (
     <Content>
-      <ComponentAside />
+      <div style={{ position: 'fixed', top: '80px', right: '30px', zIndex: 1000 }}>
+        <Button
+          onClick={() => {
+            showDrawer();
+          }}
+        >
+          菜单
+        </Button>
+      </div>
+      <Drawer title="组件概览" position="left" visible={visible} onClose={onClose} width={220}>
+        <div>
+          <ComponentAside />
+        </div>
+      </Drawer>
+      <div className="ui-aside-eg">
+        <ComponentAside />
+      </div>
       <div className="component-show" id="app-component-show">
         <Suspense fallback={<Loading />}>
           <Outlet />
@@ -94,6 +124,12 @@ const App: React.FC = () => (
   <Layout>
     <Head />
     <Routes>
+      <Route path="/" element={<Docs />}>
+        <Route index element={<Intro />} />
+        <Route path="intro" element={<Intro />} />
+        <Route path="install" element={<Install />} />
+        <Route path="usage" element={<Usage />} />
+      </Route>
       <Route path="/docs" element={<Docs />}>
         <Route index element={<Intro />} />
         <Route path="intro" element={<Intro />} />
@@ -153,25 +189,16 @@ const App: React.FC = () => (
         <Route path="alert" element={<AlertEg />} />
         <Route path="backTop" element={<BackTopEg />} />
       </Route>
+      <Route
+        path="*"
+        element={
+          <Suspense fallback={<Loading />}>
+            <NotFound />
+          </Suspense>
+        }
+      />
     </Routes>
   </Layout>
 );
 
 export default App;
-
-// <Content>
-//   <ComponentAside />
-//   <Suspense fallback={<Loading />}>
-//     <Route
-//       path="/"
-//       element={
-//         <div className="component-show">
-//           <Outlet />
-//         </div>
-//       }
-//     >
-//       <Route path="/" element={<TypographyEg />} />
-//       <Route path="/button" element={<ButtonEg />} />
-//     </Route>
-//   </Suspense>
-// </Content>

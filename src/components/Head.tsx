@@ -24,6 +24,7 @@ const NavLinkP = styled(NavLink)`
   align-items: center;
   transition: all 250ms;
   font-weight: 700;
+  background-color: white;
   &.active {
     color: #1890ff;
     border-top: 2px solid #1890ff;
@@ -40,7 +41,9 @@ const Head: React.FC = () => {
       bgc="#fff"
       style={{
         boxShadow: '0 0px 5px 2px rgba(0,0,0,.1)',
-        borderBottom: '1px solid rgba(100,100,100,0.2)'
+        borderBottom: '1px solid rgba(100,100,100,0.2)',
+        maxWidth: '100vw',
+        overflow: 'hidden'
       }}
     >
       <Row gap={0} justify="start" height={50}>
@@ -49,7 +52,7 @@ const Head: React.FC = () => {
             <LogoIcon width="3em" height="3em" />
           </Logo>
         </Col>
-        <Col span={100} justify="space-between" color="white">
+        <Col span={100} offset={5} justify="space-between" color="white">
           <div
             style={{
               width: '100%',

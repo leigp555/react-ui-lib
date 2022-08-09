@@ -39,7 +39,7 @@ const NotificationStyled = styled.div`
   line-height: 1.5em;
   font-size: 14px;
   display: flex;
-  max-width: 400px;
+  max-width: 300px;
   flex-direction: column;
   gap: 10px;
   padding: 20px;

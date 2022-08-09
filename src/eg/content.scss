@@ -1,5 +1,8 @@
 .content-wrap{
   padding: 30px 40px;
+  @media (width<500px) {
+    padding: 30px 10px;
+  }
   color: #262626;
   font-size: 14px;
   flex-grow: 10;
@@ -18,8 +21,11 @@
     gap: 20px;
     border: 1px solid rgba(100,100,100,.2);
     padding: 50px 20px;
+    @media (width<500px) {
+      padding: 50px 5px;
+    }
     margin-bottom: 30px;
-    overflow: hidden;
+    overflow-x: auto;
       >.showEg {
         flex-grow: 10;
         display: flex;
@@ -27,7 +33,7 @@
         gap: 10px;
         margin-bottom: 30px;
         max-width: 100%;
-        border: 1px solid rgba(100,100,100,.2);
+        //border: 1px solid rgba(100,100,100,.2);
         justify-content: center;
         width: 100%;
         user-select: auto;
