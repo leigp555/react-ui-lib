@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import { NavLink } from 'react-router-dom';
+import React, { useEffect, useState } from 'react';
+import { NavLink, useLocation, useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
 import Sider from '../lib/Layout/Sider';
 import { ColumnMenu, ColumnSub, ItemGroup, Label, MenuItem } from '../lib';
@@ -23,13 +23,22 @@ const NavLinkP = styled(NavLink)`
 
 const DocAside: React.FC = () => {
   const [order, setOrder] = useState<number>(-1);
+  const location = useLocation();
+  const navigate = useNavigate();
+  useEffect(() => {
+    const pathArr = location.pathname.split('/');
+    const mathStr = pathArr[pathArr.length - 1];
+    if (mathStr === 'docs' || !mathStr) {
+      navigate('/docs/intro');
+    }
+  }, []);
   return (
     <Sider>
       <ColumnMenu
         defaultOrder={order}
         setOrder={setOrder}
         style={{
-          width: '100%',
+          width: '220px',
           height: '100%'
         }}
       >

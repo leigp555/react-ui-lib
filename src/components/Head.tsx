@@ -4,7 +4,6 @@ import styled from 'styled-components';
 import Header from '../lib/Layout/Header';
 import Row from '../lib/Grid/Row';
 import Col from '../lib/Grid/Col';
-import Button from '../lib/Button/Button';
 import LogoIcon from '../static/logo.svg';
 import GithubIcon from '../static/github.svg';
 
@@ -70,9 +69,9 @@ const Head: React.FC = () => {
           </div>
         </Col>
         <Col span={10} justify="center">
-          <Button type="link">
+          <a href="https://github.com/leigp555/react-ui-lib">
             <GithubIcon width="1.5em" height="1.5em" />
-          </Button>
+          </a>
         </Col>
       </Row>
     </Header>
