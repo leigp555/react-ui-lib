@@ -16,6 +16,7 @@ const SiderStyled = styled(CommonStyle)`
   height: 100%;
   //width: 100%;
   overflow-y: auto;
+  overflow-x: hidden;
   &::-webkit-scrollbar {
     //整个滚动条的宽高设置
     width: 4px; //宽高只有一个能生效，如果是横向滚动条高度生效，纵向滚动条宽度生效

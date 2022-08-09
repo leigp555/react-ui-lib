@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import { NavLink } from 'react-router-dom';
+import React, { useEffect, useRef, useState } from 'react';
+import { NavLink, useLocation } from 'react-router-dom';
 import styled from 'styled-components';
 import Sider from '../lib/Layout/Sider';
 import { ColumnMenu, ColumnSub, ItemGroup, Label, MenuItem } from '../lib';
@@ -23,13 +23,22 @@ const NavLinkP = styled(NavLink)`
 
 const DocAside: React.FC = () => {
   const [order, setOrder] = useState<number>(-1);
+  const initLink = useRef<HTMLAnchorElement | null>(null);
+  const location = useLocation();
+  useEffect(() => {
+    const pathArr = location.pathname.split('/');
+    const mathStr = pathArr[pathArr.length - 1];
+    if (mathStr === 'docs') {
+      initLink.current?.click();
+    }
+  }, []);
   return (
     <Sider>
       <ColumnMenu
         defaultOrder={order}
         setOrder={setOrder}
         style={{
-          width: '100%',
+          width: '220px',
           height: '100%'
         }}
       >
@@ -37,7 +46,9 @@ const DocAside: React.FC = () => {
           <ItemGroup>
             <Label>快速上手</Label>
             <MenuItem order={1}>
-              <NavLinkP to="intro">简介</NavLinkP>
+              <NavLinkP to="intro" ref={initLink}>
+                简介
+              </NavLinkP>
             </MenuItem>
             <MenuItem order={1}>
               <NavLinkP to="install">安装</NavLinkP>
