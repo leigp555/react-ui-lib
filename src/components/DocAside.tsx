@@ -1,10 +1,32 @@
-import React, { useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { NavLink } from 'react-router-dom';
+import styled from 'styled-components';
 import Sider from '../lib/Layout/Sider';
 import { ColumnMenu, ColumnSub, ItemGroup, Label, MenuItem } from '../lib';
 
+const NavLinkP = styled(NavLink)`
+  height: 40px;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  transition: all 250ms;
+  font-size: 14px;
+  color: #000000d9;
+  &.active {
+    color: #1890ff;
+    border-right: 3px solid #1890ff;
+  }
+  &:hover {
+    color: #1890ff;
+  }
+`;
+
 const DocAside: React.FC = () => {
-  const [order, setOrder] = useState<number>(1);
+  const [order, setOrder] = useState<number>(-1);
+  const linkRef = useRef<HTMLAnchorElement | null>(null);
+  useEffect(() => {
+    linkRef.current?.click();
+  });
   return (
     <Sider style={{ width: '220px', backgroundColor: '#fff' }}>
       <div
@@ -24,15 +46,19 @@ const DocAside: React.FC = () => {
         >
           <ColumnSub>
             <ItemGroup>
-              <Label>简介</Label>
+              <Label>快速上手</Label>
               <MenuItem order={1}>
-                <NavLink to="button">button</NavLink>
+                <NavLinkP to="intro" ref={linkRef}>
+                  简介
+                </NavLinkP>
               </MenuItem>
-              <MenuItem order={2}>反若是通</MenuItem>
-              <Label>安装</Label>
-              <MenuItem order={11}>反若是通</MenuItem>
-              <MenuItem order={12}>和选中了。</MenuItem>
-              <MenuItem order={13}>这两个兄弟</MenuItem>
+              <MenuItem order={1}>
+                <NavLinkP to="install">安装</NavLinkP>
+              </MenuItem>
+
+              <MenuItem order={1}>
+                <NavLinkP to="usage">如何使用</NavLinkP>
+              </MenuItem>
             </ItemGroup>
           </ColumnSub>
         </ColumnMenu>

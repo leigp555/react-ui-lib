@@ -6,10 +6,12 @@ import Layout from './lib/Layout/Layout';
 import Content from './lib/Layout/Content';
 import Head from './components/Head';
 import ComponentAside from './components/ComponentAside';
-// import DocAside from './components/DocAside';
 import Loading from './components/Loading';
 import DocAside from './components/DocAside';
 
+const Intro = lazy(() => import('./docs/Intro'));
+const Install = lazy(() => import('./docs/Install'));
+const Usage = lazy(() => import('./docs/Usage'));
 const ButtonEg = lazy(() => import('./eg/ButtonEg/index'));
 const TypographyEg = lazy(() => import('./eg/TypographyEg/index'));
 const PaletteEg = lazy(() => import('./eg/PaletteEg/index'));
@@ -67,7 +69,9 @@ const Docs: React.FC = () => {
     <Content>
       <DocAside />
       <div className="component-show">
-        <Outlet />
+        <Suspense fallback={<Loading />}>
+          <Outlet />
+        </Suspense>
       </div>
     </Content>
   );
@@ -90,7 +94,12 @@ const App: React.FC = () => (
   <Layout>
     <Head />
     <Routes>
-      <Route path="docs" element={<Docs />} />
+      <Route path="/docs" element={<Docs />}>
+        <Route index element={<Intro />} />
+        <Route path="intro" element={<Intro />} />
+        <Route path="install" element={<Install />} />
+        <Route path="usage" element={<Usage />} />
+      </Route>
       <Route path="/components" element={<Components />}>
         <Route index element={<TypographyEg />} />
         <Route path="typography" element={<TypographyEg />} />
