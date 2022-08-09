@@ -8,6 +8,7 @@ import Head from './components/Head';
 import ComponentAside from './components/ComponentAside';
 // import DocAside from './components/DocAside';
 import Loading from './components/Loading';
+import DocAside from './components/DocAside';
 
 const ButtonEg = lazy(() => import('./eg/ButtonEg/index'));
 const TypographyEg = lazy(() => import('./eg/TypographyEg/index'));
@@ -61,16 +62,16 @@ const AlertEg = lazy(() => import('./eg/AlertEg/index'));
 const BackTopEg = lazy(() => import('./eg/BackTopEg/index'));
 
 // 文档页
-// const Docs: React.FC = () => {
-//   return (
-//     <Content>
-//       <DocAside />
-//       <div className="component-show">
-//         <Outlet />
-//       </div>
-//     </Content>
-//   );
-// };
+const Docs: React.FC = () => {
+  return (
+    <Content>
+      <DocAside />
+      <div className="component-show">
+        <Outlet />
+      </div>
+    </Content>
+  );
+};
 // 组件页
 const Components: React.FC = () => {
   return (
@@ -89,8 +90,10 @@ const App: React.FC = () => (
   <Layout>
     <Head />
     <Routes>
+      <Route path="docs" element={<Docs />} />
       <Route path="/components" element={<Components />}>
         <Route index element={<TypographyEg />} />
+        <Route path="typography" element={<TypographyEg />} />
         <Route path="button" element={<ButtonEg />} />
         <Route path="palette" element={<PaletteEg />} />
         <Route path="space" element={<SpaceEg />} />

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { NavLink } from 'react-router-dom';
 import styled from 'styled-components';
 import Sider from '../lib/Layout/Sider';
@@ -23,6 +23,10 @@ const NavLinkP = styled(NavLink)`
 
 const ComponentAside: React.FC = () => {
   const [order, setOrder] = useState<number>(-1);
+  const linkRef = useRef<HTMLAnchorElement | null>(null);
+  useEffect(() => {
+    linkRef.current?.click();
+  });
   return (
     <Sider style={{ width: '220px', backgroundColor: '#fff' }}>
       <div
@@ -43,7 +47,9 @@ const ComponentAside: React.FC = () => {
             <ItemGroup>
               <Label>通用</Label>
               <MenuItem order={45}>
-                <NavLinkP to="/components/">Typography 排版</NavLinkP>
+                <NavLinkP to="/components/typography" ref={linkRef}>
+                  Typography 排版
+                </NavLinkP>
               </MenuItem>
               <MenuItem order={47}>
                 <NavLinkP to="/components/button">Button 按钮</NavLinkP>

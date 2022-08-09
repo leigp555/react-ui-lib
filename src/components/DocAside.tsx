@@ -6,19 +6,21 @@ import { ColumnMenu, ColumnSub, ItemGroup, Label, MenuItem } from '../lib';
 const DocAside: React.FC = () => {
   const [order, setOrder] = useState<number>(1);
   return (
-    <Sider width="15vw" justify="start" aline="start">
+    <Sider style={{ width: '220px', backgroundColor: '#fff' }}>
       <div
         style={{
           height: '100%',
-          width: '100%',
-          color: 'red',
-          backgroundColor: 'orange'
+          color: '#000000d9',
+          borderRight: '1px solid rgba(100,100,100,.2)'
         }}
       >
         <ColumnMenu
           defaultOrder={order}
           setOrder={setOrder}
-          style={{ width: '100%', height: '100%', borderRight: 'none' }}
+          style={{
+            width: '100%',
+            height: '100%'
+          }}
         >
           <ColumnSub>
             <ItemGroup>
@@ -27,8 +29,6 @@ const DocAside: React.FC = () => {
                 <NavLink to="button">button</NavLink>
               </MenuItem>
               <MenuItem order={2}>反若是通</MenuItem>
-            </ItemGroup>
-            <ItemGroup>
               <Label>安装</Label>
               <MenuItem order={11}>反若是通</MenuItem>
               <MenuItem order={12}>和选中了。</MenuItem>
