@@ -10,10 +10,10 @@ jobs:
     steps:
       - uses: actions/checkout@v2
 
-      - name: Setup Node.js v14.x
+      - name: Setup Node.js v16.x
         uses: actions/setup-node@v1
         with:
-          node-version: "14.x"
+          node-version: "16.x"
 
       - name: Install
         run: yarn install
@@ -25,5 +25,5 @@ jobs:
         uses: peaceiris/actions-gh-pages@v3
         with:
           publish_dir: ./build
-          github_token: ${{ secrets.NOTE }}
+          github_token: ${{ secrets.Lib }}
           commit_message: publish
