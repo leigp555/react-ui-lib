@@ -3,6 +3,7 @@ import styled from 'styled-components';
 
 export interface LabelProps extends HTMLAttributes<HTMLDivElement> {
   children?: React.ReactNode;
+  name?: 'Label';
 }
 const LabelStyled = styled.div`
   display: flex;
@@ -17,7 +18,8 @@ const Label: React.FC<LabelProps> = (props) => {
   return <LabelStyled {...rest}>{children}</LabelStyled>;
 };
 Label.defaultProps = {
-  children: ''
+  children: '',
+  name: 'Label'
 };
 
 export default Label;

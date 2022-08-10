@@ -4,6 +4,7 @@ import styled from 'styled-components';
 export interface CarouselItemProps extends HTMLAttributes<HTMLDivElement> {
   order: number;
   children?: React.ReactNode;
+  name?: string;
 }
 const CarouselItemStyled = styled.div`
   width: 100%;
@@ -16,7 +17,8 @@ const CarouselItem: React.FC<CarouselItemProps> = (props) => {
   return <CarouselItemStyled {...rest}>{children}</CarouselItemStyled>;
 };
 CarouselItem.defaultProps = {
-  children: ''
+  children: '',
+  name: 'CarouselItem'
 };
 
 export default CarouselItem;

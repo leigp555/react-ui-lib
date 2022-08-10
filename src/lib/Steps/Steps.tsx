@@ -14,7 +14,7 @@ const Steps: React.FC<StepsProps> = (props) => {
   const render = () => {
     return React.Children.map(children, (child, index) => {
       const vNode = child as VNode;
-      if (React.isValidElement(vNode) && vNode.type.name === 'Step') {
+      if (React.isValidElement(vNode) && vNode.props.name === 'Step') {
         if (index < children!.length - 1) {
           return (
             <>

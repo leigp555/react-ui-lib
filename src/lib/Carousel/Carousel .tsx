@@ -105,7 +105,7 @@ const Carousel: React.FC<CarouselProps> = (props) => {
       const vNode = child as VNode;
       if (
         React.isValidElement(vNode) &&
-        vNode.type.name === 'CarouselItem' &&
+        vNode.props.name === 'CarouselItem' &&
         vNode.props.order === index
       ) {
         return vNode;
