@@ -110,11 +110,7 @@ const Tabs: React.FC<TabsProps> = (props) => {
     let currentVNode!: VNode;
     React.Children.map(children, (child) => {
       const vNode = child as VNode;
-      if (
-        React.isValidElement(vNode) &&
-        vNode.type.name === 'Tab' &&
-        vNode.props.index === currentIndex
-      ) {
+      if (React.isValidElement(vNode) && vNode.props.index === currentIndex) {
         currentVNode = vNode;
         spanRef.current.push(
           <span
@@ -129,11 +125,7 @@ const Tabs: React.FC<TabsProps> = (props) => {
             </span>
           </span>
         );
-      } else if (
-        React.isValidElement(vNode) &&
-        vNode.type.name === 'Tab' &&
-        vNode.props.index !== currentIndex
-      ) {
+      } else if (React.isValidElement(vNode) && vNode.props.index !== currentIndex) {
         spanRef.current.push(
           <span
             className="title"
