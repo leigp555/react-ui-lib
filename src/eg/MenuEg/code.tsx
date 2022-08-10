@@ -1,19 +1,32 @@
 import { translate } from '../translate';
 
 export const code = translate(`
-import { Button } from 'uix-react';\n
+import {  ColumnMenu, ColumnSub, ItemGroup, Label, MenuItem  } from 'uix-react';\n
 export const App:React.RC=()=>{
+  const [order, setOrder] = useState<number>(1);
   return (
-     <div>
-        <Button>按钮</Button>
-        <Button type="primary">按钮</Button>
-        <Button type="default">按钮</Button>
-        <Button type="link">按钮</Button>
-        <Button type="text">按钮</Button>
-        <Button type="dashed">按钮</Button>
-        <Button disabled>按钮</Button>
-        <Button radius>按钮</Button>
-     </div>
-  )
+    <div className="Eg">
+      <ColumnMenu defaultOrder={order} setOrder={setOrder} style={{ width: '180px' }}>
+        <ColumnSub>
+          <ItemGroup>
+            <Label>标签1</Label>
+            <MenuItem order={1}>Option 1</MenuItem>
+            <MenuItem order={2}>Option 2</MenuItem>
+            <ItemGroup>
+              <Label>标签2</Label>
+              <MenuItem order={3}>Option 4</MenuItem>
+              <MenuItem order={4}>Option 5</MenuItem>
+            </ItemGroup>
+          </ItemGroup>
+          <ItemGroup>
+            <Label>标签3</Label>
+            <MenuItem order={5}>Option 6</MenuItem>
+            <MenuItem order={6}>Option 7</MenuItem>
+            <MenuItem order={7}>Option 8</MenuItem>
+          </ItemGroup>
+        </ColumnSub>
+      </ColumnMenu>
+    </div>
+  );
 }
 `);

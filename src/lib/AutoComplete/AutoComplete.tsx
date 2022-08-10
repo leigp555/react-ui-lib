@@ -3,7 +3,7 @@ import './index.scss';
 
 export type Tip = {
   id: number;
-  message: string;
+  message: React.ReactNode;
 };
 export interface AutoCompleteProps extends HTMLAttributes<HTMLDivElement> {
   children?: React.ReactNode;

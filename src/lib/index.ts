@@ -32,8 +32,6 @@ export { default as Drawer } from './Drawer/Drawer';
 export type { DrawerProps } from './Drawer/Drawer';
 export { default as Dropdown } from './Dropdown/Dropdown ';
 export type { DropdownProps } from './Dropdown/Dropdown ';
-export { default as DropdownItem } from './Dropdown/DropdownItem';
-export type { DropdownItemProps } from './Dropdown/DropdownItem';
 export { default as Empty } from './Empty/Empty';
 export type { EmptyProps } from './Empty/Empty';
 export { default as Form } from './Form/Form';

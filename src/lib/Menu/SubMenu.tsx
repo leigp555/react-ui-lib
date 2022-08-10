@@ -57,6 +57,7 @@ const SubMenu: React.FC<SubMenuProps> = (props) => {
   const getOrder = (e: React.MouseEvent<HTMLDivElement>) => common(setOrder)(e);
   const render = () => {
     const { labelNode, otherNode } = nodeList(children);
+    console.log(otherNode);
     return (
       <>
         <span className="label">{labelNode}</span>
@@ -72,6 +73,7 @@ const SubMenu: React.FC<SubMenuProps> = (props) => {
       </>
     );
   };
+  render();
   return (
     <SubMenuStyled needBorder={needBorder} {...rest}>
       <div

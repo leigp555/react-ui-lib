@@ -9,6 +9,25 @@ export interface ColumnSubProps extends HTMLAttributes<HTMLDivElement> {
 }
 const SubMenuStyled = styled.div`
   flex-grow: 10;
+  border: 1px solid rgba(100, 100, 100, 0.2);
+  overflow-y: auto;
+  overflow-x: hidden;
+  &::-webkit-scrollbar {
+    //整个滚动条的宽高设置
+    width: 4px; //宽高只有一个能生效，如果是横向滚动条高度生效，纵向滚动条宽度生效
+    height: 4px;
+  }
+  &::-webkit-scrollbar-thumb {
+    //滚动条滑块的设置
+    border-radius: 3px;
+    -moz-border-radius: 3px;
+    -webkit-border-radius: 3px;
+    background-color: #c3c3c3;
+  }
+  &::-webkit-scrollbar-track {
+    //滚动条轨道设置
+    background-color: #f1f1f1;
+  }
   > .wrap {
     width: 100%;
     height: 100%;

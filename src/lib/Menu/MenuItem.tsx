@@ -20,10 +20,10 @@ const MenuItemStyled = styled.div`
   font-weight: 500;
   color: #2c3e50;
   transition: all 250ms;
-  //&.active {
-  //  color: #1890ff;
-  //  background-color: #ecf5ff;
-  //}
+  &.active {
+    color: #1890ff;
+    background-color: #ecf5ff;
+  }
   &:hover {
     color: #1890ff;
     background-color: #ecf5ff;

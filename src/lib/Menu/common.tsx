@@ -1,13 +1,13 @@
 import React, { Dispatch, ReactElement, ReactNode, SetStateAction } from 'react';
 
-export const common = (setOrder: Dispatch<SetStateAction<number>>) => {
+export const common = (setOrder: Dispatch<SetStateAction<number>> | null) => {
   return (e: React.MouseEvent<HTMLDivElement>) => {
     const el = e.target as HTMLDivElement;
     const orderStr = el.getAttribute('data-order');
     if (orderStr) {
       el.classList.add('active');
       const order = parseInt(orderStr, 10);
-      setOrder(order);
+      if (setOrder) setOrder(order);
     }
   };
 };
@@ -20,7 +20,7 @@ export const nodeList = (children: ReactNode) => {
   const otherNode: VNode[] = [];
   React.Children.map(children, (child) => {
     const vNode = child as VNode;
-    if (React.isValidElement(vNode) && vNode.type.name === 'Label') {
+    if (React.isValidElement(vNode) && vNode.props.name === 'Label') {
       labelNode.push(vNode);
     } else {
       otherNode.push(vNode);

@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useEffect, useRef } from 'react';
 import { NavLink, useLocation } from 'react-router-dom';
 import styled from 'styled-components';
 import Sider from '../lib/Layout/Sider';
@@ -22,7 +22,6 @@ const NavLinkP = styled(NavLink)`
 `;
 
 const DocAside: React.FC = () => {
-  const [order, setOrder] = useState<number>(-1);
   const initLink = useRef<HTMLAnchorElement | null>(null);
   const location = useLocation();
   useEffect(() => {
@@ -35,8 +34,6 @@ const DocAside: React.FC = () => {
   return (
     <Sider>
       <ColumnMenu
-        defaultOrder={order}
-        setOrder={setOrder}
         style={{
           width: '220px',
           height: '100%'

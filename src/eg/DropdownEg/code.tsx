@@ -1,19 +1,35 @@
 import { translate } from '../translate';
 
 export const code = translate(`
-import { Button } from 'uix-react';\n
+import {  Dropdown, Button } from 'uix-react';\n
+
+const tips: Tip[] = [
+  {
+    id: 1,
+    message: <span style={{ color: 'red' }}>Lorem ipsum</span>
+  },
+  {
+    id: 2,
+    message: 'Lorem ipsum dolor sit amet'
+  },
+  {
+    id: 3,
+    message: <span style={{ color: '#1890ff' }}>Lorem ipsum dolor</span>
+  },
+  {
+    id: 4,
+    message: 'Lorem ipsum'
+  }
+];
 export const App:React.RC=()=>{
   return (
-     <div>
-        <Button>按钮</Button>
-        <Button type="primary">按钮</Button>
-        <Button type="default">按钮</Button>
-        <Button type="link">按钮</Button>
-        <Button type="text">按钮</Button>
-        <Button type="dashed">按钮</Button>
-        <Button disabled>按钮</Button>
-        <Button radius>按钮</Button>
-     </div>
-  )
+    <div className="Eg">
+      <div className="showEg">
+        <Dropdown tips={tips}>
+          <Button>xxx</Button>
+        </Dropdown>
+      </div>
+    </div>
+  );
 }
 `);
