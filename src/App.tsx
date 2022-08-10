@@ -1,23 +1,20 @@
-import React, { Suspense, lazy, useState } from 'react';
-import { Routes, Route, Outlet } from 'react-router-dom';
+import React, { Suspense, lazy } from 'react';
+import { Routes, Route } from 'react-router-dom';
 import './style/app.scss';
 import 'highlight.js/styles/github-dark-dimmed.css';
 import Layout from './lib/Layout/Layout';
-import Content from './lib/Layout/Content';
 import Head from './components/Head';
-import ComponentAside from './components/ComponentAside';
 import Loading from './components/Loading';
-import DocAside from './components/DocAside';
+import { Docs } from './pages/Docs';
+import { Components } from './pages/Components';
 
 // import NotFound from './components/NotFound';
 
 const Intro = lazy(() => import('./docs/Intro'));
 const Install = lazy(() => import('./docs/Install'));
 const Usage = lazy(() => import('./docs/Usage'));
-
 const NotFound = lazy(() => import('./components/NotFound'));
 const ButtonEg = lazy(() => import('./eg/ButtonEg/index'));
-
 const TypographyEg = lazy(() => import('./eg/TypographyEg/index'));
 const PaletteEg = lazy(() => import('./eg/PaletteEg/index'));
 const SpaceEg = lazy(() => import('./eg/SpaceEg/index'));
@@ -67,81 +64,6 @@ const SkeletonEg = lazy(() => import('./eg/SkeletonEg/index'));
 const TipEg = lazy(() => import('./eg/TipEg/index'));
 const AlertEg = lazy(() => import('./eg/AlertEg/index'));
 const BackTopEg = lazy(() => import('./eg/BackTopEg/index'));
-const Button = lazy(() => import('./lib/Button/Button'));
-const Drawer = lazy(() => import('./lib/Drawer/Drawer'));
-
-// 文档页
-const Docs: React.FC = () => {
-  const [visible, setVisible] = useState(false);
-  const showDrawer = () => {
-    setVisible(true);
-  };
-  const onClose = () => {
-    setVisible(false);
-  };
-  return (
-    <Content>
-      <div className="menu-button">
-        <Button
-          onClick={() => {
-            showDrawer();
-          }}
-        >
-          菜单
-        </Button>
-      </div>
-      <Drawer title="简介" position="left" visible={visible} onClose={onClose} width={220}>
-        <div>
-          <DocAside />
-        </div>
-      </Drawer>
-      <div className="ui-aside-eg">
-        <DocAside />
-      </div>
-      <div className="component-show">
-        <Suspense fallback={<Loading />}>
-          <Outlet />
-        </Suspense>
-      </div>
-    </Content>
-  );
-};
-// 组件页
-const Components: React.FC = () => {
-  const [visible, setVisible] = useState(false);
-  const showDrawer = () => {
-    setVisible(true);
-  };
-  const onClose = () => {
-    setVisible(false);
-  };
-  return (
-    <Content>
-      <div className="menu-button">
-        <Button
-          onClick={() => {
-            showDrawer();
-          }}
-        >
-          菜单
-        </Button>
-      </div>
-      <Drawer title="组件概览" position="left" visible={visible} onClose={onClose} width={220}>
-        <div>
-          <ComponentAside />
-        </div>
-      </Drawer>
-      <div className="ui-aside-eg">
-        <ComponentAside />
-      </div>
-      <div className="component-show" id="app-component-show">
-        <Suspense fallback={<Loading />}>
-          <Outlet />
-        </Suspense>
-      </div>
-    </Content>
-  );
-};
 
 const App: React.FC = () => (
   <Layout>
