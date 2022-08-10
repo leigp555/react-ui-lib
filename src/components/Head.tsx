@@ -68,7 +68,7 @@ const Head: React.FC = () => {
             <NavLinkP to="/about">关于</NavLinkP>
           </div>
         </Col>
-        <Col span={10} justify="center">
+        <Col span={10} justify="center" style={{ marginRight: '10px' }}>
           <a href="https://github.com/leigp555/react-ui-lib">
             <GithubIcon width="1.5em" height="1.5em" />
           </a>
