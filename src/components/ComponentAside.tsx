@@ -1,5 +1,5 @@
-import React, { useEffect, useState } from 'react';
-import { NavLink, useLocation, useNavigate } from 'react-router-dom';
+import React, { useEffect, useRef, useState } from 'react';
+import { NavLink, useLocation } from 'react-router-dom';
 import styled from 'styled-components';
 import Sider from '../lib/Layout/Sider';
 import { ColumnMenu, ColumnSub, ItemGroup, Label, MenuItem } from '../lib';
@@ -23,13 +23,13 @@ const NavLinkP = styled(NavLink)`
 
 const ComponentAside: React.FC = () => {
   const [order, setOrder] = useState<number>(-1);
+  const initLink = useRef<HTMLAnchorElement | null>(null);
   const location = useLocation();
-  const navigate = useNavigate();
   useEffect(() => {
     const pathArr = location.pathname.split('/');
     const mathStr = pathArr[pathArr.length - 1];
     if (mathStr === 'components') {
-      navigate('/components/typography');
+      initLink.current?.click();
     }
   }, []);
   return (
@@ -46,7 +46,9 @@ const ComponentAside: React.FC = () => {
           <ItemGroup>
             <Label>通用</Label>
             <MenuItem order={45}>
-              <NavLinkP to="/components/typography">Typography 排版</NavLinkP>
+              <NavLinkP to="/components/typography" ref={initLink}>
+                Typography 排版
+              </NavLinkP>
             </MenuItem>
             <MenuItem order={47}>
               <NavLinkP to="/components/button">Button 按钮</NavLinkP>
