@@ -1,7 +1,7 @@
 import { translate } from '../translate';
 
 export const code = translate(`
-import { TimeItem, Timeline } from 'uix';\n
+import { TimeItem, Timeline } from 'uix-react';\n
 export const App:React.RC=()=>{
   return (
     <div className="Eg">

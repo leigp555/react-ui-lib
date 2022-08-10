@@ -1,7 +1,7 @@
 import { translate } from '../translate';
 
 export const code = translate(`
-import {  Button, Skeleton, SkeletonItem } from 'uix';\n
+import {  Button, Skeleton, SkeletonItem } from 'uix-react';\n
 export const App:React.RC=()=>{
   const [loading, setLoading] = useState<boolean>(true);
   const [loading2, setLoading2] = useState<boolean>(true);

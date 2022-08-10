@@ -1,7 +1,7 @@
 import { translate } from '../translate';
 
 export const code = translate(`
-import { Steps,Step } from 'uix';\n
+import { Steps,Step } from 'uix-react';\n
 
 const steps = [
   {

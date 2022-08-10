@@ -3,7 +3,7 @@ import { translate } from '../translate';
 const item = { id: 0 };
 
 export const code = translate(`
-import { Avatar, Button, List, ListItem  } from 'uix';\n
+import { Avatar, Button, List, ListItem  } from 'uix-react';\n
 export const App:React.RC=()=>{
 export const Demo: React.FC = () => {
   // 按钮式加载更多

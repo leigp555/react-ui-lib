@@ -1,7 +1,7 @@
 import { translate } from '../translate';
 
 export const code = translate(`
-import { AutoComplete } from 'uix';\n
+import { AutoComplete } from 'uix-react';\n
 
 const tips: Tip[] = [
   {

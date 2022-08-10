@@ -1,7 +1,7 @@
 import { translate } from '../translate';
 
 export const code = translate(`
-import { Affix } from 'uix';\n
+import { Affix } from 'uix-react';\n
 export const App:React.RC=()=>{
  const [top, setTop] = useState(200);
   const render = (num: number): React.ReactNode[] => {

@@ -1,7 +1,7 @@
 import { translate } from '../translate';
 
 export const code = translate(`
-import { Breadcrumb,BreadcrumbItem } from 'uix';\n
+import { Breadcrumb,BreadcrumbItem } from 'uix-react';\n
 export const App:React.RC=()=>{
     const [data, setData] = useState<{ content: string; icon: ReactNode }[]>([
     { content: 'Home', icon: <QQIcon fill="#008dff" width="1em" height="1em" /> },

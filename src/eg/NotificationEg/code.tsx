@@ -1,7 +1,7 @@
 import { translate } from '../translate';
 
 export const code = translate(`
-import {  Button, Notification ,openNotification} from 'uix';\n
+import {  Button, Notification ,openNotification} from 'uix-react';\n
 export const App:React.RC=()=>{
   const open = () => {
     openNotification(

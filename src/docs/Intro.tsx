@@ -8,7 +8,7 @@ const Intro: React.FC = () => {
       <Typography>
         <Title level={2}>Uix of React</Title>
         <Paragraph>
-          <p>Uix 是一套链接开发者、设计师、交互和产品经理的桌面端组件库</p>
+          <p>uix-react 是一套链接开发者、设计师、交互和产品经理的桌面端组件库</p>
         </Paragraph>
         <Title level={3}>特性</Title>
         <Paragraph>

@@ -1,7 +1,7 @@
 import { translate } from '../translate';
 
 export const code = translate(`
-import {  Carousel, CarouselItem } from 'uix';\n
+import {  Carousel, CarouselItem } from 'uix-react';\n
 export const App:React.RC=()=>{
   const contentStyle: React.CSSProperties = {
     height: '160px',

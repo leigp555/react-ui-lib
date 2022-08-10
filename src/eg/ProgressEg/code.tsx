@@ -2,7 +2,7 @@ import { translate } from '../translate';
 
 const percent = 50;
 export const code = translate(`
-import { Progress } from 'uix';\n
+import { Progress } from 'uix-react';\n
 export const App:React.RC=()=>{
   return (
     <div className="Eg">

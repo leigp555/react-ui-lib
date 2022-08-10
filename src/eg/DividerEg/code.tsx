@@ -1,7 +1,7 @@
 import { translate } from '../translate';
 
 export const code = translate(`
-import { Divider } from 'uix';\n
+import { Divider } from 'uix-react';\n
 export const App:React.RC=()=>{
   return (
      <div>

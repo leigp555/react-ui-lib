@@ -1,7 +1,7 @@
 import { translate } from '../translate';
 
 export const code = translate(`
-import { Tab, Tabs  } from 'uix';\n
+import { Tab, Tabs  } from 'uix-react';\n
 export const App:React.RC=()=>{
   const onChange = (key: string) => {
     console.log(key);

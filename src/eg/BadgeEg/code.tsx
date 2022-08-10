@@ -1,7 +1,7 @@
 import { translate } from '../translate';
 
 export const code = translate(`
-import { Avatar, Badge } from 'uix';\n
+import { Avatar, Badge } from 'uix-react';\n
 export const App:React.RC=()=>{
   return (
     <div className="Eg">

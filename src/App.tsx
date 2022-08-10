@@ -9,7 +9,7 @@ import { Docs } from './pages/Docs';
 import { Components } from './pages/Components';
 
 // import NotFound from './components/NotFound';
-
+const About = lazy(() => import('./pages/About'));
 const Intro = lazy(() => import('./docs/Intro'));
 const Install = lazy(() => import('./docs/Install'));
 const Usage = lazy(() => import('./docs/Usage'));
@@ -134,6 +134,14 @@ const App: React.FC = () => (
         <Route path="alert" element={<AlertEg />} />
         <Route path="backTop" element={<BackTopEg />} />
       </Route>
+      <Route
+        path="about"
+        element={
+          <Suspense>
+            <About />
+          </Suspense>
+        }
+      />
       <Route
         path="*"
         element={

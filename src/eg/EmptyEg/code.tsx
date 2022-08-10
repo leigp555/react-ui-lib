@@ -1,7 +1,7 @@
 import { translate } from '../translate';
 
 export const code = translate(`
-import { Button, Empty } from 'uix';\n
+import { Button, Empty } from 'uix-react';\n
 export const App:React.RC=()=>{
 return (
     <div className="Eg">

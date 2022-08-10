@@ -1,7 +1,7 @@
 import { translate } from '../translate';
 
 export const code = translate(`
-import { Button, Popover } from 'uix';\n
+import { Button, Popover } from 'uix-react';\n
 export const App:React.RC=()=>{
   const content = (
     <>

@@ -1,7 +1,7 @@
 import { translate } from '../translate';
 
 export const code = translate(`
-import { Tag, TagGroup } from 'uix';\n
+import { Tag, TagGroup } from 'uix-react';\n
 export const App:React.RC=()=>{
   const close = (el: HTMLDivElement) => {
     console.log(el);

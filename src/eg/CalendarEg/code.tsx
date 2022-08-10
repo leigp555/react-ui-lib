@@ -1,7 +1,7 @@
 import { translate } from '../translate';
 
 export const code = translate(`
-import { Calendar } from 'uix';\n
+import { Calendar } from 'uix-react';\n
 export const App:React.RC=()=>{
   const fn = (dataValue: string) => {
     console.log(dataValue);

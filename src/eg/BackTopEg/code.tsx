@@ -1,7 +1,7 @@
 import { translate } from '../translate';
 
 export const code = translate(`
-import {  BackTop, Button } from 'uix';\n
+import {  BackTop, Button } from 'uix-react';\n
 export const App:React.RC=()=>{
   return (
     <div className="Eg" style={{ height: '600px' }}>

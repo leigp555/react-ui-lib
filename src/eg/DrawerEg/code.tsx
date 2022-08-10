@@ -1,7 +1,7 @@
 import { translate } from '../translate';
 
 export const code = translate(`
-import { Button, Drawer } from 'uix';\n
+import { Button, Drawer } from 'uix-react';\n
 export const App:React.RC=()=>{
   const [visible, setVisible] = useState(false);
   const [visible2, setVisible2] = useState(false);

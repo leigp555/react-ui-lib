@@ -1,7 +1,7 @@
 import { translate } from '../translate';
 
 export const code = translate(`
-import { Button, Checkbox } from 'uix';\n
+import { Button, Checkbox } from 'uix-react';\n
 export const App:React.RC=()=>{
   const options: Options[] = [
     { label: 'apple', value: 'apple' },

@@ -15,7 +15,7 @@ const res = {
 };
 
 export const code = translate(`
-import { AsyncTable, Table, Tag } from 'uix';\n
+import { AsyncTable, Table, Tag } from 'uix-react';\n
 const dataBody = [
   { 姓名: '张三', 年龄: 1, 班级: 335, 身高: 175, 体重: 99 },
   { 姓名: '张三', 年龄: 2, 班级: 335, 身高: 175, 体重: '' },

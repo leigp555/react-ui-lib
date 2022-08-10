@@ -1,7 +1,7 @@
 import { translate } from '../translate';
 
 export const code = translate(`
-import {  Radio, RadioItem } from 'uix';\n
+import {  Radio, RadioItem } from 'uix-react';\n
 export const App:React.RC=()=>{
   const [value, setValue] = useState(2);
   const [value2, setValue2] = useState(4);

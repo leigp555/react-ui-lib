@@ -1,7 +1,7 @@
 import { translate } from '../translate';
 
 export const code = translate(`
-import { Col, Input, InputIcon, Row } from 'uix';\n
+import { Col, Input, InputIcon, Row } from 'uix-react';\n
 export const App:React.RC=()=>{
   const validate: Validate[] = [
     {

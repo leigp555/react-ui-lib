@@ -1,7 +1,7 @@
 import { translate } from '../translate';
 
 export const code = translate(`
-import { Pagination } from 'uix';\n
+import { Pagination } from 'uix-react';\n
 export const App:React.RC=()=>{
   const [page, setPage] = useState<number>(1);
   const fn = (currentPage: number, start: number, end: number) => {

@@ -15,15 +15,15 @@ const Install: React.FC = () => {
       <Typography>
         <Title level={3}>npm安装</Title>
         <Paragraph>
-          <code style={codeCss}>$ npm install uix</code>
+          <code style={codeCss}>$ npm install uix-react</code>
         </Paragraph>
         <Title level={3}>yarn安装</Title>
         <Paragraph>
-          <code style={codeCss}>$ yarn add uix</code>
+          <code style={codeCss}>$ yarn add uix-react</code>
         </Paragraph>
         <Title level={3}>pnpm安装</Title>
         <Paragraph>
-          <code style={codeCss}>$ pnpm add uix</code>
+          <code style={codeCss}>$ pnpm add uix-react</code>
         </Paragraph>
       </Typography>
     </div>

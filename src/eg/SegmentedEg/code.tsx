@@ -1,7 +1,7 @@
 import { translate } from '../translate';
 
 export const code = translate(`
-import { Segmented } from 'uix';\n
+import { Segmented } from 'uix-react';\n
 export const App:React.RC=()=>{
   const [value, setValue] = useState<React.ReactNode>('Daily');
   const [value2, setValue2] = useState<React.ReactNode>('Monthly');

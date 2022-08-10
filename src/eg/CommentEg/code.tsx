@@ -1,7 +1,7 @@
 import { translate } from '../translate';
 
 export const code = translate(`
-import { Button, Comment } from 'uix';\n
+import { Button, Comment } from 'uix-react';\n
 const data: CommentData[] = [
   {
     id: 1,

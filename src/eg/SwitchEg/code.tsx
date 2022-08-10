@@ -1,7 +1,7 @@
 import { translate } from '../translate';
 
 export const code = translate(`
-import { Switch } from 'uix';\n
+import { Switch } from 'uix-react';\n
 export const App:React.RC=()=>{
   const onChange = (checked: boolean) => {
     console.log(checked);

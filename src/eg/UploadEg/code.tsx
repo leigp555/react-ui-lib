@@ -1,7 +1,7 @@
 import { translate } from '../translate';
 
 export const code = translate(`
-import { Tip, Upload, UploadToServer } from 'uix';\n
+import { Tip, Upload, UploadToServer } from 'uix-react';\n
 export const App:React.RC=()=>{
   // 获取源文件
   const getFiles = (data: Blob[]) => {

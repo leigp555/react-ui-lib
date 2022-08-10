@@ -1,7 +1,7 @@
 import { translate } from '../translate';
 
 export const code = translate(`
-import { Divider, Paragraph, Text, Title, Typography } from 'uix';\n
+import { Divider, Paragraph, Text, Title, Typography } from 'uix-react';\n
 export const App:React.RC=()=>{
   return (
      <div>

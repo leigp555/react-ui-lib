@@ -1,7 +1,7 @@
 import { translate } from '../translate';
 
 export const code = translate(`
-import { Button, Modal } from 'uix';\n
+import { Button, Modal } from 'uix-react';\n
 export const App:React.RC=()=>{
   const [isModalVisible, setIsModalVisible] = useState(false);
   const [isModalVisible2, setIsModalVisible2] = useState(false);

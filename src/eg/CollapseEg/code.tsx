@@ -1,7 +1,7 @@
 import { translate } from '../translate';
 
 export const code = translate(`
-import { Collapse, Panel } from 'uix';\n
+import { Collapse, Panel } from 'uix-react';\n
 export const App:React.RC=()=>{
   const text = (
     <p>

@@ -1,7 +1,7 @@
 import { translate } from '../translate';
 
 export const code = translate(`
-import {  Button, PopConfirm  } from 'uix';\n
+import {  Button, PopConfirm  } from 'uix-react';\n
 export const App:React.RC=()=>{
   const confirm = () => {
     console.log('confirm');

@@ -1,7 +1,7 @@
 import { translate } from '../translate';
 
 export const code = translate(`
-import { Slider } from 'uix';\n
+import { Slider } from 'uix-react';\n
 export const App:React.RC=()=>{
   const [defaultPercent, setPercent] = useState<number>(20);
   return (

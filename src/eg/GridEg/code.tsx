@@ -1,7 +1,7 @@
 import { translate } from '../translate';
 
 export const code = translate(`
-import { Row,Col } from 'uix';\n
+import { Row,Col } from 'uix-react';\n
 export const App:React.RC=()=>{
   return (
      <div>

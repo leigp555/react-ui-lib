@@ -1,7 +1,7 @@
 import { translate } from '../translate';
 
 export const code = translate(`
-import { Button } from 'uix';\n
+import { Button } from 'uix-react';\n
 export const App:React.RC=()=>{
   const wrapCss: React.CSSProperties = {
     padding: '50px 20px',

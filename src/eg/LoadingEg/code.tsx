@@ -1,7 +1,7 @@
 import { translate } from '../translate';
 
 export const code = translate(`
-import {  Button, Loading } from 'uix';\n
+import {  Button, Loading } from 'uix-react';\n
 export const App:React.RC=()=>{
   const [loading, setLoading] = useState(true);
   return (

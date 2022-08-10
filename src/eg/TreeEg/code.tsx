@@ -1,7 +1,7 @@
 import { translate } from '../translate';
 
 export const code = translate(`
-import { Tree } from 'uix';\n
+import { Tree } from 'uix-react';\n
 const treeData: TypeTree[] = [
   {
     title: 'Parent 1',
